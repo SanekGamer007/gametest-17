@@ -1,0 +1,140 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtx7x1eplfijq"]
+
+[ext_resource type="Script" uid="uid://b673gx1d4i34c" path="res://entities/chara/chara.gd" id="1_3h0bg"]
+[ext_resource type="Texture2D" uid="uid://bxk4226nhk08x" path="res://entities/chara/spr/overworld/down_idle.png" id="1_7x65y"]
+[ext_resource type="Texture2D" uid="uid://dmx20fnspolat" path="res://entities/chara/spr/overworld/down_walk1.png" id="2_3h0bg"]
+[ext_resource type="Texture2D" uid="uid://buhp3g8gbs366" path="res://entities/chara/spr/overworld/down_walk2.png" id="3_dqf2e"]
+[ext_resource type="Texture2D" uid="uid://b5wkf5vkenm6o" path="res://entities/chara/spr/overworld/left_idle.png" id="4_t8b6n"]
+[ext_resource type="Texture2D" uid="uid://b1dj4ow61plf7" path="res://entities/chara/spr/overworld/left_walk.png" id="5_vyj1b"]
+[ext_resource type="Texture2D" uid="uid://cwvhsllv051ta" path="res://entities/chara/spr/overworld/right_idle.png" id="6_4kof1"]
+[ext_resource type="Texture2D" uid="uid://7klnqh0f05cy" path="res://entities/chara/spr/overworld/right_walk.png" id="7_20848"]
+[ext_resource type="Texture2D" uid="uid://cx542doyddxrx" path="res://entities/chara/spr/overworld/up_idle.png" id="8_3ja58"]
+[ext_resource type="Texture2D" uid="uid://c71bwpcc7plwl" path="res://entities/chara/spr/overworld/up_walk1.png" id="9_xnmel"]
+[ext_resource type="Texture2D" uid="uid://be5ryatrrckpj" path="res://entities/chara/spr/overworld/up_walk2.png" id="10_o3hpw"]
+[ext_resource type="Script" uid="uid://bhpwkt0f1787u" path="res://entities/chara/interact.gd" id="12_dqf2e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aisja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7x65y")
+}],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3h0bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7x65y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dqf2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7x65y")
+}],
+"loop": true,
+"name": &"down_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t8b6n")
+}],
+"loop": true,
+"name": &"left_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vyj1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t8b6n")
+}],
+"loop": true,
+"name": &"left_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4kof1")
+}],
+"loop": true,
+"name": &"right_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_20848")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4kof1")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3ja58")
+}],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_xnmel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3ja58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o3hpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3ja58")
+}],
+"loop": true,
+"name": &"up_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miaux"]
+size = Vector2(20, 9)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_3h0bg"]
+
+[node name="Chara" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_3h0bg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aisja")
+animation = &"down_idle"
+frame_progress = 0.10446429
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 10)
+shape = SubResource("RectangleShape2D_miaux")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, -14)
+zoom = Vector2(2, 2)
+
+[node name="Interact" type="Area2D" parent="."]
+script = ExtResource("12_dqf2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+position = Vector2(0, 5.5)
+shape = SubResource("SeparationRayShape2D_3h0bg")
+debug_color = Color(0.22376934, 0.9999998, 0.20066378, 0.41960785)
+
+[connection signal="area_entered" from="Interact" to="Interact" method="_on_area_entered"]
+[connection signal="area_exited" from="Interact" to="Interact" method="_on_area_exited"]
+[connection signal="body_entered" from="Interact" to="Interact" method="_on_body_entered"]
+[connection signal="body_exited" from="Interact" to="Interact" method="_on_body_exited"]

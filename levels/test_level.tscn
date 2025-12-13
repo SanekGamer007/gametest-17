@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg4x37m08e2hi"]
+
+[ext_resource type="PackedScene" uid="uid://dtx7x1eplfijq" path="res://entities/chara/chara.tscn" id="1_46lwt"]
+[ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_gmgay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x25rp"]
+size = Vector2(20, 7)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gmgay"]
+
+[node name="test_level" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Chara" parent="." instance=ExtResource("1_46lwt")]
+
+[node name="Test" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(99, 53)
+script = ExtResource("2_x25rp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_x25rp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Test"]
+position = Vector2(0, -20)
+scale = Vector2(21, 40.999996)
+texture = SubResource("PlaceholderTexture2D_gmgay")
+
+[node name="SpawnPoint" parent="." instance=ExtResource("3_gmgay")]
+position = Vector2(-40, -61)

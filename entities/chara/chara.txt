@@ -1,0 +1,115 @@
+extends CharacterBody2D
+@onready var AnimSprite: AnimatedSprite2D = $AnimatedSprite2D
+
+enum states {
+	IDLE,
+	WALK,
+	RUN,
+	BUSY, # to be used in cutscenes, menus, etc...
+}
+
+enum facings {
+	DOWN,
+	LEFT,
+	RIGHT,
+	UP,
+}
+
+var facing: facings = facings.DOWN
+var state: states = states.IDLE
+var direction: Vector2 = Vector2.ZERO
+@export var mv_speed: float = 120
+
+
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _physics_process(delta: float) -> void:
+	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
+	_manage_facings()
+	match state:
+		states.IDLE:
+			_handle_idle_state(delta)
+		states.WALK:
+			_handle_walk_state(delta)
+		states.RUN:
+			_handle_run_state(delta)
+		states.BUSY:
+			_handle_busy_state()
+	move_and_slide()
+
+func _handle_idle_state(_delta: float) -> void:
+	velocity = Vector2.ZERO
+	if direction:
+		set_state(states.WALK)
+
+func _handle_walk_state(_delta: float) -> void:
+	if direction:
+		velocity = direction * mv_speed
+	else:
+		set_state(states.IDLE)
+
+func _handle_run_state(_delta: float) -> void:
+	pass # TODO, maybe will remove.
+
+func _handle_busy_state() -> void:
+	velocity = Vector2.ZERO
+
+func set_state(new_state: states) -> void:
+	state = new_state
+
+func _manage_facings() -> void:
+	match direction: # if you switch directions to opposite ones in a single frame the facing will not update, TODO: maybe fix it.
+		Vector2(0, 1):
+			_set_facing(facings.DOWN)
+		Vector2(-1, 0):
+			_set_facing(facings.LEFT)
+		Vector2(1, 0):
+			_set_facing(facings.RIGHT)
+		Vector2(0, -1):
+			_set_facing(facings.UP)
+	_manage_anims()
+
+func _manage_anims() -> void:
+	if direction and state != states.BUSY:
+		match facing:
+			facings.DOWN:
+				_set_anim("down_walk")
+			facings.LEFT:
+				_set_anim("left_walk")
+			facings.RIGHT:
+				_set_anim("right_walk")
+			facings.UP:
+				_set_anim("up_walk")
+	else:
+		match facing:
+			facings.DOWN:
+				_set_anim("down_idle")
+			facings.LEFT:
+				_set_anim("left_idle")
+			facings.RIGHT:
+				_set_anim("right_idle")
+			facings.UP:
+				_set_anim("up_idle")
+
+func _set_anim(new_anim: String) -> void:
+	match new_anim: # in case i would want to change stuff based on animation.
+		"down_idle":
+			$AnimatedSprite2D.play(new_anim)
+		"down_walk":
+			$AnimatedSprite2D.play(new_anim)
+		"left_idle":
+			$AnimatedSprite2D.play(new_anim)
+		"left_walk":
+			$AnimatedSprite2D.play(new_anim)
+		"right_idle":
+			$AnimatedSprite2D.play(new_anim)
+		"right_walk":
+			$AnimatedSprite2D.play(new_anim)
+		"up_idle":
+			$AnimatedSprite2D.play(new_anim)
+		"up_walk":
+			$AnimatedSprite2D.play(new_anim)
+
+func _set_facing(new_facing: facings) -> void:
+	facing = new_facing
