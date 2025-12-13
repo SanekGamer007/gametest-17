@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx7edb1sp6oe6"]
 
-[ext_resource type="Script" uid="uid://c1hs04m47nd25" path="res://objects/spawn_point/spawn_point.gd" id="1_o6vu4"]
+[ext_resource type="Script" uid="uid://c1hs04m47nd25" path="res://objects/spawn_point/SpawnPoint.gd" id="1_o6vu4"]
 
 [sub_resource type="Gradient" id="Gradient_o6vu4"]
 offsets = PackedFloat32Array(0.5405405)
@@ -13,7 +13,6 @@ width = 16
 [node name="SpawnPoint" type="Marker2D" groups=["spawnpoint"]]
 gizmo_extents = 24.0
 script = ExtResource("1_o6vu4")
-facing = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1, 16)

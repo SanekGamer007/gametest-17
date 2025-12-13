@@ -1,11 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://c85gxv6pwwh8f"]
+[gd_scene load_steps=31 format=3 uid="uid://c85gxv6pwwh8f"]
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue/interaction/dialogue_interaction.tscn" id="3_tg4u2"]
-[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/DialogueResources.gd" id="4_1xmro"]
-[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/DialogueTextResource.gd" id="5_s52b6"]
-[ext_resource type="Script" uid="uid://q6h3lhuqjcir" path="res://objects/dialogue/resources/DialogueFunctionResource.gd" id="6_1xmro"]
+[ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/interaction/dialogue_series_resource.gd" id="4_1xmro"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="5_s52b6"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="6_onkdf"]
+[ext_resource type="Script" uid="uid://q6h3lhuqjcir" path="res://objects/dialogue/resources/dialogue_function_resource.gd" id="7_s52b6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5h8l"]
 atlas = ExtResource("1_hwqje")
@@ -157,32 +158,49 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co5gw"]
 size = Vector2(24, 19)
 
-[sub_resource type="Resource" id="Resource_onkdf"]
-script = ExtResource("5_s52b6")
+[sub_resource type="Resource" id="Resource_bhlrb"]
+script = ExtResource("6_onkdf")
 text = "What do you want kid?
-No, i don't have games on
->my phone."
+Games?
+I don't have games on my phone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_s52b6"]
-script = ExtResource("6_1xmro")
+[sub_resource type="Resource" id="Resource_onkdf"]
+script = ExtResource("7_s52b6")
 target_path = NodePath("..")
 function_name = "cutscenefunction"
 show_dialogue_box = false
 wait_for_signal_to_continue = "cutscenedone"
 metadata/_custom_type_script = "uid://q6h3lhuqjcir"
 
-[sub_resource type="Resource" id="Resource_1xmro"]
-script = ExtResource("5_s52b6")
-text = "Why are you looking at me
->like that?
+[sub_resource type="Resource" id="Resource_yf80x"]
+script = ExtResource("6_onkdf")
+text = "Why are you looking at me like 
+>that?
 Fine, you can take the phone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_bhlrb"]
-script = ExtResource("5_s52b6")
-text = "You got a cellphone!"
+[sub_resource type="Resource" id="Resource_s52b6"]
+script = ExtResource("6_onkdf")
+text = "You got a Cellphone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_p2sll"]
+script = ExtResource("4_1xmro")
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_onkdf"), SubResource("Resource_yf80x"), SubResource("Resource_s52b6")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_cns6x"]
+script = ExtResource("6_onkdf")
+text = "No need to return it.
+I dont want to touch it anymore
+>because of you."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_tyot4"]
+script = ExtResource("4_1xmro")
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [node name="TestNPC" type="StaticBody2D"]
 script = ExtResource("1_i5h8l")
@@ -196,7 +214,7 @@ position = Vector2(-2, 22.5)
 shape = SubResource("RectangleShape2D_co5gw")
 
 [node name="DialogueInteraction" parent="." instance=ExtResource("3_tg4u2")]
-dialogue = Array[ExtResource("4_1xmro")]([SubResource("Resource_onkdf"), SubResource("Resource_s52b6"), SubResource("Resource_1xmro"), SubResource("Resource_bhlrb")])
+dialogue = Array[ExtResource("4_1xmro")]([SubResource("Resource_p2sll"), SubResource("Resource_tyot4")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
 position = Vector2(-2, 22.5)

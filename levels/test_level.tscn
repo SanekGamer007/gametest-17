@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene load_steps=15 format=3 uid="uid://bg4x37m08e2hi"]
 
 [ext_resource type="PackedScene" uid="uid://dtx7x1eplfijq" path="res://entities/chara/chara.tscn" id="1_46lwt"]
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue/interaction/dialogue_interaction.tscn" id="3_e7anx"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_gmgay"]
-[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/DialogueResources.gd" id="4_ur00s"]
-[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/DialogueTextResource.gd" id="5_wndkh"]
-[ext_resource type="Script" uid="uid://q6h3lhuqjcir" path="res://objects/dialogue/resources/DialogueFunctionResource.gd" id="6_ur00s"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="4_ur00s"]
+[ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/interaction/dialogue_series_resource.gd" id="4_wndkh"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="5_wndkh"]
 [ext_resource type="PackedScene" uid="uid://c85gxv6pwwh8f" path="res://entities/testnpc/testnpc.tscn" id="8_wndkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x25rp"]
@@ -16,17 +16,23 @@ size = Vector2(20, 7)
 
 [sub_resource type="Resource" id="Resource_ly3hx"]
 script = ExtResource("5_wndkh")
-text = "TEST!!
-[color=green]test[/color]"
+text = "test1!!"
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_wndkh"]
-script = ExtResource("6_ur00s")
-target_path = NodePath("../../Test")
-function_name = "interaction"
-show_dialogue_box = false
-wait_time = 2.0
-metadata/_custom_type_script = "uid://q6h3lhuqjcir"
+[sub_resource type="Resource" id="Resource_4n8tn"]
+script = ExtResource("4_wndkh")
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_wkb0e"]
+script = ExtResource("5_wndkh")
+text = "test2!!"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_paa45"]
+script = ExtResource("4_wndkh")
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_wkb0e")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [node name="test_level" type="Node2D"]
 y_sort_enabled = true
@@ -65,7 +71,8 @@ texture = SubResource("PlaceholderTexture2D_gmgay")
 
 [node name="DialogueInteraction" parent="Test2" instance=ExtResource("3_e7anx")]
 position = Vector2(94, -46)
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_wndkh")])
+only_activate_once = true
+dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_4n8tn"), SubResource("Resource_paa45")])
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Test2/DialogueInteraction"]
 position = Vector2(-94, 43)
@@ -73,8 +80,5 @@ shape = SubResource("RectangleShape2D_x25rp")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("3_gmgay")]
 position = Vector2(82, -8)
-facing = 3
 
 [node name="TestNPC" parent="." instance=ExtResource("8_wndkh")]
-y_sort_enabled = true
-position = Vector2(19, 15)

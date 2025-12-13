@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 const DialogueButtonPreload = preload("res://objects/dialogue/dialogue_button/dialogue_button.tscn")
-@onready var DialogueLabel: RichTextLabel = $HBoxContainer/VBoxContainer/MarginContainer/RichTextLabel
+@onready var DialogueRichText: RichTextLabel = $HBoxContainer/VBoxContainer/MarginContainer/RichTextLabel
 @onready var SpeakerSprite: Sprite2D = $HBoxContainer/SpeakerParent/Sprite2D
 
 var current_dialogue: Array[Dialogue]
@@ -44,8 +44,8 @@ func _text_dialogue(textresource: DialogueText) -> void:
 	var final_text = _apply_custom_formatting(textresource.text)
 	var text_without_square_brackets: String = _text_without_square_brackets(final_text)
 	var DialogueLength = text_without_square_brackets.length()
-	DialogueLabel.visible_characters = 0
-	DialogueLabel.text = final_text
+	DialogueRichText.visible_characters = 0
+	DialogueRichText.text = final_text
 	
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera and textresource.camera_position != Vector2(999.999, 999.999):
@@ -64,12 +64,11 @@ func _text_dialogue(textresource: DialogueText) -> void:
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 0)
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_right", 0)
 	
-	while DialogueLabel.visible_characters < DialogueLength:
+	while DialogueRichText.visible_characters < DialogueLength:
 		if Input.is_action_pressed("second_button") and textresource.can_be_skipped == true:
-			DialogueLabel.visible_characters = DialogueLength - 1
-		DialogueLabel.visible_characters += 1
-		print(DialogueLabel.visible_characters)
-		var character = text_without_square_brackets[DialogueLabel.visible_characters - 1]
+			DialogueRichText.visible_characters = DialogueLength - 1
+		DialogueRichText.visible_characters += 1
+		var character = text_without_square_brackets[DialogueRichText.visible_characters - 1]
 		if character != " ":
 			$AudioStreamPlayer.pitch_scale = randf_range(textresource.text_volume_pitch_min, textresource.text_volume_pitch_max)
 			$AudioStreamPlayer.play()
@@ -84,7 +83,7 @@ func _text_dialogue(textresource: DialogueText) -> void:
 	
 	while true:
 		await get_tree().process_frame
-		if DialogueLabel.visible_characters == DialogueLength:
+		if DialogueRichText.visible_characters == DialogueLength:
 			if Input.is_action_pressed("main_button"):
 				current_dialogue_item += 1
 				next_item = true
@@ -92,13 +91,12 @@ func _text_dialogue(textresource: DialogueText) -> void:
 
 func _function_resource(functionresource: DialogueFunction) -> void:
 	var target_node = get_node(functionresource.target_path)
-	print(functionresource.target_path)
 	if target_node.has_method(functionresource.function_name):
 		if functionresource.function_arguments.size() == 0:
 			target_node.call(functionresource.function_name)
 		else:
 			target_node.callv(functionresource.function_name, functionresource.function_arguments)
-
+			
 	if functionresource.wait_for_signal_to_continue:
 		var signal_name = functionresource.wait_for_signal_to_continue
 		if target_node.has_signal(signal_name):
@@ -143,5 +141,4 @@ func _apply_custom_formatting(raw_text: String) -> String:
 			new_lines.append(line.replace(">", "  ")) 
 		else:
 			new_lines.append("* " + line)
-	
 	return "\n".join(new_lines)
