@@ -19,10 +19,16 @@ enum facings {
 var facing: facings = facings.DOWN
 var state: states = states.IDLE
 var direction: Vector2 = Vector2.ZERO
+var can_open_menu: bool = true
 @export var mv_speed: float = 120
 
 func _ready() -> void:
-	pass # Replace with function body.
+	GlobalVars.disable_menu.connect(_disable_menu)
+	GlobalVars.enable_menu.connect(_enable_menu)
+	GlobalVars.player_start_busy.connect(_start_busy)
+	GlobalVars.player_stop_busy.connect(_stop_busy)
+	if SceneManager.new_target_spawn_id != "":
+		_move_to_spawn_point()
 
 func _physics_process(delta: float) -> void:
 	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
@@ -37,6 +43,21 @@ func _physics_process(delta: float) -> void:
 		states.BUSY:
 			_handle_busy_state()
 	move_and_slide()
+
+func set_state(new_state: states) -> void:
+	if new_state == states.BUSY:
+		match facing:
+			facings.DOWN:
+				_set_anim("down", false)
+			facings.LEFT:
+				_set_anim("left", false)
+			facings.RIGHT:
+				_set_anim("right", false)
+			facings.UP:
+				_set_anim("up", false)
+		state = new_state
+	else:
+		state = new_state
 
 func _handle_idle_state(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -55,10 +76,9 @@ func _handle_run_state(_delta: float) -> void:
 func _handle_busy_state() -> void:
 	velocity = Vector2.ZERO
 
-func set_state(new_state: states) -> void:
-	state = new_state
-
 func _manage_facings() -> void:
+	if state == states.BUSY:
+		return
 	match direction: # if you switch directions to opposite ones in a single frame the facing will not update, TODO: maybe fix it.
 		Vector2(0, 1):
 			_set_facing(facings.DOWN)
@@ -70,46 +90,77 @@ func _manage_facings() -> void:
 			_set_facing(facings.UP)
 	_manage_anims()
 
+func set_facing_manual(new_facing: facings) -> void:
+	_set_facing(new_facing)
+	_manage_anims()
+
 func _manage_anims() -> void:
-	if direction and state != states.BUSY:
+	if state == states.BUSY:
+		return
+	if direction:
 		match facing:
 			facings.DOWN:
-				_set_anim("down_walk")
+				_set_anim("down", true)
 			facings.LEFT:
-				_set_anim("left_walk")
+				_set_anim("left", true)
 			facings.RIGHT:
-				_set_anim("right_walk")
+				_set_anim("right", true)
 			facings.UP:
-				_set_anim("up_walk")
+				_set_anim("up", true)
 	else:
 		match facing:
 			facings.DOWN:
-				_set_anim("down_idle")
+				_set_anim("down", false)
 			facings.LEFT:
-				_set_anim("left_idle")
+				_set_anim("left", false)
 			facings.RIGHT:
-				_set_anim("right_idle")
+				_set_anim("right", false)
 			facings.UP:
-				_set_anim("up_idle")
+				_set_anim("up", false)
 
-func _set_anim(new_anim: String) -> void:
-	match new_anim: # in case i would want to change stuff based on animation.
-		"down_idle":
-			$AnimatedSprite2D.play(new_anim)
-		"down_walk":
-			$AnimatedSprite2D.play(new_anim)
-		"left_idle":
-			$AnimatedSprite2D.play(new_anim)
-		"left_walk":
-			$AnimatedSprite2D.play(new_anim)
-		"right_idle":
-			$AnimatedSprite2D.play(new_anim)
-		"right_walk":
-			$AnimatedSprite2D.play(new_anim)
-		"up_idle":
-			$AnimatedSprite2D.play(new_anim)
-		"up_walk":
-			$AnimatedSprite2D.play(new_anim)
+func _set_anim(new_anim: String, walk: bool) -> void:
+	match new_anim:
+		"down":
+			if walk:
+				$AnimatedSprite2D.play("down_walk")
+			else:
+				$AnimatedSprite2D.play("down_idle")
+		"left":
+			if walk:
+				$AnimatedSprite2D.play("left_walk")
+			else:
+				$AnimatedSprite2D.play("left_idle")
+		"right":
+			if walk:
+				$AnimatedSprite2D.play("right_walk")
+			else:
+				$AnimatedSprite2D.play("right_idle")
+		"up":
+			if walk:
+				$AnimatedSprite2D.play("up_walk")
+			else:
+				$AnimatedSprite2D.play("up_idle")
 
 func _set_facing(new_facing: facings) -> void:
 	facing = new_facing
+
+func _move_to_spawn_point() -> void:
+	var spawn_points = get_tree().get_nodes_in_group("spawnpoint")
+	for point: Marker2D in spawn_points:
+		if point.ID == SceneManager.new_target_spawn_id:
+			global_position = point.global_position
+			set_facing_manual(point.facing)
+
+func _disable_menu() -> void:
+	can_open_menu = false
+
+func _enable_menu() -> void:
+	can_open_menu = true
+
+func _start_busy() -> void:
+	GlobalVars.emit_signal("disable_menu")
+	set_state(states.BUSY)
+
+func _stop_busy() -> void:
+	GlobalVars.emit_signal("enable_menu")
+	set_state(states.IDLE)

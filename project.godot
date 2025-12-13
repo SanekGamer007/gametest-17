@@ -16,11 +16,21 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=30
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalVars="*res://global/global_vars.gd"
+SceneManager="*res://global/scene_manager/scene_manager.tscn"
+
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/stretch/mode="viewport"
+
+[global_group]
+
+spawnpoint=""
+player=""
 
 [input]
 

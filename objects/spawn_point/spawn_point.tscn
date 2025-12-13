@@ -10,9 +10,10 @@ colors = PackedColorArray(1, 1, 1, 0.3647059)
 gradient = SubResource("Gradient_o6vu4")
 width = 16
 
-[node name="SpawnPoint" type="Marker2D"]
+[node name="SpawnPoint" type="Marker2D" groups=["spawnpoint"]]
 gizmo_extents = 24.0
 script = ExtResource("1_o6vu4")
+facing = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1, 16)

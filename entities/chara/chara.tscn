@@ -107,9 +107,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miaux"]
 size = Vector2(20, 9)
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_3h0bg"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dqf2e"]
+b = Vector2(0, 20)
 
-[node name="Chara" type="CharacterBody2D"]
+[node name="Chara" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 script = ExtResource("1_3h0bg")
 
@@ -131,7 +132,7 @@ script = ExtResource("12_dqf2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
 position = Vector2(0, 5.5)
-shape = SubResource("SeparationRayShape2D_3h0bg")
+shape = SubResource("SegmentShape2D_dqf2e")
 debug_color = Color(0.22376934, 0.9999998, 0.20066378, 0.41960785)
 
 [connection signal="area_entered" from="Interact" to="Interact" method="_on_area_entered"]

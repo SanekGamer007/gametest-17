@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://cft6oblc1xuhk"]
+
+[ext_resource type="Script" uid="uid://uu7sa2vxr05f" path="res://objects/dialogue/dialogue_box/dialogue_box.gd" id="1_jwyir"]
+[ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="2_jwyir"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrvc3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrvc3"]
+size = Vector2(50, 50)
+
+[node name="DialogueBox" type="CanvasLayer"]
+layer = 9998
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_jwyir")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -32.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qrvc3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -32.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeakerParent" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/SpeakerParent"]
+position = Vector2(35, 30)
+texture = SubResource("PlaceholderTexture2D_qrvc3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_jwyir")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "TEST
+tEST2
+Еййй РУ шрифт"
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="button_container" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="VFlowContainer" type="VFlowContainer" parent="HBoxContainer/VBoxContainer/button_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 32
+alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 1000

@@ -1,11 +1,88 @@
-[gd_scene format=3 uid="uid://iipw8i01i8cq"]
+[gd_scene load_steps=7 format=3 uid="uid://iipw8i01i8cq"]
 
-[node name="FadeManager" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://dijmxpswtexxq" path="res://global/scene_manager/scene_manager.gd" id="1_ifo8e"]
+
+[sub_resource type="Animation" id="Animation_ifo8e"]
+resource_name = "fade_slow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tlsch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8iflf"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8te36"]
+resource_name = "fade_fast"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jthf0"]
+_data = {
+&"RESET": SubResource("Animation_tlsch"),
+&"fade": SubResource("Animation_8iflf"),
+&"fade_fast": SubResource("Animation_8te36"),
+&"fade_slow": SubResource("Animation_ifo8e")
+}
+
+[node name="SceneManager" type="CanvasLayer"]
 layer = 9999
+script = ExtResource("1_ifo8e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jthf0")
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_right = 640.0
 offset_bottom = 480.0
 color = Color(0, 0, 0, 1)

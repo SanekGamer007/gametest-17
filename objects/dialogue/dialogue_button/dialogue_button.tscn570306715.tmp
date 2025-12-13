@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvdssf8afck3c"]
+
+[ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="1_wj14q"]
+[ext_resource type="Script" uid="uid://cv2d8nhd7kfmi" path="res://objects/dialogue/dialogue_button/dialogue_button.gd" id="2_k5q20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5q20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw8hl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiual"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywe4r"]
+
+[node name="DialogueButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_wj14q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k5q20")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cw8hl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oiual")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ywe4r")
+button_mask = 0
+icon_alignment = 2
+script = ExtResource("2_k5q20")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

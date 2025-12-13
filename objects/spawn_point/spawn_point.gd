@@ -5,7 +5,7 @@ extends Marker2D
 	set(value):
 		ID = value
 		_update_label()
-
+@export var facing: Chara.facings = Chara.facings.UP
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
