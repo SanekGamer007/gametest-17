@@ -2,14 +2,14 @@ extends CanvasLayer
 
 @onready var AnimPlay = $AnimationPlayer
 const PLAYER_SCENE = preload("res://entities/chara/chara.tscn") 
-var scene: String
+var scene : NodePath
 var new_target_spawn_id: String
 var animname: String
 var function_name: String
 var function_args: String
 
 
-func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String, func_name = null, func_args = null):
+func change_scene(new_scene: NodePath, target_spawn_id: String, fadespeed: String, func_name = null, func_args = null):
 	GlobalVars.player_start_busy.emit() # 'busy' will work perfectly for disabling player movement.
 	GlobalVars.close_all_ui.emit()
 	new_target_spawn_id = target_spawn_id
@@ -44,7 +44,7 @@ func _set_camera(player: Chara) -> void:
 	var camera_bound: ReferenceRect
 	var player_camera: Camera2D
 	for i in get_tree().current_scene.get_children():
-		if i is ReferenceRect and i.name == "CameraBounds":
+		if i is ReferenceRect:
 			camera_bound = i
 			break
 	player_camera = player.get_node("Camera2D")

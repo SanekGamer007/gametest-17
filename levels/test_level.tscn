@@ -43,7 +43,6 @@ position = Vector2(-7, 79)
 [node name="Test" type="StaticBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(99, 53)
-script = ExtResource("2_x25rp")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
@@ -54,6 +53,13 @@ shape = SubResource("RectangleShape2D_x25rp")
 position = Vector2(0, -20)
 scale = Vector2(21, 40.999996)
 texture = SubResource("PlaceholderTexture2D_gmgay")
+
+[node name="Area2D" type="Area2D" parent="Test"]
+script = ExtResource("2_x25rp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test/Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_x25rp")
 
 [node name="Test2" type="StaticBody2D" parent="."]
 y_sort_enabled = true

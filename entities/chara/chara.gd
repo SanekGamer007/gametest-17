@@ -20,7 +20,7 @@ var facing: facings = facings.DOWN
 var state: states = states.IDLE
 var direction: Vector2 = Vector2.ZERO
 var can_open_menu: bool = true
-@export var mv_speed: float = 120
+@export var mv_speed: float = 100
 
 func _ready() -> void:
 	GlobalVars.disable_menu.connect(_disable_menu)

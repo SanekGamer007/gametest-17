@@ -22,11 +22,6 @@ func _physics_process(_delta: float) -> void:
 			if interaction_target.interaction_can_interact():
 				interaction_target.interaction(parent)
 
-func _on_body_entered(body: Node2D) -> void:
-	_check_interact_entered(body)
-
-func _on_body_exited(body: Node2D) -> void:
-	_check_interact_exited(body)
 
 func _on_area_entered(area: Area2D) -> void:
 	_check_interact_entered(area)

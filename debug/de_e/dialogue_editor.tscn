@@ -1,0 +1,147 @@
+[gd_scene load_steps=2 format=3 uid="uid://mia8t2tnpd36"]
+
+[ext_resource type="Script" uid="uid://dncridr6sgngt" path="res://debug/de_e/dialogue_editor.gd" id="1_g01fh"]
+
+[node name="DialogueEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_g01fh")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.5
+offset_right = 71.5
+offset_bottom = 40.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "DIALOGUE EDITOR"
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.3
+anchor_right = 0.02
+anchor_bottom = 0.3
+offset_top = -31.0
+offset_right = 189.0
+offset_bottom = 151.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "dialogueseries:"
+
+[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer"]
+layout_mode = 2
+auto_width = true
+auto_height = true
+item_count = 2
+item_0/text = "TEst1"
+item_1/text = "Test2"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "timeline:"
+
+[node name="OptionButton" type="OptionButton" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "text"
+popup/item_0/id = 0
+popup/item_1/text = "func"
+popup/item_1/id = 1
+popup/item_2/text = "end"
+popup/item_2/id = 2
+popup/item_3/text = "labl"
+popup/item_3/id = 3
+popup/item_4/text = "choi"
+popup/item_4/id = 4
+
+[node name="Button" type="Button" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "add"
+
+[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer2"]
+layout_mode = 2
+auto_width = true
+auto_height = true
+item_count = 2
+item_0/text = "1. Text"
+item_0/disabled = true
+item_1/text = "2. Func"
+item_1/disabled = true
+
+[node name="VSeparator" type="VSeparator" parent="BoxContainer2"]
+layout_mode = 2
+
+[node name="TextEdit" type="VBoxContainer" parent="BoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer2/TextEdit"]
+layout_mode = 2
+text = "text_resource"
+horizontal_alignment = 1
+
+[node name="speaker_img" type="HBoxContainer" parent="BoxContainer2/TextEdit"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="BoxContainer2/TextEdit/speaker_img"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "speaker_img"
+caret_blink = true
+
+[node name="SpinBox" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img"]
+layout_mode = 2
+prefix = "hfrs"
+
+[node name="SpinBox2" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img"]
+layout_mode = 2
+prefix = "rest"
+
+[node name="CheckBox" type="CheckBox" parent="BoxContainer2/TextEdit"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="BoxContainer2/TextEdit"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+placeholder_text = "line1:
+line2:
+line3:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/TextEdit"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="BoxContainer2/TextEdit/HBoxContainer"]
+layout_mode = 2
+text = "text_speed"
+
+[node name="HSlider" type="HSlider" parent="BoxContainer2/TextEdit/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 30.0
+step = 0.1
+value = 26.0

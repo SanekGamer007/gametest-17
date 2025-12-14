@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c85gxv6pwwh8f"]
+[gd_scene load_steps=38 format=3 uid="uid://c85gxv6pwwh8f"]
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="5_s52b6"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="6_onkdf"]
 [ext_resource type="Script" uid="uid://q6h3lhuqjcir" path="res://objects/dialogue/resources/dialogue_function_resource.gd" id="7_s52b6"]
+[ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="8_onkdf"]
+[ext_resource type="Script" uid="uid://bf5fs51df7ga4" path="res://objects/dialogue/resources/dialogue_jump_resource.gd" id="8_p2sll"]
+[ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/dialogue_label_resource.gd" id="9_bhlrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5h8l"]
 atlas = ExtResource("1_hwqje")
@@ -165,6 +168,10 @@ Games?
 I don't have games on my phone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
+[sub_resource type="Resource" id="Resource_co5gw"]
+script = ExtResource("8_p2sll")
+metadata/_custom_type_script = "uid://bf5fs51df7ga4"
+
 [sub_resource type="Resource" id="Resource_onkdf"]
 script = ExtResource("7_s52b6")
 target_path = NodePath("..")
@@ -185,9 +192,22 @@ script = ExtResource("6_onkdf")
 text = "You got a Cellphone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
+[sub_resource type="Resource" id="Resource_28aho"]
+script = ExtResource("8_onkdf")
+metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
+
+[sub_resource type="Resource" id="Resource_csiif"]
+script = ExtResource("9_bhlrb")
+metadata/_custom_type_script = "uid://0ott3wu8wpkc"
+
+[sub_resource type="Resource" id="Resource_o4pmh"]
+script = ExtResource("6_onkdf")
+text = "Wow the label works!!!"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
 [sub_resource type="Resource" id="Resource_p2sll"]
 script = ExtResource("4_1xmro")
-dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_onkdf"), SubResource("Resource_yf80x"), SubResource("Resource_s52b6")])
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_co5gw"), SubResource("Resource_onkdf"), SubResource("Resource_yf80x"), SubResource("Resource_s52b6"), SubResource("Resource_28aho"), SubResource("Resource_csiif"), SubResource("Resource_o4pmh")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [sub_resource type="Resource" id="Resource_cns6x"]

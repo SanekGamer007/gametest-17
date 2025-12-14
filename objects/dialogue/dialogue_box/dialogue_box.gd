@@ -37,6 +37,13 @@ func _process(_delta: float) -> void:
 		elif i is DialogueFunction:
 			visible = i.show_dialogue_box
 			_function_resource(i)
+		elif i is DialogueEnd:
+			current_dialogue_item = current_dialogue.size()
+		elif i is DialogueLabel:
+			current_dialogue_item += 1
+			next_item = true
+		elif i is DialogueJump:
+			_jump_resource(i)
 
 func _text_dialogue(textresource: DialogueText) -> void:
 	print(textresource.text)
@@ -112,7 +119,14 @@ func _function_resource(functionresource: DialogueFunction) -> void:
 	current_dialogue_item += 1
 	next_item = true
 
-
+func _jump_resource(jumpresource: DialogueJump) -> void:
+	var jump_label = jumpresource.jump_label
+	for i in current_dialogue.size():
+		if current_dialogue[i] is DialogueLabel and current_dialogue[i].label_id == jump_label:
+			current_dialogue_item = i
+			next_item = true
+			print("sds")
+			break
 
 func _text_without_square_brackets(text: String) -> String:
 	var result: String = ""
