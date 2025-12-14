@@ -8,6 +8,8 @@ var animname: String
 var function_name: String
 var function_args: String
 
+func _ready() -> void:
+	$ColorRect.size = get_viewport().get_visible_rect().size
 
 func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String, func_name = null, func_args = null):
 	GlobalVars.player_start_busy.emit() # 'busy' will work perfectly for disabling player movement.

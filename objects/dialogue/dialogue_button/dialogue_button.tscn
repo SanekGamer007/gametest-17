@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvdssf8afck3c"]
+[gd_scene load_steps=8 format=3 uid="uid://bvdssf8afck3c"]
 
 [ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="1_wj14q"]
+[ext_resource type="Texture2D" uid="uid://dtpydp78vbmjr" path="res://objects/dialogue/dialogue_button/heart3.png" id="2_k5q20"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5q20"]
 
@@ -12,8 +13,8 @@
 
 [sub_resource type="GDScript" id="GDScript_21xcl"]
 script/source = "extends Button
-#const heartspr: Texture2D = preload(\"res://objects/battle/spr/chara/heart.png\")
-#const heartnullspr: Texture2D = preload(\"res://objects/battle/spr/chara/heart_null.png\")
+const HEART_TEXTURE: Texture2D = preload(\"res://objects/dialogue/dialogue_button/heart1.png\")
+const NULL_TEXTURE: Texture2D = preload(\"res://objects/dialogue/dialogue_button/heart3.png\")
 
 func _process(_delta: float) -> void:
 	if has_focus() and Input.is_action_just_pressed(\"main_button\"):
@@ -21,18 +22,16 @@ func _process(_delta: float) -> void:
 
 
 func _on_focus_entered() -> void:
-	pass
-#	set_button_icon(heartspr)
+	icon = HEART_TEXTURE
 
 
 func _on_focus_exited() -> void:
-	pass
-#	set_button_icon(heartnullspr)
+	icon = NULL_TEXTURE
 "
 
 [node name="DialogueButton" type="Button"]
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 40.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -48,6 +47,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_cw8hl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_oiual")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ywe4r")
 button_mask = 0
+icon = ExtResource("2_k5q20")
 script = SubResource("GDScript_21xcl")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

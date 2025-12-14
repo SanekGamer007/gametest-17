@@ -1,8 +1,10 @@
+@icon("res://objects/dialogue/resources/icons/dialogue.svg")
 extends Area2D
 const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dialogue_box.tscn")
-var DIALOGUE_TOP_OFFSET: Vector2 = Vector2(32, 16)
-var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(32, 324)
+var DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
+var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
 #@export var activate_instant: bool
+@export_category("Dialogue Options")
 @export var only_activate_once: bool
 @export var override_dialogue_offset: bool
 @export var override_offset: Vector2

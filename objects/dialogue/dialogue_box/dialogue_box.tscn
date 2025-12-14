@@ -5,15 +5,15 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrvc3"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(1, 1, 1, 1)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 anti_aliasing = false
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrvc3"]
@@ -21,36 +21,30 @@ size = Vector2(50, 50)
 
 [node name="DialogueBox" type="CanvasLayer"]
 layer = 9998
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_jwyir")
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = 8
+custom_minimum_size = Vector2(576, 140)
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -240.0
-offset_right = -32.0
-offset_bottom = -170.0
+offset_left = -288.0
+offset_right = 288.0
+offset_bottom = 140.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qrvc3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 8
+custom_minimum_size = Vector2(288, 70)
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -240.0
-offset_right = -32.0
-offset_bottom = -170.0
+offset_left = -144.0
+offset_right = 144.0
+offset_bottom = 70.0
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(144, 0)
 
 [node name="SpeakerParent" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)

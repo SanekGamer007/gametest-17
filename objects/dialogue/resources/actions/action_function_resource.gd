@@ -1,5 +1,5 @@
-extends Dialogue
-class_name DialogueFunction
+extends Action
+class_name ActionFunction
 
 @export var target_path: NodePath
 @export var function_name: String

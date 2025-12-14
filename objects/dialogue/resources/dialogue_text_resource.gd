@@ -1,3 +1,4 @@
+@icon("res://objects/dialogue/resources/icons/dialogue_text.svg")
 extends Dialogue
 class_name DialogueText
 
