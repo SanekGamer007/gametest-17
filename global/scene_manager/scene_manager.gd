@@ -17,6 +17,8 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 	new_target_spawn_id = target_spawn_id
 	scene = new_scene
 	match fadespeed:
+		"none":
+			animname = "fade_instant"
 		"slow":
 			animname = "fade_slow"
 		"normal":

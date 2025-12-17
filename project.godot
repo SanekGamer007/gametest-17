@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="GAMETEST_17"
-run/main_scene="res://levels/test_level.tscn"
+run/main_scene="uid://dq6b2qk0k0hcr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=30
-config/icon="res://icon.svg"
+config/icon="uid://c0f0w0c32g4a2"
 
 [autoload]
 
 GlobalVars="*res://global/global_vars.gd"
 SceneManager="*res://global/scene_manager/scene_manager.tscn"
+Tools="*res://global/tools.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c85gxv6pwwh8f"]
+[gd_scene load_steps=46 format=3 uid="uid://c85gxv6pwwh8f"]
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="5_s52b6"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="6_onkdf"]
 [ext_resource type="Script" uid="uid://blkut3wax1d7u" path="res://objects/dialogue/resources/actions/action_resource.gd" id="7_cns6x"]
+[ext_resource type="AudioStream" uid="uid://cfwtemtv1rx3d" path="res://objects/dialogue/sfx/txt_def2.wav" id="7_o4pmh"]
 [ext_resource type="Script" uid="uid://dmj3iokmefg1e" path="res://objects/dialogue/resources/dialogue_choice_resource.gd" id="7_p2sll"]
 [ext_resource type="Script" uid="uid://bdsia7shjiegi" path="res://objects/dialogue/resources/actions/action_function_resource.gd" id="8_28aho"]
 [ext_resource type="Script" uid="uid://du3lqmcx117j8" path="res://objects/dialogue/resources/actions/action_null_resource.gd" id="8_csiif"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/dialogue_label_resource.gd" id="9_bhlrb"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="9_tyot4"]
 [ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/dialogue_action_resource.gd" id="11_tyot4"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="14_co5gw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5h8l"]
 atlas = ExtResource("1_hwqje")
@@ -167,9 +169,10 @@ size = Vector2(24, 19)
 
 [sub_resource type="Resource" id="Resource_bhlrb"]
 script = ExtResource("6_onkdf")
-text = "What do you want kid?
-Games?
+text = "What do you want ^var.GlobalVars.player_name?
+Games? 
 I don't have games on my phone."
+text_sound = ExtResource("7_o4pmh")
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
 [sub_resource type="Resource" id="Resource_gh7po"]
@@ -185,8 +188,9 @@ metadata/_custom_type_script = "uid://bcy5xchh4xucg"
 
 [sub_resource type="Resource" id="Resource_co5gw"]
 script = ExtResource("7_p2sll")
-text = "..?"
-choice_text = Array[String](["Continue", "Tool Test"])
+text = "..?
+^flag.test_flag"
+choice_text = Array[String](["Continue", "^flag.test_flag"])
 choice_action_id = Array[ExtResource("7_cns6x")]([SubResource("Resource_gh7po"), SubResource("Resource_0xg0r")])
 metadata/_custom_type_script = "uid://dmj3iokmefg1e"
 

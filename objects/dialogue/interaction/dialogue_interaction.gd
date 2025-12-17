@@ -9,8 +9,7 @@ var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
 @export var override_dialogue_offset: bool
 @export var override_offset: Vector2
 @export var dialogue: Array[DialogueSeriesResource]
-@export var spawn_at_root: bool = false
-
+#@export var spawn_at_root: bool = true
 
 var dialogue_idx: int = 0
 
@@ -23,7 +22,7 @@ func _activate_dialogue() -> void:
 	if dialogue_idx >= dialogue.size() and !only_activate_once:
 		dialogue_idx = dialogue.size() - 1
 	GlobalVars.player_start_busy.emit()
-	var new_dialogue = DIALOGUE_SYSTEM_PRELOAD.instantiate()
+	var new_dialogue: DialogueBox = DIALOGUE_SYSTEM_PRELOAD.instantiate()
 	if override_dialogue_offset:
 		desired_dialogue_offset = override_offset
 	else:
@@ -33,10 +32,8 @@ func _activate_dialogue() -> void:
 			desired_dialogue_offset = DIALOGUE_BOTTOM_OFFSET
 	new_dialogue.offset = desired_dialogue_offset
 	new_dialogue.current_dialogue = dialogue[dialogue_idx].dialogue
-	if spawn_at_root:
-		get_tree().root.add_child(new_dialogue)
-	else:
-		add_sibling(new_dialogue)
+	new_dialogue.dialogue_context = self
+	get_tree().root.add_child(new_dialogue)
 	
 	if dialogue_idx >= dialogue.size():
 		has_activated_already = true

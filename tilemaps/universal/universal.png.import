@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crwvrjw75arsw"
-path="res://.godot/imported/bg.png-5bb5128de77861099e911a006bde91bd.ctex"
+uid="uid://cape1m1tm7cx5"
+path="res://.godot/imported/universal.png-8dbafd6075495cf9c2442b0c94d69e64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/test_sequence/firstroom/bg.png"
-dest_files=["res://.godot/imported/bg.png-5bb5128de77861099e911a006bde91bd.ctex"]
+source_file="res://tilemaps/universal/universal.png"
+dest_files=["res://.godot/imported/universal.png-8dbafd6075495cf9c2442b0c94d69e64.ctex"]
 
 [params]
 

@@ -7,10 +7,11 @@ class_name DialogueText
 @export var speaker_img_rest_frame: int = 0
 
 @export_multiline var text: String
-@export_range(0.1, 30.0, 0.1) var text_speed: float = 26.0
+@export_range(0.1, 60.0, 0.1) var text_speed: float = 26.0
 @export var can_be_skipped: bool = true
+@export var auto_skip: bool = false
 
-@export var text_sound: AudioStream
+@export var text_sound: AudioStream = preload("res://objects/dialogue/sfx/txt_def1.wav")
 @export var text_volume_db: int
 @export var text_volume_pitch_min: float = 1 # 0.9
 @export var text_volume_pitch_max: float = 1 # 1.15

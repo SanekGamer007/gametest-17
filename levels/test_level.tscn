@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene load_steps=62 format=3 uid="uid://bg4x37m08e2hi"]
 
-[ext_resource type="PackedScene" uid="uid://dtx7x1eplfijq" path="res://entities/chara/chara.tscn" id="1_46lwt"]
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue/interaction/dialogue_interaction.tscn" id="3_e7anx"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_gmgay"]
@@ -8,7 +7,24 @@
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="4_ur00s"]
 [ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="4_wndkh"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="5_wndkh"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="7_4n8tn"]
+[ext_resource type="Script" uid="uid://daoklmdujs6st" path="res://objects/dialogue/resources/dialogue_tools_resource.gd" id="8_paa45"]
 [ext_resource type="PackedScene" uid="uid://c85gxv6pwwh8f" path="res://entities/testnpc/testnpc.tscn" id="8_wndkh"]
+[ext_resource type="Script" uid="uid://behuvjubs2pu6" path="res://objects/dialogue/resources/tools/move_resource.gd" id="9_axl34"]
+[ext_resource type="AudioStream" uid="uid://shcmve3d6bb0" path="res://levels/fart.mp3" id="10_0vv12"]
+[ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="10_4n8tn"]
+[ext_resource type="Script" uid="uid://c7oliw3lteue" path="res://objects/dialogue/resources/tools/sound_resource.gd" id="11_o5yuq"]
+[ext_resource type="Script" uid="uid://dr8184jywnvmu" path="res://objects/dialogue/resources/tools/wait_resource.gd" id="12_wjuib"]
+[ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="13_pgbyh"]
+[ext_resource type="Script" uid="uid://bdsia7shjiegi" path="res://objects/dialogue/resources/actions/action_function_resource.gd" id="13_wjuib"]
+[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/dialogue_action_resource.gd" id="14_xag4j"]
+[ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="16_pgbyh"]
+[ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="20_n4g7x"]
+[ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="21_atrxo"]
+[ext_resource type="Script" uid="uid://33oa077n2p4a" path="res://objects/dialogue/resources/dialogue_conditional_action_resource.gd" id="21_vr6yy"]
+[ext_resource type="Script" uid="uid://b7b2u4r8lkhf8" path="res://objects/dialogue/resources/actions/action_jump_resource.gd" id="21_x7oem"]
+[ext_resource type="Script" uid="uid://dlmfsgrhd5gpd" path="res://objects/dialogue/resources/types/flag.gd" id="22_vr6yy"]
+[ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/dialogue_label_resource.gd" id="24_ec2iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x25rp"]
 size = Vector2(20, 7)
@@ -20,26 +36,178 @@ script = ExtResource("5_wndkh")
 text = "test1!!"
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_4n8tn"]
-script = ExtResource("4_wndkh")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx")])
-metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+[sub_resource type="Resource" id="Resource_8hjdj"]
+script = ExtResource("9_axl34")
+target_path = NodePath("..")
+move_duration = 1.0
+is_relative = true
+move_location = Vector2(-50, 0)
+metadata/_custom_type_script = "uid://behuvjubs2pu6"
 
-[sub_resource type="Resource" id="Resource_wkb0e"]
-script = ExtResource("5_wndkh")
-text = "test2!!"
-metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+[sub_resource type="Resource" id="Resource_0vv12"]
+script = ExtResource("8_paa45")
+tool = SubResource("Resource_8hjdj")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Cubemap" id="Cubemap_x7oem"]
 
 [sub_resource type="Resource" id="Resource_paa45"]
+script = ExtResource("5_wndkh")
+speaker_img = SubResource("Cubemap_x7oem")
+text = "did it work!?!?!?
+im blind and dont have nerves.
+i cant tel1!/1!!"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_xag4j"]
+script = ExtResource("11_o5yuq")
+Sound = ExtResource("10_0vv12")
+metadata/_custom_type_script = "uid://c7oliw3lteue"
+
+[sub_resource type="Resource" id="Resource_pgbyh"]
+script = ExtResource("8_paa45")
+tool = SubResource("Resource_xag4j")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_68kkm"]
+script = ExtResource("12_wjuib")
+WaitTime = 1.88
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_n4g7x"]
+script = ExtResource("8_paa45")
+tool = SubResource("Resource_68kkm")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_o5yuq"]
+script = ExtResource("5_wndkh")
+text = "who fatd?1?!?!
+was that you?
+was that me-"
+text_speed = 60.0
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_atrxo"]
+script = ExtResource("13_pgbyh")
+flag_name = "test_flag"
+flag_value = 8
+var_value = null
+metadata/_custom_type_script = "uid://bcy5xchh4xucg"
+
+[sub_resource type="Resource" id="Resource_vr6yy"]
+script = ExtResource("14_xag4j")
+req_action = SubResource("Resource_atrxo")
+metadata/_custom_type_script = "uid://dn36f6pjggx78"
+
+[sub_resource type="Resource" id="Resource_3i7yh"]
+script = ExtResource("13_pgbyh")
+flag_name = "test_flag_2"
+flag_value = 6
+var_value = null
+metadata/_custom_type_script = "uid://bcy5xchh4xucg"
+
+[sub_resource type="Resource" id="Resource_5y2bn"]
+script = ExtResource("14_xag4j")
+req_action = SubResource("Resource_3i7yh")
+metadata/_custom_type_script = "uid://dn36f6pjggx78"
+
+[sub_resource type="Resource" id="Resource_kbjoq"]
+script = ExtResource("13_wjuib")
+target_path = NodePath("..")
+function_name = "queue_free"
+show_dialogue_box = false
+metadata/_custom_type_script = "uid://bdsia7shjiegi"
+
+[sub_resource type="Resource" id="Resource_m2xr1"]
+script = ExtResource("14_xag4j")
+req_action = SubResource("Resource_kbjoq")
+metadata/_custom_type_script = "uid://dn36f6pjggx78"
+
+[sub_resource type="Resource" id="Resource_ec2iw"]
+script = ExtResource("16_pgbyh")
+metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
+
+[sub_resource type="Resource" id="Resource_4n8tn"]
 script = ExtResource("4_wndkh")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_wkb0e")])
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_0vv12"), SubResource("Resource_paa45"), SubResource("Resource_pgbyh"), SubResource("Resource_n4g7x"), SubResource("Resource_o5yuq"), SubResource("Resource_vr6yy"), SubResource("Resource_5y2bn"), SubResource("Resource_m2xr1"), SubResource("Resource_ec2iw")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_x7oem"]
+script = ExtResource("5_wndkh")
+text = "test_dialogue"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_04rbu"]
+script = ExtResource("21_x7oem")
+jump_label = "B"
+metadata/_custom_type_script = "uid://b7b2u4r8lkhf8"
+
+[sub_resource type="Resource" id="Resource_ndqk6"]
+script = ExtResource("21_x7oem")
+metadata/_custom_type_script = "uid://b7b2u4r8lkhf8"
+
+[sub_resource type="Resource" id="Resource_hj2pq"]
+script = ExtResource("22_vr6yy")
+name = "test_flag"
+metadata/_custom_type_script = "uid://dlmfsgrhd5gpd"
+
+[sub_resource type="Resource" id="Resource_c5dyf"]
+script = ExtResource("22_vr6yy")
+name = "test_flag_2"
+metadata/_custom_type_script = "uid://dlmfsgrhd5gpd"
+
+[sub_resource type="Resource" id="Resource_ulql8"]
+script = ExtResource("21_vr6yy")
+value_one = SubResource("Resource_hj2pq")
+value_two = SubResource("Resource_c5dyf")
+operator = 1
+action_true = SubResource("Resource_ndqk6")
+action_false = SubResource("Resource_04rbu")
+metadata/_custom_type_script = "uid://33oa077n2p4a"
+
+[sub_resource type="Resource" id="Resource_7doj7"]
+script = ExtResource("16_pgbyh")
+metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
+
+[sub_resource type="Resource" id="Resource_1ein0"]
+script = ExtResource("24_ec2iw")
+metadata/_custom_type_script = "uid://0ott3wu8wpkc"
+
+[sub_resource type="Resource" id="Resource_0qigd"]
+script = ExtResource("5_wndkh")
+text = "one"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_qa1vt"]
+script = ExtResource("16_pgbyh")
+metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
+
+[sub_resource type="Resource" id="Resource_q4mjk"]
+script = ExtResource("24_ec2iw")
+label_id = "B"
+metadata/_custom_type_script = "uid://0ott3wu8wpkc"
+
+[sub_resource type="Resource" id="Resource_ap10w"]
+script = ExtResource("5_wndkh")
+text = "two"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_jhad0"]
+script = ExtResource("16_pgbyh")
+metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
+
+[sub_resource type="Resource" id="Resource_ra35m"]
+script = ExtResource("21_atrxo")
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_x7oem"), SubResource("Resource_ulql8"), SubResource("Resource_7doj7"), SubResource("Resource_1ein0"), SubResource("Resource_0qigd"), SubResource("Resource_qa1vt"), SubResource("Resource_q4mjk"), SubResource("Resource_ap10w"), SubResource("Resource_jhad0")])
+metadata/_custom_type_script = "uid://c6i3oamaw72ut"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x7oem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec2iw"]
+size = Vector2(62, 31)
 
 [node name="test_level" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Chara" parent="." instance=ExtResource("1_46lwt")]
-position = Vector2(-7, 79)
 
 [node name="Test" type="StaticBody2D" parent="."]
 y_sort_enabled = true
@@ -79,14 +247,38 @@ texture = SubResource("PlaceholderTexture2D_gmgay")
 [node name="DialogueInteraction" parent="Test2" instance=ExtResource("3_e7anx")]
 position = Vector2(94, -46)
 script = ExtResource("4_ly3hx")
-only_activate_once = true
-dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_4n8tn"), SubResource("Resource_paa45")])
+dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_4n8tn")])
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Test2/DialogueInteraction"]
 position = Vector2(-94, 43)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="SpawnPoint" parent="." instance=ExtResource("3_gmgay")]
-position = Vector2(82, -8)
+[node name="SpawnPointA" parent="." instance=ExtResource("3_gmgay")]
+position = Vector2(0, 75)
 
 [node name="TestNPC" parent="." instance=ExtResource("8_wndkh")]
+
+[node name="CameraBounds" parent="." instance=ExtResource("10_4n8tn")]
+offset_left = -200.0
+offset_top = -77.0
+offset_right = 204.0
+offset_bottom = 219.0
+metadata/_edit_lock_ = true
+
+[node name="Trigger" parent="." instance=ExtResource("20_n4g7x")]
+only_activate_once = false
+action = SubResource("Resource_ra35m")
+condition = true
+operator = 4
+flag_name = "test_flag"
+flag_value = 6
+target_path = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trigger"]
+position = Vector2(-146.875, 128.375)
+scale = Vector2(61.75, 31.25001)
+texture = SubResource("PlaceholderTexture2D_x7oem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(-147, 128.5)
+shape = SubResource("RectangleShape2D_ec2iw")

@@ -10,13 +10,13 @@ func _physics_process(_delta: float) -> void:
 			position.y = 10
 		parent.facings.LEFT:
 			self.rotation_degrees = 90
-			position.y = 8
+			position.y = 12
 		parent.facings.DOWN:
 			self.rotation_degrees = 0
 			position.y = 5.5
 		parent.facings.RIGHT:
 			self.rotation_degrees = -90
-			position.y = 8
+			position.y = 12
 	if (interaction_target != null and Input.is_action_just_pressed("main_button") and parent.state != parent.states.BUSY):
 		if (interaction_target.has_method("interaction") and interaction_target.has_method("interaction_can_interact")):
 			if interaction_target.interaction_can_interact():

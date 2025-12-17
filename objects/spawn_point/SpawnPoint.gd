@@ -17,3 +17,4 @@ func _ready() -> void:
 func _update_label() -> void:
 	if has_node("Label"): 
 		$Label.text = ID
+		name = "SpawnPoint" + ID

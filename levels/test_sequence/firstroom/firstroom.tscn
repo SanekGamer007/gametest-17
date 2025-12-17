@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=4 uid="uid://dw12xwpt7vmg4"]
+[gd_scene load_steps=7 format=4 uid="uid://dw12xwpt7vmg4"]
 
-[ext_resource type="Texture2D" uid="uid://crwvrjw75arsw" path="res://levels/test_sequence/firstroom/bg.png" id="1_m1hxv"]
 [ext_resource type="PackedScene" uid="uid://deid8e1ufalki" path="res://objects/room_transition/room_transition.tscn" id="3_au8yr"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_qkxd6"]
 [ext_resource type="PackedScene" uid="uid://b6edk6g3jepob" path="res://tilemaps/collision_tilemap/collision_tile_map_layer.tscn" id="4_utugj"]
@@ -11,10 +10,6 @@
 size = Vector2(40, 20)
 
 [node name="FirstRoom" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 10)
-texture = ExtResource("1_m1hxv")
 
 [node name="RoomTransition" parent="." instance=ExtResource("3_au8yr")]
 room = "uid://013ew3rbgtmo"

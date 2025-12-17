@@ -64,7 +64,6 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -72,8 +71,8 @@ theme_override_fonts/normal_font = ExtResource("2_jwyir")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "TEST
-tEST2
-Еййй РУ шрифт"
+tEST2 GGGggggggg
+РУ текст ейй"
 scroll_active = false
 visible_characters_behavior = 1
 
@@ -92,3 +91,7 @@ alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 1000
+
+[node name="Node" type="Node" parent="."]
+
+[node name="SoundTool" type="AudioStreamPlayer" parent="Node"]
