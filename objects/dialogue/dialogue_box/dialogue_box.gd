@@ -218,7 +218,14 @@ func _do_tools(tool: DialogueTR) -> void:
 			var target = _get_target_node(tool.target_path)
 			target.play(tool.anim_name)
 		DialogueToolWait:
-			await get_tree().create_timer(tool.WaitTime).timeout
+			if !tool.wait_for_signal:
+				await get_tree().create_timer(tool.wait_time).timeout
+			else:
+				var target = _get_target_node(tool.target_path)
+				if target and target.has_signal(tool.signal_name):
+					await Signal(target, tool.signal_name)
+				else:
+					printerr('DialogueToolWait: Signal \"', tool.signal_name, '\" not found in \"', tool.target_path, '\".')
 		DialogueToolSound:
 			var sound = AudioStreamPlayer.new()
 			sound.stream = tool.Sound
@@ -243,21 +250,32 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 		SpeakerSprite.frame = 0
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 0)
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_right", 0)
-	while DialogueRichText.visible_characters < DialogueLength:
-		if Input.is_action_pressed("second_button") and resource.can_be_skipped == true:
-			DialogueRichText.visible_characters = DialogueLength - 1
-		DialogueRichText.visible_characters += 1
-		var character = text[DialogueRichText.visible_characters - 1]
-		if character != " ":
-			$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
-			$AudioStreamPlayer.play()
-			if resource.speaker_img_Hframes != 1:
-				if SpeakerSprite.frame < resource.speaker_img_Hframes - 1:
-					SpeakerSprite.frame += 1
-				else:
-					SpeakerSprite.frame = 0
-		await get_tree().create_timer(1 / resource.text_speed).timeout
 	
+	var visible_chars_float: float = 0.0
+	
+	while DialogueRichText.visible_characters < DialogueLength:
+		await get_tree().process_frame
+		if Input.is_action_pressed("second_button") and resource.can_be_skipped == true:
+			DialogueRichText.visible_characters = DialogueLength
+			break
+		var delta = get_process_delta_time()
+		visible_chars_float += resource.text_speed * delta
+		var target_count: int = int(visible_chars_float)
+		if target_count > DialogueRichText.visible_characters:
+			target_count = min(target_count, DialogueLength)
+			var chars_added = target_count - DialogueRichText.visible_characters
+			if chars_added > 0:
+				var character = text[DialogueRichText.visible_characters - 1]
+				if character != " ":
+					$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
+					$AudioStreamPlayer.play()
+					if resource.speaker_img_Hframes != 1:
+						if SpeakerSprite.frame < resource.speaker_img_Hframes - 1:
+							SpeakerSprite.frame += 1
+						else:
+							SpeakerSprite.frame = 0
+			DialogueRichText.visible_characters = target_count
+
 	SpeakerSprite.frame = min(resource.speaker_img_rest_frame, resource.speaker_img_Hframes - 1)
 
 	while DialogueRichText.visible_characters != DialogueLength:

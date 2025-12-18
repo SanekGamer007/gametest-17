@@ -27,7 +27,7 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 			animname = "fade_fast"
 		_:
 			print(fadespeed + " is NOT a valid speed, defaulting to normal.")
-			animname = "fadein"
+			animname = "normal"
 	AnimPlay.play(animname)
 	AnimPlay.animation_finished.connect(_on_fade_finished, CONNECT_ONE_SHOT)
 	

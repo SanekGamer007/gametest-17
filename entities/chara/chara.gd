@@ -32,6 +32,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
+	if is_on_wall() and direction.length() >= 1: 
+		direction = direction.normalized() # switching motion mode to floating fixes slopes but makes walking along walls way faster than intented, this fixes that.
 	_manage_facings()
 	match state:
 		states.IDLE:

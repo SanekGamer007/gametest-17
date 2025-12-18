@@ -1,11 +1,28 @@
-[gd_scene load_steps=9 format=4 uid="uid://bccxl0adkx5o1"]
+[gd_scene load_steps=59 format=4 uid="uid://bccxl0adkx5o1"]
 
+[ext_resource type="Script" uid="uid://bohs07wubvkaw" path="res://levels/intro/intro_02/intro_02.gd" id="1_7yqo8"]
 [ext_resource type="Texture2D" uid="uid://bavywoyx06sow" path="res://levels/intro/intro_02/bg.png" id="1_u8eof"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="2_vw0bh"]
 [ext_resource type="PackedScene" uid="uid://b6edk6g3jepob" path="res://tilemaps/collision_tilemap/collision_tile_map_layer.tscn" id="3_uc3ds"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_ykrk4"]
 [ext_resource type="PackedScene" uid="uid://deid8e1ufalki" path="res://objects/room_transition/room_transition.tscn" id="5_vw0bh"]
 [ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="6_uc3ds"]
+[ext_resource type="PackedScene" uid="uid://csiw1l532qqng" path="res://entities/flowey_npc/flowey_npc.tscn" id="7_ykrk4"]
+[ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="8_idqon"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="9_bt522"]
+[ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="10_143h1"]
+[ext_resource type="Script" uid="uid://daoklmdujs6st" path="res://objects/dialogue/resources/dialogue_tools_resource.gd" id="10_hmlt4"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="10_ke2pj"]
+[ext_resource type="Script" uid="uid://bidlt85kb0pbj" path="res://objects/dialogue/resources/tools/change_anim_resource.gd" id="11_cvbr4"]
+[ext_resource type="Script" uid="uid://dr8184jywnvmu" path="res://objects/dialogue/resources/tools/wait_resource.gd" id="12_cvbr4"]
+[ext_resource type="AudioStream" uid="uid://dftwaw8u5r5j1" path="res://entities/flowey_npc/snd/flowey_talk.wav" id="12_ke2pj"]
+[ext_resource type="Texture2D" uid="uid://ccuncju2gwaqs" path="res://entities/flowey_npc/portrait/side_talk.png" id="14_cvbr4"]
+[ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="16_2vy3k"]
+[ext_resource type="AudioStream" uid="uid://lh7euwlmrta" path="res://entities/flowey_npc/snd/flowey_scary_talk.wav" id="16_045er"]
+[ext_resource type="Texture2D" uid="uid://c2f4s4ogehnvr" path="res://entities/flowey_npc/portrait/scary_talk.png" id="16_wrpgv"]
+[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/dialogue_action_resource.gd" id="17_nmbxo"]
+[ext_resource type="AudioStream" uid="uid://do0boru6ne2i8" path="res://entities/flowey_npc/snd/flowey_laugh.wav" id="17_wrpgv"]
+[ext_resource type="Script" uid="uid://c7oliw3lteue" path="res://objects/dialogue/resources/tools/sound_resource.gd" id="18_7yqo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc3ds"]
 size = Vector2(80, 20)
@@ -13,9 +30,210 @@ size = Vector2(80, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw0bh"]
 size = Vector2(40, 20)
 
+[sub_resource type="Resource" id="Resource_7yhcs"]
+script = ExtResource("11_cvbr4")
+target_path = NodePath("../FloweyNPC")
+anim_name = "entering"
+metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+
+[sub_resource type="Resource" id="Resource_2vy3k"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_7yhcs")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_yvr43"]
+script = ExtResource("16_2vy3k")
+flag_value = null
+var_target_path = NodePath("../FloweyNPC")
+var_name = "visible"
+var_value = true
+metadata/_custom_type_script = "uid://bcy5xchh4xucg"
+
+[sub_resource type="Resource" id="Resource_1jh26"]
+script = ExtResource("17_nmbxo")
+req_action = SubResource("Resource_yvr43")
+metadata/_custom_type_script = "uid://dn36f6pjggx78"
+
+[sub_resource type="Resource" id="Resource_nmbxo"]
+script = ExtResource("12_cvbr4")
+wait_time = 0.0
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_g871m"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_nmbxo")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_hmlt4"]
+script = ExtResource("10_ke2pj")
+speaker_img = ExtResource("14_cvbr4")
+speaker_img_Hframes = 2
+text = "Hee hee hee..."
+text_sound = ExtResource("12_ke2pj")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cvbr4"]
+load_path = "res://.godot/imported/smirk_talk.png-82aa52aa15df1421a960c327d5c423be.ctex"
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_7yhcs"]
+data = PackedByteArray("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")
+format = 3
+stereo = true
+tags = {
+"encoder": "FL Studio 10"
+}
+
+[sub_resource type="Resource" id="Resource_045er"]
+script = ExtResource("10_ke2pj")
+speaker_img = SubResource("CompressedTexture2D_cvbr4")
+speaker_img_Hframes = 2
+text = "You already know who
+>I am, don't you?"
+text_sound = SubResource("AudioStreamWAV_7yhcs")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_wrpgv"]
+script = ExtResource("10_ke2pj")
+speaker_img = ExtResource("16_wrpgv")
+speaker_img_Hframes = 2
+text = "Do you really have
+>NOTHING better to do?"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("16_045er")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_p6jl3"]
+script = ExtResource("11_cvbr4")
+target_path = NodePath("../FloweyNPC")
+anim_name = "grow"
+metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+
+[sub_resource type="Resource" id="Resource_t8xqk"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_p6jl3")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_7e7tv"]
+script = ExtResource("12_cvbr4")
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_amenv"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_7e7tv")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_1vnom"]
+script = ExtResource("11_cvbr4")
+target_path = NodePath("../FloweyNPC")
+anim_name = "laugh"
+metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+
+[sub_resource type="Resource" id="Resource_074es"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_1vnom")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_8j2xc"]
+script = ExtResource("18_7yqo8")
+Sound = ExtResource("17_wrpgv")
+metadata/_custom_type_script = "uid://c7oliw3lteue"
+
+[sub_resource type="Resource" id="Resource_ktyma"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_8j2xc")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_gdv2u"]
+script = ExtResource("12_cvbr4")
+wait_time = 4.0
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_r8b3g"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_gdv2u")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_wwht2"]
+script = ExtResource("11_cvbr4")
+target_path = NodePath("../FloweyNPC")
+anim_name = "shrink"
+metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+
+[sub_resource type="Resource" id="Resource_hesxd"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_wwht2")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_fuekd"]
+script = ExtResource("12_cvbr4")
+wait_time = 0.0
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_dgveq"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_fuekd")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_7yqo8"]
+script = ExtResource("11_cvbr4")
+target_path = NodePath("../FloweyNPC")
+anim_name = "leaving"
+metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+
+[sub_resource type="Resource" id="Resource_15b6p"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_7yqo8")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_y4hjm"]
+script = ExtResource("12_cvbr4")
+wait_time = 0.0
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://dr8184jywnvmu"
+
+[sub_resource type="Resource" id="Resource_ojxi8"]
+script = ExtResource("10_hmlt4")
+tool = SubResource("Resource_y4hjm")
+metadata/_custom_type_script = "uid://daoklmdujs6st"
+
+[sub_resource type="Resource" id="Resource_1v7yk"]
+script = ExtResource("16_2vy3k")
+flag_name = "intro_flowey_meet"
+flag_value = true
+var_value = null
+metadata/_custom_type_script = "uid://bcy5xchh4xucg"
+
+[sub_resource type="Resource" id="Resource_jqcch"]
+script = ExtResource("17_nmbxo")
+req_action = SubResource("Resource_1v7yk")
+metadata/_custom_type_script = "uid://dn36f6pjggx78"
+
+[sub_resource type="Resource" id="Resource_ke2pj"]
+script = ExtResource("10_143h1")
+dialogue = Array[ExtResource("9_bt522")]([SubResource("Resource_2vy3k"), SubResource("Resource_1jh26"), SubResource("Resource_g871m"), SubResource("Resource_hmlt4"), SubResource("Resource_045er"), SubResource("Resource_wrpgv"), SubResource("Resource_t8xqk"), SubResource("Resource_amenv"), SubResource("Resource_074es"), SubResource("Resource_ktyma"), SubResource("Resource_r8b3g"), SubResource("Resource_hesxd"), SubResource("Resource_dgveq"), SubResource("Resource_15b6p"), SubResource("Resource_ojxi8"), SubResource("Resource_jqcch")])
+metadata/_custom_type_script = "uid://c6i3oamaw72ut"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7j3"]
+size = Vector2(120, 6)
+
 [node name="Intro02" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_7yqo8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
 offset_left = -1530.0
 offset_top = -1208.0
 offset_right = 1766.0
@@ -23,6 +241,7 @@ offset_bottom = 1483.0
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("1_u8eof")
 
 [node name="LevelData" parent="." instance=ExtResource("2_vw0bh")]
@@ -59,3 +278,20 @@ offset_top = -166.0
 offset_right = 160.0
 offset_bottom = 220.0
 metadata/_edit_lock_ = true
+
+[node name="FloweyNPC" parent="." instance=ExtResource("7_ykrk4")]
+y_sort_enabled = false
+position = Vector2(1, 101)
+
+[node name="Trigger" parent="." instance=ExtResource("8_idqon")]
+only_activate_once = false
+action = SubResource("Resource_ke2pj")
+condition = true
+operator = 0
+flag_name = "intro_flowey_meet"
+flag_value = false
+target_path = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(0, 163)
+shape = SubResource("RectangleShape2D_xj7j3")

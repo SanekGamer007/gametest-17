@@ -113,6 +113,8 @@ size = Vector2(4, 20)
 [node name="Chara" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_on_leave = 2
 script = ExtResource("1_3h0bg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

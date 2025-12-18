@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b18nqehp6jbsc"]
+[gd_scene load_steps=5 format=3 uid="uid://b18nqehp6jbsc"]
 
 [ext_resource type="Texture2D" uid="uid://dxijcitvht53" path="res://entities/generic/generic_npc/spr.png" id="1_msfo1"]
+[ext_resource type="Script" uid="uid://c60du2syxnscq" path="res://entities/generic/generic_npc/generic_npc.gd" id="1_ycg2t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycg2t"]
 animations = [{
@@ -70,9 +71,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msfo1"]
-size = Vector2(20, 40)
+size = Vector2(11, 11)
 
 [node name="GenericNpc" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_ycg2t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ycg2t")
@@ -80,3 +83,5 @@ animation = &"up_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_msfo1")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
