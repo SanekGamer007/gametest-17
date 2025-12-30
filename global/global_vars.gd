@@ -7,6 +7,7 @@ signal player_stop_busy
 signal close_all_ui
 
 
+var widescreenmode: bool = false
 
 var room_name: String = ""
 var player_name : String = "CHARA"

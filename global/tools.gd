@@ -1,12 +1,12 @@
 extends Node
 
 enum Operator {
-	EQUAL,          # ==
-	NOT_EQUAL,      # !=
-	GREATER,        # >
-	LESS,           # <
-	GREATER_EQUAL,  # >=
-	LESS_EQUAL      # <=
+	EQUAL,
+	NOT_EQUAL,
+	GREATER,
+	LESS,
+	GREATER_EQUAL,
+	LESS_EQUAL,
 }
 
 func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:

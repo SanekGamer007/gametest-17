@@ -44,14 +44,15 @@ room = "uid://bccxl0adkx5o1"
 doorid = "B"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition2"]
-position = Vector2(320, 470)
+position = Vector2(320, 482)
 shape = SubResource("RectangleShape2D_ytkng")
 
 [node name="SpawnPointA2" parent="." instance=ExtResource("1_ytkng")]
-position = Vector2(320, 440)
+position = Vector2(320, 457)
 
 [node name="CameraBounds" parent="." instance=ExtResource("5_u8mpu")]
 offset_left = 160.0
 offset_top = -20.0
 offset_right = 480.0
 offset_bottom = 480.0
+metadata/_edit_lock_ = true

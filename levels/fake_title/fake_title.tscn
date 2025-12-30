@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds2xm6648xsyd"]
+[gd_scene load_steps=5 format=3 uid="uid://ds2xm6648xsyd"]
 
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_7y7fg"]
 [ext_resource type="Script" uid="uid://e8sm7234atm3" path="res://levels/fake_title/fake_title.gd" id="1_fk2go"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="3_f8vlo"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_meyqf"]
 
 [node name="FakeTitle" type="Control"]
 layout_mode = 3
@@ -14,81 +16,84 @@ script = ExtResource("1_fk2go")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5000.0
-offset_top = -5000.0
-offset_right = 5000.0
-offset_bottom = 5000.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label3" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_font_sizes/font_size = 26
+text = "UNDERTALE
+Welcome to GAMETEST 17 Playtest!"
+horizontal_alignment = 1
+
+[node name="SavePlaceholder" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.2
-anchor_right = 0.5
-anchor_bottom = 0.2
-offset_left = -225.0
-offset_top = -20.0
-offset_right = 225.0
-offset_bottom = 20.0
+anchor_left = 0.475
+anchor_top = 0.28
+anchor_right = 0.475
+anchor_bottom = 0.28
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_7y7fg")
-theme_override_font_sizes/font_size = 30
-text = "EMPTY              	                              0:00"
+theme_override_font_sizes/font_size = 26
+text = "EMPTY                                   0:00"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Instruction" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.35
-anchor_right = 0.5
-anchor_bottom = 0.35
-offset_left = -256.0
-offset_top = -20.0
-offset_right = 256.0
-offset_bottom = 20.0
+anchor_left = 0.463
+anchor_top = 0.38
+anchor_right = 0.465
+anchor_bottom = 0.38
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_7y7fg")
-theme_override_font_sizes/font_size = 30
-text = "--- Instructions ---"
+theme_override_font_sizes/font_size = 26
+text = "--- Instruction --"
 horizontal_alignment = 1
 
-[node name="Label3" type="RichTextLabel" parent="Label2"]
-layout_mode = 0
-offset_left = 97.0
-offset_top = 42.0
-offset_right = 420.0
-offset_bottom = 318.0
+[node name="Controls" type="RichTextLabel" parent="Instruction"]
+custom_minimum_size = Vector2(250, 276)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -18.960007
+offset_top = 39.199997
+offset_right = 276.03998
+offset_bottom = 315.2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
-theme_override_constants/paragraph_separation = 6
+theme_override_constants/paragraph_separation = 8
 theme_override_fonts/normal_font = ExtResource("1_7y7fg")
-theme_override_font_sizes/normal_font_size = 30
-text = "[Z] - Confirm
-[X] - Cancel
-[C] - Menu (In-game)
-[F4] - Fullscreen
-
-When HP=0, you lose."
+theme_override_font_sizes/normal_font_size = 26
+text = "[Z] -  Confirm
+[X] -  Cancel
+[C] -  Menu (In-game)
+[S] - Settings (In-menu)
+[F4] -  Fullscreen"
 fit_content = true
 scroll_active = false
 
-[node name="Label" type="Label" parent="."]
+[node name="nohpyoulosebozo" type="Label" parent="Instruction/Controls"]
 layout_mode = 0
-offset_left = 81.5
-offset_top = 1.0
-offset_right = 558.5
-offset_bottom = 38.0
-grow_horizontal = 2
+offset_top = 208.0
+offset_right = 242.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_7y7fg")
-theme_override_font_sizes/font_size = 30
-text = "UNDERTALE
-Welcome to GAMETEST 17 Playtest!"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 26
+text = "When HP=0, you lose."
+
+[node name="LevelData" parent="." instance=ExtResource("3_f8vlo")]
+level_flags = 3
+
+[node name="SpawnPointA" parent="." instance=ExtResource("4_meyqf")]

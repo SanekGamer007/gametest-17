@@ -20,7 +20,6 @@ func _ready() -> void:
 	visible = false
 	$HBoxContainer/VBoxContainer/button_container.visible = false
 
-
 func _process(_delta: float) -> void:
 	if current_dialogue_item >= current_dialogue.size():
 		GlobalVars.player_stop_busy.emit()
@@ -29,6 +28,12 @@ func _process(_delta: float) -> void:
 	if next_item == true:
 		next_item = false
 		var i = current_dialogue[current_dialogue_item]
+		if i == null:
+			var origin: String = str(dialogue_context.name) if dialogue_context else "null..."
+			push_error("Dialogue ", current_dialogue_item, " in ", origin, " is null, you probably want to fix that, for now: ignoring...")
+			GlobalVars.player_stop_busy.emit()
+			queue_free()
+			return
 		match i.get_script():
 			DialogueText:
 				visible = true
@@ -42,15 +47,32 @@ func _process(_delta: float) -> void:
 				next_item = true
 			DialogueConditionalAction:
 				_conditional_action_resource(i)
-			DialogueAction:
-				_do_action(i.req_action)
-			DialogueTools:
-				_do_tools(i.tool)
+			ActionSet:
+				_do_action(i)
+			ActionJump:
+				_do_action(i)
+			ActionFunction:
+				_do_action(i)
+			ActionNull:
+				_do_action(i)
+			DialogueMove:
+				_do_tools(i)
+			DialogueSound:
+				_do_tools(i)
+			DialogueWait:
+				_do_tools(i)
+			DialogueChangeAnim:
+				_do_tools(i)
+			_:
+				push_error(i.get_script().get_global_name() + " is either not a valid dialogue type, or obsolete.")
+				current_dialogue_item += 1
+				next_item = true
+
 
 func _text_resource(textresource: DialogueText) -> void:
 	$AudioStreamPlayer.stream = textresource.text_sound
 	$AudioStreamPlayer.volume_db = textresource.text_volume_db
-	print(textresource.text)
+	print(textresource.text) # i like it lol.
 	var formatted_text: String = _apply_custom_formatting(textresource.text)
 	var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
 	var final_text: String = _process_tags(text_no_square_brackets)
@@ -74,16 +96,17 @@ func _text_resource(textresource: DialogueText) -> void:
 func _choice_resource(choiceresource: DialogueChoice) -> void:
 	$AudioStreamPlayer.stream = choiceresource.text_sound
 	$AudioStreamPlayer.volume_db = choiceresource.text_volume_db
-	
 	$HBoxContainer/VBoxContainer/button_container.visible = true
+	
 	var formatted_text: String = _apply_custom_formatting(choiceresource.text) 
 	var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
 	var final_text: String = _process_tags(text_no_square_brackets)
 	var DialogueLength = final_text.length()
+	var buttonarray: Array[Button]
 	DialogueRichText.visible_characters = 0
 	DialogueRichText.text = final_text
+	
 	await _write_text(choiceresource, DialogueLength, final_text)
-	var buttonarray: Array[Button]
 	
 	for i in choiceresource.choice_text.size(): #buttons dont have a visible_characts variable so we have to do whatever this is.
 		var dialoguebutton: Button = DialogueButtonPreload.instantiate()
@@ -182,21 +205,18 @@ func _do_action(actionresource: Action) -> void:
 			var value = actionresource.var_value
 			_get_target_node(node).set(vartoset, value) #there's a probably a safer way to do this.
 		else: 
-			printerr("Invalid ActionSet Type, Ignoring...")
-	
-	elif actionresource is Action:
-		printerr("you forgot to set action type.")
+			push_error("Invalid ActionSet parameters, ignoring...")
 	
 	else:
-		printerr("Invalid Action type, skipping.")
+		push_error("Invalid Action type, ignoring...")
 	
 	current_dialogue_item += 1
 	next_item = true
 
-func _do_tools(tool: DialogueTR) -> void:
+func _do_tools(tool: Dialogue) -> void:
 	visible = tool.show_dialogue_box
 	match tool.get_script():
-		DialogueToolMove:
+		DialogueMove:
 			var tooltween: Tween = create_tween()
 			if !tool.is_relative:
 				tooltween.tween_property(
@@ -214,10 +234,10 @@ func _do_tools(tool: DialogueTR) -> void:
 				)
 			if tool.await_end:
 				await tooltween.finished
-		DialogueToolChangeAnim:
+		DialogueChangeAnim:
 			var target = _get_target_node(tool.target_path)
 			target.play(tool.anim_name)
-		DialogueToolWait:
+		DialogueWait:
 			if !tool.wait_for_signal:
 				await get_tree().create_timer(tool.wait_time).timeout
 			else:
@@ -225,16 +245,14 @@ func _do_tools(tool: DialogueTR) -> void:
 				if target and target.has_signal(tool.signal_name):
 					await Signal(target, tool.signal_name)
 				else:
-					printerr('DialogueToolWait: Signal \"', tool.signal_name, '\" not found in \"', tool.target_path, '\".')
-		DialogueToolSound:
+					push_error('DialogueToolWait: Signal \"', tool.signal_name, '\" not found in \"', tool.target_path, '\".')
+		DialogueSound:
 			var sound = AudioStreamPlayer.new()
 			sound.stream = tool.Sound
+			sound.bus = "Sounds"
 			get_tree().root.add_child(sound)
 			sound.play()
 			sound.finished.connect(sound.queue_free)
-		_:
-			printerr("Invalid Dialogue Tool")
-			return
 	current_dialogue_item += 1
 	next_item = true
 
@@ -347,7 +365,7 @@ func _process_tags(raw_text: String) -> String:
 					var value = target_node.get(variable_name)
 					replacement_value = str(value)
 				else:
-					printerr("NODE NOT FOUND.")
+					push_error("NODE NOT FOUND.")
 			elif tag_type == "flag":
 				var flag_name = parts[1]
 				if GlobalVars.has_flag(flag_name):
@@ -355,7 +373,7 @@ func _process_tags(raw_text: String) -> String:
 				else:
 					replacement_value = "something went wrong"
 		else:
-			printerr("TAG IS NOT VALID.")
+			push_error("TAG IS NOT VALID.")
 		
 		processed_text = processed_text.replace(fulltag, replacement_value)
 		starting_point = processed_text.find("^", starting_point + replacement_value.length())

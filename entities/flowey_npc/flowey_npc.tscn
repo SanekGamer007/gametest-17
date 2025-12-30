@@ -175,39 +175,39 @@ animations = [{
 }],
 "loop": false,
 "name": &"entering",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0l3ny")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_siyah")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ln20f")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y6m7d")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x2ei7")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_baw4n")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mplbe")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b5ibe")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j5pvi")
 }],
 "loop": false,
 "name": &"grow",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -241,7 +241,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"leaving",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -340,7 +340,7 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_2ndb1")
-animation = &"down_idle"
+animation = &"leaving"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-0.5, 5.5)

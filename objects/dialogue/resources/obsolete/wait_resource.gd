@@ -1,5 +1,4 @@
 @icon("res://objects/dialogue/resources/icons/wait_resource.svg")
-@tool
 extends DialogueTR
 class_name DialogueToolWait
 

@@ -91,7 +91,4 @@ alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 max_polyphony = 1000
-
-[node name="Node" type="Node" parent="."]
-
-[node name="SoundTool" type="AudioStreamPlayer" parent="Node"]
+bus = &"Sounds"

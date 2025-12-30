@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://bccxl0adkx5o1"]
+[gd_scene load_steps=58 format=4 uid="uid://bccxl0adkx5o1"]
 
 [ext_resource type="Script" uid="uid://bohs07wubvkaw" path="res://levels/intro/intro_02/intro_02.gd" id="1_7yqo8"]
 [ext_resource type="Texture2D" uid="uid://bavywoyx06sow" path="res://levels/intro/intro_02/bg.png" id="1_u8eof"]
@@ -13,16 +13,18 @@
 [ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="10_143h1"]
 [ext_resource type="Script" uid="uid://daoklmdujs6st" path="res://objects/dialogue/resources/dialogue_tools_resource.gd" id="10_hmlt4"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="10_ke2pj"]
-[ext_resource type="Script" uid="uid://bidlt85kb0pbj" path="res://objects/dialogue/resources/tools/change_anim_resource.gd" id="11_cvbr4"]
-[ext_resource type="Script" uid="uid://dr8184jywnvmu" path="res://objects/dialogue/resources/tools/wait_resource.gd" id="12_cvbr4"]
+[ext_resource type="Script" uid="uid://dwq1j2p4odgfe" path="res://objects/dialogue/resources/dialogue_change_anim_resource.gd" id="11_15b6p"]
+[ext_resource type="Script" uid="uid://bidlt85kb0pbj" path="res://objects/dialogue/resources/obsolete/change_anim_resource.gd" id="11_cvbr4"]
+[ext_resource type="Script" uid="uid://dr8184jywnvmu" path="res://objects/dialogue/resources/obsolete/wait_resource.gd" id="12_cvbr4"]
 [ext_resource type="AudioStream" uid="uid://dftwaw8u5r5j1" path="res://entities/flowey_npc/snd/flowey_talk.wav" id="12_ke2pj"]
+[ext_resource type="Script" uid="uid://br7iu6heleuet" path="res://objects/dialogue/resources/dialogue_wait_resource.gd" id="13_y4hjm"]
 [ext_resource type="Texture2D" uid="uid://ccuncju2gwaqs" path="res://entities/flowey_npc/portrait/side_talk.png" id="14_cvbr4"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="16_2vy3k"]
 [ext_resource type="AudioStream" uid="uid://lh7euwlmrta" path="res://entities/flowey_npc/snd/flowey_scary_talk.wav" id="16_045er"]
-[ext_resource type="Texture2D" uid="uid://c2f4s4ogehnvr" path="res://entities/flowey_npc/portrait/scary_talk.png" id="16_wrpgv"]
-[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/dialogue_action_resource.gd" id="17_nmbxo"]
+[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/obsolete/dialogue_action_resource.gd" id="17_nmbxo"]
 [ext_resource type="AudioStream" uid="uid://do0boru6ne2i8" path="res://entities/flowey_npc/snd/flowey_laugh.wav" id="17_wrpgv"]
-[ext_resource type="Script" uid="uid://c7oliw3lteue" path="res://objects/dialogue/resources/tools/sound_resource.gd" id="18_7yqo8"]
+[ext_resource type="Script" uid="uid://c7oliw3lteue" path="res://objects/dialogue/resources/obsolete/sound_resource.gd" id="18_7yqo8"]
+[ext_resource type="Texture2D" uid="uid://8so1dbn5ivdk" path="res://entities/flowey_npc/portrait/evil_talk.png" id="19_7yqo8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc3ds"]
 size = Vector2(80, 20)
@@ -30,18 +32,13 @@ size = Vector2(80, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vw0bh"]
 size = Vector2(40, 20)
 
-[sub_resource type="Resource" id="Resource_7yhcs"]
-script = ExtResource("11_cvbr4")
+[sub_resource type="Resource" id="Resource_i0b1r"]
+script = ExtResource("11_15b6p")
 target_path = NodePath("../FloweyNPC")
 anim_name = "entering"
-metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+metadata/_custom_type_script = "uid://dwq1j2p4odgfe"
 
-[sub_resource type="Resource" id="Resource_2vy3k"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_7yhcs")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_yvr43"]
+[sub_resource type="Resource" id="Resource_amo30"]
 script = ExtResource("16_2vy3k")
 flag_value = null
 var_target_path = NodePath("../FloweyNPC")
@@ -49,23 +46,13 @@ var_name = "visible"
 var_value = true
 metadata/_custom_type_script = "uid://bcy5xchh4xucg"
 
-[sub_resource type="Resource" id="Resource_1jh26"]
-script = ExtResource("17_nmbxo")
-req_action = SubResource("Resource_yvr43")
-metadata/_custom_type_script = "uid://dn36f6pjggx78"
-
-[sub_resource type="Resource" id="Resource_nmbxo"]
-script = ExtResource("12_cvbr4")
+[sub_resource type="Resource" id="Resource_yvr43"]
+script = ExtResource("13_y4hjm")
 wait_time = 0.0
 wait_for_signal = true
 target_path = NodePath("../FloweyNPC")
 signal_name = "animation_finished"
-metadata/_custom_type_script = "uid://dr8184jywnvmu"
-
-[sub_resource type="Resource" id="Resource_g871m"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_nmbxo")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
+metadata/_custom_type_script = "uid://br7iu6heleuet"
 
 [sub_resource type="Resource" id="Resource_hmlt4"]
 script = ExtResource("10_ke2pj")
@@ -97,11 +84,11 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
 [sub_resource type="Resource" id="Resource_wrpgv"]
 script = ExtResource("10_ke2pj")
-speaker_img = ExtResource("16_wrpgv")
+speaker_img = ExtResource("19_7yqo8")
 speaker_img_Hframes = 2
 text = "Do you really have
 >NOTHING better to do?"
-text_speed = 8.0
+text_speed = 10.0
 can_be_skipped = false
 text_sound = ExtResource("16_045er")
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
@@ -222,11 +209,11 @@ metadata/_custom_type_script = "uid://dn36f6pjggx78"
 
 [sub_resource type="Resource" id="Resource_ke2pj"]
 script = ExtResource("10_143h1")
-dialogue = Array[ExtResource("9_bt522")]([SubResource("Resource_2vy3k"), SubResource("Resource_1jh26"), SubResource("Resource_g871m"), SubResource("Resource_hmlt4"), SubResource("Resource_045er"), SubResource("Resource_wrpgv"), SubResource("Resource_t8xqk"), SubResource("Resource_amenv"), SubResource("Resource_074es"), SubResource("Resource_ktyma"), SubResource("Resource_r8b3g"), SubResource("Resource_hesxd"), SubResource("Resource_dgveq"), SubResource("Resource_15b6p"), SubResource("Resource_ojxi8"), SubResource("Resource_jqcch")])
+dialogue = Array[ExtResource("9_bt522")]([SubResource("Resource_i0b1r"), SubResource("Resource_amo30"), SubResource("Resource_yvr43"), null, SubResource("Resource_hmlt4"), SubResource("Resource_045er"), SubResource("Resource_wrpgv"), SubResource("Resource_t8xqk"), SubResource("Resource_amenv"), SubResource("Resource_074es"), SubResource("Resource_ktyma"), SubResource("Resource_r8b3g"), SubResource("Resource_hesxd"), SubResource("Resource_dgveq"), SubResource("Resource_15b6p"), SubResource("Resource_ojxi8"), SubResource("Resource_jqcch")])
 metadata/_custom_type_script = "uid://c6i3oamaw72ut"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7j3"]
-size = Vector2(120, 6)
+size = Vector2(200, 6)
 
 [node name="Intro02" type="Node2D"]
 y_sort_enabled = true
@@ -250,10 +237,10 @@ texture = ExtResource("1_u8eof")
 tile_map_data = PackedByteArray("AAD9/woAAAAAAAAAAAD9/wkAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAD8/wkAAAAAAAAAAAD8/wgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAD7/wgAAAAAAAAAAAD6/wgAAAAAAAAAAAD6/wcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAACAP7/AAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAADAP7/AAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAD4/wQAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAABAAAAAwD6////AAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAD9/wsAAAAAAAAAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAD+//7/AAABAAAAAwABAP7/AAABAAAABAD8////AAABAAAAAwADAP//AAABAAAABAAFAAAAAAABAAAABAA=")
 
 [node name="SpawnPointA" parent="." instance=ExtResource("4_ykrk4")]
-position = Vector2(0, 180)
+position = Vector2(0, 199)
 
 [node name="SpawnPointB" parent="." instance=ExtResource("4_ykrk4")]
-position = Vector2(0, -18)
+position = Vector2(0, -21)
 ID = "B"
 facing = 0
 
@@ -262,7 +249,7 @@ room = "uid://r3er2g4qwje2"
 doorid = "B"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition"]
-position = Vector2(0, 210)
+position = Vector2(0, 224)
 shape = SubResource("RectangleShape2D_uc3ds")
 
 [node name="RoomTransition2" parent="." instance=ExtResource("5_vw0bh")]
@@ -293,5 +280,5 @@ flag_value = false
 target_path = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-position = Vector2(0, 163)
+position = Vector2(0, 149)
 shape = SubResource("RectangleShape2D_xj7j3")

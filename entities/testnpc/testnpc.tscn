@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c85gxv6pwwh8f"]
+[gd_scene load_steps=44 format=3 uid="uid://c85gxv6pwwh8f"]
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="8_onkdf"]
 [ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/dialogue_label_resource.gd" id="9_bhlrb"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="9_tyot4"]
-[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/dialogue_action_resource.gd" id="11_tyot4"]
 [ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="14_co5gw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5h8l"]
@@ -202,11 +201,6 @@ show_dialogue_box = false
 wait_for_signal_to_continue = "cutscenedone"
 metadata/_custom_type_script = "uid://bdsia7shjiegi"
 
-[sub_resource type="Resource" id="Resource_rxrpn"]
-script = ExtResource("11_tyot4")
-req_action = SubResource("Resource_o4pmh")
-metadata/_custom_type_script = "uid://dn36f6pjggx78"
-
 [sub_resource type="Resource" id="Resource_yf80x"]
 script = ExtResource("6_onkdf")
 text = "Why are you looking at me like 
@@ -229,7 +223,7 @@ metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
 
 [sub_resource type="Resource" id="Resource_p2sll"]
 script = ExtResource("4_1xmro")
-dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_co5gw"), SubResource("Resource_rxrpn"), SubResource("Resource_yf80x"), SubResource("Resource_csiif"), SubResource("Resource_s52b6"), SubResource("Resource_28aho")])
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_co5gw"), SubResource("Resource_o4pmh"), SubResource("Resource_yf80x"), SubResource("Resource_csiif"), SubResource("Resource_s52b6"), SubResource("Resource_28aho")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [sub_resource type="Resource" id="Resource_cns6x"]
@@ -241,7 +235,7 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
 [sub_resource type="Resource" id="Resource_tyot4"]
 script = ExtResource("4_1xmro")
-dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x")])
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x"), null])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [node name="TestNPC" type="StaticBody2D"]

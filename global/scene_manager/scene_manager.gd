@@ -7,6 +7,10 @@ var new_target_spawn_id: String
 var animname: String
 var function_name: String
 var function_args: String
+var player: Chara
+# LF = LevelFlag
+const LF_NOCHARA = 0x1
+const LF_CUSTOMCAMERA = 0x2
 
 func _ready() -> void:
 	$ColorRect.size = get_viewport().get_visible_rect().size
@@ -26,25 +30,37 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 		"fast":
 			animname = "fade_fast"
 		_:
-			print(fadespeed + " is NOT a valid speed, defaulting to normal.")
-			animname = "normal"
+			push_error(fadespeed, " is not a valid speed, defaulting to normal.")
+			animname = "fade"
 	AnimPlay.play(animname)
 	AnimPlay.animation_finished.connect(_on_fade_finished, CONNECT_ONE_SHOT)
 	
 func _on_fade_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file(scene)
 	await get_tree().scene_changed
-	var player: Chara = get_tree().get_first_node_in_group("player")
-	if not player:
-		player = PLAYER_SCENE.instantiate()
-		get_tree().current_scene.add_child(player)
-	GlobalVars.player_stop_busy.emit()
-	#update_pos.emit()
-	_set_camera(player)
+	_setup_level()
 	AnimPlay.play_backwards(animname)
 
+func _setup_level() -> void:
+	var level_flags = 0
+	var level_data = get_tree().current_scene.get_node_or_null("LevelData")
+	if level_data:
+		level_flags = level_data.level_flags
+	else:
+		push_warning("Scene: " + get_tree().current_scene.name + " Doesn't contain a LevelData node, skipping level flags...")
+	GlobalVars.player_stop_busy.emit()
+	if level_flags & LF_NOCHARA:
+		if level_flags & LF_CUSTOMCAMERA:
+			return
+		var camera = Camera2D.new() # TODO: make a proper no chara camera.
+		camera.zoom = Vector2(2, 2)
+		get_tree().current_scene.add_child(camera)
+	else:
+		player = PLAYER_SCENE.instantiate()
+		get_tree().current_scene.add_child(player)
+		_set_camera()
 
-func _set_camera(player: Chara) -> void:
+func _set_camera() -> void:
 	var camera_bound: ReferenceRect
 	var player_camera: Camera2D
 	for i in get_tree().current_scene.get_children():
@@ -59,6 +75,9 @@ func _set_camera(player: Chara) -> void:
 		player_camera.limit_left = int(rect.position.x)
 		player_camera.limit_right = int(rect.end.x)
 	else:
-		print("something went wrong")
-		print(player_camera)
-		print(camera_bound)
+		push_error("Failed to initialize camera bounds.")
+		if OS.is_debug_build():
+			if not player_camera:
+				push_error("player_camera Not found.")
+			if not camera_bound:
+				push_error("camera_bound Not found.")
