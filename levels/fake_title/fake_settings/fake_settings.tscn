@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxlivygwdxm72"]
+[gd_scene load_steps=20 format=3 uid="uid://cxlivygwdxm72"]
 
-[ext_resource type="Texture2D" uid="uid://cx8k54t0hcqa" path="res://temp.png" id="1_cnudp"]
 [ext_resource type="Script" uid="uid://c2e87co0yaman" path="res://levels/fake_title/fake_settings/fake_settings.gd" id="1_swa8c"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_e0ogx"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_e0ogx"]
@@ -37,10 +36,6 @@ grow_vertical = 2
 script = ExtResource("1_swa8c")
 
 [node name="SpawnPointA" parent="." instance=ExtResource("3_e0ogx")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 241)
-texture = ExtResource("1_cnudp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -143,6 +138,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")
 
 [node name="FULLSCREEN" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -163,6 +159,7 @@ alignment = 0
 script = ExtResource("7_kwiue")
 
 [node name="ASPECTRATIO" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -183,6 +180,7 @@ alignment = 0
 script = ExtResource("8_i3vnj")
 
 [node name="FPSLIMIT" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -203,11 +201,13 @@ alignment = 0
 script = ExtResource("8_bgfml")
 
 [node name="HSeparator4" type="HSeparator" parent="BoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")
 
 [node name="MASTERVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -228,6 +228,7 @@ alignment = 0
 script = ExtResource("9_vjp1r")
 
 [node name="SOUNDSVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -248,6 +249,7 @@ alignment = 0
 script = ExtResource("9_d5sdd")
 
 [node name="MUSICVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -268,6 +270,7 @@ alignment = 0
 script = ExtResource("10_6hihg")
 
 [node name="HSeparator3" type="HSeparator" parent="BoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")

@@ -5,7 +5,15 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_duteh"]
 texture = ExtResource("1_jng6d")
 texture_region_size = Vector2i(20, 20)
+0:0/next_alternative_id = 4
 0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_v = true
 
 [sub_resource type="TileSet" id="TileSet_jyhco"]
 tile_size = Vector2i(20, 20)

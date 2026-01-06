@@ -271,7 +271,7 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 	else:
 		$HBoxContainer/SpeakerParent.visible = true
 		SpeakerSprite.texture = resource.speaker_img
-		SpeakerSprite.hframes = resource.speaker_img_Hframes
+		SpeakerSprite.hframes = resource.speaker_img_hframes
 		SpeakerSprite.frame = 0
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 0)
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_right", 0)
@@ -295,7 +295,7 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 					$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
 					$AudioStreamPlayer.play()
 					if resource.speaker_img_hframes != 1:
-						if SpeakerSprite.frame < resource.speaker_img_Hframes - 1:
+						if SpeakerSprite.frame < resource.speaker_img_hframes - 1:
 							SpeakerSprite.frame += 1
 						else:
 							SpeakerSprite.frame = 0

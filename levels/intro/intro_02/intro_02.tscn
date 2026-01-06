@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://bccxl0adkx5o1"]
+[gd_scene load_steps=44 format=4 uid="uid://bccxl0adkx5o1"]
 
 [ext_resource type="Script" uid="uid://bohs07wubvkaw" path="res://levels/intro/intro_02/intro_02.gd" id="1_7yqo8"]
 [ext_resource type="Texture2D" uid="uid://bavywoyx06sow" path="res://levels/intro/intro_02/bg.png" id="1_u8eof"]
@@ -11,20 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="8_idqon"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="9_bt522"]
 [ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="10_143h1"]
-[ext_resource type="Script" uid="uid://daoklmdujs6st" path="res://objects/dialogue/resources/dialogue_tools_resource.gd" id="10_hmlt4"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="10_ke2pj"]
 [ext_resource type="Script" uid="uid://dwq1j2p4odgfe" path="res://objects/dialogue/resources/dialogue_change_anim_resource.gd" id="11_15b6p"]
-[ext_resource type="Script" uid="uid://bidlt85kb0pbj" path="res://objects/dialogue/resources/obsolete/change_anim_resource.gd" id="11_cvbr4"]
-[ext_resource type="Script" uid="uid://dr8184jywnvmu" path="res://objects/dialogue/resources/obsolete/wait_resource.gd" id="12_cvbr4"]
 [ext_resource type="AudioStream" uid="uid://dftwaw8u5r5j1" path="res://entities/flowey_npc/snd/flowey_talk.wav" id="12_ke2pj"]
 [ext_resource type="Script" uid="uid://br7iu6heleuet" path="res://objects/dialogue/resources/dialogue_wait_resource.gd" id="13_y4hjm"]
 [ext_resource type="Texture2D" uid="uid://ccuncju2gwaqs" path="res://entities/flowey_npc/portrait/side_talk.png" id="14_cvbr4"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="16_2vy3k"]
 [ext_resource type="AudioStream" uid="uid://lh7euwlmrta" path="res://entities/flowey_npc/snd/flowey_scary_talk.wav" id="16_045er"]
-[ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/obsolete/dialogue_action_resource.gd" id="17_nmbxo"]
 [ext_resource type="AudioStream" uid="uid://do0boru6ne2i8" path="res://entities/flowey_npc/snd/flowey_laugh.wav" id="17_wrpgv"]
-[ext_resource type="Script" uid="uid://c7oliw3lteue" path="res://objects/dialogue/resources/obsolete/sound_resource.gd" id="18_7yqo8"]
 [ext_resource type="Texture2D" uid="uid://8so1dbn5ivdk" path="res://entities/flowey_npc/portrait/evil_talk.png" id="19_7yqo8"]
+[ext_resource type="Script" uid="uid://d0njcuoatdla0" path="res://objects/dialogue/resources/dialogue_sound_resource.gd" id="20_045er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc3ds"]
 size = Vector2(80, 20)
@@ -57,7 +53,7 @@ metadata/_custom_type_script = "uid://br7iu6heleuet"
 [sub_resource type="Resource" id="Resource_hmlt4"]
 script = ExtResource("10_ke2pj")
 speaker_img = ExtResource("14_cvbr4")
-speaker_img_Hframes = 2
+speaker_img_hframes = 2
 text = "Hee hee hee..."
 text_sound = ExtResource("12_ke2pj")
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
@@ -76,7 +72,7 @@ tags = {
 [sub_resource type="Resource" id="Resource_045er"]
 script = ExtResource("10_ke2pj")
 speaker_img = SubResource("CompressedTexture2D_cvbr4")
-speaker_img_Hframes = 2
+speaker_img_hframes = 2
 text = "You already know who
 >I am, don't you?"
 text_sound = SubResource("AudioStreamWAV_7yhcs")
@@ -85,7 +81,7 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 [sub_resource type="Resource" id="Resource_wrpgv"]
 script = ExtResource("10_ke2pj")
 speaker_img = ExtResource("19_7yqo8")
-speaker_img_Hframes = 2
+speaker_img_hframes = 2
 text = "Do you really have
 >NOTHING better to do?"
 text_speed = 10.0
@@ -93,123 +89,71 @@ can_be_skipped = false
 text_sound = ExtResource("16_045er")
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_p6jl3"]
-script = ExtResource("11_cvbr4")
+[sub_resource type="Resource" id="Resource_7yqo8"]
+script = ExtResource("11_15b6p")
 target_path = NodePath("../FloweyNPC")
 anim_name = "grow"
-metadata/_custom_type_script = "uid://bidlt85kb0pbj"
-
-[sub_resource type="Resource" id="Resource_t8xqk"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_p6jl3")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_7e7tv"]
-script = ExtResource("12_cvbr4")
-wait_for_signal = true
-target_path = NodePath("../FloweyNPC")
-signal_name = "animation_finished"
-metadata/_custom_type_script = "uid://dr8184jywnvmu"
-
-[sub_resource type="Resource" id="Resource_amenv"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_7e7tv")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_1vnom"]
-script = ExtResource("11_cvbr4")
-target_path = NodePath("../FloweyNPC")
-anim_name = "laugh"
-metadata/_custom_type_script = "uid://bidlt85kb0pbj"
-
-[sub_resource type="Resource" id="Resource_074es"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_1vnom")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_8j2xc"]
-script = ExtResource("18_7yqo8")
-Sound = ExtResource("17_wrpgv")
-metadata/_custom_type_script = "uid://c7oliw3lteue"
-
-[sub_resource type="Resource" id="Resource_ktyma"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_8j2xc")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_gdv2u"]
-script = ExtResource("12_cvbr4")
-wait_time = 4.0
-metadata/_custom_type_script = "uid://dr8184jywnvmu"
-
-[sub_resource type="Resource" id="Resource_r8b3g"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_gdv2u")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_wwht2"]
-script = ExtResource("11_cvbr4")
-target_path = NodePath("../FloweyNPC")
-anim_name = "shrink"
-metadata/_custom_type_script = "uid://bidlt85kb0pbj"
-
-[sub_resource type="Resource" id="Resource_hesxd"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_wwht2")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_fuekd"]
-script = ExtResource("12_cvbr4")
-wait_time = 0.0
-wait_for_signal = true
-target_path = NodePath("../FloweyNPC")
-signal_name = "animation_finished"
-metadata/_custom_type_script = "uid://dr8184jywnvmu"
-
-[sub_resource type="Resource" id="Resource_dgveq"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_fuekd")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_7yqo8"]
-script = ExtResource("11_cvbr4")
-target_path = NodePath("../FloweyNPC")
-anim_name = "leaving"
-metadata/_custom_type_script = "uid://bidlt85kb0pbj"
+metadata/_custom_type_script = "uid://dwq1j2p4odgfe"
 
 [sub_resource type="Resource" id="Resource_15b6p"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_7yqo8")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
-
-[sub_resource type="Resource" id="Resource_y4hjm"]
-script = ExtResource("12_cvbr4")
-wait_time = 0.0
+script = ExtResource("13_y4hjm")
 wait_for_signal = true
 target_path = NodePath("../FloweyNPC")
 signal_name = "animation_finished"
-metadata/_custom_type_script = "uid://dr8184jywnvmu"
+metadata/_custom_type_script = "uid://br7iu6heleuet"
+
+[sub_resource type="Resource" id="Resource_y4hjm"]
+script = ExtResource("11_15b6p")
+target_path = NodePath("../FloweyNPC")
+anim_name = "laugh"
+metadata/_custom_type_script = "uid://dwq1j2p4odgfe"
 
 [sub_resource type="Resource" id="Resource_ojxi8"]
-script = ExtResource("10_hmlt4")
-tool = SubResource("Resource_y4hjm")
-metadata/_custom_type_script = "uid://daoklmdujs6st"
+script = ExtResource("20_045er")
+Sound = ExtResource("17_wrpgv")
+metadata/_custom_type_script = "uid://d0njcuoatdla0"
 
 [sub_resource type="Resource" id="Resource_1v7yk"]
+script = ExtResource("13_y4hjm")
+wait_time = 4.0
+metadata/_custom_type_script = "uid://br7iu6heleuet"
+
+[sub_resource type="Resource" id="Resource_jqcch"]
+script = ExtResource("11_15b6p")
+target_path = NodePath("../FloweyNPC")
+anim_name = "shrink"
+metadata/_custom_type_script = "uid://dwq1j2p4odgfe"
+
+[sub_resource type="Resource" id="Resource_p6jl3"]
+script = ExtResource("13_y4hjm")
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://br7iu6heleuet"
+
+[sub_resource type="Resource" id="Resource_t8xqk"]
+script = ExtResource("11_15b6p")
+target_path = NodePath("../FloweyNPC")
+anim_name = "leaving"
+metadata/_custom_type_script = "uid://dwq1j2p4odgfe"
+
+[sub_resource type="Resource" id="Resource_7e7tv"]
+script = ExtResource("13_y4hjm")
+wait_for_signal = true
+target_path = NodePath("../FloweyNPC")
+signal_name = "animation_finished"
+metadata/_custom_type_script = "uid://br7iu6heleuet"
+
+[sub_resource type="Resource" id="Resource_amenv"]
 script = ExtResource("16_2vy3k")
 flag_name = "intro_flowey_meet"
 flag_value = true
 var_value = null
 metadata/_custom_type_script = "uid://bcy5xchh4xucg"
 
-[sub_resource type="Resource" id="Resource_jqcch"]
-script = ExtResource("17_nmbxo")
-req_action = SubResource("Resource_1v7yk")
-metadata/_custom_type_script = "uid://dn36f6pjggx78"
-
 [sub_resource type="Resource" id="Resource_ke2pj"]
 script = ExtResource("10_143h1")
-dialogue = Array[ExtResource("9_bt522")]([SubResource("Resource_i0b1r"), SubResource("Resource_amo30"), SubResource("Resource_yvr43"), null, SubResource("Resource_hmlt4"), SubResource("Resource_045er"), SubResource("Resource_wrpgv"), SubResource("Resource_t8xqk"), SubResource("Resource_amenv"), SubResource("Resource_074es"), SubResource("Resource_ktyma"), SubResource("Resource_r8b3g"), SubResource("Resource_hesxd"), SubResource("Resource_dgveq"), SubResource("Resource_15b6p"), SubResource("Resource_ojxi8"), SubResource("Resource_jqcch")])
+dialogue = Array[ExtResource("9_bt522")]([SubResource("Resource_i0b1r"), SubResource("Resource_amo30"), SubResource("Resource_yvr43"), SubResource("Resource_hmlt4"), SubResource("Resource_045er"), SubResource("Resource_wrpgv"), SubResource("Resource_7yqo8"), SubResource("Resource_15b6p"), SubResource("Resource_y4hjm"), SubResource("Resource_ojxi8"), SubResource("Resource_1v7yk"), SubResource("Resource_jqcch"), SubResource("Resource_p6jl3"), SubResource("Resource_t8xqk"), SubResource("Resource_7e7tv"), SubResource("Resource_amenv")])
 metadata/_custom_type_script = "uid://c6i3oamaw72ut"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7j3"]
@@ -253,7 +197,7 @@ position = Vector2(0, 224)
 shape = SubResource("RectangleShape2D_uc3ds")
 
 [node name="RoomTransition2" parent="." instance=ExtResource("5_vw0bh")]
-room = "uid://013ew3rbgtmo"
+room = "uid://vuucrggiwsjm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition2"]
 position = Vector2(0, -42)

@@ -23,7 +23,13 @@ func _ready() -> void:
 	get_window().move_to_center()
 
 
-func _save_settings() -> void:
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_settings()
+		print_debug("Saved settings on exit!")
+
+
+func save_settings() -> void:
 	var settings = ConfigFile.new()
 	settings.set_value("Video", "fullscreen", user_settings.fullscreen)
 	settings.set_value("Video", "wide_aspect_ratio", user_settings.wide_aspect_ratio)
@@ -67,13 +73,12 @@ func _reset_settings() -> void:
 	user_settings = { }
 	user_settings = default_settings.duplicate()
 	_apply_settings()
-	_save_settings()
+	save_settings()
 
 
 func set_fullscreen(value: bool) -> void:
 	user_settings.fullscreen = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_fullscreen() -> void:
@@ -86,7 +91,6 @@ func _apply_fullscreen() -> void:
 func set_aspectratio(value: bool) -> void:
 	user_settings.wide_aspect_ratio = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_aspectratio() -> void:
@@ -101,7 +105,6 @@ func _apply_aspectratio() -> void:
 func set_fpslimit(value: int) -> void:
 	user_settings.fps_limit = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_fpslimit() -> void:
@@ -112,7 +115,6 @@ func set_mastervolume(value: float) -> void:
 	value = clampf(value, 0, 1)
 	user_settings.mastervolume = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_mastervolume() -> void:
@@ -123,7 +125,6 @@ func set_soundvolume(value: float) -> void:
 	value = clampf(value, 0, 1)
 	user_settings.soundvolume = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_soundvolume() -> void:
@@ -134,7 +135,6 @@ func set_musicvolume(value: float) -> void:
 	value = clampf(value, 0, 1)
 	user_settings.musicvolume = value
 	_apply_settings()
-	_save_settings()
 
 
 func _apply_musicvolume() -> void:
