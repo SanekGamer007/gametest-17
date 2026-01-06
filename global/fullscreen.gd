@@ -2,7 +2,8 @@ extends Node
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
-		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if SettingsManager.user_settings.fullscreen:
+			#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			SettingsManager.set_fullscreen(false)
 		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			SettingsManager.set_fullscreen(true)

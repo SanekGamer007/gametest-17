@@ -13,7 +13,6 @@ enum versions {
 	RELEASE,
 }
 
-var widescreenmode: bool = false
 var room_name: String = ""
 var player_name: String = "CHARA"
 var love: int = 0

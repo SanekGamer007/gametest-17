@@ -1,9 +1,10 @@
 @icon("res://objects/dialogue/resources/icons/dialogue_text.svg")
 extends Dialogue
+
 class_name DialogueText
 
 @export var speaker_img: Texture
-@export var speaker_img_Hframes: int = 1
+@export var speaker_img_hframes: int = 1
 @export var speaker_img_rest_frame: int = 0
 
 @export_multiline var text: String

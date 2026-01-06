@@ -1,6 +1,6 @@
 extends Button
 
-var format_text = "ASPECT RATIO   %s"
+var format_text = "FULLSCREEN   %s"
 
 
 func _ready() -> void:
@@ -9,10 +9,10 @@ func _ready() -> void:
 
 
 func _on_settingsmanager_settings_change() -> void:
-	if SettingsManager.user_settings.wide_aspect_ratio:
-		text = format_text % "WIDESCREEN - WIP"
+	if SettingsManager.user_settings.fullscreen:
+		text = format_text % "ON"
 	else:
-		text = format_text % "CLASSIC"
+		text = format_text % "OFF"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,9 +23,7 @@ func _process(_delta: float) -> void:
 
 
 func _apply() -> void:
-	if SettingsManager.user_settings.wide_aspect_ratio:
-		SettingsManager.set_aspectratio(false)
-		get_window().move_to_center()
+	if SettingsManager.user_settings.fullscreen:
+		SettingsManager.set_fullscreen(false)
 	else:
-		SettingsManager.set_aspectratio(true)
-		get_window().move_to_center()
+		SettingsManager.set_fullscreen(true)

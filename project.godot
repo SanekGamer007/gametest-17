@@ -16,7 +16,7 @@ instance_dock/preview_resolution=Vector2i(64, 64)
 [application]
 
 config/name="GAMETEST_17"
-run/main_scene="uid://ds2xm6648xsyd"
+run/main_scene="uid://d3lliphyksikq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=30
 config/icon="uid://c0f0w0c32g4a2"
@@ -27,6 +27,7 @@ GlobalVars="*res://global/global_vars.gd"
 SceneManager="*res://global/scene_manager/scene_manager.tscn"
 Tools="*res://global/tools.gd"
 Fullscreen="*res://global/fullscreen.gd"
+SettingsManager="*res://global/settings_manager.gd"
 
 [display]
 

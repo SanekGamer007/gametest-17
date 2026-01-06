@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://babudk32t61yb"
-path="res://.godot/imported/crypt-of-tomorrow-ut-font.ttf-a2b294ca41050b3bd53ba473e757b962.fontdata"
+path="res://.godot/imported/CryptOfTomorrow.ttf-d0e07fe773218b8de3259a542c935078.fontdata"
 
 [deps]
 
-source_file="res://fonts/crypt-of-tomorrow-ut-font.ttf"
-dest_files=["res://.godot/imported/crypt-of-tomorrow-ut-font.ttf-a2b294ca41050b3bd53ba473e757b962.fontdata"]
+source_file="res://fonts/CryptOfTomorrow.ttf"
+dest_files=["res://.godot/imported/CryptOfTomorrow.ttf-d0e07fe773218b8de3259a542c935078.fontdata"]
 
 [params]
 

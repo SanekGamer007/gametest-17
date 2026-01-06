@@ -294,14 +294,14 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 				if character != " ":
 					$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
 					$AudioStreamPlayer.play()
-					if resource.speaker_img_Hframes != 1:
+					if resource.speaker_img_hframes != 1:
 						if SpeakerSprite.frame < resource.speaker_img_Hframes - 1:
 							SpeakerSprite.frame += 1
 						else:
 							SpeakerSprite.frame = 0
 			DialogueRichText.visible_characters = target_count
 
-	SpeakerSprite.frame = min(resource.speaker_img_rest_frame, resource.speaker_img_Hframes - 1)
+	SpeakerSprite.frame = min(resource.speaker_img_rest_frame, resource.speaker_img_hframes - 1)
 
 	while DialogueRichText.visible_characters != DialogueLength:
 		await get_tree().process_frame

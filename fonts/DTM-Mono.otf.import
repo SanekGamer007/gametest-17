@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bcxmb1xi45jr4"
-path="res://.godot/imported/determination-mono.otf-7e64d103555ce3578ab829cc10e6e4c7.fontdata"
+path="res://.godot/imported/DTM-Mono.otf-441944ddb6773fd50623334e4c2a2436.fontdata"
 
 [deps]
 
-source_file="res://fonts/determination-mono.otf"
-dest_files=["res://.godot/imported/determination-mono.otf-7e64d103555ce3578ab829cc10e6e4c7.fontdata"]
+source_file="res://fonts/DTM-Mono.otf"
+dest_files=["res://.godot/imported/DTM-Mono.otf-441944ddb6773fd50623334e4c2a2436.fontdata"]
 
 [params]
 

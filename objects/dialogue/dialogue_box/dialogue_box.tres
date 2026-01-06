@@ -1,6 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cx2xy38qbr45q"]
 
-[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/determination-mono.otf" id="1_6rih8"]
+[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="1_6rih8"]
 
 [resource]
 base_font = ExtResource("1_6rih8")
