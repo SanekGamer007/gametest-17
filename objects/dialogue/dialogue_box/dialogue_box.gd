@@ -1,16 +1,17 @@
 @icon("res://objects/dialogue/resources/icons/dialogue.svg")
-extends CanvasLayer
 class_name DialogueBox
+extends CanvasLayer
 
 const INVALID_TAGS: String = "\n,?! "
 const DialogueButtonPreload: PackedScene = preload("res://objects/dialogue/dialogue_button/dialogue_button.tscn")
-@onready var DialogueRichText: RichTextLabel = $HBoxContainer/VBoxContainer/MarginContainer/RichTextLabel
-@onready var SpeakerSprite: Sprite2D = $HBoxContainer/SpeakerParent/Sprite2D
 
 var dialogue_context: Node = null
 var current_dialogue: Array[Dialogue]
 var current_dialogue_item: int = 0
 var next_item: bool = true
+
+@onready var DialogueRichText: RichTextLabel = $HBoxContainer/VBoxContainer/MarginContainer/RichTextLabel
+@onready var SpeakerSprite: Sprite2D = $HBoxContainer/SpeakerParent/Sprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +20,7 @@ func _ready() -> void:
 	GlobalVars.connect("close_all_ui", callable)
 	visible = false
 	$HBoxContainer/VBoxContainer/button_container.visible = false
+
 
 func _process(_delta: float) -> void:
 	if current_dialogue_item >= current_dialogue.size():
@@ -79,12 +81,12 @@ func _text_resource(textresource: DialogueText) -> void:
 	var DialogueLength = final_text.length()
 	DialogueRichText.visible_characters = 0
 	DialogueRichText.text = final_text
-	
+
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera and textresource.camera_position != Vector2(999.999, 999.999):
 		var camera_tween: Tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 		camera_tween.tween_property(camera, "global_position", textresource.camera_position, textresource.camera_transition_time)
-	
+
 	await _write_text(textresource, DialogueLength, final_text)
 	while true:
 		if Input.is_action_pressed("main_button") or textresource.auto_skip:
@@ -93,40 +95,41 @@ func _text_resource(textresource: DialogueText) -> void:
 			break
 		await get_tree().process_frame
 
+
 func _choice_resource(choiceresource: DialogueChoice) -> void:
 	$AudioStreamPlayer.stream = choiceresource.text_sound
 	$AudioStreamPlayer.volume_db = choiceresource.text_volume_db
 	$HBoxContainer/VBoxContainer/button_container.visible = true
-	
-	var formatted_text: String = _apply_custom_formatting(choiceresource.text) 
+
+	var formatted_text: String = _apply_custom_formatting(choiceresource.text)
 	var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
 	var final_text: String = _process_tags(text_no_square_brackets)
 	var DialogueLength = final_text.length()
 	var buttonarray: Array[Button]
 	DialogueRichText.visible_characters = 0
 	DialogueRichText.text = final_text
-	
+
 	await _write_text(choiceresource, DialogueLength, final_text)
-	
+
 	for i in choiceresource.choice_text.size(): #buttons dont have a visible_characts variable so we have to do whatever this is.
 		var dialoguebutton: Button = DialogueButtonPreload.instantiate()
 		dialoguebutton.text = ""
 		$HBoxContainer/VBoxContainer/button_container/VFlowContainer.add_child(dialoguebutton)
 		buttonarray.append(dialoguebutton)
-		
+
 	var buttonpressed = (func(btn_idx: int):
-		for i in $HBoxContainer/VBoxContainer/button_container/VFlowContainer.get_children():
-			i.queue_free()
-		$HBoxContainer/VBoxContainer/button_container.visible = false
-		if choiceresource.choice_action_id[btn_idx] is not ActionNull:
-			_do_action(choiceresource.choice_action_id[btn_idx])
-			return
-		else:
-			current_dialogue_item += 1
-			next_item = true
-			return
-		)
-		
+			for i in $HBoxContainer/VBoxContainer/button_container/VFlowContainer.get_children():
+				i.queue_free()
+			$HBoxContainer/VBoxContainer/button_container.visible = false
+			if choiceresource.choice_action_id[btn_idx] is not ActionNull:
+				_do_action(choiceresource.choice_action_id[btn_idx])
+				return
+			else:
+				current_dialogue_item += 1
+				next_item = true
+				return
+	)
+
 	for i in buttonarray.size():
 		var new_button_text: String = _process_tags(choiceresource.choice_text[i])
 		buttonarray[i].text = _process_tags(buttonarray[i].text)
@@ -140,6 +143,7 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 			await get_tree().create_timer(1 / choiceresource.text_speed).timeout
 		buttonarray[i].pressed.connect(buttonpressed.bind(i))
 	buttonarray[0].grab_focus()
+
 
 func _conditional_action_resource(actionjumpresource: DialogueConditionalAction) -> void:
 	var result_one: Variant
@@ -169,6 +173,7 @@ func _conditional_action_resource(actionjumpresource: DialogueConditionalAction)
 	else:
 		_do_action(actionjumpresource.action_false)
 
+
 func _do_action(actionresource: Action) -> void:
 	if actionresource is ActionJump:
 		for i in current_dialogue.size():
@@ -176,7 +181,7 @@ func _do_action(actionresource: Action) -> void:
 				current_dialogue_item = i
 				next_item = true
 				break
-	
+
 	elif actionresource is ActionFunction:
 		visible = actionresource.show_dialogue_box
 		var target_node = _get_target_node(actionresource.target_path)
@@ -195,7 +200,7 @@ func _do_action(actionresource: Action) -> void:
 					await get_tree().process_frame
 		if actionresource.wait_time != 0.0:
 			await get_tree().create_timer(actionresource.wait_time).timeout
-	
+
 	elif actionresource is ActionSet:
 		if actionresource.flag_name:
 			GlobalVars.set_flag(actionresource.flag_name, actionresource.flag_value)
@@ -204,14 +209,15 @@ func _do_action(actionresource: Action) -> void:
 			var vartoset = actionresource.var_name
 			var value = actionresource.var_value
 			_get_target_node(node).set(vartoset, value) #there's a probably a safer way to do this.
-		else: 
+		else:
 			push_error("Invalid ActionSet parameters, ignoring...")
-	
+
 	else:
 		push_error("Invalid Action type, ignoring...")
-	
+
 	current_dialogue_item += 1
 	next_item = true
+
 
 func _do_tools(tool: Dialogue) -> void:
 	visible = tool.show_dialogue_box
@@ -220,17 +226,17 @@ func _do_tools(tool: Dialogue) -> void:
 			var tooltween: Tween = create_tween()
 			if !tool.is_relative:
 				tooltween.tween_property(
-				_get_target_node(tool.target_path),
-				"position",
-				tool.move_location,
-				tool.move_duration
+					_get_target_node(tool.target_path),
+					"position",
+					tool.move_location,
+					tool.move_duration,
 				)
 			else:
 				tooltween.tween_property(
-				_get_target_node(tool.target_path),
-				"position",
-				_get_target_node(tool.target_path).position + tool.move_location,
-				tool.move_duration
+					_get_target_node(tool.target_path),
+					"position",
+					_get_target_node(tool.target_path).position + tool.move_location,
+					tool.move_duration,
 				)
 			if tool.await_end:
 				await tooltween.finished
@@ -256,6 +262,7 @@ func _do_tools(tool: Dialogue) -> void:
 	current_dialogue_item += 1
 	next_item = true
 
+
 func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 	if !resource.speaker_img:
 		$HBoxContainer/SpeakerParent.visible = false
@@ -268,9 +275,9 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 		SpeakerSprite.frame = 0
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 0)
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_right", 0)
-	
+
 	var visible_chars_float: float = 0.0
-	
+
 	while DialogueRichText.visible_characters < DialogueLength:
 		await get_tree().process_frame
 		if Input.is_action_pressed("second_button") and resource.can_be_skipped == true:
@@ -308,33 +315,36 @@ func _jump(jump_id: String) -> void:
 			next_item = true
 			break
 
+
 func _text_without_square_brackets(text: String) -> String:
 	var result: String = ""
 	var inside_bracket: bool = false
-	
+
 	for i in text:
 		if i == "[":
 			inside_bracket = true
 			continue
-		
+
 		if i == "]":
 			inside_bracket = false
 			continue
-		
+
 		if !inside_bracket:
 			result += i
 
 	return result
+
 
 func _apply_custom_formatting(raw_text: String) -> String:
 	var lines = raw_text.split("\n")
 	var new_lines: Array[String] = []
 	for line: String in lines:
 		if line.begins_with(">"):
-			new_lines.append(line.replace(">", "  ")) 
+			new_lines.append(line.replace(">", "  "))
 		else:
 			new_lines.append("* " + line)
 	return "\n".join(new_lines)
+
 
 func _process_tags(raw_text: String) -> String:
 	var processed_text = raw_text
@@ -346,14 +356,14 @@ func _process_tags(raw_text: String) -> String:
 			if INVALID_TAGS.find(character) != -1:
 				break
 			else:
-				ending_point += 1 
+				ending_point += 1
 				#print(character)
 		var fulltag: String = processed_text.substr(starting_point, ending_point - starting_point)
 		var content = fulltag.remove_chars("^")
 		var parts = content.split(".")
-		
+
 		var replacement_value: String = "err"
-		
+
 		if parts.size() >= 2:
 			var tag_type = parts[0]
 			print(tag_type)
@@ -374,18 +384,19 @@ func _process_tags(raw_text: String) -> String:
 					replacement_value = "something went wrong"
 		else:
 			push_error("TAG IS NOT VALID.")
-		
+
 		processed_text = processed_text.replace(fulltag, replacement_value)
 		starting_point = processed_text.find("^", starting_point + replacement_value.length())
 	return processed_text
 
+
 func _get_target_node(path: NodePath) -> Node:
 	if path.is_empty():
 		return dialogue_context
-	
+
 	if path.is_absolute():
 		return get_node(path)
 	if dialogue_context:
 		return dialogue_context.get_node(path)
-	
+
 	return get_node(path)

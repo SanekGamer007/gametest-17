@@ -1,6 +1,6 @@
 @icon("res://objects/dialogue/resources/icons/move_resource.svg")
-extends Dialogue
 class_name DialogueMove
+extends Dialogue
 
 @export var show_dialogue_box: bool = false
 @export var target_path: NodePath

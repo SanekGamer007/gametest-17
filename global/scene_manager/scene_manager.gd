@@ -1,19 +1,24 @@
 extends CanvasLayer
 
-@onready var AnimPlay = $AnimationPlayer
-const PLAYER_SCENE = preload("res://entities/chara/chara.tscn") 
+# LF = LevelFlag
+const LF_NOCHARA = 0x1
+const LF_CUSTOMCAMERA = 0x2
+
+const PLAYER_SCENE = preload("res://entities/chara/chara.tscn")
+
 var scene: String
 var new_target_spawn_id: String
 var animname: String
 var function_name: String
 var function_args: String
 var player: Chara
-# LF = LevelFlag
-const LF_NOCHARA = 0x1
-const LF_CUSTOMCAMERA = 0x2
+
+@onready var AnimPlay = $AnimationPlayer
+
 
 func _ready() -> void:
 	$ColorRect.size = get_viewport().get_visible_rect().size
+
 
 func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String, func_name = null, func_args = null):
 	GlobalVars.player_start_busy.emit() # 'busy' will work perfectly for disabling player movement.
@@ -34,12 +39,14 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 			animname = "fade"
 	AnimPlay.play(animname)
 	AnimPlay.animation_finished.connect(_on_fade_finished, CONNECT_ONE_SHOT)
-	
+
+
 func _on_fade_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file(scene)
 	await get_tree().scene_changed
 	_setup_level()
 	AnimPlay.play_backwards(animname)
+
 
 func _setup_level() -> void:
 	var level_flags = 0
@@ -59,6 +66,7 @@ func _setup_level() -> void:
 		player = PLAYER_SCENE.instantiate()
 		get_tree().current_scene.add_child(player)
 		_set_camera()
+
 
 func _set_camera() -> void:
 	var camera_bound: ReferenceRect

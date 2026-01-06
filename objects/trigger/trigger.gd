@@ -1,13 +1,13 @@
 @tool
 extends Area2D
+
 const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dialogue_box.tscn")
 const DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
 const DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
-var desired_dialogue_offset: Vector2
-var activated: bool
+
 @export var only_activate_once: bool = false ## Resets when re-entering the room.
 @export var action: Action
-@export var condition: bool = false: 
+@export var condition: bool = false:
 	set(value):
 		condition = value
 		notify_property_list_changed()
@@ -17,6 +17,10 @@ var activated: bool
 @export var var_name: String
 @export var var_value: Variant
 @export var target_path: NodePath
+
+var desired_dialogue_offset: Vector2
+var activated: bool
+
 
 func _validate_property(property: Dictionary) -> void:
 	if !condition:
@@ -34,9 +38,11 @@ func _validate_property(property: Dictionary) -> void:
 			"operator":
 				property.usage = PROPERTY_USAGE_NO_EDITOR
 
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is Chara:
 		_do_action(body)
+
 
 func _do_action(player: Chara) -> void:
 	if activated:
@@ -62,7 +68,7 @@ func _do_action(player: Chara) -> void:
 				target_node.call(action.function_name)
 			else:
 				target_node.callv(action.function_name, action.function_arguments)
-	
+
 	elif action is ActionSet:
 		if action.flag_name:
 			GlobalVars.set_flag(action.flag_name, action.flag_value)
@@ -71,9 +77,9 @@ func _do_action(player: Chara) -> void:
 			var vartoset = action.var_name
 			var value = action.var_value
 			get_node(node).set(vartoset, value) #there's a probably a safer way to do this.
-		else: 
+		else:
 			printerr("Invalid ActionSet Type, Ignoring...")
-	
+
 	elif action is ActionDialogue:
 		GlobalVars.player_start_busy.emit()
 		var new_dialogue: DialogueBox = DIALOGUE_SYSTEM_PRELOAD.instantiate()
@@ -88,10 +94,10 @@ func _do_action(player: Chara) -> void:
 		new_dialogue.current_dialogue = action.dialogue
 		new_dialogue.dialogue_context = self
 		get_tree().root.add_child(new_dialogue)
-	
+
 	elif action is Action:
 		printerr("you forgot to set action type.")
-	
+
 	else:
 		printerr("Invalid Action type, skipping.")
 	if only_activate_once:

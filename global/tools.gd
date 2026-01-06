@@ -9,6 +9,7 @@ enum Operator {
 	LESS_EQUAL,
 }
 
+
 func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:
 	if typeof(val_a) != typeof(val_b):
 		return false
@@ -28,6 +29,7 @@ func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:
 		_:
 			return false
 
+
 func get_zero_value(variable: Variant) -> Variant:
 	match typeof(variable):
 		TYPE_BOOL:
@@ -45,6 +47,6 @@ func get_zero_value(variable: Variant) -> Variant:
 		TYPE_ARRAY:
 			return []
 		TYPE_DICTIONARY:
-			return {}
+			return { }
 		_:
 			return null

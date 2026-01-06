@@ -1,6 +1,6 @@
 @icon("res://objects/dialogue/resources/icons/wait_resource.svg")
-extends Dialogue
 class_name DialogueWait
+extends Dialogue
 
 @export var show_dialogue_box: bool = false
 @export var wait_time: float = 1.0
