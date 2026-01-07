@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene load_steps=82 format=3 uid="uid://bg4x37m08e2hi"]
 
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue_interaction/dialogue_interaction.tscn" id="3_e7anx"]
@@ -70,7 +70,15 @@ metadata/_custom_type_script = "uid://d0njcuoatdla0"
 
 [sub_resource type="Resource" id="Resource_6wuxv"]
 script = ExtResource("12_3i7yh")
+wait_time = 0.7
 metadata/_custom_type_script = "uid://br7iu6heleuet"
+
+[sub_resource type="Resource" id="Resource_go7er"]
+script = ExtResource("13_wjuib")
+target_path = NodePath(".")
+function_name = "cam_shake"
+show_dialogue_box = false
+metadata/_custom_type_script = "uid://bdsia7shjiegi"
 
 [sub_resource type="Resource" id="Resource_o5yuq"]
 script = ExtResource("5_wndkh")
@@ -122,7 +130,7 @@ metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
 
 [sub_resource type="Resource" id="Resource_4n8tn"]
 script = ExtResource("4_wndkh")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_0vv12"), SubResource("Resource_paa45"), SubResource("Resource_uu81q"), SubResource("Resource_6wuxv"), SubResource("Resource_o5yuq"), SubResource("Resource_vr6yy"), SubResource("Resource_5y2bn"), SubResource("Resource_m2xr1"), SubResource("Resource_ec2iw")])
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_0vv12"), SubResource("Resource_paa45"), SubResource("Resource_uu81q"), SubResource("Resource_6wuxv"), SubResource("Resource_go7er"), SubResource("Resource_o5yuq"), SubResource("Resource_vr6yy"), SubResource("Resource_5y2bn"), SubResource("Resource_m2xr1"), SubResource("Resource_ec2iw")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [sub_resource type="Resource" id="Resource_kbtcf"]
@@ -313,7 +321,7 @@ shape = SubResource("RectangleShape2D_x25rp")
 
 [node name="Test2" type="StaticBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-94, 46)
+position = Vector2(-122, 59)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test2"]
@@ -361,6 +369,7 @@ shape = SubResource("RectangleShape2D_x25rp")
 position = Vector2(0, 75)
 
 [node name="TestNPC" parent="." instance=ExtResource("8_wndkh")]
+position = Vector2(-24, 6)
 
 [node name="CameraBounds" parent="." instance=ExtResource("10_4n8tn")]
 offset_left = -200.0
@@ -370,6 +379,7 @@ offset_bottom = 219.0
 metadata/_edit_lock_ = true
 
 [node name="Trigger" parent="." instance=ExtResource("20_n4g7x")]
+position = Vector2(-155, 114)
 action = SubResource("Resource_ra35m")
 condition = true
 operator = 4
@@ -377,12 +387,11 @@ flag_name = "test_flag"
 flag_value = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="Trigger"]
-position = Vector2(-146.875, 128.375)
+position = Vector2(-0.12501526, 0.625)
 scale = Vector2(61.75, 31.25001)
 texture = SubResource("PlaceholderTexture2D_x7oem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-position = Vector2(-147, 128.5)
 shape = SubResource("RectangleShape2D_ec2iw")
 
 [node name="LevelData" parent="." instance=ExtResource("26_ec2iw")]

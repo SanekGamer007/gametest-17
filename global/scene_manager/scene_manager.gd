@@ -75,17 +75,14 @@ func _set_camera() -> void:
 		if i is ReferenceRect and i.name == "CameraBounds":
 			camera_bound = i
 			break
-	player_camera = player.get_node("Camera2D")
-	if player_camera and camera_bound:
+	if camera_bound:
 		var rect: Rect2 = camera_bound.get_global_rect()
-		player_camera.limit_top = int(rect.position.y)
-		player_camera.limit_bottom = int(rect.end.y)
-		player_camera.limit_left = int(rect.position.x)
-		player_camera.limit_right = int(rect.end.x)
+		procam.top_limit = int(rect.position.y)
+		procam.bottom_limit = int(rect.end.y)
+		procam.left_limit = int(rect.position.x)
+		procam.right_limit = int(rect.end.x)
 	else:
 		push_error("Failed to initialize camera bounds.")
 		if OS.is_debug_build():
-			if not player_camera:
-				push_error("player_camera Not found.")
 			if not camera_bound:
 				push_error("camera_bound Not found.")
