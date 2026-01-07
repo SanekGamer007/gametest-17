@@ -92,7 +92,7 @@ func _do_action(player: Chara) -> void:
 				desired_dialogue_offset = DIALOGUE_BOTTOM_OFFSET
 		new_dialogue.offset = desired_dialogue_offset
 		new_dialogue.current_dialogue = action.dialogue
-		new_dialogue.dialogue_context = self
+		new_dialogue.context = self
 		get_tree().root.add_child(new_dialogue)
 
 	elif action is Action:

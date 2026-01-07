@@ -5,7 +5,7 @@ extends CanvasLayer
 const INVALID_TAGS: String = "\n,?! "
 const DialogueButtonPreload: PackedScene = preload("res://objects/dialogue/dialogue_button/dialogue_button.tscn")
 
-var dialogue_context: Node = null
+var context: Node = null
 var current_dialogue: Array[Dialogue]
 var current_dialogue_item: int = 0
 var next_item: bool = true
@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 		next_item = false
 		var i = current_dialogue[current_dialogue_item]
 		if i == null:
-			var origin: String = str(dialogue_context.name) if dialogue_context else "null..."
+			var origin: String = str(context.name) if context else "null..."
 			push_error("Dialogue ", current_dialogue_item, " in ", origin, " is null, you probably want to fix that, for now: ignoring...")
 			GlobalVars.player_stop_busy.emit()
 			queue_free()
@@ -49,9 +49,9 @@ func _process(_delta: float) -> void:
 				next_item = true
 			DialogueConditionalAction:
 				_conditional_action_resource(i)
-			ActionSet:
-				_do_action(i)
 			ActionJump:
+				_do_action(i)
+			ActionSet:
 				_do_action(i)
 			ActionFunction:
 				_do_action(i)
@@ -76,11 +76,11 @@ func _text_resource(textresource: DialogueText) -> void:
 	$AudioStreamPlayer.volume_db = textresource.text_volume_db
 	print(textresource.text) # i like it lol.
 	var formatted_text: String = _apply_custom_formatting(textresource.text)
-	var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
-	var final_text: String = _process_tags(text_no_square_brackets)
-	var DialogueLength = final_text.length()
-	DialogueRichText.visible_characters = 0
+	#var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
+	var final_text: String = _process_tags(formatted_text)
 	DialogueRichText.text = final_text
+	var DialogueLength = DialogueRichText.get_total_character_count()
+	DialogueRichText.visible_characters = 0
 
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera and textresource.camera_position != Vector2(999.999, 999.999):
@@ -145,33 +145,33 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 	buttonarray[0].grab_focus()
 
 
-func _conditional_action_resource(actionjumpresource: DialogueConditionalAction) -> void:
+func _conditional_action_resource(conditional_action: DialogueConditionalAction) -> void:
 	var result_one: Variant
 	var result_two: Variant
 	var result: bool
-	match actionjumpresource.value_one.get_script():
+	match conditional_action.value_one.get_script():
 		ConditionalActionFlag:
-			if !GlobalVars.has_flag(actionjumpresource.value_one.name):
+			if !GlobalVars.has_flag(conditional_action.value_one.name):
 				result_one = false
-			result_one = GlobalVars.get_flag(actionjumpresource.value_one.name)
+			result_one = GlobalVars.get_flag(conditional_action.value_one.name)
 		ConditionalActionVar:
-			result_one = _get_target_node(actionjumpresource.value_one.target_path).get(actionjumpresource.value_one.name)
+			result_one = Tools.get_target_node(conditional_action.value_one.target_path, context).get(conditional_action.value_one.name)
 		ConditionalActionVariant:
-			result_one = actionjumpresource.value_one.value
-	match actionjumpresource.value_two.get_script():
+			result_one = conditional_action.value_one.value
+	match conditional_action.value_two.get_script():
 		ConditionalActionFlag:
-			if !GlobalVars.has_flag(actionjumpresource.value_two.name):
+			if !GlobalVars.has_flag(conditional_action.value_two.name):
 				result_two = false
-			result_two = GlobalVars.get_flag(actionjumpresource.value_two.name)
+			result_two = GlobalVars.get_flag(conditional_action.value_two.name)
 		ConditionalActionVar:
-			result_two = _get_target_node(actionjumpresource.value_two.target_path).get(actionjumpresource.value_two.name)
+			result_two = Tools.get_target_node(conditional_action.value_two.target_path, context).get(conditional_action.value_two.name)
 		ConditionalActionVariant:
-			result_two = actionjumpresource.value_two.value
-	result = Tools.compare(result_one, result_two, actionjumpresource.operator)
+			result_two = conditional_action.value_two.value
+	result = Tools.compare(result_one, result_two, conditional_action.operator)
 	if result:
-		_do_action(actionjumpresource.action_true)
+		_do_action(conditional_action.action_true)
 	else:
-		_do_action(actionjumpresource.action_false)
+		_do_action(conditional_action.action_false)
 
 
 func _do_action(actionresource: Action) -> void:
@@ -181,10 +181,9 @@ func _do_action(actionresource: Action) -> void:
 				current_dialogue_item = i
 				next_item = true
 				break
-
 	elif actionresource is ActionFunction:
 		visible = actionresource.show_dialogue_box
-		var target_node = _get_target_node(actionresource.target_path)
+		var target_node = Tools.get_target_node(actionresource.target_path, context)
 		if target_node.has_method(actionresource.function_name):
 			if actionresource.function_arguments.size() == 0:
 				target_node.call(actionresource.function_name)
@@ -208,7 +207,7 @@ func _do_action(actionresource: Action) -> void:
 			var node = actionresource.var_target_path
 			var vartoset = actionresource.var_name
 			var value = actionresource.var_value
-			_get_target_node(node).set(vartoset, value) #there's a probably a safer way to do this.
+			Tools.get_target_node(node, context).set(vartoset, value) #there's a probably a safer way to do this.
 		else:
 			push_error("Invalid ActionSet parameters, ignoring...")
 
@@ -226,28 +225,28 @@ func _do_tools(tool: Dialogue) -> void:
 			var tooltween: Tween = create_tween()
 			if !tool.is_relative:
 				tooltween.tween_property(
-					_get_target_node(tool.target_path),
+					Tools.get_target_node(tool.target_path, context),
 					"position",
 					tool.move_location,
 					tool.move_duration,
 				)
 			else:
 				tooltween.tween_property(
-					_get_target_node(tool.target_path),
+					Tools.get_target_node(tool.target_path, context),
 					"position",
-					_get_target_node(tool.target_path).position + tool.move_location,
+					Tools.get_target_node(tool.target_path, context).position + tool.move_location,
 					tool.move_duration,
 				)
 			if tool.await_end:
 				await tooltween.finished
 		DialogueChangeAnim:
-			var target = _get_target_node(tool.target_path)
+			var target = Tools.get_target_node(tool.target_path, context)
 			target.play(tool.anim_name)
 		DialogueWait:
 			if !tool.wait_for_signal:
 				await get_tree().create_timer(tool.wait_time).timeout
 			else:
-				var target = _get_target_node(tool.target_path)
+				var target = Tools.get_target_node(tool.target_path, context)
 				if target and target.has_signal(tool.signal_name):
 					await Signal(target, tool.signal_name)
 				else:
@@ -276,6 +275,7 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 0)
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_right", 0)
 
+	var clean_text_for_audio = DialogueRichText.get_parsed_text()
 	var visible_chars_float: float = 0.0
 
 	while DialogueRichText.visible_characters < DialogueLength:
@@ -290,8 +290,8 @@ func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
 			target_count = min(target_count, DialogueLength)
 			var chars_added = target_count - DialogueRichText.visible_characters
 			if chars_added > 0:
-				var character = text[DialogueRichText.visible_characters - 1]
-				if character != " ":
+				var character = clean_text_for_audio[DialogueRichText.visible_characters - 1]
+				if character != " " and character != "*":
 					$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
 					$AudioStreamPlayer.play()
 					if resource.speaker_img_hframes != 1:
@@ -388,15 +388,3 @@ func _process_tags(raw_text: String) -> String:
 		processed_text = processed_text.replace(fulltag, replacement_value)
 		starting_point = processed_text.find("^", starting_point + replacement_value.length())
 	return processed_text
-
-
-func _get_target_node(path: NodePath) -> Node:
-	if path.is_empty():
-		return dialogue_context
-
-	if path.is_absolute():
-		return get_node(path)
-	if dialogue_context:
-		return dialogue_context.get_node(path)
-
-	return get_node(path)

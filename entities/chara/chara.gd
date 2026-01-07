@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 class_name Chara
 @onready var AnimSprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -22,6 +23,7 @@ var direction: Vector2 = Vector2.ZERO
 var can_open_menu: bool = true
 @export var mv_speed: float = 100
 
+
 func _ready() -> void:
 	GlobalVars.disable_menu.connect(_disable_menu)
 	GlobalVars.enable_menu.connect(_enable_menu)
@@ -30,9 +32,10 @@ func _ready() -> void:
 	if SceneManager.new_target_spawn_id != "":
 		_move_to_spawn_point()
 
+
 func _physics_process(delta: float) -> void:
 	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
-	if is_on_wall() and direction.length() >= 1: 
+	if is_on_wall() and direction.length() >= 1:
 		direction = direction.normalized() # switching motion mode to floating fixes slopes but makes walking along walls way faster than intented, this fixes that.
 	_manage_facings()
 	match state:
@@ -44,7 +47,11 @@ func _physics_process(delta: float) -> void:
 			_handle_run_state(delta)
 		states.BUSY:
 			_handle_busy_state()
+	var pos_before = global_position
 	move_and_slide()
+	var actual_movement = global_position.distance_to(pos_before)
+	_manage_anims(actual_movement)
+
 
 func set_state(new_state: states) -> void:
 	if new_state == states.BUSY:
@@ -61,10 +68,12 @@ func set_state(new_state: states) -> void:
 	else:
 		state = new_state
 
+
 func _handle_idle_state(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	if direction:
 		set_state(states.WALK)
+
 
 func _handle_walk_state(_delta: float) -> void:
 	if direction:
@@ -72,11 +81,14 @@ func _handle_walk_state(_delta: float) -> void:
 	else:
 		set_state(states.IDLE)
 
+
 func _handle_run_state(_delta: float) -> void:
 	pass # TODO, maybe will remove.
 
+
 func _handle_busy_state() -> void:
 	velocity = Vector2.ZERO
+
 
 func _manage_facings() -> void:
 	if state == states.BUSY:
@@ -90,16 +102,17 @@ func _manage_facings() -> void:
 			_set_facing(facings.RIGHT)
 		Vector2(0, -1):
 			_set_facing(facings.UP)
-	_manage_anims()
+
 
 func set_facing_manual(new_facing: facings) -> void:
 	_set_facing(new_facing)
 	_manage_anims()
 
-func _manage_anims() -> void:
+
+func _manage_anims(movement: float = 0.0) -> void:
 	if state == states.BUSY:
 		return
-	if direction:
+	if direction and movement > 0.1: #and not _check_wall_colliding():
 		match facing:
 			facings.DOWN:
 				_set_anim("down", true)
@@ -119,6 +132,7 @@ func _manage_anims() -> void:
 				_set_anim("right", false)
 			facings.UP:
 				_set_anim("up", false)
+
 
 func _set_anim(new_anim: String, walk: bool) -> void:
 	match new_anim:
@@ -143,8 +157,10 @@ func _set_anim(new_anim: String, walk: bool) -> void:
 			else:
 				$AnimatedSprite2D.play("up_idle")
 
+
 func _set_facing(new_facing: facings) -> void:
 	facing = new_facing
+
 
 func _move_to_spawn_point() -> void:
 	var spawn_points = get_tree().get_nodes_in_group("spawnpoint")
@@ -153,15 +169,36 @@ func _move_to_spawn_point() -> void:
 			global_position = point.global_position
 			set_facing_manual(point.facing)
 
+
+func _check_wall_colliding() -> bool:
+	var raycast = $RayCast2D
+	match facing:
+		facings.DOWN:
+			raycast.target_position = Vector2(0, 11)
+		facings.LEFT:
+			raycast.target_position = Vector2(-11, 0)
+		facings.RIGHT:
+			raycast.target_position = Vector2(11, 0)
+		facings.UP:
+			raycast.target_position = Vector2(0, -1)
+	if raycast.is_colliding():
+		return true
+	else:
+		return false
+
+
 func _disable_menu() -> void:
 	can_open_menu = false
+
 
 func _enable_menu() -> void:
 	can_open_menu = true
 
+
 func _start_busy() -> void:
 	GlobalVars.emit_signal("disable_menu")
 	set_state(states.BUSY)
+
 
 func _stop_busy() -> void:
 	GlobalVars.emit_signal("enable_menu")

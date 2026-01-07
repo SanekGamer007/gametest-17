@@ -20,4 +20,5 @@ tile_size = Vector2i(20, 20)
 sources/0 = SubResource("TileSetAtlasSource_duteh")
 
 [node name="Universal" type="TileMapLayer"]
+z_index = -5
 tile_set = SubResource("TileSet_jyhco")

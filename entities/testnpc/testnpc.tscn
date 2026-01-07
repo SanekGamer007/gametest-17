@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
-[ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue/interaction/dialogue_interaction.tscn" id="3_tg4u2"]
+[ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue_interaction/dialogue_interaction.tscn" id="3_tg4u2"]
 [ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="4_1xmro"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="5_s52b6"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="6_onkdf"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bdsia7shjiegi" path="res://objects/dialogue/resources/actions/action_function_resource.gd" id="8_28aho"]
 [ext_resource type="Script" uid="uid://du3lqmcx117j8" path="res://objects/dialogue/resources/actions/action_null_resource.gd" id="8_csiif"]
 [ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="8_onkdf"]
-[ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/dialogue_label_resource.gd" id="9_bhlrb"]
+[ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/actions/action_jump_resource.gd" id="9_bhlrb"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="9_tyot4"]
 [ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="14_co5gw"]
 

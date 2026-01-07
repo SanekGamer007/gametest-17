@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cft6oblc1xuhk"]
+[gd_scene load_steps=6 format=3 uid="uid://cft6oblc1xuhk"]
 
 [ext_resource type="Script" uid="uid://uu7sa2vxr05f" path="res://objects/dialogue/dialogue_box/dialogue_box.gd" id="1_jwyir"]
 [ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="2_jwyir"]
+[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="3_ib4t5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrvc3"]
 bg_color = Color(0, 0, 0, 1)
@@ -68,11 +69,18 @@ theme_override_constants/margin_right = 8
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_jwyir")
+theme_override_fonts/bold_font = ExtResource("3_ib4t5")
+theme_override_fonts/bold_italics_font = ExtResource("3_ib4t5")
+theme_override_fonts/italics_font = ExtResource("3_ib4t5")
+theme_override_fonts/mono_font = ExtResource("3_ib4t5")
 theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 16
 bbcode_enabled = true
 text = "TEST
 tEST2 GGGggggggg
-РУ текст ейй"
+TEST 3..................."
 scroll_active = false
 visible_characters_behavior = 1
 

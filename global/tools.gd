@@ -50,3 +50,23 @@ func get_zero_value(variable: Variant) -> Variant:
 			return { }
 		_:
 			return null
+
+
+func get_target_node(path: NodePath, call_context: Node) -> Node:
+	if path.is_empty():
+		return call_context
+
+	if path.is_absolute():
+		return get_node(path)
+	if call_context:
+		return call_context.get_node(path)
+
+	return get_node(path)
+
+
+func change_window_title(title: String) -> void:
+	get_window().title = title
+
+
+func change_window_icon(icon: Image) -> void:
+	DisplayServer.set_icon(icon)

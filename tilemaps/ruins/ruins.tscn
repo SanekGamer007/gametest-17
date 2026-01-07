@@ -246,4 +246,5 @@ sources/3 = SubResource("TileSetAtlasSource_dn7j0")
 sources/4 = SubResource("TileSetAtlasSource_kg7sc")
 
 [node name="Ruins" type="TileMapLayer"]
+z_index = -5
 tile_set = SubResource("TileSet_lvfda")

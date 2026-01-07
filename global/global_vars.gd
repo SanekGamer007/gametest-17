@@ -25,7 +25,7 @@ var flags: Dictionary = { }
 
 func set_flag(flag_name: String, flag_value: Variant):
 	flags[flag_name] = flag_value
-	print_debug("Flag: ", flag_name, " Been set to ", flag_value)
+	print_debug("Flag: ", flag_name, " has been set to \"", flag_value, "\"")
 
 
 func get_flag(flag_name: String, default_value: Variant = false) -> Variant:

@@ -16,7 +16,7 @@ instance_dock/preview_resolution=Vector2i(64, 64)
 [application]
 
 config/name="GAMETEST_17"
-run/main_scene="uid://d3lliphyksikq"
+run/main_scene="uid://dq6b2qk0k0hcr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=30
 config/icon="uid://c0f0w0c32g4a2"

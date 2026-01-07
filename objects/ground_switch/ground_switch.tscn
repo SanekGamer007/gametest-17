@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bedfywyc0hpjs"]
+
+[ext_resource type="PackedScene" uid="uid://xmlqwgs084pa" path="res://objects/lever/lever.tscn" id="1_3wqc2"]
+[ext_resource type="Script" uid="uid://bt5u4w60sxppq" path="res://objects/ground_switch/ground_switch.gd" id="2_e3mm6"]
+[ext_resource type="Texture2D" uid="uid://dqbcn5ftmdkgx" path="res://objects/ground_switch/ground_switch.png" id="2_f8888"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8888"]
+atlas = ExtResource("2_f8888")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3mm6"]
+atlas = ExtResource("2_f8888")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vceh4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8888")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3mm6")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8888"]
+size = Vector2(16, 16)
+
+[node name="GroundSwitch" instance=ExtResource("1_3wqc2")]
+z_index = -1
+script = ExtResource("2_e3mm6")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_vceh4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_f8888")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
