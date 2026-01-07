@@ -8,6 +8,7 @@ var default_settings = {
 	"fullscreen": false,
 	"wide_aspect_ratio": false,
 	"fps_limit": 30,
+	"integer_scaling": false,
 	"language": 0,
 	"mastervolume": 0.5,
 	"soundvolume": 1,
@@ -34,6 +35,7 @@ func save_settings() -> void:
 	settings.set_value("Video", "fullscreen", user_settings.fullscreen)
 	settings.set_value("Video", "wide_aspect_ratio", user_settings.wide_aspect_ratio)
 	settings.set_value("Video", "fps_limit", user_settings.fps_limit)
+	settings.set_value("Video", "integer_scaling", user_settings.integer_scaling)
 	settings.set_value("Game", "language", user_settings.language)
 	settings.set_value("Sound", "mastervolume", snappedf(user_settings.mastervolume, 0.01))
 	settings.set_value("Sound", "soundvolume", snappedf(user_settings.soundvolume, 0.01))
@@ -67,6 +69,7 @@ func _apply_settings() -> void:
 	_apply_mastervolume()
 	_apply_soundvolume()
 	_apply_musicvolume()
+	_apply_integer_scaling()
 
 
 func _reset_settings() -> void:
@@ -109,6 +112,17 @@ func set_fpslimit(value: int) -> void:
 
 func _apply_fpslimit() -> void:
 	Engine.max_fps = user_settings.fps_limit
+
+
+func set_integer_scaling(value: bool) -> void:
+	user_settings.integer_scaling = value
+
+
+func _apply_integer_scaling() -> void:
+	if user_settings.integer_scaling == true:
+		get_window().content_scale_stretch = Window.CONTENT_SCALE_STRETCH_INTEGER
+	else:
+		get_window().content_scale_stretch = Window.CONTENT_SCALE_STRETCH_FRACTIONAL
 
 
 func set_mastervolume(value: float) -> void:
