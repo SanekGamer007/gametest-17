@@ -70,3 +70,10 @@ func change_window_title(title: String) -> void:
 
 func change_window_icon(icon: Image) -> void:
 	DisplayServer.set_icon(icon)
+
+
+func time_to_string(time_in_sec: int):
+	var seconds = time_in_sec % 60
+	var minutes = (time_in_sec / 60) % 60
+	var hours = (time_in_sec / 60) / 60
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]

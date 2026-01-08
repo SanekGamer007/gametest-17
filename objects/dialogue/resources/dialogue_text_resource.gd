@@ -8,7 +8,7 @@ class_name DialogueText
 @export var speaker_img_rest_frame: int = 0
 
 @export_multiline var text: String
-@export_range(0.1, 60.0, 0.1) var text_speed: float = 16.0
+@export_range(0.1, 60.0, 0.1) var text_speed: float = 24.0
 @export var can_be_skipped: bool = true
 @export var auto_skip: bool = false
 

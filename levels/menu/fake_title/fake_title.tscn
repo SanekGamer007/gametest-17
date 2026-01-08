@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ds2xm6648xsyd"]
 
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_7y7fg"]
-[ext_resource type="Script" uid="uid://e8sm7234atm3" path="res://levels/fake_title/fake_title.gd" id="1_fk2go"]
+[ext_resource type="Script" uid="uid://e8sm7234atm3" path="res://levels/menu/fake_title/fake_title.gd" id="1_fk2go"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="3_f8vlo"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_meyqf"]
 
@@ -78,16 +78,15 @@ theme_override_font_sizes/normal_font_size = 26
 text = "[Z] -  Confirm
 [X] -  Cancel
 [C] -  Menu (In-game)
-[S] - Settings (In-menu)
 [F4] -  Fullscreen"
 fit_content = true
 scroll_active = false
 
 [node name="nohpyoulosebozo" type="Label" parent="Instruction/Controls"]
 layout_mode = 0
-offset_top = 208.0
+offset_top = 192.0
 offset_right = 242.0
-offset_bottom = 242.0
+offset_bottom = 224.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_7y7fg")
 theme_override_font_sizes/font_size = 26

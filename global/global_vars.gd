@@ -14,11 +14,13 @@ enum versions {
 }
 
 var room_name: String = ""
-var player_name: String = "CHARA"
-var love: int = 0
-var gold: int = 0
+var player_name: String = ""
+var player_hp: int = 20
+var player_love: int = 1
+var player_gold: int = 0
 var player_at: int = 0
 var player_df: int = 0
+var player_time: int = 0 #in seconds
 var player_inventory: Dictionary = { }
 var flags: Dictionary = { }
 

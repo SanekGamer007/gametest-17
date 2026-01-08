@@ -19,7 +19,12 @@ config/name="GAMETEST_17"
 run/main_scene="uid://dq6b2qk0k0hcr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=30
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://dgtc5ucqlkayo"
 config/icon="uid://c0f0w0c32g4a2"
+boot_splash/minimum_display_time=3000
+boot_splash/minimum_display_time.debug=0
 
 [autoload]
 
@@ -35,7 +40,10 @@ procam="*res://addons/ProCam2D/scripts/autoload.gd"
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/resizable=false
+window/size/borderless=true
 window/stretch/mode="viewport"
+window/size/viewport_width.release=480
+window/size/viewport_height.release=92
 
 [dotnet]
 

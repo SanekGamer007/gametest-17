@@ -1,18 +1,18 @@
 [gd_scene load_steps=20 format=3 uid="uid://cxlivygwdxm72"]
 
-[ext_resource type="Script" uid="uid://c2e87co0yaman" path="res://levels/fake_title/fake_settings/fake_settings.gd" id="1_swa8c"]
-[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_e0ogx"]
-[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_e0ogx"]
-[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="4_seux3"]
-[ext_resource type="AudioStream" uid="uid://cfnnkeevr4lwa" path="res://sounds/deny_harder.wav" id="5_edv04"]
-[ext_resource type="Script" uid="uid://72gs2ja2cv3k" path="res://levels/fake_title/fake_settings/exit.gd" id="5_nmtcq"]
-[ext_resource type="Script" uid="uid://chvsrarbwtu2s" path="res://levels/fake_title/fake_settings/language.gd" id="6_4nlit"]
-[ext_resource type="Script" uid="uid://dvwp4kfvsooe2" path="res://levels/fake_title/fake_settings/fullscreen.gd" id="7_kwiue"]
-[ext_resource type="Script" uid="uid://bq8hhvw7sgaex" path="res://levels/fake_title/fake_settings/fpslimit.gd" id="8_bgfml"]
-[ext_resource type="Script" uid="uid://b4u3a38dknud1" path="res://levels/fake_title/fake_settings/aspectratio.gd" id="8_i3vnj"]
-[ext_resource type="Script" uid="uid://cyxq30c03u00l" path="res://levels/fake_title/fake_settings/soundsvolume.gd" id="9_d5sdd"]
-[ext_resource type="Script" uid="uid://cu1undjl8lqf0" path="res://levels/fake_title/fake_settings/mastervolume.gd" id="9_vjp1r"]
-[ext_resource type="Script" uid="uid://byx64fc3hoewc" path="res://levels/fake_title/fake_settings/musicvolume.gd" id="10_6hihg"]
+[ext_resource type="Script" uid="uid://c2e87co0yaman" path="res://levels/menu/real_settings/real_settings.gd" id="1_kaow7"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="2_5cnke"]
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="3_8qnop"]
+[ext_resource type="Script" uid="uid://72gs2ja2cv3k" path="res://levels/menu/real_settings/exit.gd" id="4_okdtr"]
+[ext_resource type="Script" uid="uid://dvwp4kfvsooe2" path="res://levels/menu/real_settings/settings/fullscreen.gd" id="5_ymdai"]
+[ext_resource type="Script" uid="uid://b4u3a38dknud1" path="res://levels/menu/real_settings/settings/aspectratio.gd" id="6_bnqls"]
+[ext_resource type="Script" uid="uid://bq8hhvw7sgaex" path="res://levels/menu/real_settings/settings/fpslimit.gd" id="7_w1wcn"]
+[ext_resource type="Script" uid="uid://cu1undjl8lqf0" path="res://levels/menu/real_settings/settings/mastervolume.gd" id="8_3nflf"]
+[ext_resource type="Script" uid="uid://cyxq30c03u00l" path="res://levels/menu/real_settings/settings/soundsvolume.gd" id="9_l5y68"]
+[ext_resource type="Script" uid="uid://byx64fc3hoewc" path="res://levels/menu/real_settings/settings/musicvolume.gd" id="10_n1ri2"]
+[ext_resource type="Script" uid="uid://chvsrarbwtu2s" path="res://levels/menu/real_settings/settings/language.gd" id="11_uyplx"]
+[ext_resource type="AudioStream" uid="uid://cfnnkeevr4lwa" path="res://sounds/deny_harder.wav" id="12_826a2"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="13_7dhu4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_seux3"]
 
@@ -26,16 +26,16 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3vnj"]
 
-[node name="FakeSettings" type="Control"]
+[node name="RealSettings" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_swa8c")
+script = ExtResource("1_kaow7")
 
-[node name="SpawnPointA" parent="." instance=ExtResource("3_e0ogx")]
+[node name="SpawnPointA" parent="." instance=ExtResource("2_5cnke")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -64,7 +64,7 @@ anchor_top = 0.04
 anchor_right = 1.0
 anchor_bottom = 0.1
 offset_bottom = 37.199997
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 54
 text = "SETTINGS"
 horizontal_alignment = 1
@@ -90,7 +90,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -100,7 +100,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "EXIT"
 alignment = 0
-script = ExtResource("5_nmtcq")
+script = ExtResource("4_okdtr")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -115,6 +115,7 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="SampleButton" type="Button" parent="BoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -122,7 +123,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -133,12 +134,11 @@ button_mask = 0
 alignment = 0
 
 [node name="HSeparator" type="HSeparator" parent="BoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 112)
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")
 
 [node name="FULLSCREEN" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -146,7 +146,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -156,10 +156,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "FULLSCREEN   %s"
 alignment = 0
-script = ExtResource("7_kwiue")
+script = ExtResource("5_ymdai")
 
 [node name="ASPECTRATIO" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -167,7 +166,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -177,10 +176,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "ASPECT RATIO   %s"
 alignment = 0
-script = ExtResource("8_i3vnj")
+script = ExtResource("6_bnqls")
 
 [node name="FPSLIMIT" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -188,7 +186,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -198,16 +196,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "FPS LIMIT [WIP]   %s"
 alignment = 0
-script = ExtResource("8_bgfml")
+script = ExtResource("7_w1wcn")
 
 [node name="HSeparator4" type="HSeparator" parent="BoxContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")
 
 [node name="MASTERVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -215,7 +211,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -225,10 +221,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "MASTER VOLUME   %s"
 alignment = 0
-script = ExtResource("9_vjp1r")
+script = ExtResource("8_3nflf")
 
 [node name="SOUNDSVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -236,7 +231,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -246,10 +241,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "SOUNDS   %s"
 alignment = 0
-script = ExtResource("9_d5sdd")
+script = ExtResource("9_l5y68")
 
 [node name="MUSICVOLUME" type="Button" parent="BoxContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -257,7 +251,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -267,10 +261,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "MUSIC   %s"
 alignment = 0
-script = ExtResource("10_6hihg")
+script = ExtResource("10_n1ri2")
 
 [node name="HSeparator3" type="HSeparator" parent="BoxContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_seux3")
@@ -283,7 +276,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_e0ogx")
+theme_override_fonts/font = ExtResource("3_8qnop")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_swa8c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nmtcq")
@@ -293,14 +286,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
 text = "LANGUAGE     ENGLISH"
 alignment = 0
-script = ExtResource("6_4nlit")
+script = ExtResource("11_uyplx")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BoxContainer/VBoxContainer/LANGUAGE"]
-stream = ExtResource("5_edv04")
+stream = ExtResource("12_826a2")
 volume_db = -16.0
 bus = &"Sounds"
 
-[node name="LevelData" parent="." instance=ExtResource("4_seux3")]
+[node name="LevelData" parent="." instance=ExtResource("13_7dhu4")]
 level_flags = 3
 
 [connection signal="pressed" from="Title/EXIT" to="Title/EXIT" method="_on_pressed"]

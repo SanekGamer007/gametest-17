@@ -82,7 +82,7 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 script = ExtResource("10_ke2pj")
 speaker_img = ExtResource("19_7yqo8")
 speaker_img_hframes = 2
-text = "Do you really have
+text = "[shake rate=20 level=10]Do you really have
 >NOTHING better to do?"
 text_speed = 10.0
 can_be_skipped = false
@@ -211,17 +211,15 @@ offset_bottom = 220.0
 metadata/_edit_lock_ = true
 
 [node name="FloweyNPC" parent="." instance=ExtResource("7_ykrk4")]
+visible = false
 y_sort_enabled = false
 position = Vector2(1, 101)
 
 [node name="Trigger" parent="." instance=ExtResource("8_idqon")]
-only_activate_once = false
 action = SubResource("Resource_ke2pj")
 condition = true
-operator = 0
 flag_name = "intro_flowey_meet"
 flag_value = false
-target_path = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
 position = Vector2(0, 149)

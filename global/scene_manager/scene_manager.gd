@@ -16,11 +16,8 @@ var player: Chara
 @onready var AnimPlay = $AnimationPlayer
 
 
-func _ready() -> void:
-	$ColorRect.size = get_viewport().get_visible_rect().size
-
-
 func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String, func_name = null, func_args = null):
+	$ColorRect.size = get_viewport().get_visible_rect().size
 	GlobalVars.player_start_busy.emit() # 'busy' will work perfectly for disabling player movement.
 	GlobalVars.close_all_ui.emit()
 	new_target_spawn_id = target_spawn_id
@@ -59,7 +56,7 @@ func _setup_level() -> void:
 	if level_flags & LF_NOCHARA:
 		if level_flags & LF_CUSTOMCAMERA:
 			return
-		var camera = Camera2D.new() # TODO: make a proper no chara camera.
+		var camera = Camera2D.new() # TODO: change to ProCam2D
 		camera.zoom = Vector2(2, 2)
 		get_tree().current_scene.add_child(camera)
 	else:
@@ -70,7 +67,6 @@ func _setup_level() -> void:
 
 func _set_camera() -> void:
 	var camera_bound: ReferenceRect
-	var player_camera: Camera2D
 	for i in get_tree().current_scene.get_children():
 		if i is ReferenceRect and i.name == "CameraBounds":
 			camera_bound = i

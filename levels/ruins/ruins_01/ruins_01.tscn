@@ -63,6 +63,7 @@ position = Vector2(320, 453)
 [node name="SpawnPointB" parent="." instance=ExtResource("5_oh4xk")]
 position = Vector2(320, 130)
 ID = "B"
+facing = 0
 
 [node name="LevelData" parent="." instance=ExtResource("7_sey0j")]
 display_name = "Ruins - Entrance"

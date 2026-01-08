@@ -157,6 +157,7 @@ metadata/_custom_type_script = "uid://2qj1e40noged"
 
 [node name="PCamTarget" type="Node2D" parent="."]
 script = ExtResource("13_vyj1b")
+radius = 0.0
 metadata/_custom_type_script = "uid://dm4f03m2vxjbj"
 
 [node name="Interact" type="Area2D" parent="."]

@@ -8,7 +8,7 @@ class_name DialogueChoice
 @export var speaker_img_rest_frame: int = 0
 
 @export_multiline var text: String
-@export_range(0.1, 30.0, 0.1) var text_speed: float = 16.0
+@export_range(0.1, 30.0, 0.1) var text_speed: float = 24.0
 @export var can_be_skipped: bool = true
 
 @export var text_sound: AudioStream = preload("res://objects/dialogue/sfx/txt_def2.wav")
