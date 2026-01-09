@@ -16,13 +16,16 @@ enum versions {
 var room_name: String = ""
 var player_name: String = ""
 var player_hp: int = 20
+var player_maxhp: int = 20
 var player_love: int = 1
 var player_gold: int = 0
 var player_at: int = 0
 var player_df: int = 0
-var player_time: int = 0 #in seconds
-var player_inventory: Dictionary = { }
+var player_time: int = 0 #in miliseconds
+var player_inventory: Array = [null] # max 10 items
 var flags: Dictionary = { }
+
+var load_time: int = 0 # time at which a save file was loaded.
 
 
 func set_flag(flag_name: String, flag_value: Variant):
