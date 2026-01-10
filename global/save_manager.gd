@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_FILE_LOCATON = "user://file0"
 const SAVE_HEADER = [0x47, 0x54, 0x31, 0x37] # GT17
+
 var libsecret = GameSecrets.new()
 
 

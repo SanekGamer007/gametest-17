@@ -105,13 +105,13 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 	var text_no_square_brackets: String = _text_without_square_brackets(formatted_text)
 	var final_text: String = _process_tags(text_no_square_brackets)
 	var DialogueLength = final_text.length()
-	var buttonarray: Array[Button]
+	var buttonarray: Array[Button] = []
 	DialogueRichText.visible_characters = 0
 	DialogueRichText.text = final_text
 
 	await _write_text(choiceresource, DialogueLength)
 
-	for i in choiceresource.choice_text.size(): #buttons dont have a visible_characts variable so we have to do whatever this is.
+	for i in range(choiceresource.choice_text.size()): #buttons dont have a visible_characts variable so we have to do whatever this is.
 		var dialoguebutton: Button = DialogueButtonPreload.instantiate()
 		dialoguebutton.text = ""
 		$HBoxContainer/VBoxContainer/button_container/VFlowContainer.add_child(dialoguebutton)
@@ -366,7 +366,6 @@ func _process_tags(raw_text: String) -> String:
 
 		if parts.size() >= 2:
 			var tag_type = parts[0]
-			print(tag_type)
 			if tag_type == "var":
 				var node_path = parts[1]
 				var variable_name = parts[2]

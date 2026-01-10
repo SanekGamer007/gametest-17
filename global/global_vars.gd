@@ -6,15 +6,15 @@ signal player_start_busy
 signal player_stop_busy
 signal close_all_ui
 
-const MAJOR_GAME_VERSION: int = 0
-const MINOR_GAME_VERSION: int = 1
-
 enum versions {
 	PROTO,
 	GAMETEST,
 	DEMO,
 	RELEASE,
 }
+
+const MAJOR_GAME_VERSION: int = 0
+const MINOR_GAME_VERSION: int = 1
 
 var player_name: String = ""
 var player_hp: int = 20
@@ -30,7 +30,6 @@ var player_room_spawnpoint: String = "A"
 var player_room_name: String = ""
 var checksum_fail: int = 0
 var flags: Dictionary = { }
-
 var load_time: int = 0 # time at which a save file was loaded.
 
 
