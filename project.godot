@@ -34,6 +34,7 @@ Tools="*res://global/tools.gd"
 Fullscreen="*res://global/fullscreen.gd"
 SettingsManager="*res://global/settings_manager.gd"
 procam="*res://addons/ProCam2D/scripts/autoload.gd"
+SaveManager="*res://global/save_manager.gd"
 
 [display]
 

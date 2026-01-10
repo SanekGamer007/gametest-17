@@ -87,7 +87,7 @@ func _text_resource(textresource: DialogueText) -> void:
 		var camera_tween: Tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 		camera_tween.tween_property(camera, "global_position", textresource.camera_position, textresource.camera_transition_time)
 
-	await _write_text(textresource, DialogueLength, final_text)
+	await _write_text(textresource, DialogueLength)
 	while true:
 		if Input.is_action_pressed("main_button") or textresource.auto_skip:
 			current_dialogue_item += 1
@@ -109,7 +109,7 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 	DialogueRichText.visible_characters = 0
 	DialogueRichText.text = final_text
 
-	await _write_text(choiceresource, DialogueLength, final_text)
+	await _write_text(choiceresource, DialogueLength)
 
 	for i in choiceresource.choice_text.size(): #buttons dont have a visible_characts variable so we have to do whatever this is.
 		var dialoguebutton: Button = DialogueButtonPreload.instantiate()
@@ -262,7 +262,7 @@ func _do_tools(tool: Dialogue) -> void:
 	next_item = true
 
 
-func _write_text(resource: Dialogue, DialogueLength: int, text: String) -> bool:
+func _write_text(resource: Dialogue, DialogueLength: int) -> bool:
 	if !resource.speaker_img:
 		$HBoxContainer/SpeakerParent.visible = false
 		$HBoxContainer/VBoxContainer/MarginContainer.add_theme_constant_override("margin_left", 8)

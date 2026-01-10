@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://cck65dffw2tmx"]
+[gd_scene load_steps=16 format=3 uid="uid://cck65dffw2tmx"]
 
 [ext_resource type="Script" uid="uid://xq87qf2o07sj" path="res://levels/menu/real_title/real_title.gd" id="1_1ev4n"]
-[ext_resource type="Texture2D" uid="uid://d3r703oo0oemb" path="res://test.png" id="2_ces4a"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="3_j35k7"]
 [ext_resource type="Script" uid="uid://bq76nfnhjjthc" path="res://levels/menu/real_title/continue.gd" id="4_ces4a"]
 [ext_resource type="Script" uid="uid://btdlcq4qqxceu" path="res://levels/menu/real_title/settings.gd" id="4_nimnb"]
@@ -42,11 +41,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Test" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(320, 229)
-texture = ExtResource("2_ces4a")
 
 [node name="Save" type="VBoxContainer" parent="."]
 layout_mode = 1
