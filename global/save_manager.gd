@@ -38,6 +38,12 @@ func save_game() -> bool:
 	savebytes.append_array(_get_sha256(savebytes))
 
 	var file = FileAccess.open_encrypted(SAVE_FILE_LOCATON, FileAccess.WRITE, libsecret.get_save_key())
+
+	if file == null:
+		var err = FileAccess.get_open_error()
+		push_error("Unable to open the save file. Error code: %d" % err)
+		return false
+
 	file.store_buffer(savebytes)
 	file.close()
 
@@ -110,7 +116,10 @@ func load_game() -> bool:
 	if increase_naughty:
 		print("naughty")
 		GlobalVars.checksum_fail += 1
-		save_game()
+		if GlobalVars.checksum_fail >= 3:
+			return true
+		else:
+			save_game()
 	return true
 
 
