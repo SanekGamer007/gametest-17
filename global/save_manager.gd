@@ -51,19 +51,19 @@ func save_game() -> bool:
 	return true
 
 
-func load_game() -> bool:
+func load_game() -> Dictionary:
 	var increase_naughty: bool = false
 
 	if not FileAccess.file_exists(SAVE_FILE_LOCATON):
 		push_warning("Save file not found.")
-		return false
+		return { }
 
 	var file = FileAccess.open_encrypted(SAVE_FILE_LOCATON, FileAccess.READ, libsecret.get_save_key())
 
 	if file == null:
 		var err = FileAccess.get_open_error()
 		push_error("Unable to open the save file. Error code: %d" % err)
-		return false
+		return { }
 
 	var filebytes = file.get_buffer(file.get_length())
 	var save_checksum: PackedByteArray = filebytes.slice(-32)
@@ -71,8 +71,8 @@ func load_game() -> bool:
 
 	var header: PackedByteArray = filebytes.slice(0, 4)
 	if not header.get_string_from_utf8() == "GT17":
-		push_error(header.get_string_from_utf8(), "is an Invalid header.")
-		return false
+		push_error("The save file contains an invalid header.")
+		return { }
 	var save_version: Array
 	save_version = filebytes.slice(4, 6)
 
@@ -81,7 +81,7 @@ func load_game() -> bool:
 			push_error("Save file is made for an older version of the game, migration is currently not supported.")
 		else:
 			push_error("Save file is made for an newer version of the game.")
-		return false
+		return { }
 
 	if _get_sha256(filebytes.slice(0, -32)) != save_checksum:
 		increase_naughty = true # save file may have been modified.
@@ -95,11 +95,27 @@ func load_game() -> bool:
 
 	var save_dict: Dictionary = bytes_to_var(save_dict_bytes)
 
-	var save_vars: Dictionary = save_dict.get("vars")
-	var save_flags: Dictionary = save_dict.get("flags")
-	if save_vars == null or save_flags == null:
+	if save_dict.get("vars") == null or save_dict.get("flags") == null:
 		push_error("Save file is corrupted.")
+		return { }
+
+	#if increase_naughty:
+	#	GlobalVars.checksum_fail += 1
+	#	if GlobalVars.checksum_fail < 3:
+	#		save_game()
+	return save_dict
+
+
+func load_save_to_global(save_dict: Dictionary) -> bool:
+	if save_dict == null or save_dict == { }:
+		if OS.is_debug_build():
+			push_error("save_dict is invalid.")
+		else:
+			push_error("Save file is corrupted.")
 		return false
+
+	var save_vars = save_dict.get("vars")
+	var save_flags = save_dict.get("flags")
 
 	for variable in save_vars:
 		if variable in GlobalVars:
@@ -113,14 +129,6 @@ func load_game() -> bool:
 
 	for flag in save_flags:
 		GlobalVars.set_flag(flag, save_flags.get(flag))
-
-	if increase_naughty:
-		print("naughty")
-		GlobalVars.checksum_fail += 1
-		if GlobalVars.checksum_fail >= 3:
-			return true
-		else:
-			save_game()
 	return true
 
 

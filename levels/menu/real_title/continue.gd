@@ -1,5 +1,15 @@
 extends Button
 
+var save_data: Dictionary = { }
+
+
 func _on_pressed() -> void:
+	if save_data == null:
+		return
+
+	if SaveManager.load_save_to_global(save_data) == false:
+		push_error("Error loading the save file.")
+		return
+
 	GlobalVars.load_time = Time.get_ticks_msec()
-	SceneManager.change_scene("res://levels/test_level.tscn", "A", "none")
+	SceneManager.change_scene(GlobalVars.player_room, GlobalVars.player_room_spawnpoint, "none")

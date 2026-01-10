@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtx7x1eplfijq"]
+[gd_scene load_steps=16 format=3 uid="uid://dtx7x1eplfijq"]
 
 [ext_resource type="Script" uid="uid://b673gx1d4i34c" path="res://entities/chara/chara.gd" id="1_3h0bg"]
 [ext_resource type="Texture2D" uid="uid://bxk4226nhk08x" path="res://entities/chara/spr/overworld/down_idle.png" id="1_7x65y"]
@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c71bwpcc7plwl" path="res://entities/chara/spr/overworld/up_walk1.png" id="9_xnmel"]
 [ext_resource type="Texture2D" uid="uid://be5ryatrrckpj" path="res://entities/chara/spr/overworld/up_walk2.png" id="10_o3hpw"]
 [ext_resource type="Script" uid="uid://bhpwkt0f1787u" path="res://entities/chara/interact.gd" id="12_dqf2e"]
-[ext_resource type="Script" uid="uid://2qj1e40noged" path="res://addons/ProCam2D/scripts/procam2d.gd" id="12_t8b6n"]
-[ext_resource type="Script" uid="uid://dm4f03m2vxjbj" path="res://addons/ProCam2D/scripts/core/nodes/pcam_target.gd" id="13_vyj1b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aisja"]
 animations = [{
@@ -128,38 +126,6 @@ frame_progress = 0.10446429
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_miaux")
 
-[node name="ProCam2D" type="Node2D" parent="."]
-z_index = 4096
-z_as_relative = false
-script = ExtResource("12_t8b6n")
-process_frame = 0
-follow_mode = 0
-drag_type = 3
-smooth_drag = false
-max_distance = Vector2(100000, 100000)
-offset = Vector2(0, 0)
-smooth_offset = true
-smooth_offset_speed = 2.0
-allow_rotation = false
-zoom = 2.0
-smooth_zoom = false
-auto_zoom = false
-smooth_limit = true
-left_limit = -10000000
-right_limit = 10000000
-top_limit = -10000000
-bottom_limit = 10000000
-use_h_margins = false
-use_v_margins = false
-working_radius = 2000.0
-global_debug_draw = false
-metadata/_custom_type_script = "uid://2qj1e40noged"
-
-[node name="PCamTarget" type="Node2D" parent="."]
-script = ExtResource("13_vyj1b")
-radius = 0.0
-metadata/_custom_type_script = "uid://dm4f03m2vxjbj"
-
 [node name="Interact" type="Area2D" parent="."]
 script = ExtResource("12_dqf2e")
 
@@ -167,6 +133,9 @@ script = ExtResource("12_dqf2e")
 position = Vector2(0, 15.5)
 shape = SubResource("RectangleShape2D_dqf2e")
 debug_color = Color(0.22376934, 0.9999998, 0.20066378, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [connection signal="area_entered" from="Interact" to="Interact" method="_on_area_entered"]
 [connection signal="area_exited" from="Interact" to="Interact" method="_on_area_exited"]

@@ -33,7 +33,6 @@ SceneManager="*res://global/scene_manager/scene_manager.tscn"
 Tools="*res://global/tools.gd"
 Fullscreen="*res://global/fullscreen.gd"
 SettingsManager="*res://global/settings_manager.gd"
-procam="*res://addons/ProCam2D/scripts/autoload.gd"
 SaveManager="*res://global/save_manager.gd"
 
 [display]
@@ -50,9 +49,14 @@ window/size/viewport_height.release=92
 
 project/assembly_name="GAMETEST_17"
 
+[editor]
+
+movie_writer/movie_file="/home/snk07/Projects/gametest-17/test.avi"
+movie_writer/fps=30
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/ProCam2D/plugin.cfg", "res://addons/ShakeNode2D/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/ShakeNode2D/plugin.cfg")
 
 [global_group]
 

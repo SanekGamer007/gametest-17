@@ -53,12 +53,10 @@ func _setup_level() -> void:
 	else:
 		push_warning("Scene: " + get_tree().current_scene.name + " Doesn't contain a LevelData node, skipping level flags...")
 	GlobalVars.player_stop_busy.emit()
+	if level_flags & LF_CUSTOMCAMERA:
+		return
 	if level_flags & LF_NOCHARA:
-		if level_flags & LF_CUSTOMCAMERA:
-			return
-		var camera = Camera2D.new() # TODO: change to ProCam2D
-		camera.zoom = Vector2(2, 2)
-		get_tree().current_scene.add_child(camera)
+		return
 	else:
 		player = PLAYER_SCENE.instantiate()
 		get_tree().current_scene.add_child(player)
@@ -67,16 +65,21 @@ func _setup_level() -> void:
 
 func _set_camera() -> void:
 	var camera_bound: ReferenceRect
+	var player_camera: Camera2D
+
 	for i in get_tree().current_scene.get_children():
 		if i is ReferenceRect and i.name == "CameraBounds":
 			camera_bound = i
 			break
-	if camera_bound:
+
+	player_camera = player.get_node("Camera2D")
+
+	if player_camera and camera_bound:
 		var rect: Rect2 = camera_bound.get_global_rect()
-		procam.top_limit = int(rect.position.y)
-		procam.bottom_limit = int(rect.end.y)
-		procam.left_limit = int(rect.position.x)
-		procam.right_limit = int(rect.end.x)
+		player_camera.limit_top = int(rect.position.y)
+		player_camera.limit_bottom = int(rect.end.y)
+		player_camera.limit_left = int(rect.position.x)
+		player_camera.limit_right = int(rect.end.x)
 	else:
 		push_error("Failed to initialize camera bounds.")
 		if OS.is_debug_build():
