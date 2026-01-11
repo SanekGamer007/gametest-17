@@ -11,6 +11,13 @@ func _ready() -> void:
 
 
 func save_game() -> bool:
+	print("Starting saving")
+	var session_time: int = Time.get_ticks_msec() - GlobalVars.load_time
+	var play_time: int = GlobalVars.player_time
+
+	if GlobalVars.load_time != 0 or GlobalVars.load_time != null:
+		play_time += session_time
+
 	var savebytes: PackedByteArray = _get_header_with_version()
 	var save_variables: Dictionary = {
 		"player_name": GlobalVars.player_name,
@@ -20,11 +27,10 @@ func save_game() -> bool:
 		"player_gold": GlobalVars.player_gold,
 		"player_at": GlobalVars.player_at,
 		"player_df": GlobalVars.player_df,
-		"player_time": GlobalVars.player_time,
+		"player_time": play_time,
 		"player_inventory": GlobalVars.player_inventory,
-		"player_room_uid": GlobalVars.player_room_uid,
+		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
-		"player_room_name": GlobalVars.player_room_name,
 		"checksum_fail": GlobalVars.checksum_fail,
 	}
 	var data_dict: Dictionary = {
@@ -47,6 +53,8 @@ func save_game() -> bool:
 
 	file.store_buffer(savebytes)
 	file.close()
+
+	print("Done saving!")
 
 	return true
 

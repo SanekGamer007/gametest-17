@@ -85,3 +85,18 @@ func _set_camera() -> void:
 		if OS.is_debug_build():
 			if not camera_bound:
 				push_error("camera_bound Not found.")
+
+
+func get_level_title(path: String) -> String:
+	var levelscene: PackedScene = load(path)
+	var level: Node = levelscene.instantiate()
+	var leveldata: LevelData = level.get_node_or_null("LevelData")
+	var room_name: String
+
+	if leveldata:
+		room_name = leveldata.display_name
+		if room_name == "":
+			room_name = level.name
+
+	level.free()
+	return room_name

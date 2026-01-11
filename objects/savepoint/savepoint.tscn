@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi53568tpdtvn"]
+
+[ext_resource type="Texture2D" uid="uid://rqiw4rfc1wm7" path="res://objects/savepoint/savepoint.png" id="1_2etmx"]
+[ext_resource type="Script" uid="uid://shnt3hywvnmx" path="res://objects/savepoint/savepoint.gd" id="1_ew0kp"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="2_d5mw4"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="3_quiya"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="4_rroyc"]
+
+[sub_resource type="Resource" id="Resource_iko7i"]
+script = ExtResource("3_quiya")
+text = "(The randomness of this room
+>and the ugly gray background
+>fill you with DETERMINATION.)"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew0kp"]
+atlas = ExtResource("1_2etmx")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_318r5"]
+atlas = ExtResource("1_2etmx")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcs8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew0kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_318r5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5mw4"]
+
+[node name="SavePoint" type="Area2D"]
+script = ExtResource("1_ew0kp")
+dialogue = Array[ExtResource("2_d5mw4")]([SubResource("Resource_iko7i")])
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lcs8r")
+autoplay = "default"
+frame_progress = 0.62672436
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d5mw4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_d5mw4")

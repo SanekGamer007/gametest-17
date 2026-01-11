@@ -81,12 +81,6 @@ func _text_resource(textresource: DialogueText) -> void:
 	DialogueRichText.text = final_text
 	var DialogueLength = DialogueRichText.get_total_character_count()
 	DialogueRichText.visible_characters = 0
-
-	var camera: Camera2D = get_viewport().get_camera_2d()
-	if camera and textresource.camera_position != Vector2(999.999, 999.999):
-		var camera_tween: Tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-		camera_tween.tween_property(camera, "global_position", textresource.camera_position, textresource.camera_transition_time)
-
 	await _write_text(textresource, DialogueLength)
 	while true:
 		if Input.is_action_pressed("main_button") or textresource.auto_skip:

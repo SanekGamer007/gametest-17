@@ -25,12 +25,12 @@ var player_at: int = 0
 var player_df: int = 0
 var player_time: int = 0 #in miliseconds
 var player_inventory: Array = [null] # max 10 items
-var player_room: String = "res://levels/intro/intro_01/intro_01.tscn"
+var player_room: String = "res://levels/test_level.tscn"
 var player_room_spawnpoint: String = "A"
 var player_room_name: String = ""
-var checksum_fail: int = 0
 var flags: Dictionary = { }
 var load_time: int = 0 # time at which a save file was loaded.
+var checksum_fail: int = 0
 
 
 func set_flag(flag_name: String, flag_value: Variant):

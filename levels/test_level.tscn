@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene load_steps=77 format=3 uid="uid://bg4x37m08e2hi"]
 
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue_interaction/dialogue_interaction.tscn" id="3_e7anx"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://bdsia7shjiegi" path="res://objects/dialogue/resources/actions/action_function_resource.gd" id="13_wjuib"]
 [ext_resource type="Script" uid="uid://dn36f6pjggx78" path="res://objects/dialogue/resources/obsolete/dialogue_action_resource.gd" id="14_xag4j"]
 [ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="16_pgbyh"]
-[ext_resource type="Script" uid="uid://45bt1pc4j31h" path="res://objects/dialogue/resources/dialogue_move_resource.gd" id="17_ulql8"]
 [ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="20_n4g7x"]
 [ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="21_atrxo"]
 [ext_resource type="Script" uid="uid://33oa077n2p4a" path="res://objects/dialogue/resources/dialogue_conditional_action_resource.gd" id="21_vr6yy"]
@@ -32,6 +31,7 @@
 [ext_resource type="Script" uid="uid://c3qu4a1b0prvf" path="res://objects/dialogue/resources/types/variant.gd" id="29_kbjoq"]
 [ext_resource type="PackedScene" uid="uid://bedfywyc0hpjs" path="res://objects/ground_switch/ground_switch.tscn" id="30_kbjoq"]
 [ext_resource type="Script" uid="uid://c4astpgarc4d" path="res://objects/lever/resources/lever_action_mode_resource.gd" id="31_m2xr1"]
+[ext_resource type="PackedScene" uid="uid://bi53568tpdtvn" path="res://objects/savepoint/savepoint.tscn" id="32_hj2pq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x25rp"]
 size = Vector2(20, 7)
@@ -72,13 +72,6 @@ metadata/_custom_type_script = "uid://d0njcuoatdla0"
 script = ExtResource("12_3i7yh")
 wait_time = 0.7
 metadata/_custom_type_script = "uid://br7iu6heleuet"
-
-[sub_resource type="Resource" id="Resource_go7er"]
-script = ExtResource("13_wjuib")
-target_path = NodePath(".")
-function_name = "cam_shake"
-show_dialogue_box = false
-metadata/_custom_type_script = "uid://bdsia7shjiegi"
 
 [sub_resource type="Resource" id="Resource_o5yuq"]
 script = ExtResource("5_wndkh")
@@ -130,32 +123,7 @@ metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
 
 [sub_resource type="Resource" id="Resource_4n8tn"]
 script = ExtResource("4_wndkh")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_0vv12"), SubResource("Resource_paa45"), SubResource("Resource_uu81q"), SubResource("Resource_6wuxv"), SubResource("Resource_go7er"), SubResource("Resource_o5yuq"), SubResource("Resource_vr6yy"), SubResource("Resource_5y2bn"), SubResource("Resource_m2xr1"), SubResource("Resource_ec2iw")])
-metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
-
-[sub_resource type="Resource" id="Resource_kbtcf"]
-script = ExtResource("5_wndkh")
-text = "dfg"
-metadata/_custom_type_script = "uid://xdgi2kp04lc8"
-
-[sub_resource type="Resource" id="Resource_pd36w"]
-script = ExtResource("13_pgbyh")
-flag_name = "test_flag"
-flag_value = 3
-var_value = null
-metadata/_custom_type_script = "uid://bcy5xchh4xucg"
-
-[sub_resource type="Resource" id="Resource_vg8fp"]
-script = ExtResource("17_ulql8")
-target_path = NodePath("..")
-move_duration = 0.5
-is_relative = true
-move_location = Vector2(16, 0)
-metadata/_custom_type_script = "uid://45bt1pc4j31h"
-
-[sub_resource type="Resource" id="Resource_61jrn"]
-script = ExtResource("4_wndkh")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_kbtcf"), SubResource("Resource_pd36w"), SubResource("Resource_vg8fp")])
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_ly3hx"), SubResource("Resource_0vv12"), SubResource("Resource_paa45"), SubResource("Resource_uu81q"), SubResource("Resource_6wuxv"), SubResource("Resource_o5yuq"), SubResource("Resource_vr6yy"), SubResource("Resource_5y2bn"), SubResource("Resource_m2xr1"), SubResource("Resource_ec2iw")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [sub_resource type="Resource" id="Resource_x7oem"]
@@ -295,7 +263,7 @@ script = ExtResource("31_m2xr1")
 action = SubResource("Resource_nv0f7")
 metadata/_custom_type_script = "uid://c4astpgarc4d"
 
-[node name="test_level" type="Node2D"]
+[node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Test" type="StaticBody2D" parent="."]
@@ -342,29 +310,6 @@ dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_4n8tn")])
 position = Vector2(-94, 43)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Test3" type="StaticBody2D" parent="."]
-y_sort_enabled = true
-position = Vector2(157, 50)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3"]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_x25rp")
-
-[node name="Sprite2D" type="Sprite2D" parent="Test3"]
-position = Vector2(0, -20)
-scale = Vector2(21, 40.999996)
-texture = SubResource("PlaceholderTexture2D_gmgay")
-
-[node name="DialogueInteraction" parent="Test3" instance=ExtResource("3_e7anx")]
-position = Vector2(94, -46)
-script = ExtResource("4_ly3hx")
-dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_61jrn")])
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test3/DialogueInteraction"]
-position = Vector2(-94, 43)
-shape = SubResource("RectangleShape2D_x25rp")
-
 [node name="SpawnPointA" parent="." instance=ExtResource("3_gmgay")]
 position = Vector2(0, 75)
 
@@ -407,3 +352,5 @@ action_after_first_activation = SubResource("Resource_hy5fw")
 position = Vector2(92, 134)
 mode = SubResource("Resource_w55l6")
 only_activate_once = true
+
+[node name="SavePoint" parent="." instance=ExtResource("32_hj2pq")]
