@@ -1,5 +1,5 @@
-extends Action
 class_name ActionFunction
+extends Action
 
 @export var target_path: NodePath
 @export var function_name: String

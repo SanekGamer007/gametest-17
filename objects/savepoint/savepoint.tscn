@@ -1,17 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi53568tpdtvn"]
+[gd_scene load_steps=8 format=3 uid="uid://bi53568tpdtvn"]
 
 [ext_resource type="Texture2D" uid="uid://rqiw4rfc1wm7" path="res://objects/savepoint/savepoint.png" id="1_2etmx"]
 [ext_resource type="Script" uid="uid://shnt3hywvnmx" path="res://objects/savepoint/savepoint.gd" id="1_ew0kp"]
-[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="2_d5mw4"]
-[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="3_quiya"]
-[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="4_rroyc"]
-
-[sub_resource type="Resource" id="Resource_iko7i"]
-script = ExtResource("3_quiya")
-text = "(The randomness of this room
->and the ugly gray background
->fill you with DETERMINATION.)"
-metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+[ext_resource type="AudioStream" uid="uid://bhgarq8u1vm8f" path="res://audio/sfx/save_power.wav" id="6_quiya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew0kp"]
 atlas = ExtResource("1_2etmx")
@@ -39,7 +30,6 @@ animations = [{
 
 [node name="SavePoint" type="Area2D"]
 script = ExtResource("1_ew0kp")
-dialogue = Array[ExtResource("2_d5mw4")]([SubResource("Resource_iko7i")])
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lcs8r")
@@ -53,3 +43,6 @@ shape = SubResource("RectangleShape2D_d5mw4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_d5mw4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_quiya")

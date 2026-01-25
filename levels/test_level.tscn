@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene load_steps=63 format=3 uid="uid://bg4x37m08e2hi"]
 
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://b6lwjw3n6i2l5" path="res://objects/dialogue_interaction/dialogue_interaction.tscn" id="3_e7anx"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="4_ur00s"]
 [ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="4_wndkh"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="5_wndkh"]
-[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="7_4n8tn"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="7_4n8tn"]
 [ext_resource type="Script" uid="uid://daoklmdujs6st" path="res://objects/dialogue/resources/dialogue_tools_resource.gd" id="8_paa45"]
 [ext_resource type="PackedScene" uid="uid://c85gxv6pwwh8f" path="res://entities/testnpc/testnpc.tscn" id="8_wndkh"]
 [ext_resource type="Script" uid="uid://behuvjubs2pu6" path="res://objects/dialogue/resources/obsolete/move_resource.gd" id="9_axl34"]
@@ -25,13 +25,8 @@
 [ext_resource type="Script" uid="uid://dlmfsgrhd5gpd" path="res://objects/dialogue/resources/types/flag.gd" id="22_vr6yy"]
 [ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/actions/action_jump_resource.gd" id="24_ec2iw"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="26_ec2iw"]
-[ext_resource type="PackedScene" uid="uid://xmlqwgs084pa" path="res://objects/lever/lever.tscn" id="27_ulql8"]
-[ext_resource type="Script" uid="uid://bkwvfbptiy8a5" path="res://objects/lever/resources/lever_check_mode_resource.gd" id="28_5y2bn"]
-[ext_resource type="Script" uid="uid://bp057ys03g3ye" path="res://levels/lever.gd" id="28_hj2pq"]
-[ext_resource type="Script" uid="uid://c3qu4a1b0prvf" path="res://objects/dialogue/resources/types/variant.gd" id="29_kbjoq"]
-[ext_resource type="PackedScene" uid="uid://bedfywyc0hpjs" path="res://objects/ground_switch/ground_switch.tscn" id="30_kbjoq"]
-[ext_resource type="Script" uid="uid://c4astpgarc4d" path="res://objects/lever/resources/lever_action_mode_resource.gd" id="31_m2xr1"]
 [ext_resource type="PackedScene" uid="uid://bi53568tpdtvn" path="res://objects/savepoint/savepoint.tscn" id="32_hj2pq"]
+[ext_resource type="Script" uid="uid://b6ln53gbnmdof" path="res://objects/dialogue/resources/actions/action_save_resource.gd" id="33_04rbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x25rp"]
 size = Vector2(20, 7)
@@ -197,78 +192,23 @@ metadata/_custom_type_script = "uid://c6i3oamaw72ut"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ec2iw"]
 size = Vector2(62, 31)
 
-[sub_resource type="Resource" id="Resource_6p073"]
+[sub_resource type="Resource" id="Resource_iko7i"]
 script = ExtResource("5_wndkh")
-text = "testing your [b]balls.[/b]
->                         [color=red]
-[shake rate=20 level=10]fuck you[/shake]"
+text = "(The randomness of this room
+>and the ugly gray background
+>fill you with DETERMINATION.)"
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_f6uq2"]
-script = ExtResource("5_wndkh")
-text = "[img=top,64x64]levels/test.png[/img][color=black].[/color] fat ass fuck you"
-metadata/_custom_type_script = "uid://xdgi2kp04lc8"
-
-[sub_resource type="Resource" id="Resource_uwnq0"]
-script = ExtResource("21_atrxo")
-override_dialogue_offset = true
-override_offset = Vector2(0, 160)
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_6p073"), SubResource("Resource_f6uq2")])
-metadata/_custom_type_script = "uid://c6i3oamaw72ut"
-
-[sub_resource type="Resource" id="Resource_x6sc1"]
-script = ExtResource("13_wjuib")
-target_path = NodePath(".")
-function_name = "change_icon"
-metadata/_custom_type_script = "uid://bdsia7shjiegi"
-
-[sub_resource type="Resource" id="Resource_kaa6k"]
-script = ExtResource("22_vr6yy")
-name = "testflag"
-metadata/_custom_type_script = "uid://dlmfsgrhd5gpd"
-
-[sub_resource type="Resource" id="Resource_h8ll6"]
-script = ExtResource("29_kbjoq")
-value = true
-metadata/_custom_type_script = "uid://c3qu4a1b0prvf"
-
-[sub_resource type="Resource" id="Resource_4b7wo"]
-script = ExtResource("28_5y2bn")
-value_one = SubResource("Resource_kaa6k")
-value_two = SubResource("Resource_h8ll6")
-action_true = SubResource("Resource_x6sc1")
-action_false = SubResource("Resource_uwnq0")
-metadata/_custom_type_script = "uid://bkwvfbptiy8a5"
-
-[sub_resource type="Resource" id="Resource_pes0k"]
-script = ExtResource("5_wndkh")
-text = "Did you see that?
-What even was that?"
-metadata/_custom_type_script = "uid://xdgi2kp04lc8"
-
-[sub_resource type="Resource" id="Resource_hy5fw"]
-script = ExtResource("21_atrxo")
-dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_pes0k")])
-metadata/_custom_type_script = "uid://c6i3oamaw72ut"
-
-[sub_resource type="Resource" id="Resource_nv0f7"]
-script = ExtResource("13_wjuib")
-target_path = NodePath("/root/SceneManager")
-function_name = "change_scene"
-function_arguments = ["res://levels/ruins/ruins_02/ruins_02.tscn", "A", "normal"]
-metadata/_custom_type_script = "uid://bdsia7shjiegi"
-
-[sub_resource type="Resource" id="Resource_w55l6"]
-script = ExtResource("31_m2xr1")
-action = SubResource("Resource_nv0f7")
-metadata/_custom_type_script = "uid://c4astpgarc4d"
+[sub_resource type="Resource" id="Resource_pd36w"]
+script = ExtResource("33_04rbu")
+metadata/_custom_type_script = "uid://b6ln53gbnmdof"
 
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Test" type="StaticBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(99, 53)
+position = Vector2(100, 60)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
@@ -289,7 +229,7 @@ shape = SubResource("RectangleShape2D_x25rp")
 
 [node name="Test2" type="StaticBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-122, 59)
+position = Vector2(-120, 60)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test2"]
@@ -311,10 +251,10 @@ position = Vector2(-94, 43)
 shape = SubResource("RectangleShape2D_x25rp")
 
 [node name="SpawnPointA" parent="." instance=ExtResource("3_gmgay")]
-position = Vector2(0, 75)
+position = Vector2(0, 70)
 
 [node name="TestNPC" parent="." instance=ExtResource("8_wndkh")]
-position = Vector2(-24, 6)
+position = Vector2(-20, 10)
 
 [node name="CameraBounds" parent="." instance=ExtResource("10_4n8tn")]
 offset_left = -200.0
@@ -332,25 +272,16 @@ flag_name = "test_flag"
 flag_value = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="Trigger"]
-position = Vector2(-0.12501526, 0.625)
+position = Vector2(-4.9999995, -4)
 scale = Vector2(61.75, 31.25001)
 texture = SubResource("PlaceholderTexture2D_x7oem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(-5, -4)
 shape = SubResource("RectangleShape2D_ec2iw")
 
 [node name="LevelData" parent="." instance=ExtResource("26_ec2iw")]
 
-[node name="lever" parent="." instance=ExtResource("27_ulql8")]
-position = Vector2(72, -38)
-script = ExtResource("28_hj2pq")
-mode = SubResource("Resource_4b7wo")
-only_activate_once = true
-action_after_first_activation = SubResource("Resource_hy5fw")
-
-[node name="GroundSwitch" parent="." instance=ExtResource("30_kbjoq")]
-position = Vector2(92, 134)
-mode = SubResource("Resource_w55l6")
-only_activate_once = true
-
 [node name="SavePoint" parent="." instance=ExtResource("32_hj2pq")]
+position = Vector2(-60, 130)
+dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_iko7i"), SubResource("Resource_pd36w")])

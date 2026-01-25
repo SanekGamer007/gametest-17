@@ -78,9 +78,9 @@ theme_override_font_sizes/bold_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 16
 bbcode_enabled = true
-text = "TEST
-tEST2 GGGggggggg
-TEST 3..................."
+text = "* TEST
+* tEST2 GGGggggggg
+* TEST 3................."
 scroll_active = false
 visible_characters_behavior = 1
 

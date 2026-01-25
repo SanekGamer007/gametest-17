@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cyxq30c03u00l" path="res://levels/menu/real_settings/settings/soundsvolume.gd" id="9_l5y68"]
 [ext_resource type="Script" uid="uid://byx64fc3hoewc" path="res://levels/menu/real_settings/settings/musicvolume.gd" id="10_n1ri2"]
 [ext_resource type="Script" uid="uid://chvsrarbwtu2s" path="res://levels/menu/real_settings/settings/language.gd" id="11_uyplx"]
-[ext_resource type="AudioStream" uid="uid://cfnnkeevr4lwa" path="res://sounds/deny_harder.wav" id="12_826a2"]
+[ext_resource type="AudioStream" uid="uid://cfnnkeevr4lwa" path="res://audio/sfx/ui/deny_harder.wav" id="12_826a2"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="13_7dhu4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_seux3"]
@@ -174,7 +174,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_4nlit")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_edv04")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_i3vnj")
 button_mask = 0
-text = "ASPECT RATIO   %s"
+text = "ASPECT RATIO [WIP]   %s"
 alignment = 0
 script = ExtResource("6_bnqls")
 

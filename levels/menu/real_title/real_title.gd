@@ -2,6 +2,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not SaveManager.sys_file_exists():
+		GlobalVars.has_beaten_demo = true
+		SaveManager.save_system_information()
+	if not SaveManager.save_file_exists():
+		GlobalVars.player_name = "DEBUG1"
+		SceneManager.change_scene("res://levels/test_level.tscn", "A", "none")
+		return
 	var save_data: Dictionary = SaveManager.load_game()
 	var save_data_vars = save_data.get("vars")
 

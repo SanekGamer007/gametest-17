@@ -4,7 +4,7 @@ var save_data: Dictionary = { }
 
 
 func _on_pressed() -> void:
-	if save_data == null:
+	if save_data == null or save_data == { }:
 		return
 
 	if SaveManager.load_save_to_global(save_data) == false:

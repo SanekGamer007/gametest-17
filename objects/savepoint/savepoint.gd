@@ -33,7 +33,9 @@ func _activate_dialogue() -> void:
 
 
 func interaction(player: Node) -> void:
+	GlobalVars.player_start_busy.emit()
 	player_node = player
+	$AudioStreamPlayer.play()
 	_activate_dialogue()
 
 

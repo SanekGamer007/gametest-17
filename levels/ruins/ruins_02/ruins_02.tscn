@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="5_pg48v"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="6_mxoay"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="7_g1hfo"]
-[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://objects/dialogue/sfx/txt_def1.wav" id="8_5obns"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="8_5obns"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="9_pg48v"]
 [ext_resource type="PackedScene" uid="uid://deid8e1ufalki" path="res://objects/room_transition/room_transition.tscn" id="10_mxoay"]
 [ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="11_g1hfo"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="12_5obns"]
 [ext_resource type="PackedScene" uid="uid://xmlqwgs084pa" path="res://objects/lever/lever.tscn" id="13_clh1b"]
-[ext_resource type="PackedScene" uid="uid://bedfywyc0hpjs" path="res://objects/ground_switch/ground_switch.tscn" id="14_dvmto"]
 [ext_resource type="Texture2D" uid="uid://b41n7xwvcn87r" path="res://levels/ruins/shared/ruins_door.png" id="15_dvmto"]
+[ext_resource type="PackedScene" uid="uid://bg0v7fd75f52u" path="res://objects/ground_switch/ground_switch.tscn" id="15_flldc"]
 
 [sub_resource type="Resource" id="Resource_clh1b"]
 script = ExtResource("7_g1hfo")
@@ -45,6 +45,10 @@ offset_right = 501.0
 offset_bottom = 396.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-20, -170)
+texture = ExtResource("15_dvmto")
 
 [node name="Ruins" parent="." instance=ExtResource("2_t8p2e")]
 tile_map_data = PackedByteArray("AAD//wAAAQAAAAEAAAAAAAAAAQAAAAEAAAD//wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAP//AQAAAAEAAAD/////AQAAAAEAAAD///7/AQAAAAEAAAD+//3/AQAAAAEAAAD+//z/AQAAAAEAAAD+//v/AQAAAAEAAAD9//v/AQAAAAEAAAD9//z/AQAAAAEAAAD+//r/AQAAAAEAAAD+//n/AQAAAAEAAAD///n/AQAAAAEAAAD+//7/AgAIAAMAAAD9//3/AgAIAAMAAAD///3/AgAJAAIAAAAAAP7/AgAJAAIAAAD///r/AgAJAAMAAAD9//r/AgAIAAIAAAAAAP3/AQAAAAIAAAAAAPz/AQAAAAIAAAD///z/AQAAAAIAAAD///v/AQAAAAIAAAAAAPv/AQAAAAIAAAABAP//AQAAAAIAAAACAP//AQAAAAIAAAADAP//AQAAAAIAAAADAP7/AQAAAAIAAAACAP7/AgAAAAIAAAABAP7/AQAAAAIAAAAEAP7/AQAAAAIAAAAFAP3/AQAAAAIAAAAEAP3/AQAAAAIAAAADAP3/AQAAAAIAAAABAP3/AQAAAAIAAAD+////AQAAAAIAAAD9////AQAAAAIAAAD9//7/AQAAAAIAAAD8//7/AQAAAAIAAAD7//7/AQAAAAIAAAD7//3/AQAAAAIAAAD8//3/AQAAAAIAAAD8//z/AQAAAAIAAAD7//z/AQAAAAIAAAD7//v/AQAAAAIAAAD8//v/AQAAAAIAAAD8//r/AQAAAAIAAAD7//r/AQAAAAIAAAD7//n/AQAAAAIAAAD8//n/AQAAAAIAAAD9//n/AQAAAAIAAAAAAPn/AQAAAAIAAAAAAPr/AQAAAAIAAAABAPn/AQAAAAIAAAACAPn/AQAAAAIAAAADAPn/AQAAAAIAAAADAPr/AQAAAAIAAAACAPr/AgAEAAMAAAABAPr/AQAAAAIAAAAEAPr/AQAAAAIAAAAFAPv/AQAAAAIAAAAEAPv/AQAAAAIAAAADAPv/AQAAAAIAAAACAPv/AgACAAMAAAABAPv/AQAAAAIAAAABAPz/AQAAAAIAAAACAPz/AgACAAMAAAADAPz/AQAAAAIAAAAEAPz/AQAAAAIAAAAFAPz/AQAAAAIAAAD6//3/AQAAAAIAAAD6//z/AQAAAAIAAAD6//v/AQAAAAIAAAD6//r/AQAAAAIAAAD6//7/AQAAAAIAAAD8////AQAAAAIAAAAEAP//AQAAAAIAAAAFAP7/AQAAAAIAAAACAP3/AgACAAMAAAD5//r/AQAGAAEAAAD5//v/AQAGAAEAAAD5//z/AQAGAAEAAAD5//3/AQAGAAEAAAAGAPv/AQAEAAEAAAAGAPz/AQAEAAEAAAAGAP3/AQAEAAEAAAD6//n/BAADAAEAAAAFAPr/BAABAAEAAAD6//f/BAADAAAAAAD6//j/BAADAAAAAAAFAPj/BAABAAAAAAAFAPn/BAABAAAAAAAEAPn/BAABAAEAAAD9//j/BAADAAEAAAAAAPj/BAABAAEAAAD9//f/BAADAAAAAAAAAPf/BAABAAAAAAAEAPj/BAABAAAAAAAEAPf/BAABAAAAAAABAPj/BAACAAEAAAACAPj/BAACAAEAAAADAPj/BAACAAEAAAD7//j/BAACAAEAAAD8//j/BAACAAEAAAD7//f/BAACAAAAAAD8//f/BAAEAAIAAAD7//b/BAACAAAAAAD8//b/BAACAAAAAAABAPf/BAACAAAAAAACAPf/BAACAAAAAAADAPf/BAACAAAAAAABAPb/BAACAAAAAAACAPb/BAACAAAAAAADAPb/BAACAAAAAAAGAPj/AQAEAAEAAAAGAPn/AQAEAAEAAAAGAPr/AQAEAAEAAAAFAPf/AQAEAAIAAAAGAPf/AQADAAIAAAAFAPb/AQADAAIAAAAEAPb/AQAEAAIAAAAEAPX/AQADAAIAAAABAPX/AQAFAAIAAAACAPX/AQAFAAIAAAADAPX/AQAFAAIAAAAAAPX/AQAEAAIAAAD9//X/AQAGAAIAAAD7//X/AQAFAAIAAAD8//X/AQAFAAIAAAD6//b/AQAGAAIAAAD6//X/AQACAAIAAAD5//b/AQACAAIAAAD5//f/AQAGAAEAAAD5//j/AQAGAAEAAAD5//n/AQAGAAEAAAD9//b/BAADAAAAAAAAAPb/BAABAAAAAAA=")
@@ -101,26 +105,27 @@ facing = 0
 
 [node name="Lever" parent="Objects/FakePuzzle" instance=ExtResource("13_clh1b")]
 position = Vector2(50, -160)
+
+[node name="GroundSwitch" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+position = Vector2(50, -50)
 only_activate_once = true
 
-[node name="GroundSwitch" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
-position = Vector2(30, -110)
-
-[node name="GroundSwitch2" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
-position = Vector2(70, -110)
-
-[node name="GroundSwitch3" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
-position = Vector2(50, -90)
-
-[node name="GroundSwitch4" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
+[node name="GroundSwitch2" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
 position = Vector2(30, -70)
+only_activate_once = true
 
-[node name="GroundSwitch5" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
+[node name="GroundSwitch3" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
 position = Vector2(70, -70)
+only_activate_once = true
 
-[node name="GroundSwitch6" parent="Objects/FakePuzzle" instance=ExtResource("14_dvmto")]
-position = Vector2(50, -50)
+[node name="GroundSwitch4" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+position = Vector2(50, -90)
+only_activate_once = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Objects"]
-position = Vector2(-20, -170)
-texture = ExtResource("15_dvmto")
+[node name="GroundSwitch5" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+position = Vector2(30, -110)
+only_activate_once = true
+
+[node name="GroundSwitch6" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+position = Vector2(70, -110)
+only_activate_once = true

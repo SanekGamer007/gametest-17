@@ -1,28 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx7edb1sp6oe6"]
+[gd_scene load_steps=5 format=3 uid="uid://dx7edb1sp6oe6"]
 
-[ext_resource type="Script" uid="uid://c1hs04m47nd25" path="res://objects/spawn_point/SpawnPoint.gd" id="1_o6vu4"]
+[ext_resource type="Script" uid="uid://c1hs04m47nd25" path="res://objects/spawn_point/spawn_point.gd" id="1_o6vu4"]
+[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="2_kf45d"]
 
-[sub_resource type="Gradient" id="Gradient_o6vu4"]
-offsets = PackedFloat32Array(0.5405405)
-colors = PackedColorArray(1, 1, 1, 0.3647059)
+[sub_resource type="Gradient" id="Gradient_kf45d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.8974359)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_kf45d"]
-gradient = SubResource("Gradient_o6vu4")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p2gmk"]
+gradient = SubResource("Gradient_kf45d")
 width = 16
+height = 16
+fill = 2
+fill_from = Vector2(0.5, 0.5)
 
 [node name="SpawnPointA" type="Marker2D" groups=["spawnpoint"]]
 gizmo_extents = 24.0
 script = ExtResource("1_o6vu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 16)
-texture = SubResource("GradientTexture1D_kf45d")
+modulate = Color(1, 1, 1, 0.3764706)
+texture = SubResource("GradientTexture2D_p2gmk")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -8.0
 offset_top = -12.0
-offset_right = 8.0
-offset_bottom = 11.0
+offset_right = 11.0
+offset_bottom = 13.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_kf45d")
 text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1

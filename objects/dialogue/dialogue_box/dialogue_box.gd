@@ -21,6 +21,7 @@ func _ready() -> void:
 	visible = false
 	$HBoxContainer/VBoxContainer/button_container.visible = false
 
+#region Dialogue parser
 
 func _process(_delta: float) -> void:
 	if current_dialogue_item >= current_dialogue.size():
@@ -55,6 +56,8 @@ func _process(_delta: float) -> void:
 				_do_action(i)
 			ActionFunction:
 				_do_action(i)
+			ActionSave:
+				_do_action(i)
 			ActionNull:
 				_do_action(i)
 			DialogueMove:
@@ -70,6 +73,9 @@ func _process(_delta: float) -> void:
 				current_dialogue_item += 1
 				next_item = true
 
+#endregion
+
+#region Basic dialogue resources
 
 func _text_resource(textresource: DialogueText) -> void:
 	$AudioStreamPlayer.stream = textresource.text_sound
@@ -83,7 +89,7 @@ func _text_resource(textresource: DialogueText) -> void:
 	DialogueRichText.visible_characters = 0
 	await _write_text(textresource, DialogueLength)
 	while true:
-		if Input.is_action_pressed("main_button") or textresource.auto_skip:
+		if (Input.is_action_pressed("main_button") or Input.is_action_pressed("third_button")) or textresource.auto_skip:
 			current_dialogue_item += 1
 			next_item = true
 			break
@@ -128,7 +134,7 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 		var new_button_text: String = _process_tags(choiceresource.choice_text[i])
 		buttonarray[i].text = _process_tags(buttonarray[i].text)
 		for x in new_button_text.length():
-			if Input.is_action_pressed("second_button") and choiceresource.can_be_skipped == true:
+			if (Input.is_action_pressed("second_button") or Input.is_action_pressed("third_button")) and choiceresource.can_be_skipped == true:
 				buttonarray[i].text = new_button_text
 				break
 			buttonarray[i].text = buttonarray[i].text + new_button_text[x]
@@ -138,6 +144,9 @@ func _choice_resource(choiceresource: DialogueChoice) -> void:
 		buttonarray[i].pressed.connect(buttonpressed.bind(i))
 	buttonarray[0].grab_focus()
 
+#endregion
+
+#region Conditional action aka special little resource that doesnt fit into any other category
 
 func _conditional_action_resource(conditional_action: DialogueConditionalAction) -> void:
 	var result_one: Variant
@@ -167,6 +176,9 @@ func _conditional_action_resource(conditional_action: DialogueConditionalAction)
 	else:
 		_do_action(conditional_action.action_false)
 
+#endregion
+
+#region Action executer
 
 func _do_action(actionresource: Action) -> void:
 	if actionresource is ActionJump:
@@ -205,12 +217,22 @@ func _do_action(actionresource: Action) -> void:
 		else:
 			push_error("Invalid ActionSet parameters, ignoring...")
 
+	elif actionresource is ActionSave:
+		visible = actionresource.show_dialogue_box
+		var save_ui = actionresource.SAVE_UI.instantiate()
+		save_ui.version = actionresource.force_version
+		save_ui.spawnpoint = actionresource.spawnpoint
+		get_tree().root.add_child(save_ui)
+		await save_ui.tree_exited
 	else:
 		push_error("Invalid Action type, ignoring...")
 
 	current_dialogue_item += 1
 	next_item = true
 
+#endregion
+
+#region Tools executer
 
 func _do_tools(tool: Dialogue) -> void:
 	visible = tool.show_dialogue_box
@@ -255,6 +277,9 @@ func _do_tools(tool: Dialogue) -> void:
 	current_dialogue_item += 1
 	next_item = true
 
+#endregion
+
+#region Text writter
 
 func _write_text(resource: Dialogue, DialogueLength: int) -> bool:
 	if !resource.speaker_img:
@@ -274,7 +299,7 @@ func _write_text(resource: Dialogue, DialogueLength: int) -> bool:
 
 	while DialogueRichText.visible_characters < DialogueLength:
 		await get_tree().process_frame
-		if Input.is_action_pressed("second_button") and resource.can_be_skipped == true:
+		if (Input.is_action_pressed("second_button") or Input.is_action_pressed("third_button")) and resource.can_be_skipped:
 			DialogueRichText.visible_characters = DialogueLength
 			break
 		var delta = get_process_delta_time()
@@ -301,14 +326,9 @@ func _write_text(resource: Dialogue, DialogueLength: int) -> bool:
 		await get_tree().process_frame
 	return true
 
+#endregion
 
-func _jump(jump_id: String) -> void:
-	for i in current_dialogue.size():
-		if current_dialogue[i] is DialogueLabel and current_dialogue[i].label_id == jump_id:
-			current_dialogue_item = i
-			next_item = true
-			break
-
+#region Text parsing
 
 func _text_without_square_brackets(text: String) -> String:
 	var result: String = ""
@@ -381,3 +401,12 @@ func _process_tags(raw_text: String) -> String:
 		processed_text = processed_text.replace(fulltag, replacement_value)
 		starting_point = processed_text.find("^", starting_point + replacement_value.length())
 	return processed_text
+
+#endregion
+
+func _jump(jump_id: String) -> void:
+	for i in current_dialogue.size():
+		if current_dialogue[i] is DialogueLabel and current_dialogue[i].label_id == jump_id:
+			current_dialogue_item = i
+			next_item = true
+			break

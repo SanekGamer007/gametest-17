@@ -76,4 +76,7 @@ func time_to_string(time_in_sec: int):
 	var seconds = time_in_sec % 60
 	var minutes = (time_in_sec / 60) % 60
 	var hours = (time_in_sec / 60) / 60
-	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+	if hours != 0:
+		return "%01d:%02d:%02d" % [hours, minutes, seconds]
+	else:
+		return "%01d:%02d" % [minutes, seconds]

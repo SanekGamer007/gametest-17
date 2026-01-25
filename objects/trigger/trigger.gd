@@ -94,6 +94,12 @@ func _do_action(player: Chara) -> void:
 		new_dialogue.current_dialogue = action.dialogue
 		new_dialogue.context = self
 		get_tree().root.add_child(new_dialogue)
+	elif action is ActionSave:
+		var save_ui = action.SAVE_UI.instantiate()
+		save_ui.version = action.force_version
+		save_ui.spawnpoint = action.spawnpoint
+		get_tree().root.add_child(save_ui)
+		await save_ui.tree_exited
 
 	elif action is Action:
 		printerr("you forgot to set action type.")

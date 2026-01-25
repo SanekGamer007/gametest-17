@@ -12,7 +12,7 @@ class_name DialogueText
 @export var can_be_skipped: bool = true
 @export var auto_skip: bool = false
 
-@export var text_sound: AudioStream = preload("res://objects/dialogue/sfx/txt_def1.wav")
+@export var text_sound: AudioStream = preload("res://audio/sfx/dialogue/txt_generic_1.wav")
 @export var text_volume_db: int
 @export var text_volume_pitch_min: float = 1 # 0.9
 @export var text_volume_pitch_max: float = 1 # 1.15

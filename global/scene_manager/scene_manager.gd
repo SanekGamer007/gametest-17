@@ -89,6 +89,8 @@ func _set_camera() -> void:
 
 func get_level_title(path: String) -> String:
 	var levelscene: PackedScene = load(path)
+	if levelscene == null:
+		return ""
 	var level: Node = levelscene.instantiate()
 	var leveldata: LevelData = level.get_node_or_null("LevelData")
 	var room_name: String

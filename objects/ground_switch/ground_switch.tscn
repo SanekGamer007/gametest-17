@@ -1,18 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bedfywyc0hpjs"]
+[gd_scene load_steps=8 format=3 uid="uid://bg0v7fd75f52u"]
 
-[ext_resource type="PackedScene" uid="uid://xmlqwgs084pa" path="res://objects/lever/lever.tscn" id="1_3wqc2"]
-[ext_resource type="Script" uid="uid://bt5u4w60sxppq" path="res://objects/ground_switch/ground_switch.gd" id="2_e3mm6"]
-[ext_resource type="Texture2D" uid="uid://dqbcn5ftmdkgx" path="res://objects/ground_switch/ground_switch.png" id="2_f8888"]
+[ext_resource type="Texture2D" uid="uid://dqbcn5ftmdkgx" path="res://objects/ground_switch/ground_switch.png" id="1_3wqc2"]
+[ext_resource type="Script" uid="uid://cc7sqb7gxlqwj" path="res://objects/ground_switch/ground_switch.gd" id="2_e3mm6"]
+[ext_resource type="AudioStream" uid="uid://dw1ewqah4n4k5" path="res://audio/sfx/noise.wav" id="2_f8888"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8888"]
-atlas = ExtResource("2_f8888")
+atlas = ExtResource("1_3wqc2")
 region = Rect2(0, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3mm6"]
-atlas = ExtResource("2_f8888")
+atlas = ExtResource("1_3wqc2")
 region = Rect2(20, 0, 20, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vceh4"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3mm6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -31,18 +31,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8888"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vceh4"]
+size = Vector2(14, 14)
 
-[node name="GroundSwitch" instance=ExtResource("1_3wqc2")]
-z_index = -1
+[node name="GroundSwitch" type="Area2D"]
 script = ExtResource("2_e3mm6")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_vceh4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e3mm6")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_f8888")
+shape = SubResource("RectangleShape2D_vceh4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f8888")
+volume_db = -6.0
+bus = &"Sounds"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

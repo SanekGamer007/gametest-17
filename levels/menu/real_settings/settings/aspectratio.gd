@@ -1,6 +1,6 @@
 extends Button
 
-var format_text = "ASPECT RATIO   %s"
+var format_text = "ASPECT RATIO [WIP]   %s"
 
 
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_settingsmanager_settings_change() -> void:
 	if SettingsManager.user_settings.wide_aspect_ratio:
-		text = format_text % "WIDESCREEN - WIP"
+		text = format_text % "WIDESCREEN"
 	else:
 		text = format_text % "CLASSIC"
 
