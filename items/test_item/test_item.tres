@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dwt53rswtw0sr"]
+
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="1_11khr"]
+[ext_resource type="Script" uid="uid://cf430cf0vcg32" path="res://items/test_item/test_item.gd" id="2_avnev"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="2_rttc1"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="3_mw2r6"]
+
+[sub_resource type="Resource" id="Resource_rttc1"]
+script = ExtResource("2_rttc1")
+text = "\"Test Item\" - Heals 10HP
+A perfectly smooth gray cube.
+It looks perfect, but its not."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[resource]
+script = ExtResource("2_avnev")
+hp_heal = 10
+item_name = "Test Item"
+description = Array[ExtResource("1_11khr")]([SubResource("Resource_rttc1")])
+metadata/_custom_type_script = "uid://bvcnssh24sdff"

@@ -79,9 +79,10 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 16
 bbcode_enabled = true
 text = "* TEST
-* tEST2 GGGggggggg
+* tEST2 GGGggggggggggggg
 * TEST 3................."
 scroll_active = false
+autowrap_mode = 0
 visible_characters_behavior = 1
 
 [node name="button_container" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]

@@ -353,6 +353,9 @@ func _apply_custom_formatting(raw_text: String) -> String:
 	var lines = raw_text.split("\n")
 	var new_lines: Array[String] = []
 	for line: String in lines:
+		if line.strip_edges() == "":
+			new_lines.append(line)
+			continue
 		if line.begins_with(">"):
 			new_lines.append(line.replace(">", "  "))
 		else:
@@ -394,7 +397,7 @@ func _process_tags(raw_text: String) -> String:
 				if GlobalVars.has_flag(flag_name):
 					replacement_value = str(GlobalVars.get_flag(flag_name))
 				else:
-					replacement_value = "something went wrong"
+					replacement_value = "ERR"
 		else:
 			push_error("TAG IS NOT VALID.")
 

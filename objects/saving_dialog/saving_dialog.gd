@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var version: GlobalVars.versions = GlobalVars.versions.ANY # auto detect
+var version: GlobalVars.Versions = GlobalVars.Versions.ANY # auto detect
 var spawnpoint: String = "A"
 
 var NAME_PLACEHOLDER = "%s"
@@ -25,19 +25,20 @@ func _ready() -> void:
 	$Demo.visible = false
 	$GMT7.visible = false
 	GlobalVars.player_start_busy.emit()
+	GlobalVars.close_all_ui.connect(_on_ui_quit)
 
-	if get_tree().current_scene.get_node_or_null("LevelData") and version == GlobalVars.versions.ANY:
-		version = GlobalVars.versions.GAMETEST
-	elif version == GlobalVars.versions.ANY:
-		version = GlobalVars.versions.DEMO
+	if get_tree().current_scene.get_node_or_null("LevelData") and version == GlobalVars.Versions.ANY:
+		version = get_tree().current_scene.get_node_or_null("LevelData").room_version
+	elif version == GlobalVars.Versions.ANY:
+		version = GlobalVars.Versions.DEMO
 	match version:
-		GlobalVars.versions.PROTO:
+		GlobalVars.Versions.PROTO:
 			_setup_proto_dialog()
-		GlobalVars.versions.GAMETEST:
+		GlobalVars.Versions.GAMETEST:
 			_setup_gmt7_dialog()
-		GlobalVars.versions.DEMO:
+		GlobalVars.Versions.DEMO:
 			_setup_demo_dialog()
-		GlobalVars.versions.RELEASE:
+		GlobalVars.Versions.RELEASE:
 			_setup_release_dialog()
 		_:
 			push_error("wtf how.")
@@ -114,17 +115,16 @@ func _save_release_dialog() -> void:
 
 
 func _on_save_pressed() -> void:
-	GlobalVars.player_room = get_tree().current_scene.scene_file_path
 	GlobalVars.player_room_spawnpoint = spawnpoint
 
 	match version:
-		GlobalVars.versions.PROTO:
+		GlobalVars.Versions.PROTO:
 			_save_proto_dialog()
-		GlobalVars.versions.GAMETEST:
+		GlobalVars.Versions.GAMETEST:
 			_save_gmt7_dialog()
-		GlobalVars.versions.DEMO:
+		GlobalVars.Versions.DEMO:
 			_save_demo_dialog()
-		GlobalVars.versions.RELEASE:
+		GlobalVars.Versions.RELEASE:
 			_save_release_dialog()
 		_:
 			push_error("wtf how.")
@@ -133,4 +133,8 @@ func _on_save_pressed() -> void:
 
 func _on_return_pressed() -> void:
 	GlobalVars.player_stop_busy.emit()
+	queue_free()
+
+
+func _on_ui_quit() -> void:
 	queue_free()

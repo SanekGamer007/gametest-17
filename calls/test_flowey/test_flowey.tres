@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CellCallTestFlowey" load_steps=10 format=3 uid="uid://d6d40jj0jd5o"]
+
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="1_8v4kc"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="1_42s47"]
+[ext_resource type="Script" uid="uid://cr7355m4g72td" path="res://calls/test_flowey/test_flowey.gd" id="1_r27qq"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="2_8jnbl"]
+
+[sub_resource type="Resource" id="Resource_8jnbl"]
+script = ExtResource("1_8v4kc")
+text = "Ring... Ring..."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_gblok"]
+script = ExtResource("1_8v4kc")
+text = "Nobody picked up."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_64f7c"]
+script = ExtResource("1_8v4kc")
+text = "Ring... Ring..."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_64spl"]
+script = ExtResource("1_8v4kc")
+text = "Hello. it is a crime to 
+>cheat in video games.
+Please close the game now."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_e5htc"]
+script = ExtResource("1_8v4kc")
+text = "Click."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[resource]
+script = ExtResource("1_r27qq")
+dialogue = Array[ExtResource("1_42s47")]([SubResource("Resource_8jnbl"), SubResource("Resource_gblok")])
+dialogue_testroom = Array[ExtResource("1_42s47")]([SubResource("Resource_64f7c"), SubResource("Resource_64spl"), SubResource("Resource_e5htc")])
+cell_name = "TestFlower"
+metadata/_custom_type_script = "uid://cr7355m4g72td"

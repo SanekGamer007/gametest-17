@@ -41,6 +41,7 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 func _on_fade_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file(scene)
 	await get_tree().scene_changed
+	GlobalVars.player_room = scene
 	_setup_level()
 	AnimPlay.play_backwards(animname)
 

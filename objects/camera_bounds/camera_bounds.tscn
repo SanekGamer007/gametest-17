@@ -9,3 +9,4 @@ border_color = Color(0.3063949, 0.6263382, 0, 1)
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 240.0
+border_color = Color(1, 0, 0, 0.41960785)

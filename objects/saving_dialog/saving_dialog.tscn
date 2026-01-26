@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cbtpggd2lkvs8"]
+[gd_scene load_steps=29 format=3 uid="uid://cbtpggd2lkvs8"]
 
 [ext_resource type="Script" uid="uid://0wsy5do0evkt" path="res://objects/saving_dialog/saving_dialog.gd" id="1_jtp8i"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_y486x"]
@@ -48,8 +48,6 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xffd3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bw4cd"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8en4g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxvds"]
@@ -65,6 +63,7 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvx45"]
 
 [node name="SavingDialog" type="CanvasLayer"]
+layer = 9998
 script = ExtResource("1_jtp8i")
 
 [node name="Demo" type="Control" parent="."]
@@ -203,6 +202,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_qwnqv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1jg3a")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_noq5p")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q384j")
+action_mode = 0
 text = "Save"
 icon = ExtResource("5_jyp2d")
 script = ExtResource("4_qwnqv")
@@ -232,6 +232,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_qwnqv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1jg3a")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_noq5p")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q384j")
+action_mode = 0
 text = "Return"
 icon = ExtResource("4_jyp2d")
 script = ExtResource("4_qwnqv")
@@ -282,15 +283,16 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_07ypn")
 
 [node name="Sprite2D" type="Sprite2D" parent="GMT7/BoxContainer"]
-position = Vector2(29.200012, 75.59999)
+position = Vector2(29.2, 71)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_jyp2d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GMT7/BoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="VSeparator" type="VSeparator" parent="GMT7/BoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xffd3")
 
@@ -299,11 +301,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "NAME--------LV--------TIME"
-
-[node name="VSeparator2" type="VSeparator" parent="GMT7/BoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_bw4cd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GMT7/BoxContainer/VBoxContainer"]
 layout_mode = 2

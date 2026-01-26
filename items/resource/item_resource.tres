@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://b1ydn8l1xv1q8"]
+
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="1_dmcet"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="2_77wj1"]
+[ext_resource type="Script" uid="uid://bvcnssh24sdff" path="res://items/resource/item_resource.gd" id="2_fq6x2"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="3_mm0o7"]
+
+[sub_resource type="Resource" id="Resource_sudod"]
+script = ExtResource("2_77wj1")
+text = "If you are reading this - i fucked up."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[resource]
+resource_name = "ItemResource"
+script = ExtResource("2_fq6x2")
+description = Array[ExtResource("1_dmcet")]([SubResource("Resource_sudod")])
+metadata/_custom_type_script = "uid://bvcnssh24sdff"

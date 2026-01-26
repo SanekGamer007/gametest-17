@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Chara
 @onready var AnimSprite: AnimatedSprite2D = $AnimatedSprite2D
+const PLAYERMENU = preload("res://objects/player_menu/player_menu.tscn")
 
 enum states {
 	IDLE,
@@ -33,6 +34,13 @@ func _ready() -> void:
 		_move_to_spawn_point()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("third_button") and can_open_menu and state != states.BUSY:
+		var plrmenu: CanvasLayer = PLAYERMENU.instantiate()
+		plrmenu.player_node = self
+		get_tree().root.add_child(plrmenu)
+
+
 func _physics_process(delta: float) -> void:
 	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
 	if is_on_wall() and direction.length() >= 1:
@@ -49,7 +57,7 @@ func _physics_process(delta: float) -> void:
 			_handle_busy_state()
 	var pos_before = global_position
 	move_and_slide()
-	var actual_movement = global_position.distance_to(pos_before)
+	var actual_movement = global_position.distance_to(pos_before) # super fast movement workaround.
 	_manage_anims(actual_movement)
 
 
