@@ -1,10 +1,12 @@
-[gd_scene load_steps=42 format=3 uid="uid://dim4hska1janw"]
+[gd_scene load_steps=46 format=3 uid="uid://dim4hska1janw"]
 
 [ext_resource type="Script" uid="uid://djh684b14kdd1" path="res://objects/player_menu/player_menu.gd" id="1_7bkcx"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_w0lqs"]
 [ext_resource type="FontFile" uid="uid://babudk32t61yb" path="res://fonts/CryptOfTomorrow.ttf" id="3_7bkcx"]
 [ext_resource type="Texture2D" uid="uid://bpclmh60n8wxt" path="res://objects/player_menu/sprites/heart3.png" id="4_2me3d"]
+[ext_resource type="Script" uid="uid://comuwd4dlwq6s" path="res://objects/player_menu/chooser/item.gd" id="4_5ba5f"]
 [ext_resource type="Script" uid="uid://o1xskgvsq3wx" path="res://objects/player_menu/chooser/button_icon.gd" id="4_unsd8"]
+[ext_resource type="Script" uid="uid://dsm2nwe6ja5wy" path="res://objects/player_menu/chooser/cell.gd" id="5_jc3y6"]
 [ext_resource type="AudioStream" uid="uid://b7nl402meuv1d" path="res://audio/sfx/ui/select.wav" id="6_2me3d"]
 [ext_resource type="Script" uid="uid://d3uuaobdlopc1" path="res://objects/player_menu/mini_stats/name.gd" id="8_u3vkk"]
 [ext_resource type="Script" uid="uid://c72glbtewgl7n" path="res://objects/player_menu/stats/stats.gd" id="9_myuxa"]
@@ -24,8 +26,9 @@
 [ext_resource type="Script" uid="uid://cu6e60ngvv2pi" path="res://objects/player_menu/stats/weapon.gd" id="24_xd0rx"]
 [ext_resource type="Script" uid="uid://dm6y7nrw6kb74" path="res://objects/player_menu/stats/armor.gd" id="25_bqcq8"]
 [ext_resource type="Script" uid="uid://drbt83bdmkdm3" path="res://objects/player_menu/cell/cell.gd" id="25_re67x"]
-[ext_resource type="Texture2D" uid="uid://b7vc8pef2nw6w" path="res://cell.png" id="26_bqcq8"]
+[ext_resource type="PackedScene" uid="uid://bpqcpvmqvx1kq" path="res://objects/player_menu/cell/cell_button/cell_button.tscn" id="26_jc3y6"]
 [ext_resource type="Script" uid="uid://dgepxrj72cvn1" path="res://objects/player_menu/stats/gold.gd" id="26_re67x"]
+[ext_resource type="Texture2D" uid="uid://d06anug6uqlj1" path="res://itenm.png" id="27_5ba5f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unsd8"]
 bg_color = Color(0, 0, 0, 1)
@@ -67,6 +70,8 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqcq8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_re67x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jc3y6"]
 
 [node name="PlayerMenu" type="CanvasLayer"]
 layer = 9998
@@ -130,7 +135,7 @@ action_mode = 0
 text = "ITEM"
 icon = ExtResource("4_2me3d")
 alignment = 0
-script = ExtResource("4_unsd8")
+script = ExtResource("4_5ba5f")
 
 [node name="STAT" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -174,7 +179,7 @@ action_mode = 0
 text = "CELL"
 icon = ExtResource("4_2me3d")
 alignment = 0
-script = ExtResource("4_unsd8")
+script = ExtResource("5_jc3y6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
 stream = ExtResource("6_2me3d")
@@ -453,7 +458,7 @@ grow_vertical = 2
 script = ExtResource("25_re67x")
 
 [node name="PanelContainer" type="PanelContainer" parent="Cell"]
-custom_minimum_size = Vector2(336, 0)
+custom_minimum_size = Vector2(336, 262)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.563
@@ -487,11 +492,152 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cell/PanelContainer/HBoxContainer/VBoxContainer"]
 stream = ExtResource("6_2me3d")
 
-[node name="Cell_png" type="Sprite2D" parent="."]
+[node name="Item" type="Control" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.2509804)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Item"]
+custom_minimum_size = Vector2(336, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.564
+anchor_top = 0.128
+anchor_right = 0.564
+anchor_bottom = 0.843
+offset_left = -168.0
+offset_top = -6.0
+offset_right = 169.03998
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-2, -3.4000092)
+theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bqcq8")
+
+[node name="ItemContainer" type="VBoxContainer" parent="Item/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/HBoxContainer/ItemContainer"]
+custom_minimum_size = Vector2(0, 19)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
+
+[node name="CellButton" parent="Item/PanelContainer/HBoxContainer/ItemContainer" instance=ExtResource("26_jc3y6")]
+layout_mode = 2
+text = "Monster Candy"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Item/PanelContainer/HBoxContainer/ItemContainer"]
+stream = ExtResource("6_2me3d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Item/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_jc3y6")
+
+[node name="USE" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_w0lqs")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "USE"
+icon = ExtResource("4_2me3d")
+alignment = 0
+
+[node name="INFO" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_w0lqs")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "INFO"
+icon = ExtResource("4_2me3d")
+alignment = 0
+
+[node name="DROP" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_w0lqs")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "DROP"
+icon = ExtResource("4_2me3d")
+alignment = 0
+
+[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
+
+[node name="Itenm" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.44705883)
 position = Vector2(320, 240)
-texture = ExtResource("26_bqcq8")
+texture = ExtResource("27_5ba5f")
 
 [connection signal="focus_entered" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_focus_exited"]
