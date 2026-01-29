@@ -4,8 +4,7 @@ const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dia
 var DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
 var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
 #@export var activate_instant: bool
-@export_category("Dialogue Options")
-@export var only_activate_once: bool
+@export_category("Savepoint Options")
 @export var override_ui_offset: bool
 @export var override_offset: Vector2
 @export var dialogue: Array[Dialogue]

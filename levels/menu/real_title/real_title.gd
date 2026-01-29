@@ -21,7 +21,7 @@ func _ready() -> void:
 	$Save/Buttons/HBoxContainer/Continue.save_data = save_data
 
 	$Save/Info/NAME.text = save_data_vars.get("player_name", "ERROR")
-	$Save/Info/LV.text = "LV %s" % save_data_vars.get("player_love", "0")
+	$Save/Info/LV.text = "LV %s" % GlobalVars.get_level_from_exp(save_data_vars.get("player_exp", "0"))
 	$Save/Info/TIME.text = Tools.time_to_string(play_time)
 	if save_data_vars.get("player_room", "") != "":
 		$Save/ROOM.text = SceneManager.get_level_title(save_data_vars.get("player_room"))

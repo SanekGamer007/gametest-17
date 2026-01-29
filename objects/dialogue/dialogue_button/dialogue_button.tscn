@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvdssf8afck3c"]
+[gd_scene format=3 uid="uid://bvdssf8afck3c"]
 
 [ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="1_wj14q"]
 [ext_resource type="Texture2D" uid="uid://dtpydp78vbmjr" path="res://objects/dialogue/dialogue_button/heart3.png" id="2_k5q20"]
@@ -29,7 +29,7 @@ func _on_focus_exited() -> void:
 	icon = NULL_TEXTURE
 "
 
-[node name="DialogueButton" type="Button"]
+[node name="DialogueButton" type="Button" unique_id=1951063479]
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 3

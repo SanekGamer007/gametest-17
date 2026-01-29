@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://deid8e1ufalki"]
+[gd_scene format=3 uid="uid://deid8e1ufalki"]
 
 [ext_resource type="Script" uid="uid://bvl4mid6c7sx1" path="res://objects/room_transition/room_transition.gd" id="1_30r66"]
 
-[node name="RoomTransition" type="Area2D"]
+[node name="RoomTransition" type="Area2D" unique_id=1673696586]
 script = ExtResource("1_30r66")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

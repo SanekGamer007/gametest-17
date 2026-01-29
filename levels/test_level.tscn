@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bg4x37m08e2hi"]
+[gd_scene format=3 uid="uid://bg4x37m08e2hi"]
 
 [ext_resource type="Script" uid="uid://dmku5c0j30dok" path="res://levels/teest5234543.gd" id="2_axl34"]
 [ext_resource type="Script" uid="uid://brpn5wqjcdjsf" path="res://levels/test.gd" id="2_x25rp"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="3_gmgay"]
 [ext_resource type="Script" uid="uid://pwdl8grx5jr7" path="res://levels/dialogue_interaction.gd" id="4_ly3hx"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="4_ur00s"]
-[ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="4_wndkh"]
 [ext_resource type="Script" uid="uid://cf430cf0vcg32" path="res://items/test_item/test_item.gd" id="6_wjuib"]
 [ext_resource type="PackedScene" uid="uid://c85gxv6pwwh8f" path="res://entities/testnpc/testnpc.tscn" id="8_wndkh"]
 [ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="10_4n8tn"]
@@ -37,10 +36,6 @@ item_name = "Test Item"
 description = Array[ExtResource("4_ur00s")]([SubResource("Resource_4lkjn")])
 metadata/_custom_type_script = "uid://cf430cf0vcg32"
 
-[sub_resource type="Resource" id="Resource_4n8tn"]
-script = ExtResource("4_wndkh")
-metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
-
 [sub_resource type="Resource" id="Resource_ra35m"]
 script = ExtResource("21_atrxo")
 metadata/_custom_type_script = "uid://c6i3oamaw72ut"
@@ -61,92 +56,88 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 script = ExtResource("17_wjuib")
 metadata/_custom_type_script = "uid://b6ln53gbnmdof"
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="Node2D" unique_id=679023039]
 y_sort_enabled = true
 
-[node name="Test" type="StaticBody2D" parent="."]
+[node name="Test" type="StaticBody2D" parent="." unique_id=1584900223]
 y_sort_enabled = true
 position = Vector2(100, 60)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test" unique_id=2009759350]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Test"]
+[node name="Sprite2D" type="Sprite2D" parent="Test" unique_id=403681856]
 position = Vector2(0, -20)
 scale = Vector2(21, 40.999996)
 texture = SubResource("PlaceholderTexture2D_gmgay")
 
-[node name="Area2D" type="Area2D" parent="Test"]
+[node name="Area2D" type="Area2D" parent="Test" unique_id=1428489906]
 script = ExtResource("2_x25rp")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test/Area2D" unique_id=974002217]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Test3" type="StaticBody2D" parent="."]
+[node name="Test3" type="StaticBody2D" parent="." unique_id=1993700320]
 y_sort_enabled = true
 position = Vector2(160, 210)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3" unique_id=1190810452]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Test3"]
+[node name="Sprite2D" type="Sprite2D" parent="Test3" unique_id=912950912]
 position = Vector2(0, -20)
 scale = Vector2(21, 40.999996)
 texture = SubResource("PlaceholderTexture2D_gmgay")
 
-[node name="Area2D" type="Area2D" parent="Test3"]
+[node name="Area2D" type="Area2D" parent="Test3" unique_id=101329997]
 script = ExtResource("2_axl34")
-only_activate_once = null
-override_dialogue_offset = null
-override_offset = null
 item = SubResource("Resource_68kkm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test3/Area2D" unique_id=1813994859]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Test2" type="StaticBody2D" parent="."]
+[node name="Test2" type="StaticBody2D" parent="." unique_id=265430297]
 y_sort_enabled = true
 position = Vector2(-120, 60)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test2" unique_id=1806969361]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Test2"]
+[node name="Sprite2D" type="Sprite2D" parent="Test2" unique_id=1643128497]
 position = Vector2(0, -20)
 scale = Vector2(21, 40.999996)
 texture = SubResource("PlaceholderTexture2D_gmgay")
 
-[node name="DialogueInteraction" parent="Test2" instance=ExtResource("3_e7anx")]
+[node name="DialogueInteraction" parent="Test2" unique_id=2026342396 instance=ExtResource("3_e7anx")]
 position = Vector2(94, -46)
 script = ExtResource("4_ly3hx")
-dialogue = Array[ExtResource("4_wndkh")]([SubResource("Resource_4n8tn")])
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test2/DialogueInteraction"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test2/DialogueInteraction" unique_id=1476274798]
 position = Vector2(-94, 43)
 shape = SubResource("RectangleShape2D_x25rp")
 
-[node name="SpawnPointA" parent="." instance=ExtResource("3_gmgay")]
+[node name="SpawnPointA" parent="." unique_id=1885874621 instance=ExtResource("3_gmgay")]
 position = Vector2(0, 70)
 
-[node name="TestNPC" parent="." instance=ExtResource("8_wndkh")]
+[node name="TestNPC" parent="." unique_id=2107945024 instance=ExtResource("8_wndkh")]
 position = Vector2(-20, 10)
 
-[node name="CameraBounds" parent="." instance=ExtResource("10_4n8tn")]
+[node name="CameraBounds" parent="." unique_id=699212727 instance=ExtResource("10_4n8tn")]
 offset_left = -200.0
 offset_top = -77.0
 offset_right = 204.0
 offset_bottom = 219.0
 metadata/_edit_lock_ = true
 
-[node name="Trigger" parent="." instance=ExtResource("20_n4g7x")]
+[node name="Trigger" parent="." unique_id=723193236 instance=ExtResource("20_n4g7x")]
 position = Vector2(-155, 114)
 action = SubResource("Resource_ra35m")
 condition = true
@@ -154,17 +145,18 @@ operator = 4
 flag_name = "test_flag"
 flag_value = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="Trigger"]
+[node name="Sprite2D" type="Sprite2D" parent="Trigger" unique_id=1941958143]
 position = Vector2(-4.9999995, -4)
 scale = Vector2(61.75, 31.25001)
 texture = SubResource("PlaceholderTexture2D_x7oem")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1458770907]
 position = Vector2(-5, -4)
 shape = SubResource("RectangleShape2D_ec2iw")
 
-[node name="LevelData" parent="." instance=ExtResource("26_ec2iw")]
+[node name="LevelData" parent="." unique_id=877325795 instance=ExtResource("26_ec2iw")]
+room_version = 2
 
-[node name="SavePoint" parent="." instance=ExtResource("32_hj2pq")]
+[node name="SavePoint" parent="." unique_id=1037656721 instance=ExtResource("32_hj2pq")]
 position = Vector2(-60, 130)
 dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_xag4j"), SubResource("Resource_pgbyh")])

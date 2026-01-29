@@ -1,8 +1,5 @@
 extends Label
 
-func _ready() -> void:
-	owner.update_text.connect(_on_update_text)
-
-
 func _on_update_text(_lvl_data: LevelData):
-	text = "NEXT: %s" % "TODO" # TODO: implement
+	var next_exp_total = GlobalVars.get_required_exp(GlobalVars.player_love + 1)
+	text = "NEXT: %s" % str(next_exp_total - GlobalVars.player_exp)

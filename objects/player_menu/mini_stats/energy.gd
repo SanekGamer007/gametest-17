@@ -1,9 +1,5 @@
 extends Label
 
-func _ready() -> void:
-	owner.update_text.connect(_on_update_text)
-
-
 func _on_update_text(lvl_data: LevelData):
 	text = "EN  %s/%s" % [GlobalVars.player_en, GlobalVars.player_maxen]
 	if lvl_data:

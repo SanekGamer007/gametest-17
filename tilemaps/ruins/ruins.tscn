@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://radqnytn3djc"]
+[gd_scene format=3 uid="uid://radqnytn3djc"]
 
 [ext_resource type="Texture2D" uid="uid://bjm6bubifnhu8" path="res://tilemaps/ruins/ruins_universal.png" id="1_kqcre"]
 [ext_resource type="Texture2D" uid="uid://s0ruia6lu2vg" path="res://tilemaps/ruins/ruins_proto.png" id="2_2vp18"]
@@ -245,6 +245,6 @@ sources/2 = SubResource("TileSetAtlasSource_t2c1u")
 sources/3 = SubResource("TileSetAtlasSource_dn7j0")
 sources/4 = SubResource("TileSetAtlasSource_kg7sc")
 
-[node name="Ruins" type="TileMapLayer"]
+[node name="Ruins" type="TileMapLayer" unique_id=657383478]
 z_index = -5
 tile_set = SubResource("TileSet_lvfda")

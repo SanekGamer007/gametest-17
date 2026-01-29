@@ -5,6 +5,6 @@ extends CellCallResource
 
 
 func on_use() -> Array[Dialogue]:
-	if GlobalVars.player_room == "res://levels/test_level.tscn":
+	if GlobalVars.get_current_room() == "res://levels/test_level.tscn":
 		return dialogue_testroom
 	return dialogue

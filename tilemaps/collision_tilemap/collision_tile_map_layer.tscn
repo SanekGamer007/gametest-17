@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6edk6g3jepob"]
+[gd_scene format=3 uid="uid://b6edk6g3jepob"]
 
 [ext_resource type="Texture2D" uid="uid://b1kplh1v4ta72" path="res://tilemaps/collision_tilemap/tilemap.png" id="1_s2chh"]
 [ext_resource type="Script" uid="uid://b5fhvr8rb10sp" path="res://tilemaps/collision_tilemap/collision_tile_map_layer.gd" id="2_w3www"]
@@ -27,6 +27,6 @@ tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_w3www")
 
-[node name="CollisionTileMapLayer" type="TileMapLayer"]
+[node name="CollisionTileMapLayer" type="TileMapLayer" unique_id=1005005143]
 tile_set = SubResource("TileSet_4bapb")
 script = ExtResource("2_w3www")

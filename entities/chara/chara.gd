@@ -178,23 +178,6 @@ func _move_to_spawn_point() -> void:
 			set_facing_manual(point.facing)
 
 
-func _check_wall_colliding() -> bool:
-	var raycast = $RayCast2D
-	match facing:
-		facings.DOWN:
-			raycast.target_position = Vector2(0, 11)
-		facings.LEFT:
-			raycast.target_position = Vector2(-11, 0)
-		facings.RIGHT:
-			raycast.target_position = Vector2(11, 0)
-		facings.UP:
-			raycast.target_position = Vector2(0, -1)
-	if raycast.is_colliding():
-		return true
-	else:
-		return false
-
-
 func _disable_menu() -> void:
 	can_open_menu = false
 

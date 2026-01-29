@@ -38,6 +38,7 @@ func _activate_dialogue() -> void:
 
 func interaction(player: Node) -> void:
 	player_node = player
+	GlobalVars.add_item(load("res://items/test_item/test_item.tres"))
 	_activate_dialogue()
 
 

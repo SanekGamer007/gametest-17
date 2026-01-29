@@ -218,6 +218,7 @@ func _do_action(actionresource: Action) -> void:
 			push_error("Invalid ActionSet parameters, ignoring...")
 
 	elif actionresource is ActionSave:
+		GlobalVars.heal_player(999999)
 		visible = actionresource.show_dialogue_box
 		var save_ui = actionresource.SAVE_UI.instantiate()
 		save_ui.version = actionresource.force_version

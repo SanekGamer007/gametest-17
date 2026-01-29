@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbtpggd2lkvs8"]
+[gd_scene format=3 uid="uid://cbtpggd2lkvs8"]
 
 [ext_resource type="Script" uid="uid://0wsy5do0evkt" path="res://objects/saving_dialog/saving_dialog.gd" id="1_jtp8i"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_y486x"]
@@ -62,11 +62,11 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvx45"]
 
-[node name="SavingDialog" type="CanvasLayer"]
+[node name="SavingDialog" type="CanvasLayer" unique_id=2072950799]
 layer = 9998
 script = ExtResource("1_jtp8i")
 
-[node name="Demo" type="Control" parent="."]
+[node name="Demo" type="Control" parent="." unique_id=574766981]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -76,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Panel" type="Panel" parent="Demo"]
+[node name="Panel" type="Panel" parent="Demo" unique_id=860690774]
 custom_minimum_size = Vector2(416, 166)
 layout_mode = 1
 anchors_preset = -1
@@ -92,7 +92,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jtp8i")
 
-[node name="BoxContainer" type="BoxContainer" parent="Demo"]
+[node name="BoxContainer" type="BoxContainer" parent="Demo" unique_id=1422685475]
 custom_minimum_size = Vector2(416, 166)
 layout_mode = 1
 anchors_preset = -1
@@ -105,50 +105,50 @@ offset_top = -83.0
 offset_right = 208.0
 offset_bottom = 83.0
 
-[node name="HSeparator" type="HSeparator" parent="Demo/BoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Demo/BoxContainer" unique_id=736174117]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_nqrki")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Demo/BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Demo/BoxContainer" unique_id=1906545442]
 custom_minimum_size = Vector2(392, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer" unique_id=956441817]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_y486x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Demo/BoxContainer/VBoxContainer" unique_id=22294495]
 layout_mode = 2
 
-[node name="NAME" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NAME" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer" unique_id=762057008]
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "TESTNAME"
 
-[node name="HSeparator" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1074950865]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jtp8i")
 
-[node name="LEVEL" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LEVEL" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1484544235]
 custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "LV 0"
 
-[node name="HSeparator2" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer" unique_id=281802456]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_l55n4")
 
-[node name="TIME" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TIME" type="Label" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1691586001]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -157,32 +157,32 @@ theme_override_font_sizes/font_size = 26
 text = "1234:56:78"
 horizontal_alignment = 2
 
-[node name="VSeparator2" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer" unique_id=9158183]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_5v2du")
 
-[node name="ROOMNAME" type="Label" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="ROOMNAME" type="Label" parent="Demo/BoxContainer/VBoxContainer" unique_id=1927798799]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "ROOM Lorem ipsum dolor sit "
 
-[node name="VSeparator3" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="Demo/BoxContainer/VBoxContainer" unique_id=1373931952]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0jprt")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Demo/BoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Demo/BoxContainer/VBoxContainer" unique_id=186660532]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="HSeparator3" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2" unique_id=1407906038]
 clip_contents = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qrqvg")
 
-[node name="Save" type="Button" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Save" type="Button" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2" unique_id=1714982308]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Return")
 focus_neighbor_right = NodePath("../Return")
@@ -207,12 +207,12 @@ text = "Save"
 icon = ExtResource("5_jyp2d")
 script = ExtResource("4_qwnqv")
 
-[node name="HSeparator2" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="HSeparator2" type="HSeparator" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2" unique_id=1459517157]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qrqvg")
 
-[node name="Return" type="Button" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Return" type="Button" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2" unique_id=476489704]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Save")
 focus_neighbor_right = NodePath("../Save")
@@ -237,10 +237,11 @@ text = "Return"
 icon = ExtResource("4_jyp2d")
 script = ExtResource("4_qwnqv")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Demo/BoxContainer/VBoxContainer/HBoxContainer2" unique_id=2146764830]
 stream = ExtResource("6_qwnqv")
+bus = &"Sounds"
 
-[node name="GMT7" type="Control" parent="."]
+[node name="GMT7" type="Control" parent="." unique_id=1320790380]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,7 +249,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="GMT7"]
+[node name="Panel" type="Panel" parent="GMT7" unique_id=2057591751]
 custom_minimum_size = Vector2(452, 116)
 layout_mode = 1
 anchors_preset = -1
@@ -264,7 +265,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jtp8i")
 
-[node name="BoxContainer" type="BoxContainer" parent="GMT7"]
+[node name="BoxContainer" type="BoxContainer" parent="GMT7" unique_id=307333255]
 custom_minimum_size = Vector2(452, 116)
 layout_mode = 1
 anchors_preset = -1
@@ -277,65 +278,65 @@ offset_top = -58.0
 offset_right = 226.0
 offset_bottom = 58.0
 
-[node name="HSeparator" type="HSeparator" parent="GMT7/BoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="GMT7/BoxContainer" unique_id=1878013738]
 custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_07ypn")
 
-[node name="Sprite2D" type="Sprite2D" parent="GMT7/BoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="GMT7/BoxContainer" unique_id=1416290593]
 position = Vector2(29.2, 71)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("5_jyp2d")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GMT7/BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GMT7/BoxContainer" unique_id=108675061]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="VSeparator" type="VSeparator" parent="GMT7/BoxContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="GMT7/BoxContainer/VBoxContainer" unique_id=957102632]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xffd3")
 
-[node name="Label" type="Label" parent="GMT7/BoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="GMT7/BoxContainer/VBoxContainer" unique_id=1349443202]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "NAME--------LV--------TIME"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GMT7/BoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GMT7/BoxContainer/VBoxContainer" unique_id=278311179]
 layout_mode = 2
 
-[node name="NAME" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NAME" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=661819441]
 custom_minimum_size = Vector2(114, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "TESTNAME"
 
-[node name="HSeparator" type="HSeparator" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=153618420]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_8en4g")
 
-[node name="LEVEL" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LEVEL" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1743356099]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "0"
 
-[node name="HSeparator2" type="HSeparator" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1051629147]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_uxvds")
 
-[node name="TIME" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TIME" type="Label" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=1824739931]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y486x")
 theme_override_font_sizes/font_size = 26
 text = "12345678"
 
-[node name="Save" type="Button" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Save" type="Button" parent="GMT7/BoxContainer/VBoxContainer/HBoxContainer" unique_id=470413426]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 1

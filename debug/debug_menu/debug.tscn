@@ -1,0 +1,421 @@
+[gd_scene format=3 uid="uid://b4k4vvgac0bmj"]
+
+[ext_resource type="Script" uid="uid://v141wqjquj57" path="res://objects/player_menu/debug/debug.gd" id="1_v4emx"]
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_65ai2"]
+[ext_resource type="Texture2D" uid="uid://bpclmh60n8wxt" path="res://objects/player_menu/sprites/heart3.png" id="3_6djif"]
+[ext_resource type="Script" uid="uid://csqi2dvbc3kn7" path="res://debug/debug_menu/buttons/full_heal.gd" id="4_65ai2"]
+[ext_resource type="Script" uid="uid://861230iq5d65" path="res://debug/debug_menu/buttons/give_1000g.gd" id="5_6djif"]
+[ext_resource type="Script" uid="uid://bue03ws2bl3c4" path="res://debug/debug_menu/buttons/give_1lvl.gd" id="6_mjikj"]
+[ext_resource type="Script" uid="uid://d1ya1jocmd1aw" path="res://debug/debug_menu/buttons/give_1exp.gd" id="7_0q7by"]
+[ext_resource type="Script" uid="uid://cn4uk6dyc7us5" path="res://debug/debug_menu/buttons/inf_hp.gd" id="8_ym30e"]
+[ext_resource type="Script" uid="uid://qefdxe8hbs26" path="res://debug/debug_menu/buttons/inf_en.gd" id="9_64sjr"]
+[ext_resource type="Script" uid="uid://04nf3qynba36" path="res://debug/debug_menu/buttons/noclip.gd" id="10_mcm0p"]
+[ext_resource type="Script" uid="uid://c37apkew30il" path="res://debug/debug_menu/buttons/set_hp.gd" id="11_sua70"]
+[ext_resource type="Script" uid="uid://cimkt4tlf88up" path="res://debug/debug_menu/buttons/set_en.gd" id="12_53hm3"]
+[ext_resource type="Script" uid="uid://b8wofrxt0mtv5" path="res://debug/debug_menu/buttons/set_lv.gd" id="13_vys8e"]
+[ext_resource type="Script" uid="uid://c8o3p88ebu3gt" path="res://debug/debug_menu/buttons/set_exp.gd" id="14_d1vrf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unsd8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0g6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0lqs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bkcx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unsd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2me3d"]
+
+[node name="Debug" type="CanvasLayer" unique_id=1724989751]
+script = ExtResource("1_v4emx")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1852077447]
+custom_minimum_size = Vector2(336, 0)
+anchors_preset = -1
+anchor_left = 0.564
+anchor_top = 0.128
+anchor_right = 0.564
+anchor_bottom = 0.843
+offset_left = -168.0
+offset_top = -53.440002
+offset_right = 271.03998
+offset_bottom = 66.360016
+pivot_offset = Vector2(-2, -3.4000092)
+theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1095917250]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=584332526]
+layout_mode = 2
+
+[node name="FullHeal" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=987240504]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "FULL HEAL"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("4_65ai2")
+
+[node name="Give1000G" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=597928345]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "GIVE 1000G"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("5_6djif")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1387505571]
+layout_mode = 2
+
+[node name="Give1LVL" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1363075006]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "GIVE 1 LVL"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("6_mjikj")
+
+[node name="Give1EXP" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=777614238]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "GIVE 1 EXP"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("7_0q7by")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=530051818]
+layout_mode = 2
+
+[node name="InfHP" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3" unique_id=725111351]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "INF HP (OFF)"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("8_ym30e")
+
+[node name="InfEN" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1842375479]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "INF EN (OFF)"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("9_64sjr")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=595832809]
+layout_mode = 2
+
+[node name="Noclip" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer4" unique_id=1243106832]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "NOCLIP (OFF)"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("10_mcm0p")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1237650276]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer5" unique_id=892324854]
+layout_mode = 2
+
+[node name="SetHP" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=621304301]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "SET HP"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("11_sua70")
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" unique_id=475921624]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 104.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+placeholder_text = "HPAMM"
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer5" unique_id=1032104799]
+layout_mode = 2
+
+[node name="SetEN" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2" unique_id=358227634]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "SET EN"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("12_53hm3")
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" unique_id=1189268101]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 104.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+placeholder_text = "ENAMM"
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer5" unique_id=36384895]
+layout_mode = 2
+
+[node name="SetLV" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3" unique_id=473903555]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "SET LV"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("13_vys8e")
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" unique_id=467048049]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 104.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+placeholder_text = "LVAMM"
+alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer5" unique_id=384140516]
+layout_mode = 2
+
+[node name="SetEXP" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4" unique_id=1901001057]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "SETEX"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("14_d1vrf")
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" unique_id=406088452]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 98.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+placeholder_text = "EXAMM"
+alignment = 1
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" to="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" to="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" to="PanelContainer/VBoxContainer/HBoxContainer/FullHeal" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" to="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" to="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" to="PanelContainer/VBoxContainer/HBoxContainer/Give1000G" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1LVL" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" to="PanelContainer/VBoxContainer/HBoxContainer2/Give1EXP" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" to="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" to="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" to="PanelContainer/VBoxContainer/HBoxContainer3/InfHP" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" to="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" to="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" to="PanelContainer/VBoxContainer/HBoxContainer3/InfEN" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer2/SetEN" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer3/SetLV" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer4/SetEXP" method="_on_pressed"]

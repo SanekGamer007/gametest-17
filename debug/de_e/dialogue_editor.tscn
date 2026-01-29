@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://mia8t2tnpd36"]
+[gd_scene format=3 uid="uid://mia8t2tnpd36"]
 
 [ext_resource type="Script" uid="uid://dncridr6sgngt" path="res://debug/de_e/dialogue_editor.gd" id="1_g01fh"]
 
-[node name="DialogueEditor" type="Control"]
+[node name="DialogueEditor" type="Control" unique_id=1272302807]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_g01fh")
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1368525738]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -23,11 +23,11 @@ offset_bottom = 40.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="BoxContainer"]
+[node name="Label" type="Label" parent="BoxContainer" unique_id=1262960112]
 layout_mode = 2
 text = "DIALOGUE EDITOR"
 
-[node name="BoxContainer2" type="BoxContainer" parent="."]
+[node name="BoxContainer2" type="BoxContainer" parent="." unique_id=1831348093]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
@@ -39,14 +39,14 @@ offset_right = 189.0
 offset_bottom = 151.0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer2" unique_id=1009907729]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer" unique_id=1259917472]
 layout_mode = 2
 text = "dialogueseries:"
 
-[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer"]
+[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer" unique_id=1906065319]
 layout_mode = 2
 auto_width = true
 auto_height = true
@@ -54,17 +54,17 @@ item_count = 2
 item_0/text = "TEst1"
 item_1/text = "Test2"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer2" unique_id=1727683342]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/VBoxContainer2" unique_id=927803456]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="BoxContainer2/VBoxContainer2/HBoxContainer" unique_id=754134036]
 layout_mode = 2
 text = "timeline:"
 
-[node name="OptionButton" type="OptionButton" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="BoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1166329046]
 layout_mode = 2
 selected = 0
 item_count = 5
@@ -79,11 +79,11 @@ popup/item_3/id = 3
 popup/item_4/text = "choi"
 popup/item_4/id = 4
 
-[node name="Button" type="Button" parent="BoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="Button" type="Button" parent="BoxContainer2/VBoxContainer2/HBoxContainer" unique_id=854874557]
 layout_mode = 2
 text = "add"
 
-[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer2"]
+[node name="ItemList" type="ItemList" parent="BoxContainer2/VBoxContainer2" unique_id=1253742638]
 layout_mode = 2
 auto_width = true
 auto_height = true
@@ -93,52 +93,52 @@ item_0/disabled = true
 item_1/text = "2. Func"
 item_1/disabled = true
 
-[node name="VSeparator" type="VSeparator" parent="BoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="BoxContainer2" unique_id=993168865]
 layout_mode = 2
 
-[node name="TextEdit" type="VBoxContainer" parent="BoxContainer2"]
+[node name="TextEdit" type="VBoxContainer" parent="BoxContainer2" unique_id=608347922]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BoxContainer2/TextEdit"]
+[node name="Label" type="Label" parent="BoxContainer2/TextEdit" unique_id=651605140]
 layout_mode = 2
 text = "text_resource"
 horizontal_alignment = 1
 
-[node name="speaker_img" type="HBoxContainer" parent="BoxContainer2/TextEdit"]
+[node name="speaker_img" type="HBoxContainer" parent="BoxContainer2/TextEdit" unique_id=309340932]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="BoxContainer2/TextEdit/speaker_img"]
+[node name="LineEdit" type="LineEdit" parent="BoxContainer2/TextEdit/speaker_img" unique_id=290299387]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "speaker_img"
 caret_blink = true
 
-[node name="SpinBox" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img"]
+[node name="SpinBox" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img" unique_id=848352987]
 layout_mode = 2
 prefix = "hfrs"
 
-[node name="SpinBox2" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img"]
+[node name="SpinBox2" type="SpinBox" parent="BoxContainer2/TextEdit/speaker_img" unique_id=254979261]
 layout_mode = 2
 prefix = "rest"
 
-[node name="CheckBox" type="CheckBox" parent="BoxContainer2/TextEdit"]
+[node name="CheckBox" type="CheckBox" parent="BoxContainer2/TextEdit" unique_id=41422621]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="BoxContainer2/TextEdit"]
+[node name="TextEdit" type="TextEdit" parent="BoxContainer2/TextEdit" unique_id=651695049]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 placeholder_text = "line1:
 line2:
 line3:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/TextEdit"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer2/TextEdit" unique_id=1601445766]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="BoxContainer2/TextEdit/HBoxContainer"]
+[node name="Label2" type="Label" parent="BoxContainer2/TextEdit/HBoxContainer" unique_id=112468454]
 layout_mode = 2
 text = "text_speed"
 
-[node name="HSlider" type="HSlider" parent="BoxContainer2/TextEdit/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="BoxContainer2/TextEdit/HBoxContainer" unique_id=1719528743]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 min_value = 0.1

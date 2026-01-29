@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xmlqwgs084pa"]
+[gd_scene format=3 uid="uid://xmlqwgs084pa"]
 
 [ext_resource type="Texture2D" uid="uid://be8rdtuhexsp6" path="res://objects/lever/lever.png" id="1_01mld"]
 [ext_resource type="Script" uid="uid://dfusuvjx38ee4" path="res://objects/lever/lever.gd" id="1_i0s1i"]
@@ -33,17 +33,17 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cu34"]
 
-[node name="Lever" type="Area2D"]
+[node name="Lever" type="Area2D" unique_id=40591595]
 script = ExtResource("1_i0s1i")
 only_activate_once = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=794796744]
 sprite_frames = SubResource("SpriteFrames_wl083")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=68592860]
 shape = SubResource("RectangleShape2D_4cu34")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=772801830]
 stream = ExtResource("3_4cu34")
 volume_db = -6.0
 bus = &"Sounds"

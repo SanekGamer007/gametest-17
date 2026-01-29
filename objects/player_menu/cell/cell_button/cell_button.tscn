@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpqcpvmqvx1kq"]
+[gd_scene format=3 uid="uid://bpqcpvmqvx1kq"]
 
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_m011x"]
 [ext_resource type="Script" uid="uid://jgcagku6eqal" path="res://objects/player_menu/cell/cell_button/cell_button.gd" id="3_ygyhs"]
@@ -16,7 +16,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m011x"]
 load_path = "res://.godot/imported/heart3.png-99ac116635e74afa4e8fdb9c3975b56b.ctex"
 
-[node name="CellButton" type="Button"]
+[node name="CellButton" type="Button" unique_id=723205953]
 custom_minimum_size = Vector2(308, 0)
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)

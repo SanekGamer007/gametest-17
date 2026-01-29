@@ -5,4 +5,5 @@ const SAVE_UI: PackedScene = preload("res://objects/saving_dialog/saving_dialog.
 
 @export var force_version: GlobalVars.Versions = GlobalVars.Versions.ANY ## ANY is auto-select.
 @export var spawnpoint: String = "A"
+@export var full_heal: bool = true
 @export var show_dialogue_box: bool = false

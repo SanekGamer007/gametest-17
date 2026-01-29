@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cck65dffw2tmx"]
+[gd_scene format=3 uid="uid://cck65dffw2tmx"]
 
 [ext_resource type="Script" uid="uid://xq87qf2o07sj" path="res://levels/menu/real_title/real_title.gd" id="1_1ev4n"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="3_j35k7"]
@@ -24,7 +24,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qj6y4"]
 
-[node name="RealTitle" type="Control"]
+[node name="RealTitle" type="Control" unique_id=664829216]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ev4n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=853430683]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Save" type="VBoxContainer" parent="."]
+[node name="Save" type="VBoxContainer" parent="." unique_id=1260491705]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -55,11 +55,11 @@ offset_right = 180.0
 offset_bottom = 34.0
 grow_horizontal = 2
 
-[node name="Info" type="HBoxContainer" parent="Save"]
+[node name="Info" type="HBoxContainer" parent="Save" unique_id=1537739483]
 layout_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="NAME" type="Label" parent="Save/Info"]
+[node name="NAME" type="Label" parent="Save/Info" unique_id=1509284630]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j35k7")
@@ -67,7 +67,7 @@ theme_override_font_sizes/font_size = 26
 text = "TESTNAME"
 metadata/_edit_lock_ = true
 
-[node name="LV" type="Label" parent="Save/Info"]
+[node name="LV" type="Label" parent="Save/Info" unique_id=969898216]
 custom_minimum_size = Vector2(72, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j35k7")
@@ -75,7 +75,7 @@ theme_override_font_sizes/font_size = 26
 text = "LV 0"
 metadata/_edit_lock_ = true
 
-[node name="TIME" type="Label" parent="Save/Info"]
+[node name="TIME" type="Label" parent="Save/Info" unique_id=1315162634]
 custom_minimum_size = Vector2(152, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j35k7")
@@ -84,7 +84,7 @@ text = "1234:56:78"
 horizontal_alignment = 2
 metadata/_edit_lock_ = true
 
-[node name="ROOM" type="Label" parent="Save"]
+[node name="ROOM" type="Label" parent="Save" unique_id=1263653904]
 custom_minimum_size = Vector2(360, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j35k7")
@@ -92,20 +92,20 @@ theme_override_font_sizes/font_size = 26
 text = "ROOM Lorem ipsum dolor sit "
 metadata/_edit_lock_ = true
 
-[node name="VSeparator" type="VSeparator" parent="Save"]
+[node name="VSeparator" type="VSeparator" parent="Save" unique_id=116523050]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_uducn")
 
-[node name="Buttons" type="VBoxContainer" parent="Save"]
+[node name="Buttons" type="VBoxContainer" parent="Save" unique_id=1126370354]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Save/Buttons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Save/Buttons" unique_id=11108165]
 layout_mode = 2
 alignment = 1
 
-[node name="Continue" type="Button" parent="Save/Buttons/HBoxContainer"]
+[node name="Continue" type="Button" parent="Save/Buttons/HBoxContainer" unique_id=616376454]
 layout_mode = 2
 focus_neighbor_right = NodePath("../Reset")
 focus_neighbor_bottom = NodePath("../../HBoxContainer2/Settings")
@@ -127,12 +127,12 @@ text = "Continue"
 alignment = 0
 script = ExtResource("4_ces4a")
 
-[node name="HSeparator2" type="HSeparator" parent="Save/Buttons/HBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Save/Buttons/HBoxContainer" unique_id=893229839]
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_58rmb")
 
-[node name="Reset" type="Button" parent="Save/Buttons/HBoxContainer"]
+[node name="Reset" type="Button" parent="Save/Buttons/HBoxContainer" unique_id=2086018298]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Continue")
 focus_neighbor_bottom = NodePath("../../HBoxContainer2/Settings")
@@ -153,16 +153,16 @@ button_mask = 0
 text = "Reset"
 alignment = 0
 
-[node name="VSeparator" type="VSeparator" parent="Save/Buttons"]
+[node name="VSeparator" type="VSeparator" parent="Save/Buttons" unique_id=1996477229]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qj6y4")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Save/Buttons"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Save/Buttons" unique_id=578785330]
 layout_mode = 2
 alignment = 1
 
-[node name="Settings" type="Button" parent="Save/Buttons/HBoxContainer2"]
+[node name="Settings" type="Button" parent="Save/Buttons/HBoxContainer2" unique_id=1216210006]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -182,7 +182,7 @@ text = "Settings"
 alignment = 0
 script = ExtResource("4_nimnb")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=318325284]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -199,10 +199,10 @@ theme_override_fonts/font = ExtResource("5_argis")
 theme_override_font_sizes/font_size = 10
 text = "GAMETEST 17 FANGAME - NOT MADE OR ENDORSED BY TOBY FOX"
 
-[node name="LevelData" parent="." instance=ExtResource("6_s5i7y")]
+[node name="LevelData" parent="." unique_id=226164159 instance=ExtResource("6_s5i7y")]
 level_flags = 3
 
-[node name="SpawnPointA" parent="." instance=ExtResource("7_1ihlx")]
+[node name="SpawnPointA" parent="." unique_id=451501276 instance=ExtResource("7_1ihlx")]
 
 [connection signal="pressed" from="Save/Buttons/HBoxContainer/Continue" to="Save/Buttons/HBoxContainer/Continue" method="_on_pressed"]
 [connection signal="pressed" from="Save/Buttons/HBoxContainer2/Settings" to="Save/Buttons/HBoxContainer2/Settings" method="_on_pressed"]

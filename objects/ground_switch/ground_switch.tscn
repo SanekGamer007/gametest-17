@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg0v7fd75f52u"]
+[gd_scene format=3 uid="uid://bg0v7fd75f52u"]
 
 [ext_resource type="Texture2D" uid="uid://dqbcn5ftmdkgx" path="res://objects/ground_switch/ground_switch.png" id="1_3wqc2"]
 [ext_resource type="Script" uid="uid://cc7sqb7gxlqwj" path="res://objects/ground_switch/ground_switch.gd" id="2_e3mm6"]
@@ -34,17 +34,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceh4"]
 size = Vector2(14, 14)
 
-[node name="GroundSwitch" type="Area2D"]
+[node name="GroundSwitch" type="Area2D" unique_id=1269135379]
 script = ExtResource("2_e3mm6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=781848864]
 sprite_frames = SubResource("SpriteFrames_e3mm6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2103482594]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_vceh4")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=357001776]
 stream = ExtResource("2_f8888")
 volume_db = -6.0
 bus = &"Sounds"

@@ -16,10 +16,7 @@ func save_game() -> bool:
 	var save_variables: Dictionary = {
 		"player_name": GlobalVars.player_name,
 		"player_hp": GlobalVars.player_hp,
-		"player_maxhp": GlobalVars.player_maxhp,
 		"player_en": GlobalVars.player_en,
-		"player_maxen": GlobalVars.player_maxen,
-		"player_love": GlobalVars.player_love,
 		"player_exp": GlobalVars.player_exp,
 		"player_gold": GlobalVars.player_gold,
 		"player_base_at": GlobalVars.player_base_at,
@@ -29,8 +26,10 @@ func save_game() -> bool:
 		"player_time": play_time,
 		"player_inventory": GlobalVars.player_inventory,
 		"player_contacts": GlobalVars.player_contacts,
+		"player_kills": GlobalVars.player_kills,
 		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
+		"player_serious": GlobalVars.player_serious,
 	}
 	var data_dict: Dictionary = {
 		"vars": save_variables,

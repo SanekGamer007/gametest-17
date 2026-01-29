@@ -11,16 +11,11 @@ var desired_dialogue_offset: Vector2
 signal exit
 
 
-func _ready() -> void:
-	owner.update_text.connect(_on_update_text)
-
-
 func _on_update_text(_lvl_data: LevelData) -> void:
 	if owner.level_data:
 		var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
-		if owner.level_data.room_version <= GlobalVars.Versions.GAMETEST:
-			if ministatsize.x >= 135:
-				$PanelContainer.position.x += ministatsize.x - 135
+		if ministatsize.x >= 135:
+			$PanelContainer.position.x += ministatsize.x - 135
 	for child in cell_add_location.get_children():
 		if child is Button:
 			child.queue_free()
@@ -33,8 +28,6 @@ func _on_update_text(_lvl_data: LevelData) -> void:
 
 
 func do_focus() -> void:
-	if cell_add_location.get_child_count() == 0:
-		return
 	for i in cell_add_location.get_children():
 		if i is Button:
 			i.grab_focus()

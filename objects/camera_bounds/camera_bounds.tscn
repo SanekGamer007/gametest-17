@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://5yx47qq2xlvv"]
 
-[node name="CameraBounds" type="ReferenceRect"]
+[node name="CameraBounds" type="ReferenceRect" unique_id=2088477333]
 offset_right = 40.0
 offset_bottom = 40.0
 border_color = Color(0.3063949, 0.6263382, 0, 1)
 
-[node name="CameraReference" type="ReferenceRect" parent="."]
+[node name="CameraReference" type="ReferenceRect" parent="." unique_id=1060096759]
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 240.0

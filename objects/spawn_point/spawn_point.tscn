@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx7edb1sp6oe6"]
+[gd_scene format=3 uid="uid://dx7edb1sp6oe6"]
 
 [ext_resource type="Script" uid="uid://c1hs04m47nd25" path="res://objects/spawn_point/spawn_point.gd" id="1_o6vu4"]
 [ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="2_kf45d"]
@@ -15,15 +15,15 @@ height = 16
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[node name="SpawnPointA" type="Marker2D" groups=["spawnpoint"]]
+[node name="SpawnPointA" type="Marker2D" unique_id=2022314457 groups=["spawnpoint"]]
 gizmo_extents = 24.0
 script = ExtResource("1_o6vu4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1090282167]
 modulate = Color(1, 1, 1, 0.3764706)
 texture = SubResource("GradientTexture2D_p2gmk")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1250749789]
 offset_left = -8.0
 offset_top = -12.0
 offset_right = 11.0

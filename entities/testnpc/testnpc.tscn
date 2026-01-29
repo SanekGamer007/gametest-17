@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c85gxv6pwwh8f"]
+[gd_scene format=3 uid="uid://c85gxv6pwwh8f"]
 
 [ext_resource type="Texture2D" uid="uid://ck52xndnsyvpn" path="res://entities/testnpc/testnpc.png" id="1_hwqje"]
 [ext_resource type="Script" uid="uid://mk2dl3ly74uk" path="res://entities/testnpc/testnpc.gd" id="1_i5h8l"]
@@ -236,26 +236,26 @@ script = ExtResource("4_1xmro")
 dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
-[node name="TestNPC" type="StaticBody2D"]
+[node name="TestNPC" type="StaticBody2D" unique_id=718743569]
 script = ExtResource("1_i5h8l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=387755802]
 sprite_frames = SubResource("SpriteFrames_o4pmh")
 animation = &"down_idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=843848390]
 position = Vector2(-2, 22.5)
 shape = SubResource("RectangleShape2D_co5gw")
 
-[node name="DialogueInteraction" parent="." instance=ExtResource("3_tg4u2")]
+[node name="DialogueInteraction" parent="." unique_id=1116846283 instance=ExtResource("3_tg4u2")]
 dialogue = Array[ExtResource("4_1xmro")]([SubResource("Resource_p2sll"), SubResource("Resource_tyot4")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction" unique_id=1855936390]
 position = Vector2(-2, 22.5)
 shape = SubResource("RectangleShape2D_co5gw")
 debug_color = Color(0, 0.64737976, 0.22098762, 0.41960785)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1982841714]
 offset_left = -17.0
 offset_top = -49.0
 offset_right = 23.0

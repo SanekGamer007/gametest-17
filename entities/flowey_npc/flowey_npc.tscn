@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://csiw1l532qqng"]
+[gd_scene format=3 uid="uid://csiw1l532qqng"]
 
 [ext_resource type="PackedScene" uid="uid://b18nqehp6jbsc" path="res://entities/generic/generic_npc/generic_npc.tscn" id="1_hu3cb"]
 [ext_resource type="Texture2D" uid="uid://cxmlx6hsh6s84" path="res://entities/flowey_npc/sprsheet.png" id="2_3nwxi"]
@@ -335,7 +335,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FloweyNPC" instance=ExtResource("1_hu3cb")]
+[node name="FloweyNPC" unique_id=1088205366 instance=ExtResource("1_hu3cb")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -7)

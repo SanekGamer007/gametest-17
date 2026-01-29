@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dwt53rswtw0sr"]
+[gd_resource type="Resource" format=3 uid="uid://dwt53rswtw0sr"]
 
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="1_11khr"]
 [ext_resource type="Script" uid="uid://cf430cf0vcg32" path="res://items/test_item/test_item.gd" id="2_avnev"]

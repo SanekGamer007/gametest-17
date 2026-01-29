@@ -80,7 +80,7 @@ func _setup_demo_dialog() -> void:
 	LEVEL_PLACEHOLDER = "LV %s"
 
 	$Demo/BoxContainer/VBoxContainer/HBoxContainer/NAME.text = NAME_PLACEHOLDER % save_dict_vars.player_name
-	$Demo/BoxContainer/VBoxContainer/HBoxContainer/LEVEL.text = LEVEL_PLACEHOLDER % save_dict_vars.player_love
+	$Demo/BoxContainer/VBoxContainer/HBoxContainer/LEVEL.text = LEVEL_PLACEHOLDER % GlobalVars.get_level_from_exp(save_dict_vars.player_exp)
 	$Demo/BoxContainer/VBoxContainer/HBoxContainer/TIME.text = TIME_PLACEHOLDER % Tools.time_to_string(save_dict_vars.player_time / 1000)
 
 	var room_name: String = "ERROR"

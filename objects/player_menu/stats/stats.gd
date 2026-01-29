@@ -7,9 +7,8 @@ func _ready() -> void:
 	await owner.update_text
 	if owner.level_data:
 		var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
-		if owner.level_data.room_version <= GlobalVars.Versions.GAMETEST:
-			if ministatsize.x >= 135:
-				$PanelContainer.position.x += ministatsize.x - 135
+		if ministatsize.x >= 135:
+			$PanelContainer.position.x += ministatsize.x - 135
 
 
 func _input(event: InputEvent) -> void:

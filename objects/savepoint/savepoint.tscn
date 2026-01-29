@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi53568tpdtvn"]
+[gd_scene format=3 uid="uid://bi53568tpdtvn"]
 
 [ext_resource type="Texture2D" uid="uid://rqiw4rfc1wm7" path="res://objects/savepoint/savepoint.png" id="1_2etmx"]
 [ext_resource type="Script" uid="uid://shnt3hywvnmx" path="res://objects/savepoint/savepoint.gd" id="1_ew0kp"]
@@ -28,21 +28,21 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5mw4"]
 
-[node name="SavePoint" type="Area2D"]
+[node name="SavePoint" type="Area2D" unique_id=559018949]
 script = ExtResource("1_ew0kp")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=600793890]
 sprite_frames = SubResource("SpriteFrames_lcs8r")
 autoplay = "default"
 frame_progress = 0.62672436
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=336792552]
 shape = SubResource("RectangleShape2D_d5mw4")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1115675362]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1865017478]
 shape = SubResource("RectangleShape2D_d5mw4")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1570062741]
 stream = ExtResource("6_quiya")

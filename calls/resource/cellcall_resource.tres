@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CellCallResource" load_steps=2 format=3 uid="uid://b3l52e76k2xoe"]
+[gd_resource type="Resource" script_class="CellCallResource" format=3 uid="uid://b3l52e76k2xoe"]
 
 [ext_resource type="Script" uid="uid://6m23bcmedfnn" path="res://calls/resource/cellcall_resource.gd" id="1_64dhj"]
 

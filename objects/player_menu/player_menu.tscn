@@ -1,11 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://dim4hska1janw"]
+[gd_scene format=3 uid="uid://dim4hska1janw"]
 
 [ext_resource type="Script" uid="uid://djh684b14kdd1" path="res://objects/player_menu/player_menu.gd" id="1_7bkcx"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_w0lqs"]
 [ext_resource type="FontFile" uid="uid://babudk32t61yb" path="res://fonts/CryptOfTomorrow.ttf" id="3_7bkcx"]
 [ext_resource type="Texture2D" uid="uid://bpclmh60n8wxt" path="res://objects/player_menu/sprites/heart3.png" id="4_2me3d"]
 [ext_resource type="Script" uid="uid://comuwd4dlwq6s" path="res://objects/player_menu/chooser/item.gd" id="4_5ba5f"]
-[ext_resource type="Script" uid="uid://o1xskgvsq3wx" path="res://objects/player_menu/chooser/button_icon.gd" id="4_unsd8"]
+[ext_resource type="Script" uid="uid://bw50yb71xifqi" path="res://objects/player_menu/chooser/stat.gd" id="5_5ba5f"]
 [ext_resource type="Script" uid="uid://dsm2nwe6ja5wy" path="res://objects/player_menu/chooser/cell.gd" id="5_jc3y6"]
 [ext_resource type="AudioStream" uid="uid://b7nl402meuv1d" path="res://audio/sfx/ui/select.wav" id="6_2me3d"]
 [ext_resource type="Script" uid="uid://d3uuaobdlopc1" path="res://objects/player_menu/mini_stats/name.gd" id="8_u3vkk"]
@@ -26,9 +26,12 @@
 [ext_resource type="Script" uid="uid://cu6e60ngvv2pi" path="res://objects/player_menu/stats/weapon.gd" id="24_xd0rx"]
 [ext_resource type="Script" uid="uid://dm6y7nrw6kb74" path="res://objects/player_menu/stats/armor.gd" id="25_bqcq8"]
 [ext_resource type="Script" uid="uid://drbt83bdmkdm3" path="res://objects/player_menu/cell/cell.gd" id="25_re67x"]
-[ext_resource type="PackedScene" uid="uid://bpqcpvmqvx1kq" path="res://objects/player_menu/cell/cell_button/cell_button.tscn" id="26_jc3y6"]
 [ext_resource type="Script" uid="uid://dgepxrj72cvn1" path="res://objects/player_menu/stats/gold.gd" id="26_re67x"]
-[ext_resource type="Texture2D" uid="uid://d06anug6uqlj1" path="res://itenm.png" id="27_5ba5f"]
+[ext_resource type="Script" uid="uid://8d2flitxs757" path="res://objects/player_menu/stats/kills.gd" id="27_cu53h"]
+[ext_resource type="Script" uid="uid://cmp4v7ty7ljjw" path="res://objects/player_menu/item/item.gd" id="28_5ba5f"]
+[ext_resource type="Script" uid="uid://co8b2mbbu8t2j" path="res://objects/player_menu/item/use.gd" id="29_miiqd"]
+[ext_resource type="Script" uid="uid://y0c1rvl3lvmr" path="res://objects/player_menu/item/info.gd" id="30_cu53h"]
+[ext_resource type="Script" uid="uid://y6vndlc4lo1p" path="res://objects/player_menu/item/drop.gd" id="31_udccw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unsd8"]
 bg_color = Color(0, 0, 0, 1)
@@ -73,11 +76,11 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jc3y6"]
 
-[node name="PlayerMenu" type="CanvasLayer"]
+[node name="PlayerMenu" type="CanvasLayer" unique_id=1867334635]
 layer = 9998
 script = ExtResource("1_7bkcx")
 
-[node name="Chooser" type="Control" parent="."]
+[node name="Chooser" type="Control" parent="." unique_id=1140055541]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Chooser"]
+[node name="PanelContainer" type="PanelContainer" parent="Chooser" unique_id=53626379]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.055
@@ -98,23 +101,23 @@ offset_bottom = 120.0
 pivot_offset = Vector2(-2, -3.4000092)
 theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Chooser/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Chooser/PanelContainer" unique_id=204914721]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="Chooser/PanelContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Chooser/PanelContainer/HBoxContainer" unique_id=1767216326]
 custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qeiw8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Chooser/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Chooser/PanelContainer/HBoxContainer" unique_id=269065446]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1555067533]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ahswu")
 
-[node name="ITEM" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="ITEM" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer" unique_id=193060603]
 layout_mode = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
@@ -137,7 +140,7 @@ icon = ExtResource("4_2me3d")
 alignment = 0
 script = ExtResource("4_5ba5f")
 
-[node name="STAT" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="STAT" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1790356304]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -157,9 +160,9 @@ action_mode = 0
 text = "STAT"
 icon = ExtResource("4_2me3d")
 alignment = 0
-script = ExtResource("4_unsd8")
+script = ExtResource("5_5ba5f")
 
-[node name="CELL" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="CELL" type="Button" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer" unique_id=648051909]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -181,10 +184,11 @@ icon = ExtResource("4_2me3d")
 alignment = 0
 script = ExtResource("5_jc3y6")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Chooser/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1699532494]
 stream = ExtResource("6_2me3d")
+bus = &"Sounds"
 
-[node name="MiniStats" type="Control" parent="."]
+[node name="MiniStats" type="Control" parent="." unique_id=1096459196]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +201,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="MiniStats"]
+[node name="PanelContainer" type="PanelContainer" parent="MiniStats" unique_id=1295763952]
 custom_minimum_size = Vector2(135, 102)
 layout_mode = 1
 anchors_preset = -1
@@ -211,23 +215,23 @@ grow_vertical = 0
 pivot_offset = Vector2(-2, -3.4000092)
 theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MiniStats/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MiniStats/PanelContainer" unique_id=1818640221]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="MiniStats/PanelContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MiniStats/PanelContainer/HBoxContainer" unique_id=1094424494]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ahswu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer" unique_id=1616577917]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=268810703]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="NAME" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NAME" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=971329383]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -235,7 +239,7 @@ theme_override_font_sizes/font_size = 26
 text = "TESTNAME"
 script = ExtResource("8_u3vkk")
 
-[node name="LEVEL_GMT7" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LEVEL_GMT7" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1410687197]
 visible = false
 custom_minimum_size = Vector2(32, 26)
 layout_mode = 2
@@ -245,11 +249,11 @@ text = "L%s"
 vertical_alignment = 2
 script = ExtResource("10_q1wwm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1078358436]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="LEVEL_ALL" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="LEVEL_ALL" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1090209388]
 custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
 size_flags_vertical = 0
@@ -258,7 +262,7 @@ theme_override_font_sizes/font_size = 10
 text = "LV  %s"
 script = ExtResource("11_7pi1h")
 
-[node name="ENERGY" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ENERGY" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1698597506]
 visible = false
 custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
@@ -268,7 +272,7 @@ theme_override_font_sizes/font_size = 10
 text = "EN  %s/%s"
 script = ExtResource("12_dv4y6")
 
-[node name="HP" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="HP" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=401974008]
 custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
 size_flags_vertical = 0
@@ -277,7 +281,7 @@ theme_override_font_sizes/font_size = 10
 text = "HP  %s/%s"
 script = ExtResource("13_wnwmu")
 
-[node name="GOLD" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="GOLD" type="Label" parent="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=336165361]
 custom_minimum_size = Vector2(60, 12)
 layout_mode = 2
 size_flags_vertical = 0
@@ -286,7 +290,7 @@ theme_override_font_sizes/font_size = 10
 text = "G	   %s"
 script = ExtResource("14_y4o43")
 
-[node name="Stats" type="Control" parent="."]
+[node name="Stats" type="Control" parent="." unique_id=1493968889]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -295,8 +299,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_myuxa")
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Stats"]
+[node name="PanelContainer" type="PanelContainer" parent="Stats" unique_id=777177287]
 custom_minimum_size = Vector2(135, 102)
 layout_mode = 1
 anchors_preset = -1
@@ -308,29 +313,27 @@ offset_left = -168.0
 offset_top = -193.5
 offset_right = 137.68002
 offset_bottom = 193.5
-grow_horizontal = 2
-grow_vertical = 2
 pivot_offset = Vector2(-2, -3.4000092)
 theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stats/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/PanelContainer" unique_id=1883471702]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="Stats/PanelContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Stats/PanelContainer/HBoxContainer" unique_id=398842617]
 custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_myuxa")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/PanelContainer/HBoxContainer" unique_id=2099723519]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1265070139]
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_u3vkk")
 
-[node name="NAME" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="NAME" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=715931286]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -338,12 +341,12 @@ theme_override_font_sizes/font_size = 26
 text = "\"TESTNAME\""
 script = ExtResource("16_3nncw")
 
-[node name="VSeparator2" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=374355605]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_q1wwm")
 
-[node name="LEVEL" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="LEVEL" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=731949707]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -351,7 +354,7 @@ theme_override_font_sizes/font_size = 26
 text = "LV  %s"
 script = ExtResource("17_jq1ym")
 
-[node name="HP" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HP" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=871303015]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -359,7 +362,7 @@ theme_override_font_sizes/font_size = 26
 text = "HP  %s / %s"
 script = ExtResource("18_b6lap")
 
-[node name="ENERGY" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="ENERGY" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1715995495]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -367,11 +370,11 @@ theme_override_font_sizes/font_size = 26
 text = "EN  %s / %s"
 script = ExtResource("19_jne44")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=244800352]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ATTACK" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ATTACK" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2038311049]
 custom_minimum_size = Vector2(158, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -380,7 +383,7 @@ theme_override_font_sizes/font_size = 26
 text = "AT  %s (%s)"
 script = ExtResource("20_gsqrd")
 
-[node name="EXPERIENCE" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="EXPERIENCE" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=945515776]
 custom_minimum_size = Vector2(138, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -390,11 +393,11 @@ text = "EXP: %s"
 clip_text = true
 script = ExtResource("21_tq2k0")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=673808789]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DEFENSE" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="DEFENSE" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=854702677]
 custom_minimum_size = Vector2(158, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -403,7 +406,7 @@ theme_override_font_sizes/font_size = 26
 text = "DF  %s (%s)"
 script = ExtResource("22_cv5ec")
 
-[node name="NEXTLV" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="NEXTLV" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=225632816]
 custom_minimum_size = Vector2(138, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -413,12 +416,12 @@ text = "NEXT: %s"
 clip_text = true
 script = ExtResource("23_jypw5")
 
-[node name="VSeparator3" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=982113910]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7pi1h")
 
-[node name="WEAPON" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="WEAPON" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=2102499296]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -426,7 +429,7 @@ theme_override_font_sizes/font_size = 26
 text = "WEAPON: %s"
 script = ExtResource("24_xd0rx")
 
-[node name="ARMOR" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="ARMOR" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=392883674]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -434,12 +437,17 @@ theme_override_font_sizes/font_size = 26
 text = "ARMOR: %s"
 script = ExtResource("25_bqcq8")
 
-[node name="VSeparator4" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator4" type="VSeparator" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=18313908]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_dv4y6")
 
-[node name="GOLD" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer" unique_id=267734505]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GOLD" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1955830764]
+custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_w0lqs")
@@ -447,7 +455,15 @@ theme_override_font_sizes/font_size = 26
 text = "GOLD: %s"
 script = ExtResource("26_re67x")
 
-[node name="Cell" type="Control" parent="."]
+[node name="KILLS" type="Label" parent="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1335295002]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_w0lqs")
+theme_override_font_sizes/font_size = 26
+text = "KILLS: %s"
+script = ExtResource("27_cu53h")
+
+[node name="Cell" type="Control" parent="." unique_id=1719476322]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -456,8 +472,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("25_re67x")
+metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Cell"]
+[node name="PanelContainer" type="PanelContainer" parent="Cell" unique_id=1202170365]
 custom_minimum_size = Vector2(336, 262)
 layout_mode = 1
 anchors_preset = -1
@@ -472,27 +489,28 @@ offset_bottom = 45.840027
 pivot_offset = Vector2(-2, -3.4000092)
 theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Cell/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Cell/PanelContainer" unique_id=1819031064]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="Cell/PanelContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Cell/PanelContainer/HBoxContainer" unique_id=1114398420]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bqcq8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Cell/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Cell/PanelContainer/HBoxContainer" unique_id=445038713]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="Cell/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Cell/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1090958898]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cell/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cell/PanelContainer/HBoxContainer/VBoxContainer" unique_id=868603619]
 stream = ExtResource("6_2me3d")
+bus = &"Sounds"
 
-[node name="Item" type="Control" parent="."]
+[node name="Item" type="Control" parent="." unique_id=1537648569]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -500,9 +518,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("28_5ba5f")
 metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Item"]
+[node name="PanelContainer" type="PanelContainer" parent="Item" unique_id=1918109333]
 custom_minimum_size = Vector2(336, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -519,49 +538,53 @@ grow_vertical = 2
 pivot_offset = Vector2(-2, -3.4000092)
 theme_override_styles/panel = SubResource("StyleBoxFlat_unsd8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer" unique_id=1746411043]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 2
 
-[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/HBoxContainer" unique_id=1328495910]
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bqcq8")
 
-[node name="ItemContainer" type="VBoxContainer" parent="Item/PanelContainer/HBoxContainer"]
+[node name="ItemContainer" type="VBoxContainer" parent="Item/PanelContainer/HBoxContainer" unique_id=548658355]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/HBoxContainer/ItemContainer"]
+[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/HBoxContainer/ItemContainer" unique_id=529899258]
 custom_minimum_size = Vector2(0, 19)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
 
-[node name="CellButton" parent="Item/PanelContainer/HBoxContainer/ItemContainer" instance=ExtResource("26_jc3y6")]
-layout_mode = 2
-text = "Monster Candy"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Item/PanelContainer/HBoxContainer/ItemContainer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Item/PanelContainer/HBoxContainer/ItemContainer" unique_id=485611574]
 stream = ExtResource("6_2me3d")
+bus = &"Sounds"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Item/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Item/PanelContainer" unique_id=184806296]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Item/PanelContainer/VBoxContainer" unique_id=1454609402]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/separation = 5
 
-[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(3, 0)
+[node name="HSeparator" type="HSeparator" parent="Item/PanelContainer/VBoxContainer/HBoxContainer" unique_id=406886503]
+custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jc3y6")
 
-[node name="USE" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="USE" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1264712805]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../DROP")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../INFO")
+focus_next = NodePath("../INFO")
+focus_previous = NodePath("../DROP")
+focus_mode = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -569,7 +592,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_constants/h_separation = 12
+theme_override_constants/h_separation = 8
 theme_override_fonts/font = ExtResource("2_w0lqs")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
@@ -581,10 +604,17 @@ action_mode = 0
 text = "USE"
 icon = ExtResource("4_2me3d")
 alignment = 0
+script = ExtResource("29_miiqd")
 
-[node name="INFO" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="INFO" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer" unique_id=607802690]
 custom_minimum_size = Vector2(114, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../USE")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../DROP")
+focus_next = NodePath("../DROP")
+focus_previous = NodePath("../USE")
+focus_mode = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -592,7 +622,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_constants/h_separation = 12
+theme_override_constants/h_separation = 8
 theme_override_fonts/font = ExtResource("2_w0lqs")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
@@ -604,10 +634,17 @@ action_mode = 0
 text = "INFO"
 icon = ExtResource("4_2me3d")
 alignment = 0
+script = ExtResource("30_cu53h")
 
-[node name="DROP" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(108, 0)
+[node name="DROP" type="Button" parent="Item/PanelContainer/VBoxContainer/HBoxContainer" unique_id=473811235]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../INFO")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../USE")
+focus_next = NodePath("../USE")
+focus_previous = NodePath("../INFO")
+focus_mode = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -615,7 +652,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
-theme_override_constants/h_separation = 12
+theme_override_constants/h_separation = 8
 theme_override_fonts/font = ExtResource("2_w0lqs")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
@@ -627,20 +664,42 @@ action_mode = 0
 text = "DROP"
 icon = ExtResource("4_2me3d")
 alignment = 0
+script = ExtResource("31_udccw")
 
-[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/VBoxContainer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Item/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1031320678]
+stream = ExtResource("6_2me3d")
+bus = &"Sounds"
+
+[node name="VSeparator" type="VSeparator" parent="Item/PanelContainer/VBoxContainer" unique_id=2123625245]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
 
-[node name="Itenm" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.44705883)
-position = Vector2(320, 240)
-texture = ExtResource("27_5ba5f")
-
+[connection signal="update_text" from="." to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_update_text"]
+[connection signal="update_text" from="." to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/NAME" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/LEVEL_GMT7" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer/LEVEL_ALL" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer/ENERGY" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer/HP" method="_on_update_text"]
+[connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/VBoxContainer/GOLD" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/NAME" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/LEVEL" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HP" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/ENERGY" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/ATTACK" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/EXPERIENCE" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DEFENSE" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/NEXTLV" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/WEAPON" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/ARMOR" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3/GOLD" method="_on_update_text"]
+[connection signal="update_text" from="." to="Stats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer3/KILLS" method="_on_update_text"]
+[connection signal="update_text" from="." to="Cell" method="_on_update_text"]
+[connection signal="update_text" from="." to="Item" method="_on_update_text"]
 [connection signal="focus_entered" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_focus_exited"]
+[connection signal="pressed" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="." method="_on_item_pressed"]
 [connection signal="pressed" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_pressed"]
 [connection signal="focus_entered" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/STAT" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/STAT" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/STAT" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/STAT" method="_on_focus_exited"]
@@ -650,3 +709,15 @@ texture = ExtResource("27_5ba5f")
 [connection signal="focus_exited" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" method="_on_focus_exited"]
 [connection signal="pressed" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" to="." method="_on_cell_pressed"]
 [connection signal="pressed" from="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" method="_on_pressed"]
+[connection signal="exit" from="Stats" to="." method="_on_sub_menu_exit"]
+[connection signal="exit" from="Cell" to="." method="_on_sub_menu_exit"]
+[connection signal="exit" from="Item" to="." method="_on_sub_menu_exit"]
+[connection signal="focus_entered" from="Item/PanelContainer/VBoxContainer/HBoxContainer/USE" to="Item/PanelContainer/VBoxContainer/HBoxContainer/USE" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Item/PanelContainer/VBoxContainer/HBoxContainer/USE" to="Item/PanelContainer/VBoxContainer/HBoxContainer/USE" method="_on_focus_exited"]
+[connection signal="pressed" from="Item/PanelContainer/VBoxContainer/HBoxContainer/USE" to="Item" method="_on_use_pressed"]
+[connection signal="focus_entered" from="Item/PanelContainer/VBoxContainer/HBoxContainer/INFO" to="Item/PanelContainer/VBoxContainer/HBoxContainer/INFO" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Item/PanelContainer/VBoxContainer/HBoxContainer/INFO" to="Item/PanelContainer/VBoxContainer/HBoxContainer/INFO" method="_on_focus_exited"]
+[connection signal="pressed" from="Item/PanelContainer/VBoxContainer/HBoxContainer/INFO" to="Item" method="_on_info_pressed"]
+[connection signal="focus_entered" from="Item/PanelContainer/VBoxContainer/HBoxContainer/DROP" to="Item/PanelContainer/VBoxContainer/HBoxContainer/DROP" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Item/PanelContainer/VBoxContainer/HBoxContainer/DROP" to="Item/PanelContainer/VBoxContainer/HBoxContainer/DROP" method="_on_focus_exited"]
+[connection signal="pressed" from="Item/PanelContainer/VBoxContainer/HBoxContainer/DROP" to="Item" method="_on_drop_pressed"]

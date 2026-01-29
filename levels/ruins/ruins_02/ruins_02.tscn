@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dpxdqw16ojy6j"]
+[gd_scene format=4 uid="uid://dpxdqw16ojy6j"]
 
 [ext_resource type="PackedScene" uid="uid://b6edk6g3jepob" path="res://tilemaps/collision_tilemap/collision_tile_map_layer.tscn" id="1_ac0gb"]
 [ext_resource type="PackedScene" uid="uid://cgbtyv7h30uut" path="res://tilemaps/universal/universal.tscn" id="2_llw5p"]
@@ -35,9 +35,9 @@ size = Vector2(20, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1hfo"]
 size = Vector2(40, 20)
 
-[node name="Ruins02" type="Node2D"]
+[node name="Ruins02" type="Node2D" unique_id=284029468]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=642184830]
 z_index = -6
 offset_left = -494.0
 offset_top = -381.0
@@ -46,86 +46,86 @@ offset_bottom = 396.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1958731158]
 position = Vector2(-20, -170)
 texture = ExtResource("15_dvmto")
 
-[node name="Ruins" parent="." instance=ExtResource("2_t8p2e")]
+[node name="Ruins" parent="." unique_id=1877024652 instance=ExtResource("2_t8p2e")]
 tile_map_data = PackedByteArray("AAD//wAAAQAAAAEAAAAAAAAAAQAAAAEAAAD//wEAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAP//AQAAAAEAAAD/////AQAAAAEAAAD///7/AQAAAAEAAAD+//3/AQAAAAEAAAD+//z/AQAAAAEAAAD+//v/AQAAAAEAAAD9//v/AQAAAAEAAAD9//z/AQAAAAEAAAD+//r/AQAAAAEAAAD+//n/AQAAAAEAAAD///n/AQAAAAEAAAD+//7/AgAIAAMAAAD9//3/AgAIAAMAAAD///3/AgAJAAIAAAAAAP7/AgAJAAIAAAD///r/AgAJAAMAAAD9//r/AgAIAAIAAAAAAP3/AQAAAAIAAAAAAPz/AQAAAAIAAAD///z/AQAAAAIAAAD///v/AQAAAAIAAAAAAPv/AQAAAAIAAAABAP//AQAAAAIAAAACAP//AQAAAAIAAAADAP//AQAAAAIAAAADAP7/AQAAAAIAAAACAP7/AgAAAAIAAAABAP7/AQAAAAIAAAAEAP7/AQAAAAIAAAAFAP3/AQAAAAIAAAAEAP3/AQAAAAIAAAADAP3/AQAAAAIAAAABAP3/AQAAAAIAAAD+////AQAAAAIAAAD9////AQAAAAIAAAD9//7/AQAAAAIAAAD8//7/AQAAAAIAAAD7//7/AQAAAAIAAAD7//3/AQAAAAIAAAD8//3/AQAAAAIAAAD8//z/AQAAAAIAAAD7//z/AQAAAAIAAAD7//v/AQAAAAIAAAD8//v/AQAAAAIAAAD8//r/AQAAAAIAAAD7//r/AQAAAAIAAAD7//n/AQAAAAIAAAD8//n/AQAAAAIAAAD9//n/AQAAAAIAAAAAAPn/AQAAAAIAAAAAAPr/AQAAAAIAAAABAPn/AQAAAAIAAAACAPn/AQAAAAIAAAADAPn/AQAAAAIAAAADAPr/AQAAAAIAAAACAPr/AgAEAAMAAAABAPr/AQAAAAIAAAAEAPr/AQAAAAIAAAAFAPv/AQAAAAIAAAAEAPv/AQAAAAIAAAADAPv/AQAAAAIAAAACAPv/AgACAAMAAAABAPv/AQAAAAIAAAABAPz/AQAAAAIAAAACAPz/AgACAAMAAAADAPz/AQAAAAIAAAAEAPz/AQAAAAIAAAAFAPz/AQAAAAIAAAD6//3/AQAAAAIAAAD6//z/AQAAAAIAAAD6//v/AQAAAAIAAAD6//r/AQAAAAIAAAD6//7/AQAAAAIAAAD8////AQAAAAIAAAAEAP//AQAAAAIAAAAFAP7/AQAAAAIAAAACAP3/AgACAAMAAAD5//r/AQAGAAEAAAD5//v/AQAGAAEAAAD5//z/AQAGAAEAAAD5//3/AQAGAAEAAAAGAPv/AQAEAAEAAAAGAPz/AQAEAAEAAAAGAP3/AQAEAAEAAAD6//n/BAADAAEAAAAFAPr/BAABAAEAAAD6//f/BAADAAAAAAD6//j/BAADAAAAAAAFAPj/BAABAAAAAAAFAPn/BAABAAAAAAAEAPn/BAABAAEAAAD9//j/BAADAAEAAAAAAPj/BAABAAEAAAD9//f/BAADAAAAAAAAAPf/BAABAAAAAAAEAPj/BAABAAAAAAAEAPf/BAABAAAAAAABAPj/BAACAAEAAAACAPj/BAACAAEAAAADAPj/BAACAAEAAAD7//j/BAACAAEAAAD8//j/BAACAAEAAAD7//f/BAACAAAAAAD8//f/BAAEAAIAAAD7//b/BAACAAAAAAD8//b/BAACAAAAAAABAPf/BAACAAAAAAACAPf/BAACAAAAAAADAPf/BAACAAAAAAABAPb/BAACAAAAAAACAPb/BAACAAAAAAADAPb/BAACAAAAAAAGAPj/AQAEAAEAAAAGAPn/AQAEAAEAAAAGAPr/AQAEAAEAAAAFAPf/AQAEAAIAAAAGAPf/AQADAAIAAAAFAPb/AQADAAIAAAAEAPb/AQAEAAIAAAAEAPX/AQADAAIAAAABAPX/AQAFAAIAAAACAPX/AQAFAAIAAAADAPX/AQAFAAIAAAAAAPX/AQAEAAIAAAD9//X/AQAGAAIAAAD7//X/AQAFAAIAAAD8//X/AQAFAAIAAAD6//b/AQAGAAIAAAD6//X/AQACAAIAAAD5//b/AQACAAIAAAD5//f/AQAGAAEAAAD5//j/AQAGAAEAAAD5//n/AQAGAAEAAAD9//b/BAADAAAAAAAAAPb/BAABAAAAAAA=")
 
-[node name="Ruins2" parent="." instance=ExtResource("2_t8p2e")]
+[node name="Ruins2" parent="." unique_id=110474847 instance=ExtResource("2_t8p2e")]
 tile_map_data = PackedByteArray("AAD7//n/AQAHAAAAAgD6//r/AQAAAAAAAAD6//v/AQAAAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAHAAAAAwD7//7/AQAHAAAAAQD8////AQAHAAAAAwD9////AQAHAAAAAQADAP//AQAHAAAAAAAEAP//AQAHAAAAAgAFAP7/AQAHAAAAAgAEAP7/AQAHAAAAAAAFAP3/AQAAAAAAAAAFAPz/AQAAAAAAAAAFAPv/AQAAAAAAAAAEAPr/AQAHAAAAAwADAPn/AQAHAAAAAwA=")
 
-[node name="Universal" parent="." instance=ExtResource("2_llw5p")]
+[node name="Universal" parent="." unique_id=1200810630 instance=ExtResource("2_llw5p")]
 tile_map_data = PackedByteArray("AAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAD8////AAAAAAAAAQD6//7/AAAAAAAAAQA=")
 
-[node name="CollisionTileMapLayer" parent="." instance=ExtResource("1_ac0gb")]
+[node name="CollisionTileMapLayer" parent="." unique_id=1257662208 instance=ExtResource("1_ac0gb")]
 tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAABAAEAAAAAAAAAAAD7////AAAAAAAAAAD5//7/AAAAAAAAAAD8////AAABAAAAAAD6//7/AAABAAAAAAD5//3/AAAAAAAAAAD5//z/AAAAAAAAAAD5//v/AAAAAAAAAAD5//r/AAAAAAAAAAADAAAAAAAAAAAAAAAEAP//AAABAAAAAgAFAP7/AAABAAAAAgAGAP3/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPn/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAABAPj/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPf/AAAAAAAAAAD9//j/AAAAAAAAAAD9//f/AAAAAAAAAAD6//n/AAAAAAAAAAD7//j/AAAAAAAAAAD8//j/AAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD+//f/AAAAAAAAAAD///f/AAAAAAAAAAA=")
 
-[node name="CameraBounds" parent="." instance=ExtResource("11_g1hfo")]
+[node name="CameraBounds" parent="." unique_id=1569551778 instance=ExtResource("11_g1hfo")]
 offset_left = -160.0
 offset_top = -220.0
 offset_right = 160.0
 offset_bottom = 20.0
 metadata/_edit_lock_ = true
 
-[node name="LevelData" parent="." instance=ExtResource("12_5obns")]
+[node name="LevelData" parent="." unique_id=1581980865 instance=ExtResource("12_5obns")]
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Objects" type="Node2D" parent="." unique_id=802179391]
 
-[node name="SignDialogueInteraction" parent="Objects" instance=ExtResource("4_6axpd")]
+[node name="SignDialogueInteraction" parent="Objects" unique_id=1981524742 instance=ExtResource("4_6axpd")]
 dialogue = Array[ExtResource("5_pg48v")]([SubResource("Resource_dvmto")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/SignDialogueInteraction"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/SignDialogueInteraction" unique_id=647110474]
 position = Vector2(-70, -164)
 shape = SubResource("RectangleShape2D_flldc")
 
-[node name="RoomTransition" parent="Objects" instance=ExtResource("10_mxoay")]
+[node name="RoomTransition" parent="Objects" unique_id=2007951494 instance=ExtResource("10_mxoay")]
 room = "uid://vuucrggiwsjm"
 doorid = "B"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RoomTransition"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RoomTransition" unique_id=267791766]
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_g1hfo")
 
-[node name="RoomTransition2" parent="Objects" instance=ExtResource("10_mxoay")]
+[node name="RoomTransition2" parent="Objects" unique_id=1132032711 instance=ExtResource("10_mxoay")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RoomTransition2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/RoomTransition2" unique_id=1566824346]
 position = Vector2(-20, -155)
 shape = SubResource("RectangleShape2D_g1hfo")
 
-[node name="SpawnPointA" parent="Objects" instance=ExtResource("9_pg48v")]
+[node name="SpawnPointA" parent="Objects" unique_id=1397708526 instance=ExtResource("9_pg48v")]
 
-[node name="SpawnPointB" parent="Objects" instance=ExtResource("9_pg48v")]
+[node name="SpawnPointB" parent="Objects" unique_id=1398555558 instance=ExtResource("9_pg48v")]
 position = Vector2(-20, -130)
 ID = "B"
 facing = 0
 
-[node name="FakePuzzle" type="Node2D" parent="Objects"]
+[node name="FakePuzzle" type="Node2D" parent="Objects" unique_id=2052506858]
 
-[node name="Lever" parent="Objects/FakePuzzle" instance=ExtResource("13_clh1b")]
+[node name="Lever" parent="Objects/FakePuzzle" unique_id=1595090542 instance=ExtResource("13_clh1b")]
 position = Vector2(50, -160)
 
-[node name="GroundSwitch" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch" parent="Objects/FakePuzzle" unique_id=828158270 instance=ExtResource("15_flldc")]
 position = Vector2(50, -50)
 only_activate_once = true
 
-[node name="GroundSwitch2" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch2" parent="Objects/FakePuzzle" unique_id=93917286 instance=ExtResource("15_flldc")]
 position = Vector2(30, -70)
 only_activate_once = true
 
-[node name="GroundSwitch3" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch3" parent="Objects/FakePuzzle" unique_id=1208047032 instance=ExtResource("15_flldc")]
 position = Vector2(70, -70)
 only_activate_once = true
 
-[node name="GroundSwitch4" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch4" parent="Objects/FakePuzzle" unique_id=2093239212 instance=ExtResource("15_flldc")]
 position = Vector2(50, -90)
 only_activate_once = true
 
-[node name="GroundSwitch5" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch5" parent="Objects/FakePuzzle" unique_id=1196056045 instance=ExtResource("15_flldc")]
 position = Vector2(30, -110)
 only_activate_once = true
 
-[node name="GroundSwitch6" parent="Objects/FakePuzzle" instance=ExtResource("15_flldc")]
+[node name="GroundSwitch6" parent="Objects/FakePuzzle" unique_id=1991194012 instance=ExtResource("15_flldc")]
 position = Vector2(70, -110)
 only_activate_once = true

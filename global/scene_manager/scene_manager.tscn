@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://iipw8i01i8cq"]
+[gd_scene format=3 uid="uid://iipw8i01i8cq"]
 
 [ext_resource type="Script" uid="uid://dijmxpswtexxq" path="res://global/scene_manager/scene_manager.gd" id="1_ifo8e"]
 
@@ -89,16 +89,14 @@ _data = {
 &"fade_slow": SubResource("Animation_ifo8e")
 }
 
-[node name="SceneManager" type="CanvasLayer"]
+[node name="SceneManager" type="CanvasLayer" unique_id=758942033]
 layer = 9999
 script = ExtResource("1_ifo8e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jthf0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=114881927]
+libraries/ = SubResource("AnimationLibrary_jthf0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=330984583]
 modulate = Color(1, 1, 1, 0)
 offset_right = 640.0
 offset_bottom = 480.0

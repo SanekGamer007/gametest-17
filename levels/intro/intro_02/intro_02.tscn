@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bccxl0adkx5o1"]
+[gd_scene format=4 uid="uid://bccxl0adkx5o1"]
 
 [ext_resource type="Script" uid="uid://bohs07wubvkaw" path="res://levels/intro/intro_02/intro_02.gd" id="1_7yqo8"]
 [ext_resource type="Texture2D" uid="uid://bavywoyx06sow" path="res://levels/intro/intro_02/bg.png" id="1_u8eof"]
@@ -159,11 +159,11 @@ metadata/_custom_type_script = "uid://c6i3oamaw72ut"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7j3"]
 size = Vector2(200, 6)
 
-[node name="Intro02" type="Node2D"]
+[node name="Intro02" type="Node2D" unique_id=854175438]
 y_sort_enabled = true
 script = ExtResource("1_7yqo8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1129963453]
 z_index = -1
 offset_left = -1530.0
 offset_top = -1208.0
@@ -171,55 +171,55 @@ offset_right = 1766.0
 offset_bottom = 1483.0
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1625342606]
 z_index = -1
 texture = ExtResource("1_u8eof")
 
-[node name="LevelData" parent="." instance=ExtResource("2_vw0bh")]
+[node name="LevelData" parent="." unique_id=1984441378 instance=ExtResource("2_vw0bh")]
 
-[node name="CollisionTileMapLayer" parent="." instance=ExtResource("3_uc3ds")]
+[node name="CollisionTileMapLayer" parent="." unique_id=2122345590 instance=ExtResource("3_uc3ds")]
 tile_map_data = PackedByteArray("AAD9/woAAAAAAAAAAAD9/wkAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAD8/wkAAAAAAAAAAAD8/wgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAD7/wgAAAAAAAAAAAD6/wgAAAAAAAAAAAD6/wcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAACAP7/AAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAADAP7/AAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAEAP//AAAAAAAAAAD4/wQAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAABAAAAAwD6////AAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAD9/wsAAAAAAAAAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAD+//7/AAABAAAAAwABAP7/AAABAAAABAD8////AAABAAAAAwADAP//AAABAAAABAAFAAAAAAABAAAABAA=")
 
-[node name="SpawnPointA" parent="." instance=ExtResource("4_ykrk4")]
+[node name="SpawnPointA" parent="." unique_id=153239387 instance=ExtResource("4_ykrk4")]
 position = Vector2(0, 199)
 
-[node name="SpawnPointB" parent="." instance=ExtResource("4_ykrk4")]
+[node name="SpawnPointB" parent="." unique_id=1486340503 instance=ExtResource("4_ykrk4")]
 position = Vector2(0, -21)
 ID = "B"
 facing = 0
 
-[node name="RoomTransition" parent="." instance=ExtResource("5_vw0bh")]
+[node name="RoomTransition" parent="." unique_id=744141734 instance=ExtResource("5_vw0bh")]
 room = "uid://r3er2g4qwje2"
 doorid = "B"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition" unique_id=2122465416]
 position = Vector2(0, 224)
 shape = SubResource("RectangleShape2D_uc3ds")
 
-[node name="RoomTransition2" parent="." instance=ExtResource("5_vw0bh")]
+[node name="RoomTransition2" parent="." unique_id=183184301 instance=ExtResource("5_vw0bh")]
 room = "uid://vuucrggiwsjm"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransition2" unique_id=1843562991]
 position = Vector2(0, -42)
 shape = SubResource("RectangleShape2D_vw0bh")
 
-[node name="CameraBounds" parent="." instance=ExtResource("6_uc3ds")]
+[node name="CameraBounds" parent="." unique_id=1166878650 instance=ExtResource("6_uc3ds")]
 offset_left = -160.0
 offset_top = -166.0
 offset_right = 160.0
 offset_bottom = 220.0
 metadata/_edit_lock_ = true
 
-[node name="FloweyNPC" parent="." instance=ExtResource("7_ykrk4")]
+[node name="FloweyNPC" parent="." unique_id=579842666 instance=ExtResource("7_ykrk4")]
 y_sort_enabled = false
 position = Vector2(1, 101)
 
-[node name="Trigger" parent="." instance=ExtResource("8_idqon")]
+[node name="Trigger" parent="." unique_id=1022391747 instance=ExtResource("8_idqon")]
 action = SubResource("Resource_ke2pj")
 condition = true
 flag_name = "intro_flowey_meet"
 flag_value = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1625834910]
 position = Vector2(0, 149)
 shape = SubResource("RectangleShape2D_xj7j3")

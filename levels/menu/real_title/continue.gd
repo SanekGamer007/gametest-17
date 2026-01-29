@@ -12,4 +12,5 @@ func _on_pressed() -> void:
 		return
 
 	GlobalVars.load_time = Time.get_ticks_msec()
+	GlobalVars.update_vars()
 	SceneManager.change_scene(GlobalVars.player_room, GlobalVars.player_room_spawnpoint, "none")

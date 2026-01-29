@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dgrvtywpeva1v"]
+
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_icsr4"]
+[ext_resource type="Script" uid="uid://2dnal0kbi2r4" path="res://objects/player_menu/item/item_button/item_button.gd" id="2_cyegk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7s3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0gug"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goauf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wy08i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tffe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m011x"]
+load_path = "res://.godot/imported/heart3.png-99ac116635e74afa4e8fdb9c3975b56b.ctex"
+
+[node name="ItemButton" type="Button" unique_id=723205953]
+custom_minimum_size = Vector2(308, 0)
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("1_icsr4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q7s3d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b0gug")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_goauf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wy08i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5tffe")
+action_mode = 0
+text = "PLACEHOLDER"
+icon = SubResource("CompressedTexture2D_m011x")
+alignment = 0
+script = ExtResource("2_cyegk")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
