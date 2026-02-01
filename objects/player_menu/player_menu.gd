@@ -74,3 +74,7 @@ func _on_debug_pressed() -> void:
 func _on_sub_menu_exit() -> void:
 	focus_memory.grab_focus()
 	sub_ui_open = false
+
+
+func force_update_text() -> void:
+	update_text.emit(level_data)

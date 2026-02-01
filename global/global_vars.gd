@@ -15,8 +15,15 @@ enum Versions {
 	ANY,
 }
 
+enum EquipmentTypes {
+	WEAPON,
+	ARMOR,
+	ANY, # internal only.
+}
+
 const MAJOR_GAME_VERSION: int = 0
 const MINOR_GAME_VERSION: int = 1
+const EMPTY_EQUIP: EquipmentResource = preload("res://items/equipment/None/none.tres")
 
 # player vars
 var player_name: String = ""
@@ -33,16 +40,21 @@ var player_speed: int = 0 # ut hidden stat
 var player_base_at: int = 0
 var player_base_df: int = 0
 var player_base_speed: int = 4 # ut hidden stat
-var player_current_weapon: ItemResource # change to equipment resource later.
-var player_current_armor: ItemResource # change to equipment resource later.
+var player_bonus_at: int = 0
+var player_bonus_df: int = 0
+var player_bonus_speed: int = 0
+var player_current_weapon: EquipmentResource = EMPTY_EQUIP
+var player_current_armor: EquipmentResource = EMPTY_EQUIP
 var player_time: int = 0 #in miliseconds
 var player_inventory: Array[ItemResource] # max 8 items
+var player_chest: Array[ItemResource]
 var player_contacts: Array[CellCallResource]
 var player_kills: int = 0
 var player_room: String = "res://levels/test_level.tscn"
 var player_room_spawnpoint: String = "A"
 var player_room_name: String = ""
 var player_serious: bool = false
+var player_fun: int = 0
 var flags: Dictionary = { }
 var load_time: int = 0 # time at which a save file was loaded.
 
@@ -145,6 +157,44 @@ func heal_player(amount: int) -> void:
 	player_hp = min(player_hp + amount, player_maxhp)
 
 
+func equip_item_force(itemid: int) -> void:
+	if player_inventory[itemid] is not EquipmentResource:
+		return
+	var new_item: EquipmentResource = player_inventory[itemid]
+	var old_item: EquipmentResource
+	remove_item_by_id(itemid)
+	if new_item.type == EquipmentTypes.WEAPON:
+		old_item = player_current_weapon
+		player_current_weapon = new_item
+	elif new_item.type == EquipmentTypes.ARMOR:
+		old_item = player_current_armor
+		player_current_armor = new_item
+	if old_item and old_item != EMPTY_EQUIP:
+		add_item(old_item)
+	update_vars()
+
+
+func equip_item(itemid: int) -> Array[Dialogue]:
+	if player_inventory[itemid] is not EquipmentResource:
+		var dialogue = DialogueText.new()
+		dialogue.text = "If you are reading\nthis - i fucked up."
+		return [dialogue]
+	var new_item: EquipmentResource = player_inventory[itemid]
+	var old_item: EquipmentResource
+	if new_item.type == EquipmentTypes.WEAPON:
+		old_item = player_current_weapon
+	elif new_item.type == EquipmentTypes.ARMOR:
+		old_item = player_current_armor
+	else:
+		old_item = player_current_weapon
+	if not new_item.is_equipable():
+		return new_item.on_fail_equip()
+	if not old_item.is_takeofable():
+		return old_item.on_fail_takeof()
+	equip_item_force(itemid)
+	return new_item.on_use_overworld()
+
+
 func get_current_room() -> String:
 	if player_room.begins_with("res://"):
 		return player_room
@@ -156,15 +206,20 @@ func get_current_room() -> String:
 			push_error("Invalid player room.")
 		return ""
 
-
+#region update vars private shit
 func update_vars() -> void:
 	_update_love()
 	_update_maxhp()
 	_update_maxen()
 	_update_base_at()
 	_update_base_df()
+	_update_base_speed()
+	_update_bonus_at()
+	_update_bonus_df()
+	_update_bonus_speed()
 	_update_at()
 	_update_df()
+	_update_speed()
 	update_stats.emit()
 
 
@@ -174,7 +229,10 @@ func _update_maxhp() -> void:
 	elif player_love == 20: # for some reason in ut lvl 20 gives you 99 hp.
 		player_maxhp = 99
 	else:
-		player_maxhp = 99 + (2 * (player_love - 20))
+		player_maxhp = 99 + (3 * (player_love - 20))
+	player_maxhp += player_current_weapon.get_maxhp_bonus()
+	player_maxhp += player_current_armor.get_maxhp_bonus()
+	player_hp = min(player_hp, player_maxhp)
 
 
 func _update_maxen() -> void:
@@ -184,6 +242,10 @@ func _update_maxen() -> void:
 		player_maxen = 49
 	else:
 		player_maxen = 49 + (1 * (player_love - 20))
+	player_maxen += player_current_weapon.get_maxen_bonus()
+	player_maxen += player_current_armor.get_maxen_bonus()
+	if player_en > player_maxen:
+		player_en = player_maxen
 
 
 func _update_base_at() -> void:
@@ -194,17 +256,41 @@ func _update_base_df() -> void:
 	player_base_df = max((player_love - 1) / 4, 0)
 
 
+func _update_base_speed() -> void:
+	player_base_speed = 4 # ultra placeholder.
+
+
+func _update_bonus_at() -> void:
+	player_bonus_at = player_current_weapon.get_atk_bonus()
+	player_bonus_at += player_current_armor.get_atk_bonus()
+
+
+func _update_bonus_df() -> void:
+	player_bonus_df = player_current_armor.get_df_bonus()
+	player_bonus_df += player_current_weapon.get_df_bonus()
+
+
+func _update_bonus_speed() -> void:
+	player_speed = player_current_weapon.get_spd_bonus()
+	player_speed += player_current_armor.get_spd_bonus()
+
+
 func _update_at() -> void:
-	player_at = player_base_at # placeholder until equipment is implemented
+	player_at = player_base_at + player_bonus_at
 
 
 func _update_df() -> void:
-	player_df = player_base_df # placeholder until equipment is implemented
+	player_df = player_base_df + player_bonus_df
+
+
+func _update_speed() -> void:
+	player_speed = player_base_speed + player_bonus_df
 
 
 func _update_love() -> void:
 	player_love = get_level_from_exp(player_exp)
 
+#endregion
 
 func get_required_exp(lv: int) -> int:
 	if lv <= 20:

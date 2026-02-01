@@ -155,7 +155,6 @@ position = Vector2(-5, -4)
 shape = SubResource("RectangleShape2D_ec2iw")
 
 [node name="LevelData" parent="." unique_id=877325795 instance=ExtResource("26_ec2iw")]
-room_version = 2
 
 [node name="SavePoint" parent="." unique_id=1037656721 instance=ExtResource("32_hj2pq")]
 position = Vector2(-60, 130)

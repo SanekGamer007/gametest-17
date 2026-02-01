@@ -64,10 +64,15 @@ func _on_use_pressed() -> void:
 	if active_item_id == -1:
 		return
 	var item = GlobalVars.player_inventory[active_item_id]
+	if item is EquipmentResource:
+		_start_dialogue(GlobalVars.equip_item(active_item_id))
+		owner.force_update_text()
+		return
 	if item.consume_on_use:
 		GlobalVars.remove_item_by_id(active_item_id)
 	active_item_id = -1
 	_start_dialogue(item.on_use_overworld())
+	owner.force_update_text()
 
 
 func _on_info_pressed() -> void:

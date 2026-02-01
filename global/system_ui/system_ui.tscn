@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dgwrpdqyotx00"]
+
+[ext_resource type="Script" uid="uid://mtsp6urlgmrk" path="res://global/system_ui/system_ui.gd" id="1_coj3u"]
+[ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="2_vmvud"]
+
+[sub_resource type="Animation" id="Animation_coj3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vmvud"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvk36"]
+_data = {
+&"RESET": SubResource("Animation_coj3u"),
+&"fade": SubResource("Animation_vmvud")
+}
+
+[node name="SystemUI" type="CanvasLayer" unique_id=81759615]
+layer = 9998
+script = ExtResource("1_coj3u")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2106929741]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -3
+theme_override_constants/margin_top = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=398383344]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_vmvud")
+bbcode_enabled = true
+
+[node name="Fader" type="AnimationPlayer" parent="." unique_id=394685951]
+libraries/ = SubResource("AnimationLibrary_yvk36")
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=72137753]

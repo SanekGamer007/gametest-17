@@ -21,15 +21,18 @@ func save_game() -> bool:
 		"player_gold": GlobalVars.player_gold,
 		"player_base_at": GlobalVars.player_base_at,
 		"player_base_df": GlobalVars.player_base_df,
+		"player_base_speed": GlobalVars.player_base_speed,
 		"player_current_weapon": GlobalVars.player_current_weapon,
 		"player_current_armor": GlobalVars.player_current_armor,
 		"player_time": play_time,
 		"player_inventory": GlobalVars.player_inventory,
+		"player_chest": GlobalVars.player_chest,
 		"player_contacts": GlobalVars.player_contacts,
 		"player_kills": GlobalVars.player_kills,
 		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
 		"player_serious": GlobalVars.player_serious,
+		"player_fun": GlobalVars.player_fun,
 	}
 	var data_dict: Dictionary = {
 		"vars": save_variables,
@@ -146,7 +149,8 @@ func load_save_to_global(save_dict: Dictionary) -> bool:
 			var save_val = save_vars.get(variable)
 
 			if typeof(current_val) != typeof(save_val):
-				push_error("Invalid property type. Save file corrupted or modified?")
+				if OS.is_debug_build():
+					push_error(save_val, " is an invalid property type. Save file corrupted or modified?")
 			else:
 				GlobalVars.set(variable, save_vars.get(variable))
 

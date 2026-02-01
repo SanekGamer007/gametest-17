@@ -1,0 +1,50 @@
+[gd_resource type="Resource" format=3 uid="uid://dw48gves4h3x0"]
+
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="1_7pr0d"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="2_bv5cr"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="3_fyfm6"]
+[ext_resource type="Script" uid="uid://c76yo51m682s2" path="res://items/equipment/HeroSword/hero_sword.gd" id="4_628sn"]
+
+[sub_resource type="Resource" id="Resource_aql7t"]
+script = ExtResource("2_bv5cr")
+text = "\"Hero's Sword\"
+>AT 15 DF 2
+>MAXHP 5 MAXEN 5"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_q4sj8"]
+script = ExtResource("2_bv5cr")
+text = "A sword made by a very
+>powerful smith.
+Equipable only by heroes."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_onmja"]
+script = ExtResource("2_bv5cr")
+text = "Or by the devs.
+Stop looking for secrets here.
+>This place is not for you."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_7pr0d"]
+script = ExtResource("2_bv5cr")
+text = "You equiped the Hero's Sword."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_aiexc"]
+script = ExtResource("2_bv5cr")
+text = "You equiped the Hero's Sword."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[resource]
+script = ExtResource("4_628sn")
+atk = 15
+df = 2
+maxen = 5
+maxhp = 5
+equip_text_ow = Array[ExtResource("1_7pr0d")]([SubResource("Resource_aiexc")])
+equip_text_bt = Array[ExtResource("1_7pr0d")]([SubResource("Resource_7pr0d")])
+item_name = "Hero's Sword"
+item_short_name = "H. Sword"
+description = Array[ExtResource("1_7pr0d")]([SubResource("Resource_aql7t"), SubResource("Resource_q4sj8"), SubResource("Resource_onmja")])
+consume_on_use = false

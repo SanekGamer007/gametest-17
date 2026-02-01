@@ -3,6 +3,7 @@ extends Resource
 class_name ItemResource
 
 @export var item_name: String = ""
+@export var item_short_name: String = ""
 @export var description: Array[Dialogue]
 @export var consume_on_use: bool = true
 
