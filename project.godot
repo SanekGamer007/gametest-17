@@ -43,10 +43,10 @@ SystemUI="*uid://dgwrpdqyotx00"
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/resizable=false
-window/size/borderless=true
 window/stretch/mode="viewport"
 window/size/viewport_width.release=480
 window/size/viewport_height.release=92
+window/size/borderless.release=true
 
 [dotnet]
 

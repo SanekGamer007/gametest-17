@@ -24,9 +24,9 @@ func _ready() -> void:
 	text_label.modulate = Color(1.0, 0.0, 0.0, 0.0)
 
 
-func set_text(msg: String, timer: int = 3, fadein: bool = true, fadeout: bool = false) -> void:
+func set_text(msg: String, texttimer: int = 3, fadein: bool = true, fadeout: bool = false) -> void:
 	custom_msg = msg
-	custom_timer = timer
+	custom_timer = texttimer
 	custom_fadein = fadein
 	custom_fadeout = fadeout
 	_set_state(states.TEXT)

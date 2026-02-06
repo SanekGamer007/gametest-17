@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bxrv0w4drf8hi"]
+
+[ext_resource type="Script" uid="uid://cg0228jyo76sm" path="res://objects/pusher/pusher.gd" id="1_fw50f"]
+[ext_resource type="Texture2D" uid="uid://47c6jphv8iad" path="res://objects/pusher/dbg_arrow.png" id="2_y3pge"]
+
+[node name="Pusher" type="Area2D" unique_id=483518390]
+script = ExtResource("1_fw50f")
+rare_text = Array[String](["The time is not here just yet.
+ But that might change very, very soon...", "Be a [shake rate=15.0 level=2]little[/shake] more patient.", "Do you have nothing else to do?
+ Stop this.", "You look into the darkness.", "... it looks back at you.", "Don't stray from the path.", "The eyes of darkness gaze upon you."])
+common_text = Array[String](["Not now.", "Maybe later.", "Wrong way."])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=975586347]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_y3pge")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

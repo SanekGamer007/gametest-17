@@ -1,5 +1,9 @@
 extends Node
 
+const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dialogue_box.tscn")
+const DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
+const DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
+
 enum Operator {
 	EQUAL,
 	NOT_EQUAL,
@@ -80,3 +84,48 @@ func time_to_string(time_in_sec: int):
 		return "%01d:%02d:%02d" % [hours, minutes, seconds]
 	else:
 		return "%01d:%02d" % [minutes, seconds]
+
+
+func get_current_room() -> String:
+	if GlobalVars.player_room.begins_with("res://"):
+		return GlobalVars.player_room
+
+	if ResourceUID.ensure_path(GlobalVars.player_room):
+		return ResourceUID.get_id_path(ResourceUID.text_to_id(GlobalVars.player_room))
+	else:
+		if OS.is_debug_build():
+			push_error("Invalid player room.")
+		return ""
+
+
+func start_dialogue(dialogue: Array[Dialogue], player_node: Chara = null, context: Node = self, override_offset: Vector2 = Vector2.INF) -> bool:
+	# checks
+	if dialogue == null or dialogue.is_empty():
+		if OS.is_debug_build():
+			push_error("Dialogue array is empty.")
+		return false
+	elif player_node == null and override_offset == Vector2.INF:
+		if OS.is_debug_build():
+			push_error("Player node is null and custom offset is not supplied.")
+		override_offset = DIALOGUE_BOTTOM_OFFSET # recovery
+	elif context == self: # may end up causing a lot of trouble if not set.
+		if OS.is_debug_build():
+			push_error("FATAL: Invalid context, exitting...")
+		return false
+
+	var desired_dialogue_offset
+	GlobalVars.player_start_busy.emit()
+	var new_dialogue: DialogueBox = DIALOGUE_SYSTEM_PRELOAD.instantiate()
+	if override_offset != Vector2.INF:
+		desired_dialogue_offset = override_offset
+	else:
+		if player_node.global_position.y > get_viewport().get_camera_2d().get_screen_center_position().y + 1:
+			desired_dialogue_offset = DIALOGUE_TOP_OFFSET
+		else:
+			desired_dialogue_offset = DIALOGUE_BOTTOM_OFFSET
+	new_dialogue.offset = desired_dialogue_offset
+	new_dialogue.current_dialogue = dialogue
+	new_dialogue.context = context
+	get_tree().root.add_child(new_dialogue)
+	await new_dialogue.tree_exiting
+	return true

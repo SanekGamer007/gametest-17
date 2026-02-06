@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b54kkiefxr7bp"]
+
+[ext_resource type="Script" uid="uid://bsrinldfyk5te" path="res://debug/saveconverter/save_converter.gd" id="1_vayy5"]
+
+[node name="SaveConverter" type="Node2D" unique_id=583788157]
+script = ExtResource("1_vayy5")

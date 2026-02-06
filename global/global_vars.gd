@@ -48,7 +48,7 @@ var player_current_armor: EquipmentResource = EMPTY_EQUIP
 var player_time: int = 0 #in miliseconds
 var player_inventory: Array[ItemResource] # max 8 items
 var player_chest: Array[ItemResource]
-var player_contacts: Array[CellCallResource]
+var player_contacts: Array[CellCallResource] = [load("res://calls/test_flowey/test_flowey.tres")]
 var player_kills: int = 0
 var player_room: String = "res://levels/test_level.tscn"
 var player_room_spawnpoint: String = "A"
@@ -196,15 +196,9 @@ func equip_item(itemid: int) -> Array[Dialogue]:
 
 
 func get_current_room() -> String:
-	if player_room.begins_with("res://"):
-		return player_room
-
-	if ResourceUID.ensure_path(player_room):
-		return ResourceUID.get_id_path(ResourceUID.text_to_id(player_room))
-	else:
-		if OS.is_debug_build():
-			push_error("Invalid player room.")
-		return ""
+	if OS.is_debug_build():
+		push_warning("Legacy function call, GlobalVars.get_current_room() instead of Tools.get_current_room(), redirect...")
+	return Tools.get_current_room()
 
 #region update vars private shit
 func update_vars() -> void:

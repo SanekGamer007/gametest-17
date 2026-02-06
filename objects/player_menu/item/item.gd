@@ -3,12 +3,9 @@ extends Control
 signal exit
 
 const ITEMBUTTON = preload("res://objects/player_menu/item/item_button/item_button.tscn")
-const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dialogue_box.tscn")
 
 var focus_memory: Button
 var active_item_id: int = -1
-var DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
-var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
 
 @onready var item_add_location = $PanelContainer/HBoxContainer/ItemContainer
 
@@ -93,18 +90,12 @@ func _on_drop_pressed() -> void:
 
 
 func _start_dialogue(dialogue: Array[Dialogue]) -> void:
-	var desired_dialogue_offset: Vector2
 	visible = false
-	GlobalVars.player_start_busy.emit()
-	var new_dialogue: DialogueBox = DIALOGUE_SYSTEM_PRELOAD.instantiate()
+	var desired_dialogue_offset
 	if owner.player_menu_up_offset:
-		desired_dialogue_offset = DIALOGUE_BOTTOM_OFFSET
+		desired_dialogue_offset = Tools.DIALOGUE_BOTTOM_OFFSET
 	else:
-		desired_dialogue_offset = DIALOGUE_TOP_OFFSET
-	new_dialogue.offset = desired_dialogue_offset
-	new_dialogue.current_dialogue = dialogue
-	new_dialogue.context = self
+		desired_dialogue_offset = Tools.DIALOGUE_TOP_OFFSET
 	owner.sub_ui_dialogue = true
-	get_tree().root.add_child(new_dialogue)
-	await new_dialogue.tree_exiting
+	await Tools.start_dialogue(dialogue, null, self, desired_dialogue_offset)
 	GlobalVars.close_all_ui.emit()

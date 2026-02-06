@@ -3,10 +3,6 @@ extends Control
 const CELLBUTTON = preload("res://objects/player_menu/cell/cell_button/cell_button.tscn")
 
 @onready var cell_add_location = $PanelContainer/HBoxContainer/VBoxContainer
-const DIALOGUE_SYSTEM_PRELOAD = preload("res://objects/dialogue/dialogue_box/dialogue_box.tscn")
-var DIALOGUE_TOP_OFFSET: Vector2 = Vector2(0, 16)
-var DIALOGUE_BOTTOM_OFFSET: Vector2 = Vector2(0, 324)
-var desired_dialogue_offset: Vector2
 
 signal exit
 
@@ -36,18 +32,13 @@ func do_focus() -> void:
 
 func _on_call(caller: CellCallResource) -> void:
 	visible = false
-	GlobalVars.player_start_busy.emit()
-	var new_dialogue: DialogueBox = DIALOGUE_SYSTEM_PRELOAD.instantiate()
+	var desired_dialogue_offset
 	if owner.player_menu_up_offset:
-		desired_dialogue_offset = DIALOGUE_BOTTOM_OFFSET
+		desired_dialogue_offset = Tools.DIALOGUE_BOTTOM_OFFSET
 	else:
-		desired_dialogue_offset = DIALOGUE_TOP_OFFSET
-	new_dialogue.offset = desired_dialogue_offset
-	new_dialogue.current_dialogue = caller.on_use()
-	new_dialogue.context = self
+		desired_dialogue_offset = Tools.DIALOGUE_TOP_OFFSET
 	owner.sub_ui_dialogue = true
-	get_tree().root.add_child(new_dialogue)
-	await new_dialogue.tree_exiting
+	await Tools.start_dialogue(caller.on_use(), null, self, desired_dialogue_offset)
 	GlobalVars.close_all_ui.emit()
 
 

@@ -7,7 +7,7 @@ const SAVE_HEADER = [0x47, 0x54, 0x31, 0x37] # GT17
 var libsecret = GameSecrets.new()
 
 #region Save Game logic
-func save_game() -> bool:
+func save_game(force_debug: bool = false, force_release: bool = false) -> bool:
 	print("Starting saving")
 	var session_time: int = Time.get_ticks_msec() - GlobalVars.load_time
 	var play_time: int = GlobalVars.player_time + session_time
@@ -22,12 +22,12 @@ func save_game() -> bool:
 		"player_base_at": GlobalVars.player_base_at,
 		"player_base_df": GlobalVars.player_base_df,
 		"player_base_speed": GlobalVars.player_base_speed,
-		"player_current_weapon": GlobalVars.player_current_weapon,
-		"player_current_armor": GlobalVars.player_current_armor,
+		"player_current_weapon": GlobalVars.player_current_weapon.resource_path,
+		"player_current_armor": GlobalVars.player_current_armor.resource_path,
 		"player_time": play_time,
-		"player_inventory": GlobalVars.player_inventory,
-		"player_chest": GlobalVars.player_chest,
-		"player_contacts": GlobalVars.player_contacts,
+		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_path),
+		"player_chest": GlobalVars.player_chest.map(func(item): return item.resource_path),
+		"player_contacts": GlobalVars.player_contacts.map(func(caller): return caller.resource_path),
 		"player_kills": GlobalVars.player_kills,
 		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
@@ -47,12 +47,12 @@ func save_game() -> bool:
 
 	var file
 
-	if OS.is_debug_build():
+	if (OS.is_debug_build() or force_debug) and !force_release:
 		file = FileAccess.open(SAVE_FILE_LOCATION + ".debug", FileAccess.WRITE)
 		file.store_string(var_to_str(data_dict))
 		file.close()
 		print("debug saved")
-	else:
+	elif not OS.is_debug_build() or force_release:
 		file = FileAccess.open_encrypted(SAVE_FILE_LOCATION, FileAccess.WRITE, libsecret.get_save_key())
 		if file == null:
 			var err = FileAccess.get_open_error()
@@ -71,13 +71,44 @@ func save_game() -> bool:
 
 func load_game() -> Dictionary:
 	var increase_naughty: bool = false
-
 	if OS.is_debug_build(): # debug code
 		if not FileAccess.file_exists(SAVE_FILE_LOCATION + ".debug"):
 			push_warning("Save file not found.")
 			return { }
 		var save_data = FileAccess.get_file_as_string(SAVE_FILE_LOCATION + ".debug")
 		var data = str_to_var(save_data)
+		var save_vars = data.get("vars")
+
+		if ResourceLoader.exists(save_vars.get("player_current_weapon")):
+			save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
+		else:
+			save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+
+		if ResourceLoader.exists(save_vars.get("player_current_armor")):
+			save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
+		else:
+			save_vars["player_current_armor"] = GlobalVars.EMPTY_EQUIP
+
+		var loaded_inventory: Array[ItemResource]
+		var loaded_chest: Array[ItemResource]
+		var loaded_phone: Array[CellCallResource]
+
+		if save_vars.has("player_inventory"):
+			for i in save_vars.get("player_inventory"):
+				loaded_inventory.append(_convert_resources(i))
+		if save_vars.has("player_chest"):
+			for i in save_vars.get("player_chest"):
+				loaded_chest.append(_convert_resources(i))
+		if save_vars.has("player_contacts"):
+			for i in save_vars.get("player_contacts"):
+				loaded_phone.append(_convert_resources(i))
+			print(save_vars["player_inventory"])
+
+		save_vars["player_inventory"] = loaded_inventory
+		save_vars["player_chest"] = loaded_chest
+		save_vars["player_contacts"] = loaded_phone
+
+		data["vars"] = save_vars
 		return data
 
 	if not FileAccess.file_exists(SAVE_FILE_LOCATION):
@@ -120,10 +151,46 @@ func load_game() -> Dictionary:
 		increase_naughty = true
 
 	var save_dict: Dictionary = bytes_to_var(save_dict_bytes)
-
 	if save_dict.get("vars") == null or save_dict.get("flags") == null:
 		push_error("Save file is corrupted.")
 		return { }
+
+	var save_vars = save_dict.get("vars")
+
+	print(save_vars.get("player_current_weapon"))
+	if ResourceLoader.exists(save_vars.get("player_current_weapon")):
+		save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
+	else:
+		save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+
+	if ResourceLoader.exists(save_vars.get("player_current_armor")):
+		save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
+	else:
+		save_vars["player_current_armor"] = GlobalVars.EMPTY_EQUIP
+
+	var loaded_inventory: Array[ItemResource]
+	var loaded_chest: Array[ItemResource]
+	var loaded_phone: Array[CellCallResource]
+
+	if save_vars.has("player_inventory"):
+		for i in save_vars.get("player_inventory"):
+			loaded_inventory.append(_convert_resources(i))
+
+	if save_vars.has("player_chest"):
+		for i in save_vars.get("player_chest"):
+			loaded_chest.append(_convert_resources(i))
+
+	if save_vars.has("player_contacts"):
+		for i in save_vars.get("player_contacts"):
+			loaded_phone.append(_convert_resources(i))
+
+	save_vars["player_inventory"] = loaded_inventory
+	save_vars["player_chest"] = loaded_chest
+	save_vars["player_contacts"] = loaded_phone
+
+	save_dict["vars"] = save_vars
+
+	print(save_dict)
 
 	if increase_naughty:
 		GlobalVars.checksum_fail += 1
@@ -311,4 +378,11 @@ func _get_sha256(data: PackedByteArray) -> PackedByteArray:
 func _generate_random_bytes(size: int) -> PackedByteArray:
 	var cryptogen = Crypto.new()
 	return cryptogen.generate_random_bytes(size)
+
+
+func _convert_resources(res: String) -> Resource:
+	var result
+	if ResourceLoader.exists(res):
+		result = load(res)
+	return result
 #endregion
