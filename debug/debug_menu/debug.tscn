@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4k4vvgac0bmj"]
 
-[ext_resource type="Script" uid="uid://v141wqjquj57" path="res://objects/player_menu/debug/debug.gd" id="1_v4emx"]
+[ext_resource type="Script" uid="uid://v141wqjquj57" path="res://debug/debug_menu/debug.gd" id="1_v4emx"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_65ai2"]
 [ext_resource type="Texture2D" uid="uid://bpclmh60n8wxt" path="res://objects/player_menu/sprites/heart3.png" id="3_6djif"]
 [ext_resource type="Script" uid="uid://csqi2dvbc3kn7" path="res://debug/debug_menu/buttons/full_heal.gd" id="4_65ai2"]

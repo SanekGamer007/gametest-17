@@ -258,6 +258,7 @@ theme_override_font_sizes/font_size = 10
 text = "[PRESS Z OR ENTER]"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Logo" unique_id=1569203146]
+visible = false
 stream = ExtResource("6_xg7o3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1699476794]

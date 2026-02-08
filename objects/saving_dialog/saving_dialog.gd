@@ -12,7 +12,7 @@ var ROOMNAME_PLACEHOLDER = "%s"
 @onready var save_dict_vars: Dictionary = save_dict.get("vars", { })
 
 @onready var save_player_name = save_dict_vars.get("player_name", GlobalVars.player_name)
-@onready var save_player_love = save_dict_vars.get("player_love", GlobalVars.player_love)
+@onready var save_player_love = GlobalVars.get_level_from_exp(save_dict_vars.get("player_exp", GlobalVars.player_exp))
 @onready var save_player_time = save_dict_vars.get("player_time", GlobalVars.player_time)
 
 
@@ -79,9 +79,9 @@ func _setup_demo_dialog() -> void:
 	$Demo.visible = true
 	LEVEL_PLACEHOLDER = "LV %s"
 
-	$Demo/BoxContainer/VBoxContainer/HBoxContainer/NAME.text = NAME_PLACEHOLDER % save_dict_vars.player_name
-	$Demo/BoxContainer/VBoxContainer/HBoxContainer/LEVEL.text = LEVEL_PLACEHOLDER % GlobalVars.get_level_from_exp(save_dict_vars.player_exp)
-	$Demo/BoxContainer/VBoxContainer/HBoxContainer/TIME.text = TIME_PLACEHOLDER % Tools.time_to_string(save_dict_vars.player_time / 1000)
+	$Demo/BoxContainer/VBoxContainer/HBoxContainer/NAME.text = NAME_PLACEHOLDER % save_player_name
+	$Demo/BoxContainer/VBoxContainer/HBoxContainer/LEVEL.text = LEVEL_PLACEHOLDER % save_player_love
+	$Demo/BoxContainer/VBoxContainer/HBoxContainer/TIME.text = TIME_PLACEHOLDER % Tools.time_to_string(save_player_time / 1000)
 
 	var room_name: String = "ERROR"
 	if get_tree().current_scene.get_node_or_null("LevelData"):

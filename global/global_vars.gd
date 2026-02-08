@@ -28,9 +28,9 @@ const EMPTY_EQUIP: EquipmentResource = preload("res://items/equipment/None/none.
 # player vars
 var player_name: String = ""
 var player_hp: int = 20
-var player_maxhp: int
+var player_maxhp: int = 20
 var player_en: int = 10
-var player_maxen: int
+var player_maxen: int = 10
 var player_love: int = 1
 var player_exp: int = 0
 var player_gold: int = 0
@@ -46,9 +46,9 @@ var player_bonus_speed: int = 0
 var player_current_weapon: EquipmentResource = EMPTY_EQUIP
 var player_current_armor: EquipmentResource = EMPTY_EQUIP
 var player_time: int = 0 #in miliseconds
-var player_inventory: Array[ItemResource] # max 8 items
-var player_chest: Array[ItemResource]
-var player_contacts: Array[CellCallResource] = [load("res://calls/test_flowey/test_flowey.tres")]
+var player_inventory: Array[ItemResource] = [] # max 8 items
+var player_chest: Array[ItemResource] = []
+var player_contacts: Array[CellCallResource] = []
 var player_kills: int = 0
 var player_room: String = "res://levels/test_level.tscn"
 var player_room_spawnpoint: String = "A"
@@ -278,7 +278,7 @@ func _update_df() -> void:
 
 
 func _update_speed() -> void:
-	player_speed = player_base_speed + player_bonus_df
+	player_speed = player_base_speed + player_bonus_speed
 
 
 func _update_love() -> void:

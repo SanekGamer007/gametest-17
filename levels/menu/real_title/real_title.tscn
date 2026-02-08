@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://xq87qf2o07sj" path="res://levels/menu/real_title/real_title.gd" id="1_1ev4n"]
 [ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="3_j35k7"]
-[ext_resource type="Script" uid="uid://bq76nfnhjjthc" path="res://levels/menu/real_title/continue.gd" id="4_ces4a"]
-[ext_resource type="Script" uid="uid://btdlcq4qqxceu" path="res://levels/menu/real_title/settings.gd" id="4_nimnb"]
+[ext_resource type="Script" uid="uid://cw8xicvmmbboe" path="res://levels/menu/real_title/save/reset.gd" id="4_argis"]
+[ext_resource type="Script" uid="uid://bq76nfnhjjthc" path="res://levels/menu/real_title/save/continue.gd" id="4_ces4a"]
+[ext_resource type="Script" uid="uid://btdlcq4qqxceu" path="res://levels/menu/real_title/save/settings.gd" id="4_nimnb"]
 [ext_resource type="FontFile" uid="uid://babudk32t61yb" path="res://fonts/CryptOfTomorrow.ttf" id="5_argis"]
+[ext_resource type="Script" uid="uid://b0sod7rpytdrp" path="res://levels/menu/real_title/newsave/begin_game.gd" id="5_ces4a"]
+[ext_resource type="Script" uid="uid://c6h1hub3ha1ye" path="res://levels/menu/real_title/newsave/settings.gd" id="6_j35k7"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="6_s5i7y"]
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="7_1ihlx"]
 
@@ -23,6 +26,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58rmb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qj6y4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j35k7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ev4n"]
 
 [node name="RealTitle" type="Control" unique_id=664829216]
 layout_mode = 3
@@ -152,6 +159,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pm2kp")
 button_mask = 0
 text = "Reset"
 alignment = 0
+script = ExtResource("4_argis")
 
 [node name="VSeparator" type="VSeparator" parent="Save/Buttons" unique_id=1996477229]
 layout_mode = 2
@@ -182,6 +190,94 @@ text = "Settings"
 alignment = 0
 script = ExtResource("4_nimnb")
 
+[node name="NewSave" type="VBoxContainer" parent="." unique_id=657083471]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.085
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_right = -21.76004
+
+[node name="Instruction" type="VBoxContainer" parent="NewSave" unique_id=1511904829]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NewSave/Instruction" unique_id=1408260886]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("3_j35k7")
+theme_override_font_sizes/font_size = 26
+text = "-----  Instruction -----"
+
+[node name="VSeparator" type="VSeparator" parent="NewSave/Instruction" unique_id=1848191201]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j35k7")
+
+[node name="Label2" type="RichTextLabel" parent="NewSave/Instruction" unique_id=1345415916]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("3_j35k7")
+theme_override_font_sizes/normal_font_size = 26
+text = "[Z or ENTER] - Confirm
+[X or Shift] - Cancel
+[C or CTRL] - Menu (In-game)
+[F4] - Fullscreen
+[Hold ESC] - Quit
+When HP is 0, you lose."
+fit_content = true
+
+[node name="VSeparator" type="VSeparator" parent="NewSave" unique_id=1616686043]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1ev4n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewSave" unique_id=1059474318]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="BeginGame" type="Button" parent="NewSave/VBoxContainer" unique_id=2036993349]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_j35k7")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kcaqu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5p16s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wogl8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i6ho4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pm2kp")
+button_mask = 0
+text = "Begin Game"
+alignment = 0
+script = ExtResource("5_ces4a")
+
+[node name="Settings" type="Button" parent="NewSave/VBoxContainer" unique_id=747142446]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_j35k7")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kcaqu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5p16s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wogl8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i6ho4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pm2kp")
+button_mask = 0
+text = "Settings"
+alignment = 0
+script = ExtResource("6_j35k7")
+
 [node name="Label" type="Label" parent="." unique_id=318325284]
 layout_mode = 1
 anchors_preset = 7
@@ -205,4 +301,7 @@ level_flags = 3
 [node name="SpawnPointA" parent="." unique_id=451501276 instance=ExtResource("7_1ihlx")]
 
 [connection signal="pressed" from="Save/Buttons/HBoxContainer/Continue" to="Save/Buttons/HBoxContainer/Continue" method="_on_pressed"]
+[connection signal="pressed" from="Save/Buttons/HBoxContainer/Reset" to="Save/Buttons/HBoxContainer/Reset" method="_on_pressed"]
 [connection signal="pressed" from="Save/Buttons/HBoxContainer2/Settings" to="Save/Buttons/HBoxContainer2/Settings" method="_on_pressed"]
+[connection signal="pressed" from="NewSave/VBoxContainer/BeginGame" to="NewSave/VBoxContainer/BeginGame" method="_on_pressed"]
+[connection signal="pressed" from="NewSave/VBoxContainer/Settings" to="NewSave/VBoxContainer/Settings" method="_on_pressed"]

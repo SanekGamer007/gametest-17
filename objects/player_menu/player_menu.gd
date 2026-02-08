@@ -39,6 +39,10 @@ func _input(event: InputEvent) -> void:
 		queue_free()
 
 
+func force_update_text() -> void:
+	update_text.emit(level_data)
+
+
 func _on_ui_quit() -> void:
 	queue_free()
 
@@ -74,7 +78,3 @@ func _on_debug_pressed() -> void:
 func _on_sub_menu_exit() -> void:
 	focus_memory.grab_focus()
 	sub_ui_open = false
-
-
-func force_update_text() -> void:
-	update_text.emit(level_data)

@@ -7,12 +7,7 @@ const SAVE_HEADER = [0x47, 0x54, 0x31, 0x37] # GT17
 var libsecret = GameSecrets.new()
 
 #region Save Game logic
-func save_game(force_debug: bool = false, force_release: bool = false) -> bool:
-	print("Starting saving")
-	var session_time: int = Time.get_ticks_msec() - GlobalVars.load_time
-	var play_time: int = GlobalVars.player_time + session_time
-
-	var savebytes: PackedByteArray = _get_header_with_version()
+func save_game() -> bool:
 	var save_variables: Dictionary = {
 		"player_name": GlobalVars.player_name,
 		"player_hp": GlobalVars.player_hp,
@@ -24,16 +19,22 @@ func save_game(force_debug: bool = false, force_release: bool = false) -> bool:
 		"player_base_speed": GlobalVars.player_base_speed,
 		"player_current_weapon": GlobalVars.player_current_weapon.resource_path,
 		"player_current_armor": GlobalVars.player_current_armor.resource_path,
-		"player_time": play_time,
-		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_path),
+		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_),
 		"player_chest": GlobalVars.player_chest.map(func(item): return item.resource_path),
 		"player_contacts": GlobalVars.player_contacts.map(func(caller): return caller.resource_path),
+		"player_time": 0,
 		"player_kills": GlobalVars.player_kills,
 		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
 		"player_serious": GlobalVars.player_serious,
 		"player_fun": GlobalVars.player_fun,
 	}
+	print("Starting saving")
+	var session_time: int = Time.get_ticks_msec() - GlobalVars.load_time
+	var play_time: int = GlobalVars.player_time + session_time
+
+	var savebytes: PackedByteArray = _get_header_with_version()
+	save_variables.set("player_time", play_time)
 	var data_dict: Dictionary = {
 		"vars": save_variables,
 		"flags": GlobalVars.flags,
@@ -47,12 +48,12 @@ func save_game(force_debug: bool = false, force_release: bool = false) -> bool:
 
 	var file
 
-	if (OS.is_debug_build() or force_debug) and !force_release:
+	if OS.is_debug_build():
 		file = FileAccess.open(SAVE_FILE_LOCATION + ".debug", FileAccess.WRITE)
 		file.store_string(var_to_str(data_dict))
 		file.close()
-		print("debug saved")
-	elif not OS.is_debug_build() or force_release:
+		print_debug("debug saved")
+	else:
 		file = FileAccess.open_encrypted(SAVE_FILE_LOCATION, FileAccess.WRITE, libsecret.get_save_key())
 		if file == null:
 			var err = FileAccess.get_open_error()
@@ -72,7 +73,7 @@ func save_game(force_debug: bool = false, force_release: bool = false) -> bool:
 func load_game() -> Dictionary:
 	var increase_naughty: bool = false
 	if OS.is_debug_build(): # debug code
-		if not FileAccess.file_exists(SAVE_FILE_LOCATION + ".debug"):
+		if not save_file_exists():
 			push_warning("Save file not found.")
 			return { }
 		var save_data = FileAccess.get_file_as_string(SAVE_FILE_LOCATION + ".debug")
@@ -102,7 +103,6 @@ func load_game() -> Dictionary:
 		if save_vars.has("player_contacts"):
 			for i in save_vars.get("player_contacts"):
 				loaded_phone.append(_convert_resources(i))
-			print(save_vars["player_inventory"])
 
 		save_vars["player_inventory"] = loaded_inventory
 		save_vars["player_chest"] = loaded_chest
@@ -111,7 +111,7 @@ func load_game() -> Dictionary:
 		data["vars"] = save_vars
 		return data
 
-	if not FileAccess.file_exists(SAVE_FILE_LOCATION):
+	if not save_file_exists():
 		push_warning("Save file not found.")
 		return { }
 
@@ -128,7 +128,10 @@ func load_game() -> Dictionary:
 
 	var header: PackedByteArray = filebytes.slice(0, 4)
 	if not header.get_string_from_utf8() == "GT17":
-		push_error("The save file contains an invalid header.")
+		if OS.is_debug_build():
+			push_error("The save file contains an invalid header.")
+		else:
+			push_error("Save file is corrupted.")
 		return { }
 	var save_version: Array
 	save_version = filebytes.slice(4, 6)
@@ -193,9 +196,9 @@ func load_game() -> Dictionary:
 	print(save_dict)
 
 	if increase_naughty:
+		print_debug("Naughty naughty detected.")
 		GlobalVars.checksum_fail += 1
-	#	if GlobalVars.checksum_fail < 3:
-	#		save_game()
+		save_system_information()
 	return save_dict
 
 
@@ -234,8 +237,6 @@ func save_file_exists() -> bool:
 
 #region System Information Save Logic
 func save_system_information() -> bool:
-	print("Starting saving sys info")
-
 	var savebytes: PackedByteArray = _get_header_with_version()
 	var data_dict: Dictionary = {
 		"checksum_fail": GlobalVars.checksum_fail,
@@ -255,17 +256,17 @@ func save_system_information() -> bool:
 		file = FileAccess.open(SYS_INFO_LOCATION + ".debug", FileAccess.WRITE)
 		file.store_string(var_to_str(data_dict))
 		file.close()
-		print("debug sys info saved")
+		print_debug("debug sys info saved")
 
 	else:
 		file = FileAccess.open_encrypted(SYS_INFO_LOCATION, FileAccess.WRITE, libsecret.get_save_key())
 		if file == null:
 			var err = FileAccess.get_open_error()
-			push_error("Unable to open the sys info file. Error code: %d" % err)
+			push_error("Unable to open the save file. Error code: %d" % err)
 			return false
 		file.store_buffer(savebytes)
 		file.close()
-		print("Done saving sys info!")
+		print_debug("release sys info saved")
 
 	return true
 
@@ -282,14 +283,14 @@ func load_system_information() -> Dictionary:
 		return data
 
 	if not FileAccess.file_exists(SYS_INFO_LOCATION):
-		push_warning("sys info file not found.")
+		push_warning("Save file not found.")
 		return { }
 
 	var file = FileAccess.open_encrypted(SYS_INFO_LOCATION, FileAccess.READ, libsecret.get_save_key())
 
 	if file == null:
 		var err = FileAccess.get_open_error()
-		push_error("Unable to open the sys info file. Error code: %d" % err)
+		push_error("Unable to open the save file. Error code: %d" % err)
 		return { }
 
 	var filebytes = file.get_buffer(file.get_length())
@@ -298,16 +299,19 @@ func load_system_information() -> Dictionary:
 
 	var header: PackedByteArray = filebytes.slice(0, 4)
 	if not header.get_string_from_utf8() == "GT17":
-		push_error("The sys info file contains an invalid header.")
+		if OS.is_debug_build():
+			push_error("The sys file contains an invalid header.")
+		else:
+			push_error("Save file is corrupted.")
 		return { }
 	var sys_version: Array
 	sys_version = filebytes.slice(4, 6)
 
 	if sys_version != [GlobalVars.MAJOR_GAME_VERSION, GlobalVars.MINOR_GAME_VERSION]:
 		if sys_version[0] <= GlobalVars.MAJOR_GAME_VERSION or sys_version[1] <= GlobalVars.MINOR_GAME_VERSION:
-			push_error("sys file is made for an older version of the game, migration is currently not supported.")
+			push_error("Save file is made for an older version of the game, migration is currently not supported.")
 		else:
-			push_error("sys file is made for an newer version of the game.")
+			push_error("Save file is made for an newer version of the game.")
 		return { }
 
 	if _get_sha256(filebytes.slice(0, -32)) != sys_checksum:
@@ -323,13 +327,11 @@ func load_system_information() -> Dictionary:
 	var sys_dict: Dictionary = bytes_to_var(sys_dict_bytes)
 
 	if sys_dict.size() == 0:
-		push_error("Sys file is corrupted.")
+		push_error("Save file is corrupted.")
 		return { }
 
 	if increase_naughty:
 		GlobalVars.checksum_fail += 1
-	#	if GlobalVars.checksum_fail < 3:
-	#		save_game()
 	return sys_dict
 
 
@@ -338,7 +340,7 @@ func load_sys_info_to_global(sys_dict: Dictionary) -> bool:
 		if OS.is_debug_build():
 			push_error("sys_dict is invalid.")
 		else:
-			push_error("Sys file is corrupted.")
+			push_error("Save file is corrupted.")
 		return false
 
 	for variable in sys_dict:
@@ -347,7 +349,7 @@ func load_sys_info_to_global(sys_dict: Dictionary) -> bool:
 			var save_val = sys_dict.get(variable)
 
 			if typeof(current_val) != typeof(save_val):
-				push_error("Invalid property type. Sys file corrupted or modified?")
+				print_debug("Invalid property type. Save file corrupted or modified?")
 			else:
 				GlobalVars.set(variable, sys_dict.get(variable))
 

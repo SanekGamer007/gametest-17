@@ -73,7 +73,6 @@ func _apply_settings() -> void:
 
 
 func _reset_settings() -> void:
-	user_settings = { }
 	user_settings = default_settings.duplicate()
 	_apply_settings()
 	save_settings()
@@ -132,7 +131,8 @@ func set_mastervolume(value: float) -> void:
 
 
 func _apply_mastervolume() -> void:
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), user_settings.mastervolume)
+	var db = linear_to_db(user_settings.mastervolume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)
 
 
 func set_soundvolume(value: float) -> void:

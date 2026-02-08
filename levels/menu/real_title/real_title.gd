@@ -2,13 +2,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#_prep_new_save()
+	#	return
 	if not SaveManager.sys_file_exists():
 		GlobalVars.has_beaten_demo = true
 		SaveManager.save_system_information()
 	if not SaveManager.save_file_exists():
-		GlobalVars.player_name = "DEBUG1"
-		SceneManager.change_scene("res://levels/test_level.tscn", "A", "none")
-		return
+		_prep_new_save()
 	var save_data: Dictionary = SaveManager.load_game()
 	var save_data_vars = save_data.get("vars")
 
@@ -29,3 +29,9 @@ func _ready() -> void:
 		$Save/ROOM.text = "ERROR"
 
 	$Save/Buttons/HBoxContainer/Continue.grab_focus()
+
+
+func _prep_new_save() -> void:
+	$Save.visible = false
+	$NewSave.visible = true
+	$NewSave/VBoxContainer/BeginGame.grab_focus()

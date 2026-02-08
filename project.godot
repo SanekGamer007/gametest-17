@@ -34,7 +34,6 @@ Tools="*res://global/tools.gd"
 Fullscreen="*res://global/fullscreen.gd"
 SettingsManager="*res://global/settings_manager.gd"
 SaveManager="*res://global/save_manager.gd"
-debugmenu="*uid://b4k4vvgac0bmj"
 SignalLens="*uid://85rkx60vm7a7"
 SystemUI="*uid://dgwrpdqyotx00"
 
@@ -65,6 +64,7 @@ enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", 
 
 spawnpoint=""
 player=""
+cam_bound=""
 
 [input]
 

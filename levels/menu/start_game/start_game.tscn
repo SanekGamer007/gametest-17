@@ -1,0 +1,458 @@
+[gd_scene format=3 uid="uid://dppnar4yyw8ck"]
+
+[ext_resource type="Script" uid="uid://q15ptm3gu6ps" path="res://levels/menu/start_game/start_game.gd" id="1_4a4o1"]
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_d2h67"]
+[ext_resource type="Script" uid="uid://yo5jc40gr65" path="res://levels/menu/start_game/name_picker.gd" id="2_2x0su"]
+[ext_resource type="Script" uid="uid://tb33bocra43c" path="res://levels/menu/start_game/confirm_name.gd" id="4_p5r6a"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_v4r7v"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="5_p5r6a"]
+[ext_resource type="Texture2D" uid="uid://bphw7rqm33m7q" path="res://1.png" id="7_cj362"]
+[ext_resource type="Texture2D" uid="uid://sqql4pddqchs" path="res://2.png" id="8_6mrnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a4o1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2x0su"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v4r7v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5r6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj362"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6mrnr"]
+
+[sub_resource type="Animation" id="Animation_h2vto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerName:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(264, 114.71999)]
+}
+
+[sub_resource type="Animation" id="Animation_edvsh"]
+resource_name = "bigger_and_better_big_shot_boss"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerName:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3.5, 3.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(264, 114.71999), Vector2(200, 229)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7n1v"]
+_data = {
+&"RESET": SubResource("Animation_h2vto"),
+&"bigger_and_better_big_shot_boss": SubResource("Animation_edvsh")
+}
+
+[sub_resource type="Animation" id="Animation_6mrnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhiteColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhiteColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w7n1v"]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhiteColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhiteColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bbk7h"]
+_data = {
+&"RESET": SubResource("Animation_6mrnr"),
+&"fade": SubResource("Animation_w7n1v")
+}
+
+[node name="StartGame" type="Control" unique_id=1937557168]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4a4o1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=81305622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NamePicker" type="Control" parent="." unique_id=702148232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2x0su")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NamePicker" unique_id=842590174]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 142.0
+grow_horizontal = 2
+
+[node name="VSeparator" type="VSeparator" parent="NamePicker/VBoxContainer" unique_id=1464921924]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4a4o1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NamePicker/VBoxContainer" unique_id=145345333]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="NamePicker/VBoxContainer/HBoxContainer" unique_id=609572309]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+text = "Name the fallen human."
+
+[node name="PlayerName" type="Label" parent="NamePicker" unique_id=1854935104]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.23
+anchor_right = 0.5
+anchor_bottom = 0.23
+offset_left = -56.0
+offset_right = 58.0
+offset_bottom = 31.999992
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+
+[node name="GridContainer" type="GridContainer" parent="NamePicker" unique_id=1795418750]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169
+anchor_top = 0.317
+anchor_right = 0.824
+anchor_bottom = 0.81
+offset_left = -0.16000366
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = -3
+columns = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NamePicker" unique_id=1740865891]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.908
+anchor_right = 0.5
+anchor_bottom = 0.908
+offset_left = -168.32
+offset_top = -40.0
+offset_right = 197.71997
+grow_horizontal = 2
+theme_override_constants/separation = 65
+
+[node name="Quit" type="Button" parent="NamePicker/HBoxContainer" unique_id=941227255]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../Backspace")
+focus_next = NodePath("../Backspace")
+focus_previous = NodePath(".")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2x0su")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v4r7v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p5r6a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj362")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6mrnr")
+button_mask = 0
+text = "Quit"
+alignment = 0
+
+[node name="Backspace" type="Button" parent="NamePicker/HBoxContainer" unique_id=1736463119]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Quit")
+focus_neighbor_right = NodePath("../Done")
+focus_next = NodePath("../Done")
+focus_previous = NodePath("../Quit")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2x0su")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v4r7v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p5r6a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj362")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6mrnr")
+button_mask = 0
+text = "Backspace"
+alignment = 0
+
+[node name="Done" type="Button" parent="NamePicker/HBoxContainer" unique_id=143100736]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Backspace")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Backspace")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2x0su")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v4r7v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p5r6a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj362")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6mrnr")
+button_mask = 0
+text = "Done"
+alignment = 0
+
+[node name="ConfirmName" type="Control" parent="." unique_id=15767804]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_p5r6a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmName" unique_id=1189380941]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 142.0
+grow_horizontal = 2
+
+[node name="VSeparator" type="VSeparator" parent="ConfirmName/VBoxContainer" unique_id=335699160]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4a4o1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmName/VBoxContainer" unique_id=2013728962]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ConfirmName/VBoxContainer/HBoxContainer" unique_id=1923133903]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+text = "Is this name correct?"
+
+[node name="PlayerName" type="RichTextLabel" parent="ConfirmName" unique_id=884810416]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.239
+anchor_right = 0.5
+anchor_bottom = 0.239
+offset_left = -56.0
+offset_right = 211.0
+offset_bottom = 32.001045
+theme_override_fonts/normal_font = ExtResource("1_d2h67")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[shake shake rate=22.0 level 8]"
+fit_content = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmName" unique_id=2061536167]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.908
+anchor_right = 0.5
+anchor_bottom = 0.908
+offset_left = -168.32
+offset_top = -40.0
+offset_right = 197.71997
+theme_override_constants/separation = 250
+
+[node name="No" type="Button" parent="ConfirmName/HBoxContainer" unique_id=721904191]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath("../Yes")
+focus_next = NodePath("../Yes")
+focus_previous = NodePath(".")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2x0su")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v4r7v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p5r6a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj362")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6mrnr")
+button_mask = 0
+text = "No"
+alignment = 0
+
+[node name="Yes" type="Button" parent="ConfirmName/HBoxContainer" unique_id=956654159]
+layout_mode = 2
+focus_neighbor_left = NodePath("../No")
+focus_previous = NodePath("../No")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_d2h67")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2x0su")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v4r7v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p5r6a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj362")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6mrnr")
+button_mask = 0
+text = "Yes"
+alignment = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ConfirmName" unique_id=12297831]
+libraries/ = SubResource("AnimationLibrary_w7n1v")
+
+[node name="SpawnPointA" parent="." unique_id=2022314457 instance=ExtResource("4_v4r7v")]
+
+[node name="WhiteFader" type="AnimationPlayer" parent="." unique_id=1304970087]
+libraries/ = SubResource("AnimationLibrary_bbk7h")
+
+[node name="WhiteColorRect" type="ColorRect" parent="." unique_id=1168983384]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="LevelData" parent="." unique_id=1208534237 instance=ExtResource("5_p5r6a")]
+level_flags = 3
+
+[node name="1" type="Sprite2D" parent="." unique_id=1487179165]
+visible = false
+self_modulate = Color(1, 1, 1, 0.16862746)
+position = Vector2(320, 230)
+texture = ExtResource("7_cj362")
+
+[node name="2" type="Sprite2D" parent="." unique_id=408197776]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3764706)
+position = Vector2(320, 240)
+texture = ExtResource("8_6mrnr")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="NamePicker/HBoxContainer/Quit" to="NamePicker" method="_on_quit_pressed"]
+[connection signal="pressed" from="NamePicker/HBoxContainer/Backspace" to="NamePicker" method="_on_backspace_pressed"]
+[connection signal="pressed" from="NamePicker/HBoxContainer/Done" to="NamePicker" method="_on_done_pressed"]
+[connection signal="pressed" from="ConfirmName/HBoxContainer/No" to="ConfirmName" method="_on_no_pressed"]
+[connection signal="pressed" from="ConfirmName/HBoxContainer/Yes" to="ConfirmName" method="_on_yes_pressed"]

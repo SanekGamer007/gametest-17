@@ -21,7 +21,7 @@ var custom_fadeout: bool
 
 
 func _ready() -> void:
-	text_label.modulate = Color(1.0, 0.0, 0.0, 0.0)
+	text_label.modulate = Color(1.0, 1.0, 1.0, 0.0)
 
 
 func set_text(msg: String, texttimer: int = 3, fadein: bool = true, fadeout: bool = false) -> void:
