@@ -1,10 +1,13 @@
 extends CanvasLayer
 
+signal scene_changing
+
 # LF = LevelFlag
 const LF_NOCHARA = 0x1
 const LF_CUSTOMCAMERA = 0x2
 
 const PLAYER_SCENE = preload("res://entities/chara/chara.tscn")
+const PLAYER_HP_SHOWER = preload("res://objects/player_health_overworld/player_health_overworld.tscn")
 
 var scene: String
 var new_target_spawn_id: String
@@ -53,6 +56,7 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 			$ColorRect.color = Color(0.0, 0.0, 0.0, 1.0)
 			animname = "fade"
 	AnimPlay.play(animname)
+	scene_changing.emit()
 	AnimPlay.animation_finished.connect(_on_fade_finished, CONNECT_ONE_SHOT)
 
 
@@ -62,14 +66,15 @@ func _on_fade_finished(_anim_name: StringName) -> void:
 	GlobalVars.player_room = scene
 	_setup_level()
 	var target_node = get_tree().current_scene.get_node_or_null(function_location)
-	if target_node and target_node.has_method(function_name):
-		if function_args is Array and not function_args.is_empty():
-			target_node.callv(function_name, function_args)
+	if target_node:
+		if target_node.has_method(function_name):
+			if function_args is Array and not function_args.is_empty():
+				target_node.callv(function_name, function_args)
+			else:
+				target_node.call(function_name)
 		else:
-			target_node.call(function_name)
-	else:
-		if OS.is_debug_build():
-			push_warning("Target node or function not found.", target_node, function_location, function_name)
+			if OS.is_debug_build():
+				push_warning("Target node or function not found.", target_node, function_location, function_name)
 	AnimPlay.play_backwards(animname)
 
 
@@ -83,13 +88,13 @@ func _setup_level() -> void:
 	GlobalVars.player_stop_busy.emit()
 	if level_flags & LF_NOCHARA:
 		return
+	player = PLAYER_SCENE.instantiate()
+	get_tree().current_scene.add_child(player)
+	var player_hp_shower_menu = PLAYER_HP_SHOWER.instantiate()
+	get_tree().current_scene.add_child(player_hp_shower_menu)
 	if level_flags & LF_CUSTOMCAMERA:
-		player = PLAYER_SCENE.instantiate()
 		player.get_node("Camera2D").enabled = false
-		get_tree().current_scene.add_child(player)
 	else:
-		player = PLAYER_SCENE.instantiate()
-		get_tree().current_scene.add_child(player)
 		_set_camera()
 
 

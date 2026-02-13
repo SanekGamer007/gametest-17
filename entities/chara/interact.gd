@@ -2,7 +2,7 @@ extends Area2D
 
 # A good chunk of this code is shamelessly stolen from https://github.com/Stoxis/Godette-Tale/blob/master/Godette-Tale/Scripts/Player/InteractionComponent.gd.
 @onready var parent: Chara = get_parent()
-var interaction_target: Node
+var interaction_targets: Array[Node]
 
 
 func _physics_process(_delta: float) -> void:
@@ -22,10 +22,12 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (interaction_target != null and event.is_action_pressed("main_button") and parent.state != parent.states.BUSY):
-		if (interaction_target.has_method("interaction") and interaction_target.has_method("interaction_can_interact")):
-			if interaction_target.interaction_can_interact():
-				interaction_target.interaction(parent)
+	if !interaction_targets.is_empty() and event.is_action_pressed("main_button") and parent.state != parent.states.BUSY:
+		for target in interaction_targets:
+			if target.has_method("interaction") and target.has_method("interaction_can_interact"):
+				if target.interaction_can_interact():
+					target.interaction(parent)
+					break
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -37,9 +39,10 @@ func _on_area_exited(area: Area2D) -> void:
 
 
 func _check_interact_entered(area: CollisionObject2D):
-	interaction_target = area
+	interaction_targets.append(area)
 
 
 func _check_interact_exited(area: CollisionObject2D):
-	if (area == interaction_target):
-		interaction_target = null
+	if interaction_targets.has(area):
+		var num = interaction_targets.find(area)
+		interaction_targets.remove_at(num)

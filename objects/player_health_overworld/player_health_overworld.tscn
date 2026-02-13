@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://lnrnkxryvqj2"]
+
+[ext_resource type="Script" uid="uid://ci2p4c4wglxko" path="res://objects/player_health_overworld/player_health_overworld.gd" id="1_05pig"]
+[ext_resource type="Texture2D" uid="uid://d3yx2i0wsd58o" path="res://objects/player_health_overworld/hp.png" id="1_m0b0t"]
+[ext_resource type="PackedScene" uid="uid://bxh5bnhyt2aam" path="res://objects/hp_progress_bar/hp_progress_bar.tscn" id="5_i452f"]
+[ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="6_y343q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2kaf"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xd4wu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp7ix"]
+
+[sub_resource type="Animation" id="Animation_rmdr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 70)]
+}
+
+[sub_resource type="Animation" id="Animation_uanat"]
+resource_name = "popin"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, 70), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_05pig"]
+resource_name = "popout"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i452f"]
+_data = {
+&"RESET": SubResource("Animation_rmdr4"),
+&"popin": SubResource("Animation_uanat"),
+&"popout": SubResource("Animation_05pig")
+}
+
+[node name="PlayerHealthOverworld" type="CanvasLayer" unique_id=566295365]
+layer = 9998
+offset = Vector2(0, 70)
+transform = Transform2D(1, 0, 0, 1, 0, 70)
+script = ExtResource("1_05pig")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=330197068]
+anchors_preset = -1
+anchor_left = 0.35900003
+anchor_top = 0.87100005
+anchor_right = 0.647
+anchor_bottom = 0.95600003
+offset_left = 0.23997498
+offset_top = -0.08001709
+offset_right = -0.08001709
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(-2, -3.4000092)
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2kaf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1037910294]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/HBoxContainer" unique_id=868334720]
+custom_minimum_size = Vector2(32, 27)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/HBoxContainer/Control" unique_id=1421601193]
+position = Vector2(16.000015, 13.120026)
+texture = ExtResource("1_m0b0t")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=1453163167]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_m0b0t")
+stretch_mode = 5
+
+[node name="HPProgressBar" parent="PanelContainer/HBoxContainer" unique_id=496590965 instance=ExtResource("5_i452f")]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/HBoxContainer" unique_id=2144704954]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xd4wu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=115639018]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=904502148]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xp7ix")
+
+[node name="HP" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1687207065]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("6_y343q")
+theme_override_font_sizes/font_size = 24
+text = "20 / 20"
+
+[node name="PopAnim" type="AnimationPlayer" parent="." unique_id=147058699]
+libraries/ = SubResource("AnimationLibrary_i452f")
+
+[node name="LockTimer" type="Timer" parent="." unique_id=2075559730]
+wait_time = 5.0
+
+[connection signal="animation_finished" from="PopAnim" to="." method="_on_pop_anim_animation_finished"]
+[connection signal="timeout" from="LockTimer" to="." method="_on_lock_timer_timeout"]

@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 			_handle_special_state(delta)
 
 
-func _handle_idle_state(delta: float) -> void:
+func _handle_idle_state(_delta: float) -> void:
 	if Input.is_action_just_pressed("exitting"):
 		_set_state(states.EXIT)
 		return
@@ -67,7 +67,7 @@ func _handle_text_state(delta: float) -> void:
 		_set_state(states.IDLE)
 
 
-func _handle_special_state(delta: float) -> void:
+func _handle_special_state(_delta: float) -> void:
 	pass
 
 

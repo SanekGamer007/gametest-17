@@ -1,6 +1,7 @@
 extends Node
 
-const SAVE_FILE_LOCATION = "user://file0"
+const SAVE_FILE_LOCATION = "user://file"
+const SAVE_SUFFIX = ["0" ,"4", "5", "6"]
 const SYS_INFO_LOCATION = "user://system_information"
 const SAVE_HEADER = [0x47, 0x54, 0x31, 0x37] # GT17
 
@@ -19,7 +20,7 @@ func save_game() -> bool:
 		"player_base_speed": GlobalVars.player_base_speed,
 		"player_current_weapon": GlobalVars.player_current_weapon.resource_path,
 		"player_current_armor": GlobalVars.player_current_armor.resource_path,
-		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_),
+		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_path),
 		"player_chest": GlobalVars.player_chest.map(func(item): return item.resource_path),
 		"player_contacts": GlobalVars.player_contacts.map(func(caller): return caller.resource_path),
 		"player_time": 0,
@@ -33,36 +34,29 @@ func save_game() -> bool:
 	var session_time: int = Time.get_ticks_msec() - GlobalVars.load_time
 	var play_time: int = GlobalVars.player_time + session_time
 
-	var savebytes: PackedByteArray = _get_header_with_version()
 	save_variables.set("player_time", play_time)
 	var data_dict: Dictionary = {
 		"vars": save_variables,
 		"flags": GlobalVars.flags,
 	}
-	var data = var_to_bytes(data_dict)
-	savebytes.append_array(data)
-	savebytes.append_array(_get_sha256(data))
-	savebytes.append_array(_generate_random_bytes(64))
-
-	savebytes.append_array(_get_sha256(savebytes))
-
-	var file
-
-	if OS.is_debug_build():
-		file = FileAccess.open(SAVE_FILE_LOCATION + ".debug", FileAccess.WRITE)
-		file.store_string(var_to_str(data_dict))
-		file.close()
-		print_debug("debug saved")
+	if OS.is_debug_build(): # remove later
+		for i in range(SAVE_SUFFIX.size() - 1, 0, -1):
+			var target = SAVE_FILE_LOCATION + SAVE_SUFFIX[i] + ".debug"
+			var source = SAVE_FILE_LOCATION + SAVE_SUFFIX[i-1] + ".debug"
+			if FileAccess.file_exists(target):
+				DirAccess.remove_absolute(target)
+			if FileAccess.file_exists(source):
+				DirAccess.copy_absolute(source, target)
 	else:
-		file = FileAccess.open_encrypted(SAVE_FILE_LOCATION, FileAccess.WRITE, libsecret.get_save_key())
-		if file == null:
-			var err = FileAccess.get_open_error()
-			push_error("Unable to open the save file. Error code: %d" % err)
-			return false
-		file.store_buffer(savebytes)
-		file.close()
-
-	print("Done saving!")
+		for i in range(SAVE_SUFFIX.size() - 1):
+			var target = SAVE_FILE_LOCATION + SAVE_SUFFIX[i+1]
+			var source = SAVE_FILE_LOCATION + SAVE_SUFFIX[i]
+			if FileAccess.file_exists(target):
+				DirAccess.remove_absolute(target)
+			if FileAccess.file_exists(source):
+				DirAccess.copy_absolute(source, target)
+	if _save(data_dict, false) == false:
+		return false
 
 	GlobalVars.load_time = Time.get_ticks_msec()
 	GlobalVars.player_time = play_time
@@ -76,52 +70,78 @@ func load_game() -> Dictionary:
 		if not save_file_exists():
 			push_warning("Save file not found.")
 			return { }
-		var save_data = FileAccess.get_file_as_string(SAVE_FILE_LOCATION + ".debug")
-		var data = str_to_var(save_data)
-		var save_vars = data.get("vars")
-
-		if ResourceLoader.exists(save_vars.get("player_current_weapon")):
-			save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
-		else:
-			save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
-
-		if ResourceLoader.exists(save_vars.get("player_current_armor")):
-			save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
-		else:
-			save_vars["player_current_armor"] = GlobalVars.EMPTY_EQUIP
+		var file = null
+		for i in SAVE_SUFFIX:
+			var tmpfile = FileAccess.get_file_as_string(SAVE_FILE_LOCATION + i + ".debug")
+			if tmpfile == null or tmpfile == "":
+				continue
+			else:
+				file = tmpfile
+				break
+		var save_data = str_to_var(file)
+		var save_vars: Dictionary = save_data.get("vars")
 
 		var loaded_inventory: Array[ItemResource]
 		var loaded_chest: Array[ItemResource]
 		var loaded_phone: Array[CellCallResource]
-
-		if save_vars.has("player_inventory"):
-			for i in save_vars.get("player_inventory"):
-				loaded_inventory.append(_convert_resources(i))
-		if save_vars.has("player_chest"):
-			for i in save_vars.get("player_chest"):
-				loaded_chest.append(_convert_resources(i))
-		if save_vars.has("player_contacts"):
-			for i in save_vars.get("player_contacts"):
-				loaded_phone.append(_convert_resources(i))
+		
+		for i in save_vars:
+			if i == "player_current_weapon":
+				if ResourceLoader.exists(save_vars.get(i)):
+					save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
+				else:
+					save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+				continue
+			if i == "player_current_armor":
+				if ResourceLoader.exists(save_vars.get(i)):
+					save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
+				else:
+					save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+				continue
+			if i == "player_inventory":
+				for res in save_vars.get("player_inventory"):
+					loaded_inventory.append(_convert_resources(res))
+				continue
+			if i == "player_chest":
+				for res in save_vars.get("player_chest"):
+					loaded_chest.append(_convert_resources(res))
+				continue
+			if i == "player_contacts":
+				for res in save_vars.get("player_contacts"):
+					loaded_phone.append(_convert_resources(res))
+				continue
 
 		save_vars["player_inventory"] = loaded_inventory
 		save_vars["player_chest"] = loaded_chest
 		save_vars["player_contacts"] = loaded_phone
 
-		data["vars"] = save_vars
-		return data
+		save_data["vars"] = save_vars
+		return save_data
 
 	if not save_file_exists():
 		push_warning("Save file not found.")
 		return { }
-
-	var file = FileAccess.open_encrypted(SAVE_FILE_LOCATION, FileAccess.READ, libsecret.get_save_key())
-
+	
+	var file = null
+	for i in SAVE_SUFFIX:
+		var tmpfile = FileAccess.open_encrypted(SAVE_FILE_LOCATION + i, FileAccess.READ, libsecret.get_save_key())
+		if tmpfile == null or tmpfile == "":
+			continue
+		else:
+			file = tmpfile
+			break
 	if file == null:
 		var err = FileAccess.get_open_error()
 		push_error("Unable to open the save file. Error code: %d" % err)
 		return { }
-
+	
+	var filesize = file.get_length()
+	if filesize < 134 or filesize > 1024 * 100: # less than 134 bytes or more than 100 kb
+		if OS.is_debug_build():
+			push_error("Save file size is invalid.")
+		else:
+			push_error("Save file is corrupted.")
+		return { }
 	var filebytes = file.get_buffer(file.get_length())
 	var save_checksum: PackedByteArray = filebytes.slice(-32)
 	file.close()
@@ -137,10 +157,12 @@ func load_game() -> Dictionary:
 	save_version = filebytes.slice(4, 6)
 
 	if save_version != [GlobalVars.MAJOR_GAME_VERSION, GlobalVars.MINOR_GAME_VERSION]:
-		if save_version[0] <= GlobalVars.MAJOR_GAME_VERSION or save_version[1] <= GlobalVars.MINOR_GAME_VERSION:
-			push_error("Save file is made for an older version of the game, migration is currently not supported.")
-		else:
+		var gamever = (GlobalVars.MAJOR_GAME_VERSION * 1000) + GlobalVars.MINOR_GAME_VERSION
+		var savever = (save_version[0] * 1000) + save_version[1]
+		if savever > gamever:
 			push_error("Save file is made for an newer version of the game.")
+		else:
+			push_error("Save file is made for an older version of the game, migration is currently not supported.")
 		return { }
 
 	if _get_sha256(filebytes.slice(0, -32)) != save_checksum:
@@ -160,32 +182,36 @@ func load_game() -> Dictionary:
 
 	var save_vars = save_dict.get("vars")
 
-	print(save_vars.get("player_current_weapon"))
-	if ResourceLoader.exists(save_vars.get("player_current_weapon")):
-		save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
-	else:
-		save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
-
-	if ResourceLoader.exists(save_vars.get("player_current_armor")):
-		save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
-	else:
-		save_vars["player_current_armor"] = GlobalVars.EMPTY_EQUIP
 
 	var loaded_inventory: Array[ItemResource]
 	var loaded_chest: Array[ItemResource]
 	var loaded_phone: Array[CellCallResource]
-
-	if save_vars.has("player_inventory"):
-		for i in save_vars.get("player_inventory"):
-			loaded_inventory.append(_convert_resources(i))
-
-	if save_vars.has("player_chest"):
-		for i in save_vars.get("player_chest"):
-			loaded_chest.append(_convert_resources(i))
-
-	if save_vars.has("player_contacts"):
-		for i in save_vars.get("player_contacts"):
-			loaded_phone.append(_convert_resources(i))
+	
+	for i in save_vars:
+		if i == "player_current_weapon":
+			if ResourceLoader.exists(save_vars.get(i)):
+				save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
+			else:
+				save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+			continue
+		if i == "player_current_armor":
+			if ResourceLoader.exists(save_vars.get(i)):
+				save_vars["player_current_armor"] = load(save_vars.get("player_current_armor"))
+			else:
+				save_vars["player_current_weapon"] = GlobalVars.EMPTY_EQUIP
+			continue
+		if i == "player_inventory":
+			for res in save_vars.get("player_inventory"):
+				loaded_inventory.append(_convert_resources(res))
+			continue
+		if i == "player_chest":
+			for res in save_vars.get("player_chest"):
+				loaded_chest.append(_convert_resources(res))
+			continue
+		if i == "player_contacts":
+			for res in save_vars.get("player_contacts"):
+				loaded_phone.append(_convert_resources(res))
+			continue
 
 	save_vars["player_inventory"] = loaded_inventory
 	save_vars["player_chest"] = loaded_chest
@@ -193,7 +219,6 @@ func load_game() -> Dictionary:
 
 	save_dict["vars"] = save_vars
 
-	print(save_dict)
 
 	if increase_naughty:
 		print_debug("Naughty naughty detected.")
@@ -230,45 +255,35 @@ func load_save_to_global(save_dict: Dictionary) -> bool:
 
 
 func save_file_exists() -> bool:
+	var check: bool = false
 	if OS.is_debug_build():
-		return FileAccess.file_exists(SAVE_FILE_LOCATION + ".debug")
-	return FileAccess.file_exists(SAVE_FILE_LOCATION)
+		for i in SAVE_SUFFIX:
+			var tmp = FileAccess.file_exists(SAVE_FILE_LOCATION + i + ".debug")
+			print(tmp)
+			if tmp == null or tmp == false:
+				continue
+			else:
+				check = tmp
+				break
+		return check
+	for i in SAVE_SUFFIX:
+		var tmp = FileAccess.file_exists(SAVE_FILE_LOCATION + i)
+		if tmp == null or tmp == false:
+			continue
+		else:
+			check = tmp
+			break
+	return check
 #endregion
 
 #region System Information Save Logic
 func save_system_information() -> bool:
-	var savebytes: PackedByteArray = _get_header_with_version()
 	var data_dict: Dictionary = {
 		"checksum_fail": GlobalVars.checksum_fail,
 		"has_beaten_demo": GlobalVars.has_beaten_demo,
 		"true_reset_count": GlobalVars.true_reset_count,
 	}
-	var data = var_to_bytes(data_dict)
-	savebytes.append_array(data)
-	savebytes.append_array(_get_sha256(data))
-	savebytes.append_array(_generate_random_bytes(64))
-
-	savebytes.append_array(_get_sha256(savebytes))
-
-	var file
-
-	if OS.is_debug_build():
-		file = FileAccess.open(SYS_INFO_LOCATION + ".debug", FileAccess.WRITE)
-		file.store_string(var_to_str(data_dict))
-		file.close()
-		print_debug("debug sys info saved")
-
-	else:
-		file = FileAccess.open_encrypted(SYS_INFO_LOCATION, FileAccess.WRITE, libsecret.get_save_key())
-		if file == null:
-			var err = FileAccess.get_open_error()
-			push_error("Unable to open the save file. Error code: %d" % err)
-			return false
-		file.store_buffer(savebytes)
-		file.close()
-		print_debug("release sys info saved")
-
-	return true
+	return _save(data_dict, true)
 
 
 func load_system_information() -> Dictionary:
@@ -308,10 +323,12 @@ func load_system_information() -> Dictionary:
 	sys_version = filebytes.slice(4, 6)
 
 	if sys_version != [GlobalVars.MAJOR_GAME_VERSION, GlobalVars.MINOR_GAME_VERSION]:
-		if sys_version[0] <= GlobalVars.MAJOR_GAME_VERSION or sys_version[1] <= GlobalVars.MINOR_GAME_VERSION:
-			push_error("Save file is made for an older version of the game, migration is currently not supported.")
-		else:
+		var gamever = (GlobalVars.MAJOR_GAME_VERSION * 1000) + GlobalVars.MINOR_GAME_VERSION
+		var sysver = (sys_version[0] * 1000) + sys_version[1]
+		if sysver > gamever:
 			push_error("Save file is made for an newer version of the game.")
+		else:
+			push_error("Save file is made for an older version of the game, migration is currently not supported.")
 		return { }
 
 	if _get_sha256(filebytes.slice(0, -32)) != sys_checksum:
@@ -376,7 +393,6 @@ func _get_sha256(data: PackedByteArray) -> PackedByteArray:
 	ctx.update(data)
 	return ctx.finish()
 
-
 func _generate_random_bytes(size: int) -> PackedByteArray:
 	var cryptogen = Crypto.new()
 	return cryptogen.generate_random_bytes(size)
@@ -387,4 +403,39 @@ func _convert_resources(res: String) -> Resource:
 	if ResourceLoader.exists(res):
 		result = load(res)
 	return result
+	
+func _save(data_dict: Dictionary, is_sys_info: bool) -> bool:
+	var bytes: PackedByteArray = _get_header_with_version()
+	var data = var_to_bytes(data_dict)
+	bytes.append_array(data)
+	bytes.append_array(_get_sha256(data))
+	bytes.append_array(_generate_random_bytes(64))
+
+	bytes.append_array(_get_sha256(bytes))
+	var file
+
+	if OS.is_debug_build():
+		if not is_sys_info:
+			file = FileAccess.open(SAVE_FILE_LOCATION + SAVE_SUFFIX[0] + ".debug", FileAccess.WRITE)
+		else:
+			file = FileAccess.open(SYS_INFO_LOCATION + ".debug", FileAccess.WRITE)
+		file.store_string(var_to_str(data_dict))
+		file.close()
+		print_debug("debug saved")
+	else:
+		if not is_sys_info:
+			file = FileAccess.open_encrypted(SAVE_FILE_LOCATION + SAVE_SUFFIX[0], FileAccess.WRITE, libsecret.get_save_key())
+		else:
+			file = FileAccess.open_encrypted(SYS_INFO_LOCATION + ".debug", FileAccess.WRITE, libsecret.get_save_key())
+		if file == null:
+			var err = FileAccess.get_open_error()
+			push_error("Unable to open the save file. Error code: %d" % err)
+			return false
+		file.store_buffer(bytes)
+		file.close()
+	var stringy: String = "sys_file" if is_sys_info else "save_file"
+	print_debug("Done saving " + stringy + "!")
+	return true
+
+
 #endregion

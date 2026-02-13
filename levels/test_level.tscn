@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://c85gxv6pwwh8f" path="res://entities/testnpc/testnpc.tscn" id="8_wndkh"]
 [ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="10_4n8tn"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="15_o5yuq"]
+[ext_resource type="Script" uid="uid://btu46g2ug4vfs" path="res://levels/tesr.gd" id="16_o5yuq"]
 [ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="16_wjuib"]
 [ext_resource type="Script" uid="uid://b6ln53gbnmdof" path="res://objects/dialogue/resources/actions/action_save_resource.gd" id="17_wjuib"]
-[ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="20_n4g7x"]
-[ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="21_atrxo"]
+[ext_resource type="Texture2D" uid="uid://cdye32op5dvll" path="res://levels/karma-acid.png" id="17_xag4j"]
+[ext_resource type="PackedScene" uid="uid://bilf0vxoi5d4j" path="res://objects/trigger/trigger.tscn" id="20_n4g7x"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="26_ec2iw"]
 [ext_resource type="PackedScene" uid="uid://bi53568tpdtvn" path="res://objects/savepoint/savepoint.tscn" id="32_hj2pq"]
 
@@ -36,15 +37,6 @@ item_name = "Test Item"
 description = Array[ExtResource("4_ur00s")]([SubResource("Resource_4lkjn")])
 metadata/_custom_type_script = "uid://cf430cf0vcg32"
 
-[sub_resource type="Resource" id="Resource_ra35m"]
-script = ExtResource("21_atrxo")
-metadata/_custom_type_script = "uid://c6i3oamaw72ut"
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x7oem"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec2iw"]
-size = Vector2(62, 31)
-
 [sub_resource type="Resource" id="Resource_xag4j"]
 script = ExtResource("15_o5yuq")
 text = "something broke and erased
@@ -55,6 +47,9 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 [sub_resource type="Resource" id="Resource_pgbyh"]
 script = ExtResource("17_wjuib")
 metadata/_custom_type_script = "uid://b6ln53gbnmdof"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjuib"]
+radius = 21.0
 
 [node name="TestLevel" type="Node2D" unique_id=679023039]
 y_sort_enabled = true
@@ -137,25 +132,21 @@ offset_right = 204.0
 offset_bottom = 219.0
 metadata/_edit_lock_ = true
 
-[node name="Trigger" parent="." unique_id=723193236 instance=ExtResource("20_n4g7x")]
-position = Vector2(-155, 114)
-action = SubResource("Resource_ra35m")
-condition = true
-operator = 4
-flag_name = "test_flag"
-flag_value = 6
-
-[node name="Sprite2D" type="Sprite2D" parent="Trigger" unique_id=1941958143]
-position = Vector2(-4.9999995, -4)
-scale = Vector2(61.75, 31.25001)
-texture = SubResource("PlaceholderTexture2D_x7oem")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1458770907]
-position = Vector2(-5, -4)
-shape = SubResource("RectangleShape2D_ec2iw")
-
 [node name="LevelData" parent="." unique_id=877325795 instance=ExtResource("26_ec2iw")]
 
 [node name="SavePoint" parent="." unique_id=1037656721 instance=ExtResource("32_hj2pq")]
 position = Vector2(-60, 130)
 dialogue = Array[ExtResource("4_ur00s")]([SubResource("Resource_xag4j"), SubResource("Resource_pgbyh")])
+
+[node name="Trigger" parent="." unique_id=2008463618 instance=ExtResource("20_n4g7x")]
+position = Vector2(-120, 57)
+script = ExtResource("16_o5yuq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=2017140601]
+position = Vector2(-50, 133)
+shape = SubResource("CircleShape2D_wjuib")
+
+[node name="KarmaAcid" type="Sprite2D" parent="." unique_id=844389905]
+z_index = -1
+position = Vector2(-170, 180)
+texture = ExtResource("17_xag4j")

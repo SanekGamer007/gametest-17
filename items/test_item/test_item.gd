@@ -16,7 +16,7 @@ func on_use_overworld() -> Array[Dialogue]:
 	else:
 		dialogue.text = dialogue.text + "Your HP was maxed out."
 
-	GlobalVars.heal_player(hp_heal)
+	HpManager.heal_player(hp_heal)
 	return [dialogue]
 
 

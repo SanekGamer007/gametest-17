@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://deid8e1ufalki" path="res://objects/room_transition/room_transition.tscn" id="5_vw0bh"]
 [ext_resource type="PackedScene" uid="uid://5yx47qq2xlvv" path="res://objects/camera_bounds/camera_bounds.tscn" id="6_uc3ds"]
 [ext_resource type="PackedScene" uid="uid://csiw1l532qqng" path="res://entities/flowey_npc/flowey_npc.tscn" id="7_ykrk4"]
-[ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger/trigger.tscn" id="8_idqon"]
+[ext_resource type="PackedScene" uid="uid://bqpe8a1co7sng" path="res://objects/trigger_old/trigger_old.tscn" id="8_idqon"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="9_bt522"]
 [ext_resource type="Script" uid="uid://c6i3oamaw72ut" path="res://objects/dialogue/resources/actions/action_dialogue_resource.gd" id="10_143h1"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="10_ke2pj"]

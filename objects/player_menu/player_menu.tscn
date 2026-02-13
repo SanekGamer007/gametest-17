@@ -674,6 +674,9 @@ custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_re67x")
 
+[connection signal="update_pos" from="." to="Stats" method="_on_update_pos"]
+[connection signal="update_pos" from="." to="Cell" method="_on_update_pos"]
+[connection signal="update_pos" from="." to="Item" method="_on_update_pos"]
 [connection signal="update_text" from="." to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/ITEM" method="_on_update_text"]
 [connection signal="update_text" from="." to="Chooser/PanelContainer/HBoxContainer/VBoxContainer/CELL" method="_on_update_text"]
 [connection signal="update_text" from="." to="MiniStats/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/NAME" method="_on_update_text"]

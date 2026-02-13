@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beu2ksfdorgau"
-path="res://.godot/imported/temp.png-201e6e8271ac4243360d04fb5ad56331.ctex"
+uid="uid://d3yx2i0wsd58o"
+path="res://.godot/imported/hp.png-a8fe6d24fce5e418cd2a6648e79a81be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp.png"
-dest_files=["res://.godot/imported/temp.png-201e6e8271ac4243360d04fb5ad56331.ctex"]
+source_file="res://objects/player_health_overworld/hp.png"
+dest_files=["res://.godot/imported/hp.png-a8fe6d24fce5e418cd2a6648e79a81be.ctex"]
 
 [params]
 

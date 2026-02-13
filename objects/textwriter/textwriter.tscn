@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://8ltflt4lk0rn"]
+
+[ext_resource type="Script" uid="uid://crcpn0t23isip" path="res://objects/textwriter/textwriter.gd" id="1_cteur"]
+[ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="1_hfgr3"]
+[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="2_cteur"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrvc3"]
+size = Vector2(50, 50)
+
+[node name="TextWriter" type="HBoxContainer" unique_id=1629633382]
+custom_minimum_size = Vector2(288, 70)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_right = 144.0
+offset_bottom = 70.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(144, 0)
+script = ExtResource("1_cteur")
+
+[node name="SpeakerParent" type="Control" parent="." unique_id=876534886]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SpeakerParent" unique_id=1147538277]
+position = Vector2(35, 30)
+texture = SubResource("PlaceholderTexture2D_qrvc3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=54577163]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=23942568]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer" unique_id=704964310]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hfgr3")
+theme_override_fonts/bold_font = ExtResource("2_cteur")
+theme_override_fonts/bold_italics_font = ExtResource("2_cteur")
+theme_override_fonts/italics_font = ExtResource("2_cteur")
+theme_override_fonts/mono_font = ExtResource("2_cteur")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 16
+bbcode_enabled = true
+text = "* TEST
+* tEST2 GGGggggggggggggg
+* TEST 3................."
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="button_container" type="MarginContainer" parent="VBoxContainer" unique_id=1281324616]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="VFlowContainer" type="VFlowContainer" parent="VBoxContainer/button_container" unique_id=1240588901]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 32
+alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=406313041]
+max_polyphony = 1000
+bus = &"Sounds"

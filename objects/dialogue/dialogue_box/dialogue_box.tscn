@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cft6oblc1xuhk"]
 
 [ext_resource type="Script" uid="uid://uu7sa2vxr05f" path="res://objects/dialogue/dialogue_box/dialogue_box.gd" id="1_jwyir"]
-[ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="2_jwyir"]
-[ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="3_ib4t5"]
+[ext_resource type="PackedScene" uid="uid://8ltflt4lk0rn" path="res://objects/textwriter/textwriter.tscn" id="2_jwyir"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrvc3"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,9 +15,6 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 anti_aliasing = false
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qrvc3"]
-size = Vector2(50, 50)
 
 [node name="DialogueBox" type="CanvasLayer" unique_id=2137699436]
 layer = 9998
@@ -35,69 +31,4 @@ offset_bottom = 140.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qrvc3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1550227098]
-custom_minimum_size = Vector2(288, 70)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -144.0
-offset_right = 144.0
-offset_bottom = 70.0
-grow_horizontal = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(144, 0)
-
-[node name="SpeakerParent" type="Control" parent="HBoxContainer" unique_id=493120317]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/SpeakerParent" unique_id=303058698]
-position = Vector2(35, 30)
-texture = SubResource("PlaceholderTexture2D_qrvc3")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1743531436]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1702333638]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 8
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/MarginContainer" unique_id=2030331693]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_jwyir")
-theme_override_fonts/bold_font = ExtResource("3_ib4t5")
-theme_override_fonts/bold_italics_font = ExtResource("3_ib4t5")
-theme_override_fonts/italics_font = ExtResource("3_ib4t5")
-theme_override_fonts/mono_font = ExtResource("3_ib4t5")
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 16
-bbcode_enabled = true
-text = "* TEST
-* tEST2 GGGggggggggggggg
-* TEST 3................."
-scroll_active = false
-autowrap_mode = 0
-visible_characters_behavior = 1
-
-[node name="button_container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1541889906]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 6
-
-[node name="VFlowContainer" type="VFlowContainer" parent="HBoxContainer/VBoxContainer/button_container" unique_id=1057431223]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 32
-alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1591896338]
-max_polyphony = 1000
-bus = &"Sounds"
+[node name="TextWritter" parent="." unique_id=1629633382 instance=ExtResource("2_jwyir")]

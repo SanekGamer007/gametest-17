@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ds2xm6648xsyd"]
+
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_7y7fg"]
+[ext_resource type="Script" uid="uid://e8sm7234atm3" path="res://levels/menu/fake_title_legacy/fake_title.gd" id="1_fk2go"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="3_f8vlo"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_meyqf"]
+
+[node name="FakeTitle" type="Control" unique_id=475895570]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fk2go")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=162525580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="." unique_id=588084055]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_font_sizes/font_size = 26
+text = "UNDERTALE
+Welcome to GAMETEST 17 Playtest!"
+horizontal_alignment = 1
+
+[node name="SavePlaceholder" type="Label" parent="." unique_id=1136875134]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.475
+anchor_top = 0.28
+anchor_right = 0.475
+anchor_bottom = 0.28
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_font_sizes/font_size = 26
+text = "EMPTY                                   0:00"
+
+[node name="Instruction" type="Label" parent="." unique_id=1296365281]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.463
+anchor_top = 0.38
+anchor_right = 0.465
+anchor_bottom = 0.38
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_font_sizes/font_size = 26
+text = "--- Instruction --"
+horizontal_alignment = 1
+
+[node name="Controls" type="RichTextLabel" parent="Instruction" unique_id=241255454]
+custom_minimum_size = Vector2(250, 276)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -18.960007
+offset_top = 39.199997
+offset_right = 276.03998
+offset_bottom = 315.2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_constants/paragraph_separation = 8
+theme_override_fonts/normal_font = ExtResource("1_7y7fg")
+theme_override_font_sizes/normal_font_size = 26
+text = "[Z] -  Confirm
+[X] -  Cancel
+[C] -  Menu (In-game)
+[F4] -  Fullscreen"
+fit_content = true
+scroll_active = false
+
+[node name="nohpyoulosebozo" type="Label" parent="Instruction/Controls" unique_id=545191139]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 242.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_font_sizes/font_size = 26
+text = "When HP=0, you lose."
+
+[node name="LevelData" parent="." unique_id=1176469781 instance=ExtResource("3_f8vlo")]
+level_flags = 3
+
+[node name="SpawnPointA" parent="." unique_id=1017146810 instance=ExtResource("4_meyqf")]

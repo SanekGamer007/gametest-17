@@ -33,10 +33,8 @@ func do_focus() -> void:
 
 
 func _on_update_text(_lvl_data: LevelData) -> void:
-	if owner.level_data:
-		var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
-		if ministatsize.x >= 135:
-			$PanelContainer.position.x += ministatsize.x - 135
+	if visible:
+		return
 	for child in item_add_location.get_children():
 		if child is Button:
 			child.queue_free()
@@ -99,3 +97,8 @@ func _start_dialogue(dialogue: Array[Dialogue]) -> void:
 	owner.sub_ui_dialogue = true
 	await Tools.start_dialogue(dialogue, null, self, desired_dialogue_offset)
 	GlobalVars.close_all_ui.emit()
+
+func _on_update_pos() -> void:
+	var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
+	if ministatsize.x >= 135:
+		$PanelContainer.position.x += ministatsize.x - 135

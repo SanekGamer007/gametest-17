@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal update_text(lvl_data: LevelData)
+signal update_pos()
 
 const PLAYER_MENU_TOP_OFFSET = 0.095
 const PLAYER_MENU_BOTTOM_OFFSET = 0.66
@@ -17,6 +18,8 @@ var focus_memory: Button
 
 func _ready() -> void:
 	update_text.emit(level_data)
+	update_pos.emit()
+	GlobalVars.update_stats.connect(force_update_text)
 	if player_node.global_position.y > get_viewport().get_camera_2d().get_screen_center_position().y - 1:
 		player_menu_desired_offset = PLAYER_MENU_TOP_OFFSET
 		player_menu_up_offset = true

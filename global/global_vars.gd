@@ -63,6 +63,8 @@ var checksum_fail: int = 0
 var has_beaten_demo: bool = false
 var true_reset_count: int = 0
 
+
+
 const exp_table: Array[int] = [
 	0,
 	10,
@@ -152,10 +154,6 @@ func remove_contact(contact: CellCallResource) -> void:
 			push_error("Contact does not exist.")
 
 #endregion
-
-func heal_player(amount: int) -> void:
-	player_hp = min(player_hp + amount, player_maxhp)
-
 
 func equip_item_force(itemid: int) -> void:
 	if player_inventory[itemid] is not EquipmentResource:
@@ -289,6 +287,8 @@ func _update_love() -> void:
 func get_required_exp(lv: int) -> int:
 	if lv <= 20:
 		return exp_table[lv - 1]
+	elif lv >= 99:
+		return 125000
 	return snapped(int(12.5 * pow(lv, 3) + 50 * lv), 5000)
 
 

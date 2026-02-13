@@ -36,6 +36,7 @@ SettingsManager="*res://global/settings_manager.gd"
 SaveManager="*res://global/save_manager.gd"
 SignalLens="*uid://85rkx60vm7a7"
 SystemUI="*uid://dgwrpdqyotx00"
+HpManager="*uid://htuff1dvb5qk"
 
 [display]
 
@@ -140,4 +141,4 @@ exitting={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=3

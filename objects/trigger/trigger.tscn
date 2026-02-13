@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://bqpe8a1co7sng"]
+[gd_scene format=3 uid="uid://bilf0vxoi5d4j"]
 
-[ext_resource type="Script" uid="uid://dytepvst3e84g" path="res://objects/trigger/trigger.gd" id="1_svcj5"]
+[ext_resource type="Script" uid="uid://br5au5grhirh2" path="res://objects/trigger/trigger.gd" id="1_svcj5"]
 
-[node name="Trigger" type="Area2D" unique_id=1376291822]
+[node name="Trigger" type="Area2D" unique_id=2008463618]
 script = ExtResource("1_svcj5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

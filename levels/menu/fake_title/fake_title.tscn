@@ -1,20 +1,40 @@
-[gd_scene format=3 uid="uid://ds2xm6648xsyd"]
+[gd_scene format=3 uid="uid://mn3m6wtaambr"]
 
-[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_7y7fg"]
-[ext_resource type="Script" uid="uid://e8sm7234atm3" path="res://levels/menu/fake_title/fake_title.gd" id="1_fk2go"]
-[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="3_f8vlo"]
-[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="4_meyqf"]
+[ext_resource type="Script" uid="uid://dupkg3n26ocnq" path="res://levels/menu/fake_title/fake_title.gd" id="1_0wstj"]
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="2_b81v0"]
+[ext_resource type="Script" uid="uid://cba4td8ev45xh" path="res://levels/menu/fake_title/save/continue.gd" id="3_0kdag"]
+[ext_resource type="Script" uid="uid://cu40nj6skqri4" path="res://levels/menu/fake_title/save/reset.gd" id="4_88cmu"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="9_dd2vp"]
+[ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="10_rlx4e"]
 
-[node name="FakeTitle" type="Control" unique_id=475895570]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uducn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcaqu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5p16s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wogl8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6ho4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm2kp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58rmb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmw1q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_310ym"]
+
+[node name="RealTitle" type="Control" unique_id=664829216]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fk2go")
+script = ExtResource("1_0wstj")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=162525580]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=853430683]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,76 +43,223 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Title" type="Label" parent="." unique_id=588084055]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 77.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_7y7fg")
-theme_override_font_sizes/font_size = 26
-text = "UNDERTALE
-Welcome to GAMETEST 17 Playtest!"
-horizontal_alignment = 1
-
-[node name="SavePlaceholder" type="Label" parent="." unique_id=1136875134]
+[node name="Save" type="VBoxContainer" parent="." unique_id=1260491705]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.475
-anchor_top = 0.28
-anchor_right = 0.475
-anchor_bottom = 0.28
+anchor_left = 0.5
+anchor_top = 0.33
+anchor_right = 0.5
+anchor_bottom = 0.33
+offset_left = -180.0
+offset_top = -34.0
+offset_right = 180.0
+offset_bottom = 34.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_7y7fg")
-theme_override_font_sizes/font_size = 26
-text = "EMPTY                                   0:00"
 
-[node name="Instruction" type="Label" parent="." unique_id=1296365281]
+[node name="Info" type="HBoxContainer" parent="Save" unique_id=1537739483]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="NAME" type="Label" parent="Save/Info" unique_id=1509284630]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "TESTNAME"
+metadata/_edit_lock_ = true
+
+[node name="LV" type="Label" parent="Save/Info" unique_id=969898216]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "LV 0"
+metadata/_edit_lock_ = true
+
+[node name="TIME" type="Label" parent="Save/Info" unique_id=1315162634]
+custom_minimum_size = Vector2(152, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "1234:56:78"
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="ROOM" type="Label" parent="Save" unique_id=1263653904]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "ROOM Lorem ipsum dolor sit "
+metadata/_edit_lock_ = true
+
+[node name="VSeparator" type="VSeparator" parent="Save" unique_id=116523050]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uducn")
+
+[node name="Buttons" type="VBoxContainer" parent="Save" unique_id=1126370354]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Save/Buttons" unique_id=11108165]
+layout_mode = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="Save/Buttons/HBoxContainer" unique_id=616376454]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Reset")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kcaqu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5p16s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wogl8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i6ho4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pm2kp")
+button_mask = 0
+text = "Continue"
+alignment = 0
+script = ExtResource("3_0kdag")
+
+[node name="HSeparator2" type="HSeparator" parent="Save/Buttons/HBoxContainer" unique_id=893229839]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_58rmb")
+
+[node name="Reset" type="Button" parent="Save/Buttons/HBoxContainer" unique_id=2086018298]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Continue")
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kcaqu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5p16s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wogl8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i6ho4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pm2kp")
+button_mask = 0
+text = "Restart"
+alignment = 0
+script = ExtResource("4_88cmu")
+
+[node name="NewSave" type="VBoxContainer" parent="." unique_id=503417595]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.463
-anchor_top = 0.38
-anchor_right = 0.465
-anchor_bottom = 0.38
+anchor_left = 0.5
+anchor_top = 0.33
+anchor_right = 0.5
+anchor_bottom = 0.33
+offset_left = -180.0
+offset_top = -34.0
+offset_right = 148.0
+offset_bottom = 90.0
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="Info" type="HBoxContainer" parent="NewSave" unique_id=639745898]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="NAME" type="Label" parent="NewSave/Info" unique_id=356311876]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "EMPTY"
+metadata/_edit_lock_ = true
+
+[node name="LV" type="Label" parent="NewSave/Info" unique_id=1019381542]
+custom_minimum_size = Vector2(72, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+metadata/_edit_lock_ = true
+
+[node name="TIME" type="Label" parent="NewSave/Info" unique_id=1546491425]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b81v0")
+theme_override_font_sizes/font_size = 26
+text = "0:00"
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="VSeparator" type="VSeparator" parent="NewSave" unique_id=866322945]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uducn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewSave" unique_id=809896493]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="NewSave/VBoxContainer" unique_id=2083017481]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_fonts/font = ExtResource("2_b81v0")
 theme_override_font_sizes/font_size = 26
-text = "--- Instruction --"
+text = "--- Instructions --"
 horizontal_alignment = 1
 
-[node name="Controls" type="RichTextLabel" parent="Instruction" unique_id=241255454]
-custom_minimum_size = Vector2(250, 276)
-layout_mode = 1
-anchors_preset = -1
-offset_left = -18.960007
-offset_top = 39.199997
-offset_right = 276.03998
-offset_bottom = 315.2
+[node name="HBoxContainer" type="HBoxContainer" parent="NewSave/VBoxContainer" unique_id=1035494042]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="NewSave/VBoxContainer/HBoxContainer" unique_id=1921142023]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mmw1q")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewSave/VBoxContainer/HBoxContainer" unique_id=1253953139]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_constants/paragraph_separation = 8
-theme_override_fonts/normal_font = ExtResource("1_7y7fg")
+theme_override_fonts/normal_font = ExtResource("2_b81v0")
 theme_override_font_sizes/normal_font_size = 26
-text = "[Z] -  Confirm
-[X] -  Cancel
-[C] -  Menu (In-game)
-[F4] -  Fullscreen"
+text = "[Z] - Confirm.
+[X] - Cancel
+[C] - Menu (In-game)
+[F4] - Fullscreen"
 fit_content = true
-scroll_active = false
 
-[node name="nohpyoulosebozo" type="Label" parent="Instruction/Controls" unique_id=545191139]
-layout_mode = 0
-offset_top = 192.0
-offset_right = 242.0
-offset_bottom = 224.0
+[node name="VSeparator" type="VSeparator" parent="NewSave/VBoxContainer" unique_id=1563927948]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uducn")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NewSave/VBoxContainer" unique_id=242593477]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="NewSave/VBoxContainer/HBoxContainer2" unique_id=1205140714]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_310ym")
+
+[node name="Label2" type="Label" parent="NewSave/VBoxContainer/HBoxContainer2" unique_id=1756709776]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_7y7fg")
+theme_override_fonts/font = ExtResource("2_b81v0")
 theme_override_font_sizes/font_size = 26
 text = "When HP=0, you lose."
 
-[node name="LevelData" parent="." unique_id=1176469781 instance=ExtResource("3_f8vlo")]
+[node name="LevelData" parent="." unique_id=226164159 instance=ExtResource("9_dd2vp")]
 level_flags = 3
 
-[node name="SpawnPointA" parent="." unique_id=1017146810 instance=ExtResource("4_meyqf")]
+[node name="SpawnPointA" parent="." unique_id=451501276 instance=ExtResource("10_rlx4e")]
+
+[connection signal="pressed" from="Save/Buttons/HBoxContainer/Continue" to="Save/Buttons/HBoxContainer/Continue" method="_on_pressed"]
+[connection signal="pressed" from="Save/Buttons/HBoxContainer/Reset" to="Save/Buttons/HBoxContainer/Reset" method="_on_pressed"]

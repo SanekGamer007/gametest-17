@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bxh5bnhyt2aam"]
+
+[ext_resource type="Script" uid="uid://85a5do4ggeis" path="res://objects/hp_progress_bar/hp_progress_bar.gd" id="1_kg0i1"]
+
+[node name="HPProgressBar" type="Control" unique_id=496590965]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -615.0
+offset_bottom = -460.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_kg0i1")
+BG_COLOR = Color(1, 0, 0, 1)
+HP_COLOR = Color(1, 1, 0, 1)
+KARMA_COLOR = Color(1, 0, 1, 1)
+POISON_COLOR = Color(0, 1, 0, 1)
+
+[node name="Background" type="ColorRect" parent="." unique_id=2028332692]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="Hp" type="ColorRect" parent="." unique_id=1521302792]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 20.0
+color = Color(1, 1, 0, 1)
+
+[node name="Effect" type="ColorRect" parent="." unique_id=40026380]
+visible = false
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 20.0
+color = Color(1, 0, 1, 1)

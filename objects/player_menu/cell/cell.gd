@@ -8,10 +8,8 @@ signal exit
 
 
 func _on_update_text(_lvl_data: LevelData) -> void:
-	if owner.level_data:
-		var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
-		if ministatsize.x >= 135:
-			$PanelContainer.position.x += ministatsize.x - 135
+	if visible:
+		return
 	for child in cell_add_location.get_children():
 		if child is Button:
 			child.queue_free()
@@ -47,3 +45,8 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		exit.emit()
 		visible = false
+
+func _on_update_pos() -> void:
+	var ministatsize = $"../MiniStats/PanelContainer".get_combined_minimum_size()
+	if ministatsize.x >= 135:
+		$PanelContainer.position.x += ministatsize.x - 135

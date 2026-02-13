@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://bdsia7shjiegi" path="res://objects/dialogue/resources/actions/action_function_resource.gd" id="8_28aho"]
 [ext_resource type="Script" uid="uid://du3lqmcx117j8" path="res://objects/dialogue/resources/actions/action_null_resource.gd" id="8_csiif"]
 [ext_resource type="Script" uid="uid://dbcwgh7wgp1io" path="res://objects/dialogue/resources/dialogue_end_resources.gd" id="8_onkdf"]
-[ext_resource type="Script" uid="uid://0ott3wu8wpkc" path="res://objects/dialogue/resources/actions/action_jump_resource.gd" id="9_bhlrb"]
 [ext_resource type="Script" uid="uid://bcy5xchh4xucg" path="res://objects/dialogue/resources/actions/action_set_resource.gd" id="9_tyot4"]
 [ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="14_co5gw"]
 
@@ -167,9 +166,9 @@ size = Vector2(24, 19)
 
 [sub_resource type="Resource" id="Resource_bhlrb"]
 script = ExtResource("6_onkdf")
-text = "What do you want ^var.GlobalVars.player_name?
+text = "What do you want [w=0.5]^var.GlobalVars.player_name?
 Games? 
-I don't have games on my phone."
+I don't[txtspd=12] have games on my phone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
 [sub_resource type="Resource" id="Resource_gh7po"]
@@ -185,10 +184,10 @@ metadata/_custom_type_script = "uid://bcy5xchh4xucg"
 
 [sub_resource type="Resource" id="Resource_co5gw"]
 script = ExtResource("7_p2sll")
-text = "..?
-^flag.test_flag"
 choice_text = Array[String](["Continue", "^flag.test_flag"])
 choice_action_id = Array[ExtResource("7_cns6x")]([SubResource("Resource_gh7po"), SubResource("Resource_0xg0r")])
+text = "..?
+^flag.test_flag"
 metadata/_custom_type_script = "uid://dmj3iokmefg1e"
 
 [sub_resource type="Resource" id="Resource_o4pmh"]
@@ -206,10 +205,6 @@ text = "Why are you looking at me like
 Fine, you can take the phone."
 metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
-[sub_resource type="Resource" id="Resource_csiif"]
-script = ExtResource("9_bhlrb")
-metadata/_custom_type_script = "uid://0ott3wu8wpkc"
-
 [sub_resource type="Resource" id="Resource_s52b6"]
 script = ExtResource("6_onkdf")
 text = "You got a Cellphone."
@@ -221,7 +216,7 @@ metadata/_custom_type_script = "uid://dbcwgh7wgp1io"
 
 [sub_resource type="Resource" id="Resource_p2sll"]
 script = ExtResource("4_1xmro")
-dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_co5gw"), SubResource("Resource_o4pmh"), SubResource("Resource_yf80x"), SubResource("Resource_csiif"), SubResource("Resource_s52b6"), SubResource("Resource_28aho")])
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_bhlrb"), SubResource("Resource_co5gw"), SubResource("Resource_o4pmh"), SubResource("Resource_yf80x"), SubResource("Resource_s52b6"), SubResource("Resource_28aho")])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [sub_resource type="Resource" id="Resource_cns6x"]
