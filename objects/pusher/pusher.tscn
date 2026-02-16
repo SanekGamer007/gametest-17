@@ -1,14 +1,72 @@
 [gd_scene format=3 uid="uid://bxrv0w4drf8hi"]
 
 [ext_resource type="Script" uid="uid://cg0228jyo76sm" path="res://objects/pusher/pusher.gd" id="1_fw50f"]
+[ext_resource type="Script" uid="uid://c33c032kaschb" path="res://global/system_ui/resources/systemui_resource.gd" id="2_pyuhh"]
 [ext_resource type="Texture2D" uid="uid://47c6jphv8iad" path="res://objects/pusher/dbg_arrow.png" id="2_y3pge"]
+
+[sub_resource type="Resource" id="Resource_l3orm"]
+script = ExtResource("2_pyuhh")
+text = "The time is not here yet.
+ But that might change very, very soon..."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_pyuhh"]
+script = ExtResource("2_pyuhh")
+text = "Be a [shake rate=15.0 level2]little[/shake] more patient."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_6k8ue"]
+script = ExtResource("2_pyuhh")
+text = "Do you have nothing else to do?
+ Stop this."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_xkhoc"]
+script = ExtResource("2_pyuhh")
+text = "You look into the darkness."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_w50y8"]
+script = ExtResource("2_pyuhh")
+text = "... it looks back at you."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_5q083"]
+script = ExtResource("2_pyuhh")
+text = "Don't stray from the path."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_cvmhj"]
+script = ExtResource("2_pyuhh")
+text = "The eyes of darkness gaze upon you."
+priority = 1
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_4bxyb"]
+script = ExtResource("2_pyuhh")
+text = "Not now."
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_hx2bs"]
+script = ExtResource("2_pyuhh")
+text = "Maybe later."
+metadata/_custom_type_script = "uid://c33c032kaschb"
+
+[sub_resource type="Resource" id="Resource_81cxn"]
+script = ExtResource("2_pyuhh")
+text = "Wrong way."
+metadata/_custom_type_script = "uid://c33c032kaschb"
 
 [node name="Pusher" type="Area2D" unique_id=483518390]
 script = ExtResource("1_fw50f")
-rare_text = Array[String](["The time is not here just yet.
- But that might change very, very soon...", "Be a [shake rate=15.0 level=2]little[/shake] more patient.", "Do you have nothing else to do?
- Stop this.", "You look into the darkness.", "... it looks back at you.", "Don't stray from the path.", "The eyes of darkness gaze upon you."])
-common_text = Array[String](["Not now.", "Maybe later.", "Wrong way."])
+rare_text = Array[ExtResource("2_pyuhh")]([SubResource("Resource_l3orm"), SubResource("Resource_pyuhh"), SubResource("Resource_6k8ue"), SubResource("Resource_xkhoc"), SubResource("Resource_w50y8"), SubResource("Resource_5q083"), SubResource("Resource_cvmhj")])
+common_text = Array[ExtResource("2_pyuhh")]([SubResource("Resource_4bxyb"), SubResource("Resource_hx2bs"), SubResource("Resource_81cxn")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=975586347]
 scale = Vector2(1.5, 1.5)

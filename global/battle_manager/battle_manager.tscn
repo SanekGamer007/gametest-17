@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b77ao2n3qem50"]
+
+[ext_resource type="Script" uid="uid://pprwofces5ey" path="res://global/battle_manager/color_background.gd" id="1_pjt0j"]
+
+[sub_resource type="GDScript" id="GDScript_ll7uj"]
+script/source = "extends Node2D
+const BATTLE_TRANSITION = preload(\"res://objects/battle_transition/battle_transition.tscn\")
+
+func start_battle(intro: bool = true) -> void:
+	position = get_viewport().get_canvas_transform().affine_inverse().origin
+	get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().current_scene.visible = false
+	if intro:
+		var transition_instance = BATTLE_TRANSITION.instantiate()
+		get_tree().root.add_child(transition_instance)
+		transition_instance.start_transition(Vector2(32, 440))
+		await transition_instance.finished
+		visible = true
+		print(\"sdsd\")
+"
+
+[node name="BattleManager" type="Node2D" unique_id=836554107]
+visible = false
+script = SubResource("GDScript_ll7uj")
+
+[node name="ColorBackground" type="ColorRect" parent="." unique_id=72745260]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_pjt0j")

@@ -25,6 +25,7 @@ func save_game() -> bool:
 		"player_contacts": GlobalVars.player_contacts.map(func(caller): return caller.resource_path),
 		"player_time": 0,
 		"player_kills": GlobalVars.player_kills,
+		"player_deaths": GlobalVars.player_deaths,
 		"player_room": GlobalVars.player_room,
 		"player_room_spawnpoint": GlobalVars.player_room_spawnpoint,
 		"player_serious": GlobalVars.player_serious,

@@ -1,5 +1,5 @@
-@icon("res://objects/dialogue/resources/icons/dialogue_label.svg")
-extends Dialogue
-class_name DialogueLabel
+extends Action
 
-@export var label_id: String = "A"
+class_name ActionJump
+
+@export var jump_label: String = "A"

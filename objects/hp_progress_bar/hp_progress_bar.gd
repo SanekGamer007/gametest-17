@@ -8,7 +8,7 @@ func update(hp: int, maxhp: int, effecthp: int = 0, effect: HpManager.DamageType
 	var hpsize = floor(hp * 1.2) + 1
 	var maxhpsize = floor(maxhp * 1.2) + 1
 	var effecthpsize = floor(effecthp * 1.2) + 1
-	print(hpsize, " ", maxhpsize, " ", effecthpsize)
+	#print(hpsize, " ", maxhpsize, " ", effecthpsize)
 	if hpsize > maxhpsize:
 		maxhpsize = hpsize # in case we have hp overflow from sleeping or smth else idk
 	if effecthpsize > hpsize:

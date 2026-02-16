@@ -1,0 +1,638 @@
+[gd_scene format=3 uid="uid://bvlm0bb7qaxdw"]
+
+[ext_resource type="Script" uid="uid://cgjo4s5tjte72" path="res://levels/misc/game_over/game_over.gd" id="1_3yxf4"]
+[ext_resource type="Texture2D" uid="uid://dgq7ka20wyegr" path="res://levels/misc/game_over/spr/heart_broken.png" id="2_3yxf4"]
+[ext_resource type="Script" uid="uid://cj80lkdqnsfhu" path="res://objects/dialogue/resources/dialogue_series_resource.gd" id="2_cmq41"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="2_iyl8c"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="3_cmq41"]
+[ext_resource type="Texture2D" uid="uid://cyu1ciru4nll" path="res://levels/misc/game_over/spr/game_over_text.png" id="3_ssai2"]
+[ext_resource type="AudioStream" uid="uid://c3t4cegkm1cdd" path="res://audio/sfx/break_1.wav" id="4_dwkr6"]
+[ext_resource type="Texture2D" uid="uid://ceu64c01sg2c6" path="res://levels/misc/game_over/spr/shard_0.png" id="4_eblko"]
+[ext_resource type="AudioStream" uid="uid://bsrcwqvef6bps" path="res://audio/sfx/dialogue/txt_asgore.wav" id="5_1u5pv"]
+[ext_resource type="AudioStream" uid="uid://phtw0akgsd4g" path="res://audio/sfx/break_2.wav" id="5_cyl5w"]
+[ext_resource type="Texture2D" uid="uid://bi0di3ntj1fmu" path="res://levels/misc/game_over/spr/shard_1.png" id="5_mbu1i"]
+[ext_resource type="Texture2D" uid="uid://dno2hu2fjtwbu" path="res://levels/misc/game_over/spr/shard_2.png" id="6_5ltgy"]
+[ext_resource type="AudioStream" uid="uid://co2cgsqabgkdp" path="res://audio/sfx/dialogue/txt_asriel.wav" id="6_cmq41"]
+[ext_resource type="PackedScene" uid="uid://8ltflt4lk0rn" path="res://objects/dialogue/textwriter/textwriter.tscn" id="6_kchrk"]
+[ext_resource type="Texture2D" uid="uid://cs0pogdqmlrii" path="res://levels/misc/game_over/spr/shard_3.png" id="7_hrea1"]
+[ext_resource type="AudioStream" uid="uid://crvta1bmde2hn" path="res://audio/music/game_over/gameover.ogg" id="11_5ltgy"]
+[ext_resource type="Texture2D" uid="uid://c8o8c08knbsd2" path="res://levels/misc/game_over/spr/heart1.png" id="12_58r7e"]
+[ext_resource type="Texture2D" uid="uid://ddg31w42v5duv" path="res://levels/misc/game_over/spr/heart3.png" id="13_iyl8c"]
+[ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="14_mbu1i"]
+
+[sub_resource type="Resource" id="Resource_cmq41"]
+script = ExtResource("3_cmq41")
+text = ">You cannot give
+>up just yet..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_1u5pv"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name![w=0.33]
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_g5cvs"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_cmq41"), SubResource("Resource_1u5pv")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_lcgsg"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name, this is just
+>a bad dream..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_csrju"]
+script = ExtResource("3_cmq41")
+text = ">Wake up![w=0.33]
+>It's not over!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_6pny1"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_lcgsg"), SubResource("Resource_csrju")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_ticwp"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name! It's like
+>he says..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_v1df6"]
+script = ExtResource("3_cmq41")
+text = ">You have to
+>stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_0l7cn"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_ticwp"), SubResource("Resource_v1df6")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_po835"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name! Please
+>don't give up..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_12ste"]
+script = ExtResource("3_cmq41")
+text = ">Have some
+>determination..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_rk4kh"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_po835"), SubResource("Resource_12ste")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_f7vl1"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name! You're
+>^var.GlobalVars.player_name!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_wc8hk"]
+script = ExtResource("3_cmq41")
+text = ">You can't quit[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_cdi1f"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_f7vl1"), SubResource("Resource_wc8hk")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_3fygc"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name, is this
+>a kind of joke?"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_vg70r"]
+script = ExtResource("3_cmq41")
+text = ">Cut it out[w=0.33]!
+>Wake up!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_4vgbr"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_3fygc"), SubResource("Resource_vg70r")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_m7e66"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name, it's not
+>time to leave!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_f4lho"]
+script = ExtResource("3_cmq41")
+text = ">Hold on!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_2oxs0"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_m7e66"), SubResource("Resource_f4lho")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_7ccoe"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name, gather
+>your strength."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_c6bdw"]
+script = ExtResource("3_cmq41")
+text = ">Stay determined!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_n2dfs"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_7ccoe"), SubResource("Resource_c6bdw")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_ue8ac"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name, you have
+>to keep going."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_wkj8q"]
+script = ExtResource("3_cmq41")
+text = ">Stay determined!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("6_cmq41")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_820ek"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_ue8ac"), SubResource("Resource_wkj8q")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_otlpp"]
+script = ExtResource("3_cmq41")
+text = ">You cannot give
+>up just yet..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_pyr2n"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_o77lj"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_otlpp"), SubResource("Resource_pyr2n")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_38dy0"]
+script = ExtResource("3_cmq41")
+text = ">Our fate rests
+>upon you..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_yppu1"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_2gs52"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_38dy0"), SubResource("Resource_yppu1")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_secm4"]
+script = ExtResource("3_cmq41")
+text = ">You're going to
+>be alright!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_spfu5"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_jo554"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_secm4"), SubResource("Resource_spfu5")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_87kt5"]
+script = ExtResource("3_cmq41")
+text = ">Don't lose hope!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_rttwp"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_onaby"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_87kt5"), SubResource("Resource_rttwp")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="Resource" id="Resource_6g38y"]
+script = ExtResource("3_cmq41")
+text = ">It cannot end
+>now!"
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_ja30k"]
+script = ExtResource("3_cmq41")
+text = ">^var.GlobalVars.player_name[w=0.33]!
+>Stay determined..."
+text_speed = 8.0
+can_be_skipped = false
+text_sound = ExtResource("5_1u5pv")
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_ouyue"]
+script = ExtResource("2_cmq41")
+dialogue = Array[ExtResource("2_iyl8c")]([SubResource("Resource_6g38y"), SubResource("Resource_ja30k")])
+metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cmq41"]
+frames = 4
+speed_scale = 8.0
+frame_0/texture = ExtResource("4_eblko")
+frame_1/texture = ExtResource("5_mbu1i")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_5ltgy")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_hrea1")
+frame_3/duration = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1u5pv"]
+particle_flag_disable_z = true
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = 119.99998
+radial_velocity_max = 179.99997
+gravity = Vector3(0, 112, 0)
+damping_min = 10.0
+damping_max = 10.0
+
+[sub_resource type="Animation" id="Animation_g5cvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart/Heart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Heart/Heart:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3yxf4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart/GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathSong:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_lcgsg"]
+resource_name = "anim"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart/Heart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Heart/Heart:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_58r7e"), ExtResource("2_3yxf4"), ExtResource("13_iyl8c")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart/GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.25, 4.75),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathSong:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.25, 4.75),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DeathSong")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pny1"]
+_data = {
+&"RESET": SubResource("Animation_g5cvs"),
+&"anim": SubResource("Animation_lcgsg")
+}
+
+[node name="GameOver" type="Control" unique_id=1192745707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3yxf4")
+GameOverDialogueFirstDeath = Array[ExtResource("2_cmq41")]([SubResource("Resource_g5cvs")])
+GameOverDialogueNoKills = Array[ExtResource("2_cmq41")]([SubResource("Resource_6pny1"), SubResource("Resource_0l7cn"), SubResource("Resource_rk4kh"), SubResource("Resource_cdi1f"), SubResource("Resource_4vgbr"), SubResource("Resource_2oxs0"), SubResource("Resource_n2dfs"), SubResource("Resource_820ek")])
+GameOverDialogueKills = Array[ExtResource("2_cmq41")]([SubResource("Resource_o77lj"), SubResource("Resource_2gs52"), SubResource("Resource_jo554"), SubResource("Resource_onaby"), SubResource("Resource_ouyue")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1989076347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=308585125]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 480.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="BoxContainer" unique_id=1047000712]
+layout_mode = 2
+texture = ExtResource("3_ssai2")
+
+[node name="Heart" type="Node2D" parent="." unique_id=1546413562]
+position = Vector2(290, 217)
+
+[node name="Heart" type="Sprite2D" parent="Heart" unique_id=1681455301]
+visible = false
+texture = ExtResource("2_3yxf4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Heart" unique_id=657070830]
+emitting = false
+amount = 6
+texture = SubResource("AnimatedTexture_cmq41")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1u5pv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789313824]
+stream = ExtResource("4_dwkr6")
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2069559086]
+stream = ExtResource("5_cyl5w")
+bus = &"Sounds"
+
+[node name="DeathSong" type="AudioStreamPlayer" parent="." unique_id=1322472301]
+stream = ExtResource("11_5ltgy")
+volume_db = -80.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2137595160]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.273
+anchor_top = 0.779
+anchor_right = 0.511
+anchor_bottom = 0.779
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="TextWriter" parent="VBoxContainer" unique_id=1629633382 instance=ExtResource("6_kchrk")]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1579090174]
+libraries/ = SubResource("AnimationLibrary_6pny1")
+
+[node name="LevelData" parent="." unique_id=1208534237 instance=ExtResource("14_mbu1i")]
+level_flags = 3
+bgm_fadein = false
+bgm_fadeout = false
+
+[node name="Fader" type="ColorRect" parent="." unique_id=1882861818]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8ltflt4lk0rn"]
 
-[ext_resource type="Script" uid="uid://crcpn0t23isip" path="res://objects/textwriter/textwriter.gd" id="1_cteur"]
+[ext_resource type="Script" uid="uid://crcpn0t23isip" path="res://objects/dialogue/textwriter/textwriter.gd" id="1_cteur"]
 [ext_resource type="FontVariation" uid="uid://cx2xy38qbr45q" path="res://objects/dialogue/dialogue_box/dialogue_box.tres" id="1_hfgr3"]
 [ext_resource type="FontFile" uid="uid://bcxmb1xi45jr4" path="res://fonts/DTM-Mono.otf" id="2_cteur"]
 
@@ -21,6 +21,7 @@ pivot_offset = Vector2(144, 0)
 script = ExtResource("1_cteur")
 
 [node name="SpeakerParent" type="Control" parent="." unique_id=876534886]
+visible = false
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
@@ -51,9 +52,6 @@ theme_override_font_sizes/bold_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 16
 bbcode_enabled = true
-text = "* TEST
-* tEST2 GGGggggggggggggg
-* TEST 3................."
 scroll_active = false
 autowrap_mode = 0
 visible_characters_behavior = 1

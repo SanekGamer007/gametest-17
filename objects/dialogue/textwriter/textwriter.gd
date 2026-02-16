@@ -5,7 +5,8 @@ extends HBoxContainer
 signal dialogue_end
 signal request_visibility(value: bool)
 
-const INVALID_TAGS: String = "\n,?! "
+const INVALID_TAGS: String = "\n,?!  "
+const INVALID_AUDIO_CHARS: String = "\n  *>^"
 const DialogueButtonPreload: PackedScene = preload("res://objects/dialogue/dialogue_button/dialogue_button.tscn")
 
 var context: Node = null
@@ -26,6 +27,9 @@ func _ready() -> void:
 	request_visibility.emit(true)
 	$VBoxContainer/button_container.visible = false
 	command_regex.compile("\\[(w|txtspd)=([0-9\\.]+)\\]")
+	if current_dialogue.is_empty():
+		var empty: Array[Dialogue] = [DialogueText.new()]
+		current_dialogue = empty
 
 #region Dialogue parser
 
@@ -33,7 +37,7 @@ func _process(_delta: float) -> void:
 	if current_dialogue_item >= current_dialogue.size():
 		if able_to_end:
 			dialogue_end.emit()
-			queue_free()
+			able_to_end = false
 			return
 		return
 	if next_item == true:
@@ -82,6 +86,12 @@ func _process(_delta: float) -> void:
 				next_item = true
 
 #endregion
+
+func set_dialogue(dialogue: Array[Dialogue]): # really handy when we control the textwritter semi manually
+	current_dialogue = dialogue
+	current_dialogue_item = 0
+	next_item = true
+	set_process(true)
 
 #region Basic dialogue resources
 
@@ -334,7 +344,7 @@ func _write_text(resource: DialogueText, DialogueLength: int, commands: Dictiona
 			var chars_added = target_count - DialogueRichText.visible_characters
 			if chars_added > 0:
 				var character = clean_text_for_audio[DialogueRichText.visible_characters - 1]
-				if character != " " and character != "*":
+				if INVALID_AUDIO_CHARS.find(character) != 1:
 					$AudioStreamPlayer.pitch_scale = randf_range(resource.text_volume_pitch_min, resource.text_volume_pitch_max)
 					$AudioStreamPlayer.play()
 					if resource.speaker_img_hframes != 1:

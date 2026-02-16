@@ -50,6 +50,7 @@ var player_inventory: Array[ItemResource] = [] # max 8 items
 var player_chest: Array[ItemResource] = []
 var player_contacts: Array[CellCallResource] = []
 var player_kills: int = 0
+var player_deaths: int = 0
 var player_room: String = "res://levels/test_level.tscn"
 var player_room_spawnpoint: String = "A"
 var player_room_name: String = ""

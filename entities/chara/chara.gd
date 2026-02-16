@@ -42,6 +42,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if GlobalVars.player_hp <= 0:
+		_game_over()
+		set_physics_process(false)
+		return
 	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) # we are not using input.get_vector to avoid the circular deadzone.
 	if is_on_wall() and direction.length() >= 1:
 		direction = direction.normalized() # switching motion mode to floating fixes slopes but makes walking along walls way faster than intented, this fixes that.
@@ -97,6 +101,10 @@ func _handle_run_state(_delta: float) -> void:
 func _handle_busy_state() -> void:
 	velocity = Vector2.ZERO
 
+
+func _game_over() -> void:
+	var playerpos = get_global_transform_with_canvas().origin
+	SceneManager.change_scene("res://levels/misc/game_over/game_over.tscn", "A", "none", ".", "set_soul_pos", [playerpos])
 
 func _manage_facings() -> void:
 	if state == states.BUSY:

@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bfsxdyj3vp7bq"]
+
+[ext_resource type="Script" uid="uid://bj4swucl1yq20" path="res://objects/battle_transition/battle_transition.gd" id="1_24qk3"]
+[ext_resource type="Texture2D" uid="uid://bxk4226nhk08x" path="res://entities/chara/spr/overworld/down_idle.png" id="1_qq4q7"]
+[ext_resource type="Texture2D" uid="uid://dmx20fnspolat" path="res://entities/chara/spr/overworld/down_walk1.png" id="2_24qk3"]
+[ext_resource type="Texture2D" uid="uid://buhp3g8gbs366" path="res://entities/chara/spr/overworld/down_walk2.png" id="3_y28xx"]
+[ext_resource type="Texture2D" uid="uid://b5wkf5vkenm6o" path="res://entities/chara/spr/overworld/left_idle.png" id="4_psmne"]
+[ext_resource type="Texture2D" uid="uid://b1dj4ow61plf7" path="res://entities/chara/spr/overworld/left_walk.png" id="5_33eap"]
+[ext_resource type="Texture2D" uid="uid://cwvhsllv051ta" path="res://entities/chara/spr/overworld/right_idle.png" id="6_8phoj"]
+[ext_resource type="Texture2D" uid="uid://7klnqh0f05cy" path="res://entities/chara/spr/overworld/right_walk.png" id="7_g8wc4"]
+[ext_resource type="Texture2D" uid="uid://cx542doyddxrx" path="res://entities/chara/spr/overworld/up_idle.png" id="8_yk4id"]
+[ext_resource type="Texture2D" uid="uid://c71bwpcc7plwl" path="res://entities/chara/spr/overworld/up_walk1.png" id="9_bfrck"]
+[ext_resource type="Texture2D" uid="uid://be5ryatrrckpj" path="res://entities/chara/spr/overworld/up_walk2.png" id="10_bfjkv"]
+[ext_resource type="Texture2D" uid="uid://blalp53kmpobo" path="res://objects/battle_transition/spr/heart1.png" id="11_rrwld"]
+[ext_resource type="AudioStream" uid="uid://dw1ewqah4n4k5" path="res://audio/sfx/noise.wav" id="13_y28xx"]
+[ext_resource type="AudioStream" uid="uid://d1jl4wo83d70v" path="res://audio/sfx/battle/battlestart.wav" id="14_psmne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7a6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qq4q7")
+}],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_24qk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qq4q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y28xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qq4q7")
+}],
+"loop": true,
+"name": &"down_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_psmne")
+}],
+"loop": true,
+"name": &"left_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_33eap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_psmne")
+}],
+"loop": true,
+"name": &"left_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8phoj")
+}],
+"loop": true,
+"name": &"right_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_g8wc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8phoj")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yk4id")
+}],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bfrck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yk4id")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bfjkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yk4id")
+}],
+"loop": true,
+"name": &"up_walk",
+"speed": 5.0
+}]
+
+[node name="BattleTransition" type="CanvasLayer" unique_id=598448489]
+script = ExtResource("1_24qk3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1076250816]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CharaAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1371281917]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_b7a6k")
+animation = &"right_walk"
+speed_scale = 0.0
+
+[node name="Heart" type="Sprite2D" parent="." unique_id=1936939269]
+position = Vector2(2, 12)
+texture = ExtResource("11_rrwld")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1913969416]
+stream = ExtResource("13_y28xx")
+max_polyphony = 4
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=947011703]
+stream = ExtResource("14_psmne")
+max_polyphony = 4

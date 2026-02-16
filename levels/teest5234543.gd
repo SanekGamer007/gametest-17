@@ -39,8 +39,7 @@ func _activate_dialogue() -> void:
 func interaction(player: Node) -> void:
 	player_node = player
 	GlobalVars.add_item(load("res://items/equipment/HeroSword/hero_sword.tres"))
-	SystemUI.set_text("Gave the hero's sword.", 3, true, true)
-#	_activate_dialogue()
+	SystemUI.add_text_helper("Gave the hero's sword.", 3, 0)
 
 
 func interaction_can_interact():

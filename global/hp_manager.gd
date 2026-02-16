@@ -33,14 +33,16 @@ func _process(delta: float) -> void:
 func heal_player(amount: int, override_effect = false) -> void:
 	GlobalVars.player_hp = min(GlobalVars.player_hp + amount, GlobalVars.player_maxhp)
 	if override_effect:
-		normal_amount = 0
-		karma_amount = 0
-		karma_timer = 0
-		force_amount = 0
-		poison_turns = 0
-		poison_amount = 0
-		poison_timer = 0
+		reset_damage()
 
+func reset_damage() -> void:
+	normal_amount = 0
+	karma_amount = 0
+	karma_timer = 0
+	force_amount = 0
+	poison_turns = 0
+	poison_amount = 0
+	poison_timer = 0
 
 func set_damage(amount: int, turns: int, damage_type: DamageTypes) -> void:
 	hp_hurtsound.emit()
