@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://qefdxe8hbs26" path="res://debug/debug_menu/buttons/inf_en.gd" id="9_64sjr"]
 [ext_resource type="Script" uid="uid://04nf3qynba36" path="res://debug/debug_menu/buttons/noclip.gd" id="10_mcm0p"]
 [ext_resource type="Script" uid="uid://c37apkew30il" path="res://debug/debug_menu/buttons/set_hp.gd" id="11_sua70"]
+[ext_resource type="Script" uid="uid://d1ch0yuyowiid" path="res://debug/debug_menu/buttons/mute_song.gd" id="11_y6yr1"]
 [ext_resource type="Script" uid="uid://cimkt4tlf88up" path="res://debug/debug_menu/buttons/set_en.gd" id="12_53hm3"]
 [ext_resource type="Script" uid="uid://b8wofrxt0mtv5" path="res://debug/debug_menu/buttons/set_lv.gd" id="13_vys8e"]
 [ext_resource type="Script" uid="uid://c8o3p88ebu3gt" path="res://debug/debug_menu/buttons/set_exp.gd" id="14_d1vrf"]
@@ -231,6 +232,29 @@ icon = ExtResource("3_6djif")
 alignment = 0
 script = ExtResource("10_mcm0p")
 
+[node name="MuteSong" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer4" unique_id=216619926]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 12
+theme_override_fonts/font = ExtResource("2_65ai2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o0g6x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0lqs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7bkcx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unsd8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2me3d")
+action_mode = 0
+text = "MUTE MUSIC"
+icon = ExtResource("3_6djif")
+alignment = 0
+script = ExtResource("11_y6yr1")
+
 [node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1237650276]
 layout_mode = 2
 
@@ -407,6 +431,9 @@ alignment = 1
 [connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_focus_entered"]
 [connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_focus_exited"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" to="PanelContainer/VBoxContainer/HBoxContainer4/Noclip" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" to="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" to="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" method="_on_focus_exited"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" to="PanelContainer/VBoxContainer/HBoxContainer4/MuteSong" method="_on_pressed"]
 [connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_focus_entered"]
 [connection signal="focus_exited" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_focus_exited"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" to="PanelContainer/VBoxContainer/HBoxContainer5/VBoxContainer/SetHP" method="_on_pressed"]

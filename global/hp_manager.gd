@@ -17,6 +17,7 @@ var poison_timer: float = 5
 var force_amount: int = 0 # ignores armor
 
 signal hp_updated
+signal hp_hurtsound
 
 func _process(delta: float) -> void:
 	if normal_amount != 0:
@@ -42,10 +43,13 @@ func heal_player(amount: int, override_effect = false) -> void:
 
 
 func set_damage(amount: int, turns: int, damage_type: DamageTypes) -> void:
+	hp_hurtsound.emit()
 	match damage_type:
 		DamageTypes.NORMAL:
 			normal_amount += amount
 		DamageTypes.KARMA:
+			if GlobalVars.player_hp == 1: # if we get more karma at 1 hp then we die
+				GlobalVars.player_hp = 0
 			karma_amount += amount
 		DamageTypes.POISON:
 			poison_amount += amount

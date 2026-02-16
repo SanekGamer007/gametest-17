@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dx7edb1sp6oe6" path="res://objects/spawn_point/spawn_point.tscn" id="5_oh4xk"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="7_sey0j"]
 [ext_resource type="PackedScene" uid="uid://bi53568tpdtvn" path="res://objects/savepoint/savepoint.tscn" id="8_0aere"]
-[ext_resource type="AudioStream" uid="uid://bbsxsunrx5ofb" path="res://audio/music/ruins/ruins.ogg" id="8_ig87q"]
 [ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="10_ig87q"]
 [ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="11_j8slf"]
 [ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="12_7i4sq"]
@@ -97,8 +96,8 @@ ID = "B"
 facing = 0
 
 [node name="LevelData" parent="." unique_id=1887133636 instance=ExtResource("7_sey0j")]
-bgm = ExtResource("8_ig87q")
 display_name = "Ruins - Entrance"
+bgm = "uid://bbsxsunrx5ofb"
 
 [node name="SavePoint" parent="." unique_id=1592146017 instance=ExtResource("8_0aere")]
 position = Vector2(320, 205)

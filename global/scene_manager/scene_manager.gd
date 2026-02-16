@@ -80,12 +80,22 @@ func _on_fade_finished(_anim_name: StringName) -> void:
 
 func _setup_level() -> void:
 	var level_flags = 0
-	var level_data = get_tree().current_scene.get_node_or_null("LevelData")
+	var level_data: LevelData = get_tree().current_scene.get_node_or_null("LevelData")
 	if level_data:
 		level_flags = level_data.level_flags
 	else:
 		push_warning("Scene: " + get_tree().current_scene.name + " Doesn't contain a LevelData node, skipping level flags...")
 	GlobalVars.player_stop_busy.emit()
+	if level_data.bgm:
+		BgmManager.start_song(
+			level_data.bgm,
+			level_data.bgm_fadein,
+			level_data.bgm_fadein_duration,
+			level_data.bgm_fadeout,
+			level_data.bgm_fadeout_duration
+		)
+	else:
+		BgmManager.stop_song()
 	if level_flags & LF_NOCHARA:
 		return
 	player = PLAYER_SCENE.instantiate()

@@ -131,8 +131,7 @@ func set_mastervolume(value: float) -> void:
 
 
 func _apply_mastervolume() -> void:
-	var db = linear_to_db(user_settings.mastervolume)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index("Master"), user_settings.mastervolume)
 
 
 func set_soundvolume(value: float) -> void:

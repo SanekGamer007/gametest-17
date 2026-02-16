@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ci2p4c4wglxko" path="res://objects/player_health_overworld/player_health_overworld.gd" id="1_05pig"]
 [ext_resource type="Texture2D" uid="uid://d3yx2i0wsd58o" path="res://objects/player_health_overworld/hp.png" id="1_m0b0t"]
 [ext_resource type="PackedScene" uid="uid://bxh5bnhyt2aam" path="res://objects/hp_progress_bar/hp_progress_bar.tscn" id="5_i452f"]
+[ext_resource type="AudioStream" uid="uid://kl5sbajfv2cj" path="res://audio/sfx/battle/hurt.wav" id="5_uanat"]
 [ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="6_y343q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2kaf"]
@@ -144,6 +145,12 @@ libraries/ = SubResource("AnimationLibrary_i452f")
 
 [node name="LockTimer" type="Timer" parent="." unique_id=2075559730]
 wait_time = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=179390765]
+stream = ExtResource("5_uanat")
+volume_db = -18.0
+max_polyphony = 16
+bus = &"Sounds"
 
 [connection signal="animation_finished" from="PopAnim" to="." method="_on_pop_anim_animation_finished"]
 [connection signal="timeout" from="LockTimer" to="." method="_on_lock_timer_timeout"]

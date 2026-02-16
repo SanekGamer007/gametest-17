@@ -4,6 +4,7 @@ class_name Trigger
 @export var only_activate_once: bool = false ## Resets when re-entering the room.
 
 var activated: bool = false
+var chara: Chara
 
 func _ready() -> void:
 	set_process(false)
@@ -18,12 +19,14 @@ func _on_body_entered(body: Node2D) -> void:
 				activated = true
 				set_process(true)
 				on_trigger_start()
+				chara = body
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Chara:
 		if is_processing():
 			set_process(false)
 			on_trigger_end()
+			chara = null
 
 func trigger_start_condition() -> bool:
 	return true

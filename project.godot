@@ -37,6 +37,7 @@ SaveManager="*res://global/save_manager.gd"
 SignalLens="*uid://85rkx60vm7a7"
 SystemUI="*uid://dgwrpdqyotx00"
 HpManager="*uid://htuff1dvb5qk"
+BgmManager="*uid://cjmwdlspborgv"
 
 [display]
 
