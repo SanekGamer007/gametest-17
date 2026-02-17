@@ -107,6 +107,7 @@ animations = [{
 }]
 
 [node name="BattleTransition" type="CanvasLayer" unique_id=598448489]
+layer = 9996
 script = ExtResource("1_24qk3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1076250816]

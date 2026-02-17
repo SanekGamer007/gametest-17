@@ -9,6 +9,8 @@ func _ready() -> void:
 	SceneManager.scene_changing.connect(_on_scene_change)
 	HpManager.hp_updated.connect(show_hp)
 	HpManager.hp_hurtsound.connect(_on_hpmanager_hp_hurtsound)
+	BattleManager.battle_start.connect(_on_battle_start)
+	BattleManager.battle_end.connect(_on_battle_end)
 	$PanelContainer/HBoxContainer/VBoxContainer/HP.text = "%d / %d" % [GlobalVars.player_hp, GlobalVars.player_maxhp]
 	$PanelContainer/HBoxContainer/HPProgressBar.update(GlobalVars.player_hp, GlobalVars.player_maxhp)
 
@@ -49,3 +51,8 @@ func _on_hpmanager_hp_hurtsound() -> void:
 	hp_hurt_tick += 1
 	if hp_hurt_tick % 2 == 0:
 		$AudioStreamPlayer.play()
+
+func _on_battle_start() -> void:
+	visible = false
+func _on_battle_end() -> void:
+	visible = true

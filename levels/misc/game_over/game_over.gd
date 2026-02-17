@@ -7,6 +7,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	BgmManager.stop_song(false)
 	$AnimationPlayer.play("anim")
 	$VBoxContainer/TextWriter.set_process(false)
 	$Heart/GPUParticles2D.amount = randi_range(4, 7)
@@ -57,3 +58,9 @@ func _on_death_dialogue_finished() -> void:
 	GlobalVars.player_deaths += 1
 	GlobalVars.update_vars()
 	SceneManager.change_scene(GlobalVars.player_room, GlobalVars.player_room_spawnpoint, "normal")
+
+func _play_music() -> void:
+	BgmManager.start_song("res://audio/music/game_over/gameover.ogg", true, 2.0, true, 2.0)
+	
+	
+	

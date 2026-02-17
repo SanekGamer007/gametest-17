@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bix7bi1a0twrk"
-path="res://.godot/imported/2.png-3f238cfe6181f9f93f40cee36336f408.ctex"
+uid="uid://ds1j18nvs8a0s"
+path="res://.godot/imported/sparebt1.png-b3bf9fa37fd2323f4edafc3707252791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2.png"
-dest_files=["res://.godot/imported/2.png-3f238cfe6181f9f93f40cee36336f408.ctex"]
+source_file="res://objects/battle_scene/battle/buttons/gt7/spare/sparebt1.png"
+dest_files=["res://.godot/imported/sparebt1.png-b3bf9fa37fd2323f4edafc3707252791.ctex"]
 
 [params]
 

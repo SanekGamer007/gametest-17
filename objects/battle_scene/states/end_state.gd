@@ -1,0 +1,2 @@
+extends BattleState
+class_name BattleEndState

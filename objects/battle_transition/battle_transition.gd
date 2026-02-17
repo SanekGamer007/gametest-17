@@ -26,6 +26,6 @@ func start_transition(button_pos: Vector2) -> void:
 	tween.tween_callback($AudioStreamPlayer2.play)
 	tween.tween_property($Heart, "position", button_pos, 0.75)
 	tween.tween_callback(finished.emit)
-	tween.parallel().tween_property($ColorRect, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.25)
-	tween.parallel().tween_property($Heart, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.25)
+	tween.parallel().tween_property($ColorRect, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.2)
+	tween.parallel().tween_property($Heart, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.2)
 	tween.tween_callback(queue_free)

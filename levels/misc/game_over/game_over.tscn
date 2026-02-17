@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://co2cgsqabgkdp" path="res://audio/sfx/dialogue/txt_asriel.wav" id="6_cmq41"]
 [ext_resource type="PackedScene" uid="uid://8ltflt4lk0rn" path="res://objects/dialogue/textwriter/textwriter.tscn" id="6_kchrk"]
 [ext_resource type="Texture2D" uid="uid://cs0pogdqmlrii" path="res://levels/misc/game_over/spr/shard_3.png" id="7_hrea1"]
-[ext_resource type="AudioStream" uid="uid://crvta1bmde2hn" path="res://audio/music/game_over/gameover.ogg" id="11_5ltgy"]
 [ext_resource type="Texture2D" uid="uid://c8o8c08knbsd2" path="res://levels/misc/game_over/spr/heart1.png" id="12_58r7e"]
 [ext_resource type="Texture2D" uid="uid://ddg31w42v5duv" path="res://levels/misc/game_over/spr/heart3.png" id="13_iyl8c"]
 [ext_resource type="PackedScene" uid="uid://lytlxq5xbaky" path="res://objects/level_data/level_data.tscn" id="14_mbu1i"]
@@ -411,18 +410,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("DeathSong:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-80.0]
-}
 
 [sub_resource type="Animation" id="Animation_lcgsg"]
 resource_name = "anim"
@@ -489,25 +476,13 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DeathSong:volume_db")
+tracks/5/path = NodePath("AudioStreamPlayer2")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3.25, 4.75),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer2")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(1.75),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -515,18 +490,18 @@ tracks/6/keys = {
 "method": &"play"
 }]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DeathSong")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(3.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"play"
+"method": &"_play_music"
 }]
 }
 
@@ -560,8 +535,11 @@ color = Color(0, 0, 0, 1)
 [node name="BoxContainer" type="BoxContainer" parent="." unique_id=308585125]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = 320.0
 offset_bottom = 480.0
 grow_horizontal = 2
 
@@ -594,21 +572,13 @@ bus = &"Sounds"
 stream = ExtResource("5_cyl5w")
 bus = &"Sounds"
 
-[node name="DeathSong" type="AudioStreamPlayer" parent="." unique_id=1322472301]
-stream = ExtResource("11_5ltgy")
-volume_db = -80.0
-bus = &"Music"
-parameters/looping = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2137595160]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.273
+anchor_left = 0.4
 anchor_top = 0.779
-anchor_right = 0.511
+anchor_right = 0.4
 anchor_bottom = 0.779
-offset_top = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2, 2)

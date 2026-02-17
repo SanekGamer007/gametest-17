@@ -23,6 +23,7 @@ func save_game() -> bool:
 		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_path),
 		"player_chest": GlobalVars.player_chest.map(func(item): return item.resource_path),
 		"player_contacts": GlobalVars.player_contacts.map(func(caller): return caller.resource_path),
+		"player_spells": GlobalVars.player_spells.map(func(spell): return spell.resource_path),
 		"player_time": 0,
 		"player_kills": GlobalVars.player_kills,
 		"player_deaths": GlobalVars.player_deaths,

@@ -1,0 +1,357 @@
+[gd_scene format=3 uid="uid://b77ao2n3qem50"]
+
+[ext_resource type="Script" uid="uid://d0spuvlo6m116" path="res://objects/battle_scene/battle_scene.gd" id="1_cupd7"]
+[ext_resource type="Script" uid="uid://b53eth1rourlv" path="res://objects/battle_scene/states/state_machine.gd" id="2_4fhep"]
+[ext_resource type="Script" uid="uid://cpcfsalwxbtod" path="res://objects/battle_scene/states/start_state.gd" id="3_m2k05"]
+[ext_resource type="Script" uid="uid://cc4w518wwk6it" path="res://objects/battle_scene/states/player_turn_state.gd" id="4_qbotw"]
+[ext_resource type="Script" uid="uid://pprwofces5ey" path="res://objects/battle_scene/color_background.gd" id="4_wct2l"]
+[ext_resource type="Texture2D" uid="uid://c45hch0yu3sm0" path="res://battle_demo.png" id="5_8ugeh"]
+[ext_resource type="Script" uid="uid://b3ndhov83mak1" path="res://objects/battle_scene/states/enemy_turn_state.gd" id="5_m0wq3"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="5_t2he3"]
+[ext_resource type="Script" uid="uid://caftj1jrr0qw1" path="res://objects/battle_scene/states/end_state.gd" id="6_0w8fb"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="6_6khfq"]
+[ext_resource type="Texture2D" uid="uid://d2nkxr8c756px" path="res://battle_earliest.png" id="6_q17ev"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="7_6clv0"]
+[ext_resource type="Texture2D" uid="uid://xalkfkvdwnao" path="res://objects/battle_scene/battle/buttons/demo/fight/fightbt0.png" id="7_m2k05"]
+[ext_resource type="Texture2D" uid="uid://b20nk1mi2g0b6" path="res://objects/battle_scene/battle/buttons/demo/fight/fightbt1.png" id="8_sx57f"]
+[ext_resource type="Texture2D" uid="uid://c1ch72knq352n" path="res://objects/battle_scene/battle/buttons/gt7/fight/fightbt1.png" id="8_wct2l"]
+[ext_resource type="Script" uid="uid://ct66px40fvdtw" path="res://objects/battle_scene/battle/buttons/generic/button.gd" id="9_epih8"]
+[ext_resource type="Texture2D" uid="uid://dvtqg5b1qqp6d" path="res://objects/battle_scene/battle/buttons/demo/act/actbt0.png" id="10_7inie"]
+[ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="10_bqk8b"]
+[ext_resource type="Script" uid="uid://pt2fgnijigmr" path="res://objects/battle_scene/battle/labels/labels.gd" id="10_keve3"]
+[ext_resource type="PackedScene" uid="uid://bomb0jkgo8mvn" path="res://objects/battle_scene/battle/battle_box/battle_box.tscn" id="10_ppku5"]
+[ext_resource type="PackedScene" uid="uid://bxh5bnhyt2aam" path="res://objects/hp_progress_bar/hp_progress_bar.tscn" id="11_1s4rh"]
+[ext_resource type="Texture2D" uid="uid://blkgeeaw8id5g" path="res://objects/battle_scene/battle/buttons/demo/act/actbt1.png" id="11_23xya"]
+[ext_resource type="Texture2D" uid="uid://h2n78r13kmxh" path="res://objects/battle_scene/battle/labels/hp/hp.png" id="11_keve3"]
+[ext_resource type="Texture2D" uid="uid://dfpaje4gc8n5s" path="res://objects/battle_scene/battle/buttons/demo/item/itembt0.png" id="12_ys3hn"]
+[ext_resource type="Texture2D" uid="uid://dvv6g6lkokyx3" path="res://objects/battle_scene/battle/buttons/demo/item/itembt1.png" id="13_mdy71"]
+[ext_resource type="Texture2D" uid="uid://d4k753wrn22fd" path="res://objects/battle_scene/battle/buttons/demo/mercy/mercybt0.png" id="14_7tuef"]
+[ext_resource type="Texture2D" uid="uid://dxoutbnd6x2th" path="res://objects/battle_scene/battle/buttons/demo/mercy/mercybt1.png" id="15_437jo"]
+[ext_resource type="Texture2D" uid="uid://cqg01vaxl8fnw" path="res://objects/battle_scene/battle/buttons/gt7/fight/fightbt0.png" id="16_fccmn"]
+[ext_resource type="Texture2D" uid="uid://jfa8y5f6ttru" path="res://objects/battle_scene/battle/buttons/gt7/act/actbt0.png" id="18_k0au7"]
+[ext_resource type="Texture2D" uid="uid://b331ptkjviwan" path="res://objects/battle_scene/battle/buttons/gt7/act/actbt1.png" id="19_4hd8t"]
+[ext_resource type="Texture2D" uid="uid://dt7ajix8ihf5d" path="res://objects/battle_scene/battle/buttons/gt7/item/itembt0.png" id="20_qbotw"]
+[ext_resource type="Texture2D" uid="uid://c6rbn2soiwoli" path="res://objects/battle_scene/battle/buttons/gt7/item/itembt1.png" id="21_m0wq3"]
+[ext_resource type="Texture2D" uid="uid://cqbal0dcaqsyy" path="res://objects/battle_scene/battle/buttons/gt7/spell/spellbt0.png" id="22_0w8fb"]
+[ext_resource type="Texture2D" uid="uid://dvbcv46xu2t2t" path="res://objects/battle_scene/battle/buttons/gt7/spell/spellbt1.png" id="23_bqk8b"]
+[ext_resource type="Texture2D" uid="uid://ba0g02dent1ea" path="res://objects/battle_scene/battle/buttons/gt7/spare/sparebt0.png" id="24_1s4rh"]
+[ext_resource type="Texture2D" uid="uid://ds1j18nvs8a0s" path="res://objects/battle_scene/battle/buttons/gt7/spare/sparebt1.png" id="25_keve3"]
+[ext_resource type="Texture2D" uid="uid://bm7wf27cp0vkl" path="res://objects/battle_scene/battle/buttons/generic/heart1.png" id="29_m0wq3"]
+
+[sub_resource type="Resource" id="Resource_dbo10"]
+script = ExtResource("6_6khfq")
+text = "Let's see if its as
+easy as i think it is
+(its probably not)"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0wq3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0w8fb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqk8b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1s4rh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keve3"]
+
+[node name="BattleScene" type="CanvasLayer" unique_id=183547710]
+layer = 999
+script = ExtResource("1_cupd7")
+
+[node name="StateMachine" type="Node" parent="." unique_id=439766841 node_paths=PackedStringArray("starter_state")]
+script = ExtResource("2_4fhep")
+starter_state = NodePath("StartState")
+
+[node name="StartState" type="Node" parent="StateMachine" unique_id=1579043628]
+script = ExtResource("3_m2k05")
+
+[node name="PlayerTurnState" type="Node" parent="StateMachine" unique_id=917968123]
+script = ExtResource("4_qbotw")
+test_dialogue = Array[ExtResource("5_t2he3")]([SubResource("Resource_dbo10")])
+
+[node name="EnemyTurnState" type="Node" parent="StateMachine" unique_id=810350942]
+script = ExtResource("5_m0wq3")
+
+[node name="EndState" type="Node" parent="StateMachine" unique_id=245119240]
+script = ExtResource("6_0w8fb")
+
+[node name="ColorBackground" type="ColorRect" parent="." unique_id=72745260]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_wct2l")
+
+[node name="BattleEarliest" type="Sprite2D" parent="." unique_id=413702634]
+visible = false
+modulate = Color(1, 1, 1, 0.34901962)
+position = Vector2(320, 240)
+texture = ExtResource("6_q17ev")
+
+[node name="Node" type="Node" parent="." unique_id=1886528358]
+
+[node name="BattleBox" parent="." unique_id=1058848021 instance=ExtResource("10_ppku5")]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.668
+anchor_right = 0.5
+anchor_bottom = 0.668
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Labels" type="Control" parent="." unique_id=100580279]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_keve3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Labels" unique_id=1695737125]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.835
+anchor_right = 0.95
+anchor_bottom = 0.884
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayerName" type="Label" parent="Labels/HBoxContainer" unique_id=1615025788]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_bqk8b")
+theme_override_font_sizes/font_size = 24
+text = "TESTNAME"
+
+[node name="HSeparator" type="HSeparator" parent="Labels/HBoxContainer" unique_id=1986446931]
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
+
+[node name="LV" type="Label" parent="Labels/HBoxContainer" unique_id=998507887]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_bqk8b")
+theme_override_font_sizes/font_size = 24
+text = "LV 1"
+
+[node name="HPHBoxContainer" type="HBoxContainer" parent="Labels" unique_id=567524143]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374
+anchor_top = 0.835
+anchor_right = 0.95
+anchor_bottom = 0.88
+
+[node name="TextureRect" type="TextureRect" parent="Labels/HPHBoxContainer" unique_id=1904026548]
+layout_mode = 2
+texture = ExtResource("11_keve3")
+stretch_mode = 4
+
+[node name="HPProgressBar" parent="Labels/HPHBoxContainer" unique_id=496590965 instance=ExtResource("11_1s4rh")]
+custom_minimum_size = Vector2(25, 20)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+
+[node name="HSeparator3" type="HSeparator" parent="Labels/HPHBoxContainer" unique_id=1622055752]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
+
+[node name="HP" type="Label" parent="Labels/HPHBoxContainer" unique_id=33897609]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("10_bqk8b")
+theme_override_font_sizes/font_size = 24
+text = "20 / 20"
+
+[node name="Buttons" type="Control" parent="." unique_id=2083649716]
+layout_mode = 3
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Demo" type="HBoxContainer" parent="Buttons" unique_id=907650884]
+visible = false
+layout_mode = 0
+offset_right = 610.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/Demo" unique_id=265874506]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
+
+[node name="Fight" type="TextureButton" parent="Buttons/Demo" unique_id=1969420248]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Mercy")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Act")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../Act")
+focus_previous = NodePath(".")
+mouse_filter = 2
+texture_normal = ExtResource("7_m2k05")
+script = ExtResource("9_epih8")
+normal = ExtResource("7_m2k05")
+focus = ExtResource("8_sx57f")
+
+[node name="HSeparator2" type="HSeparator" parent="Buttons/Demo" unique_id=396929202]
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0w8fb")
+
+[node name="Act" type="TextureButton" parent="Buttons/Demo" unique_id=1544775590]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Fight")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Item")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../Item")
+focus_previous = NodePath("../Fight")
+mouse_filter = 2
+texture_normal = ExtResource("10_7inie")
+script = ExtResource("9_epih8")
+normal = ExtResource("10_7inie")
+focus = ExtResource("11_23xya")
+
+[node name="HSeparator3" type="HSeparator" parent="Buttons/Demo" unique_id=1181290291]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bqk8b")
+
+[node name="Item" type="TextureButton" parent="Buttons/Demo" unique_id=922061705]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Act")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Mercy")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../Mercy")
+focus_previous = NodePath("../Act")
+mouse_filter = 2
+texture_normal = ExtResource("12_ys3hn")
+script = ExtResource("9_epih8")
+normal = ExtResource("12_ys3hn")
+focus = ExtResource("13_mdy71")
+
+[node name="HSeparator4" type="HSeparator" parent="Buttons/Demo" unique_id=1664839351]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1s4rh")
+
+[node name="Mercy" type="TextureButton" parent="Buttons/Demo" unique_id=604378573]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Item")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Fight")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../Fight")
+focus_previous = NodePath("../Item")
+mouse_filter = 2
+texture_normal = ExtResource("14_7tuef")
+script = ExtResource("9_epih8")
+normal = ExtResource("14_7tuef")
+focus = ExtResource("15_437jo")
+
+[node name="GT7" type="HBoxContainer" parent="Buttons" unique_id=1713058534]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HSeparator" type="HSeparator" parent="Buttons/GT7" unique_id=365430990]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_keve3")
+
+[node name="Fight" type="TextureButton" parent="Buttons/GT7" unique_id=187333024]
+layout_mode = 2
+texture_normal = ExtResource("16_fccmn")
+script = ExtResource("9_epih8")
+normal = ExtResource("16_fccmn")
+focus = ExtResource("8_wct2l")
+
+[node name="Act" type="TextureButton" parent="Buttons/GT7" unique_id=1616421088]
+layout_mode = 2
+texture_normal = ExtResource("18_k0au7")
+script = ExtResource("9_epih8")
+normal = ExtResource("18_k0au7")
+focus = ExtResource("19_4hd8t")
+offset = 12
+
+[node name="Item" type="TextureButton" parent="Buttons/GT7" unique_id=1199036077]
+layout_mode = 2
+texture_normal = ExtResource("20_qbotw")
+script = ExtResource("9_epih8")
+normal = ExtResource("20_qbotw")
+focus = ExtResource("21_m0wq3")
+offset = 10
+
+[node name="Spell" type="TextureButton" parent="Buttons/GT7" unique_id=313883455]
+layout_mode = 2
+texture_normal = ExtResource("22_0w8fb")
+script = ExtResource("9_epih8")
+normal = ExtResource("22_0w8fb")
+focus = ExtResource("23_bqk8b")
+offset = 10
+
+[node name="Mercy" type="TextureButton" parent="Buttons/GT7" unique_id=1522731652]
+layout_mode = 2
+texture_normal = ExtResource("24_1s4rh")
+script = ExtResource("9_epih8")
+normal = ExtResource("24_1s4rh")
+focus = ExtResource("25_keve3")
+offset = 10
+
+[node name="TextureRect" type="TextureRect" parent="Buttons" unique_id=1675850824]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 56.0
+offset_bottom = 30.0
+texture = ExtResource("29_m0wq3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BattleDemo" type="Sprite2D" parent="." unique_id=537714448]
+visible = false
+modulate = Color(1, 1, 1, 0.30588236)
+position = Vector2(320, 232)
+texture = ExtResource("5_8ugeh")
+
+[connection signal="focus_entered" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_pressed"]
+[connection signal="focus_entered" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_pressed"]

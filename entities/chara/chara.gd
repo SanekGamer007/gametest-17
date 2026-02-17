@@ -30,6 +30,8 @@ func _ready() -> void:
 	GlobalVars.enable_menu.connect(_enable_menu)
 	GlobalVars.player_start_busy.connect(_start_busy)
 	GlobalVars.player_stop_busy.connect(_stop_busy)
+	BattleManager.battle_start.connect(_on_battle_start)
+	BattleManager.battle_camera.connect(_on_battle_camera)
 	if SceneManager.new_target_spawn_id != "":
 		_move_to_spawn_point()
 
@@ -202,3 +204,9 @@ func _start_busy() -> void:
 func _stop_busy() -> void:
 	GlobalVars.emit_signal("enable_menu")
 	set_state(states.IDLE)
+
+func _on_battle_start() -> void:
+	pass
+
+func _on_battle_camera() -> void:
+	$Camera2D.enabled = false
