@@ -4,7 +4,7 @@ class_name BattleScene
 signal init_complete
 
 @onready var battlestatemachine: BattleStateMachine = $StateMachine
-@onready var battle_box: BattleBox = $BattleBox
+@onready var battle_box: BattleBox = $Control/BattleBox
 var battle_era: GlobalVars.Versions = GlobalVars.Versions.ANY
 
 func _ready() -> void:

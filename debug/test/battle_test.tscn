@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dnpypjqtolth7"]
+
+[ext_resource type="Script" uid="uid://bngyxcdgjxrsc" path="res://debug/test/battle_test.gd" id="1_ncnwn"]
+
+[node name="BattleTest" type="Node2D" unique_id=239492681]
+script = ExtResource("1_ncnwn")

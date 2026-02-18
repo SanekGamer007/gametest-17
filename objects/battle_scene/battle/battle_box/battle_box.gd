@@ -1,25 +1,15 @@
-extends Control
+extends Node2D
 class_name BattleBox
-
 var current_dialogue: Array[Dialogue]
-@export var context: Node
+var context: Node = null
 
 func _ready() -> void:
-	$TextWriter.able_to_end = false
-	$TextWriter.context = context
-	$TextWriter.request_visibility.connect(_set_visible)
-
+	$TextWritter.current_dialogue = current_dialogue
+	$TextWritter.context = context
+	$TextWritter.request_visibility.connect(_set_visible)
+	
 func _set_visible(value: bool) -> void:
-	$TextWriter.visible = value
+	$TextWritter.visible = value
 
 func set_dialogue(dialogue: Array[Dialogue]) -> void:
-	$TextWriter.set_dialogue(dialogue)
-
-func reset_dialogue() -> void:
-	$TextWriter.set_process(false)
-	$TextWriter.next_item = false
-	$TextWriter.current_dialogue = []
-	$TextWriter.current_dialogue_item = 0
-
-func set_box_size(size: Rect2) -> void:
-	pass
+	$TextWritter.set_dialogue(dialogue)

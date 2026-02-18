@@ -19,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://dvtqg5b1qqp6d" path="res://objects/battle_scene/battle/buttons/demo/act/actbt0.png" id="10_7inie"]
 [ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="10_bqk8b"]
 [ext_resource type="Script" uid="uid://pt2fgnijigmr" path="res://objects/battle_scene/battle/labels/labels.gd" id="10_keve3"]
-[ext_resource type="PackedScene" uid="uid://bomb0jkgo8mvn" path="res://objects/battle_scene/battle/battle_box/battle_box.tscn" id="10_ppku5"]
 [ext_resource type="PackedScene" uid="uid://bxh5bnhyt2aam" path="res://objects/hp_progress_bar/hp_progress_bar.tscn" id="11_1s4rh"]
 [ext_resource type="Texture2D" uid="uid://blkgeeaw8id5g" path="res://objects/battle_scene/battle/buttons/demo/act/actbt1.png" id="11_23xya"]
 [ext_resource type="Texture2D" uid="uid://h2n78r13kmxh" path="res://objects/battle_scene/battle/labels/hp/hp.png" id="11_keve3"]
+[ext_resource type="PackedScene" uid="uid://bomb0jkgo8mvn" path="res://objects/battle_scene/battle/battle_box/battle_box.tscn" id="12_t2he3"]
 [ext_resource type="Texture2D" uid="uid://dfpaje4gc8n5s" path="res://objects/battle_scene/battle/buttons/demo/item/itembt0.png" id="12_ys3hn"]
 [ext_resource type="Texture2D" uid="uid://dvv6g6lkokyx3" path="res://objects/battle_scene/battle/buttons/demo/item/itembt1.png" id="13_mdy71"]
 [ext_resource type="Texture2D" uid="uid://d4k753wrn22fd" path="res://objects/battle_scene/battle/buttons/demo/mercy/mercybt0.png" id="14_7tuef"]
@@ -52,8 +52,6 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqk8b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1s4rh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keve3"]
 
 [node name="BattleScene" type="CanvasLayer" unique_id=183547710]
 layer = 999
@@ -88,79 +86,73 @@ modulate = Color(1, 1, 1, 0.34901962)
 position = Vector2(320, 240)
 texture = ExtResource("6_q17ev")
 
-[node name="Node" type="Node" parent="." unique_id=1886528358]
-
-[node name="BattleBox" parent="." unique_id=1058848021 instance=ExtResource("10_ppku5")]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.668
-anchor_right = 0.5
-anchor_bottom = 0.668
+[node name="Control" type="Control" parent="." unique_id=1285376094]
+layout_mode = 3
+anchor_left = 0.53
+anchor_top = 0.708
+anchor_right = 0.53
+anchor_bottom = 0.713
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Labels" type="Control" parent="." unique_id=100580279]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="BattleBox" parent="Control" unique_id=945041048 instance=ExtResource("12_t2he3")]
+
+[node name="Labels" type="HBoxContainer" parent="." unique_id=1695737125]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.856
+anchor_right = 0.5
+anchor_bottom = 0.856
+offset_left = -290.0
+offset_top = -12.0
+offset_right = 289.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_keve3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Labels" unique_id=1695737125]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.835
-anchor_right = 0.95
-anchor_bottom = 0.884
-offset_bottom = -3.0517578e-05
-grow_horizontal = 2
-grow_vertical = 0
+[node name="BoxContainer" type="BoxContainer" parent="Labels" unique_id=1834586221]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
 
-[node name="PlayerName" type="Label" parent="Labels/HBoxContainer" unique_id=1615025788]
+[node name="PlayerName" type="Label" parent="Labels/BoxContainer" unique_id=1615025788]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_bqk8b")
 theme_override_font_sizes/font_size = 24
-text = "TESTNAME"
+text = "AA"
 
-[node name="HSeparator" type="HSeparator" parent="Labels/HBoxContainer" unique_id=1986446931]
+[node name="HSeparator" type="HSeparator" parent="Labels/BoxContainer" unique_id=1986446931]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
 
-[node name="LV" type="Label" parent="Labels/HBoxContainer" unique_id=998507887]
+[node name="LV" type="Label" parent="Labels/BoxContainer" unique_id=998507887]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_bqk8b")
 theme_override_font_sizes/font_size = 24
 text = "LV 1"
 
-[node name="HPHBoxContainer" type="HBoxContainer" parent="Labels" unique_id=567524143]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.374
-anchor_top = 0.835
-anchor_right = 0.95
-anchor_bottom = 0.88
-
-[node name="TextureRect" type="TextureRect" parent="Labels/HPHBoxContainer" unique_id=1904026548]
+[node name="TextureRect" type="TextureRect" parent="Labels" unique_id=1904026548]
 layout_mode = 2
 texture = ExtResource("11_keve3")
 stretch_mode = 4
 
-[node name="HPProgressBar" parent="Labels/HPHBoxContainer" unique_id=496590965 instance=ExtResource("11_1s4rh")]
+[node name="HPProgressBar" parent="Labels" unique_id=496590965 instance=ExtResource("11_1s4rh")]
 custom_minimum_size = Vector2(25, 20)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 0
 
-[node name="HSeparator3" type="HSeparator" parent="Labels/HPHBoxContainer" unique_id=1622055752]
+[node name="HSeparator3" type="HSeparator" parent="Labels" unique_id=1622055752]
 custom_minimum_size = Vector2(6, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
 
-[node name="HP" type="Label" parent="Labels/HPHBoxContainer" unique_id=33897609]
+[node name="HP" type="Label" parent="Labels" unique_id=33897609]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("10_bqk8b")
@@ -169,24 +161,25 @@ text = "20 / 20"
 
 [node name="Buttons" type="Control" parent="." unique_id=2083649716]
 layout_mode = 3
-anchor_top = 0.9
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.99
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Demo" type="HBoxContainer" parent="Buttons" unique_id=907650884]
-visible = false
-layout_mode = 0
-offset_right = 610.0
-offset_bottom = 43.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HSeparator" type="HSeparator" parent="Buttons/Demo" unique_id=265874506]
-custom_minimum_size = Vector2(28, 0)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_m0wq3")
+[node name="Demo" type="HBoxContainer" parent="Buttons" unique_id=907650884]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Fight" type="TextureButton" parent="Buttons/Demo" unique_id=1969420248]
 layout_mode = 2
@@ -262,16 +255,15 @@ focus = ExtResource("15_437jo")
 [node name="GT7" type="HBoxContainer" parent="Buttons" unique_id=1713058534]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 12
-
-[node name="HSeparator" type="HSeparator" parent="Buttons/GT7" unique_id=365430990]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_keve3")
 
 [node name="Fight" type="TextureButton" parent="Buttons/GT7" unique_id=187333024]
 layout_mode = 2
@@ -315,9 +307,9 @@ offset = 10
 [node name="TextureRect" type="TextureRect" parent="Buttons" unique_id=1675850824]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 14.0
+offset_top = -35.0
 offset_right = 56.0
-offset_bottom = 30.0
+offset_bottom = -19.0
 texture = ExtResource("29_m0wq3")
 expand_mode = 3
 stretch_mode = 5
@@ -325,8 +317,9 @@ stretch_mode = 5
 [node name="BattleDemo" type="Sprite2D" parent="." unique_id=537714448]
 visible = false
 modulate = Color(1, 1, 1, 0.30588236)
-position = Vector2(320, 232)
+position = Vector2(320, 231)
 texture = ExtResource("5_8ugeh")
+metadata/_edit_lock_ = true
 
 [connection signal="focus_entered" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_exited"]

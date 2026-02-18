@@ -233,8 +233,6 @@ func load_save_to_global(save_dict: Dictionary) -> bool:
 	if save_dict == null or save_dict == { }:
 		if OS.is_debug_build():
 			push_error("save_dict is invalid.")
-		else:
-			push_error("Save file is corrupted.")
 		return false
 
 	var save_vars = save_dict.get("vars")

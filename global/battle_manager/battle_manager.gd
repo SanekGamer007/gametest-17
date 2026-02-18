@@ -11,6 +11,7 @@ func start_battle(intro: bool = true, version: GlobalVars.Versions = GlobalVars.
 	battle_node.battle_era = version
 	GlobalVars.player_start_busy.emit()
 	GlobalVars.close_all_ui.emit()
+	BgmManager.stop_song(false)
 	battle_start.emit()
 	get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().current_scene.visible = false
