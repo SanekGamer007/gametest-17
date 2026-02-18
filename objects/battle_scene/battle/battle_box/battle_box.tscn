@@ -36,7 +36,6 @@ b = Vector2(-282, 0)
 script = ExtResource("1_4q2d3")
 
 [node name="Panel" type="Panel" parent="." unique_id=2081565746]
-custom_minimum_size = Vector2(568, 132)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -51,7 +50,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4q2d3")
 
 [node name="TextWritter" parent="." unique_id=1629633382 instance=ExtResource("1_jvwbw")]
-anchors_preset = -1
+anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -138.0
@@ -61,6 +60,8 @@ offset_bottom = 4.0
 grow_horizontal = 1
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1417573375]
+collision_layer = 2048
+collision_mask = 2048
 
 [node name="DownCollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1246572893]
 position = Vector2(0, 65)
