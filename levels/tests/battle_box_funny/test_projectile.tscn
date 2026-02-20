@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://skhhw7q1ergy"]
+
+[ext_resource type="Script" uid="uid://cq4f4gcvetj1u" path="res://levels/tests/battle_box_funny/test_projectile.gd" id="1_emnbd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aoox2"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emnbd"]
+size = Vector2(8, 8)
+
+[node name="test_projectile" type="Area2D" unique_id=63685922]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_emnbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1484989626]
+texture = SubResource("PlaceholderTexture2D_aoox2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=224546226]
+shape = SubResource("RectangleShape2D_emnbd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qgw1xnstdgmm" path="res://objects/battle_scene/battle/battle_box/battle_box.gd" id="1_4q2d3"]
 [ext_resource type="PackedScene" uid="uid://8ltflt4lk0rn" path="res://objects/dialogue/textwriter/textwriter.tscn" id="1_jvwbw"]
+[ext_resource type="AudioStream" uid="uid://kl5sbajfv2cj" path="res://audio/sfx/battle/hurt.wav" id="3_6v68v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q2d3"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,21 +17,16 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 anti_aliasing = false
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_4q2d3"]
-a = Vector2(282, 0)
-b = Vector2(-282, 0)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4q2d3"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_6v68v"]
-a = Vector2(0, 65)
-b = Vector2(0, -65)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6v68v"]
+normal = Vector2(1, 0)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_oid1e"]
-a = Vector2(0, 65)
-b = Vector2(0, -65)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oid1e"]
+normal = Vector2(-1, 0)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ao3fx"]
-a = Vector2(282, 0)
-b = Vector2(-282, 0)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ao3fx"]
+normal = Vector2(0, 1)
 
 [node name="BattleBox" type="Node2D" unique_id=945041048]
 script = ExtResource("1_4q2d3")
@@ -49,32 +45,60 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4q2d3")
 
-[node name="TextWritter" parent="." unique_id=1629633382 instance=ExtResource("1_jvwbw")]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -138.0
-offset_top = -66.0
-offset_right = 150.0
-offset_bottom = 4.0
+[node name="TextWritter" parent="Panel" unique_id=1629633382 instance=ExtResource("1_jvwbw")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_right = 1.014
+anchor_bottom = 1.0760001
+offset_left = 144.0
+offset_top = 2.0
+offset_right = -143.95203
+offset_bottom = -70.03201
 grow_horizontal = 1
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1417573375]
+[node name="BottomAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1417573375]
+position = Vector2(0, 67)
 collision_layer = 2048
 collision_mask = 2048
+sync_to_physics = false
 
-[node name="DownCollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1246572893]
-position = Vector2(0, 65)
-shape = SubResource("SegmentShape2D_4q2d3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomAnimatableBody2D" unique_id=1246572893]
+shape = SubResource("WorldBoundaryShape2D_4q2d3")
+debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
 
-[node name="RightCollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=592187710]
-position = Vector2(283, 0)
-shape = SubResource("SegmentShape2D_6v68v")
+[node name="LeftAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1239127636]
+position = Vector2(-285, 0)
+collision_layer = 2048
+collision_mask = 2048
+sync_to_physics = false
 
-[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=2122830149]
-position = Vector2(-283, 0)
-shape = SubResource("SegmentShape2D_oid1e")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAnimatableBody2D" unique_id=1898992656]
+shape = SubResource("WorldBoundaryShape2D_6v68v")
+debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
 
-[node name="UpCollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=317748131]
-position = Vector2(0, -65)
-shape = SubResource("SegmentShape2D_ao3fx")
+[node name="RightAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1367430560]
+position = Vector2(285, 0)
+collision_layer = 2048
+collision_mask = 2048
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightAnimatableBody2D" unique_id=675646356]
+shape = SubResource("WorldBoundaryShape2D_oid1e")
+debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
+
+[node name="TopAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1057641507]
+position = Vector2(0, -67)
+collision_layer = 2048
+collision_mask = 2048
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopAnimatableBody2D" unique_id=2039844326]
+shape = SubResource("WorldBoundaryShape2D_ao3fx")
+debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=421299549]
+stream = ExtResource("3_6v68v")
+volume_db = -18.0
+max_polyphony = 16
+bus = &"Sounds"

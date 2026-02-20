@@ -19,6 +19,7 @@ config/name="GAMETEST_17"
 run/main_scene="uid://dq6b2qk0k0hcr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=30
+run/low_processor_mode=true
 boot_splash/stretch_mode=0
 boot_splash/use_filter=false
 boot_splash/image="uid://dgtc5ucqlkayo"
@@ -141,10 +142,13 @@ exitting={
 [layer_names]
 
 2d_physics/layer_12="BattleSoul"
+2d_physics/layer_15="moving_platforms"
+2d_physics/layer_16="soulprojectiles"
 
 [physics]
 
 2d/run_on_separate_thread=true
+2d/physics_engine="GodotPhysics2D"
 
 [rendering]
 

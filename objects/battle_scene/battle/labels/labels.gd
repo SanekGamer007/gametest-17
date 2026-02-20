@@ -10,12 +10,11 @@ func _ready() -> void:
 	battle_scene.init_complete.connect(_on_init_complete)
 
 func _on_init_complete() -> void:
-	pass
-	#match battle_scene.battle_era:
-	#	GlobalVars.Versions.GAMETEST:
-	#		anchor_left = 0.0275
-	#	GlobalVars.Versions.DEMO:
-	#		anchor_left = 0.05
+	match battle_scene.battle_era:
+		GlobalVars.Versions.GAMETEST:
+			offset_left = -300
+		GlobalVars.Versions.DEMO:
+			offset_left = -288
 
 func update_hp() -> void:
 	var real_poison_amount = HpManager.poison_amount * HpManager.poison_turns 

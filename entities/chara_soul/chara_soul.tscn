@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bvs1ldtaykv6p"]
+
+[ext_resource type="Script" uid="uid://dtgx8fgqmh1ag" path="res://entities/chara_soul/chara_soul.gd" id="1_vpyqm"]
+[ext_resource type="Script" uid="uid://c764jine0dty4" path="res://entities/chara_soul/states/state_machine.gd" id="2_ckxce"]
+[ext_resource type="Script" uid="uid://b5nvgn0p4x6od" path="res://entities/chara_soul/states/red_state.gd" id="3_caa8h"]
+[ext_resource type="Script" uid="uid://btpowv4w24iql" path="res://entities/chara_soul/blue_state.gd" id="4_batsw"]
+[ext_resource type="Texture2D" uid="uid://ccl2xi4ub7jb0" path="res://entities/chara_soul/heart.png" id="5_fpqvf"]
+[ext_resource type="Script" uid="uid://dwuxhppbnyalj" path="res://entities/chara_soul/hurt_box.gd" id="6_fpqvf"]
+[ext_resource type="AudioStream" uid="uid://kl5sbajfv2cj" path="res://audio/sfx/battle/hurt.wav" id="7_kgu1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt5lx"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckxce"]
+size = Vector2(4, 4)
+
+[node name="CharaSoul" type="CharacterBody2D" unique_id=309264847]
+collision_layer = 18432
+collision_mask = 18432
+motion_mode = 1
+platform_floor_layers = 4278206464
+platform_wall_layers = 16384
+script = ExtResource("1_vpyqm")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1848979597 node_paths=PackedStringArray("starter_state")]
+script = ExtResource("2_ckxce")
+starter_state = NodePath("RedState")
+
+[node name="RedState" type="Node" parent="StateMachine" unique_id=2090214276]
+script = ExtResource("3_caa8h")
+
+[node name="BlueState" type="Node" parent="StateMachine" unique_id=1144792657]
+script = ExtResource("4_batsw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143328609]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5_fpqvf")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=966318695]
+shape = SubResource("RectangleShape2D_lt5lx")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1668781245]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("6_fpqvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1144432109]
+shape = SubResource("RectangleShape2D_ckxce")
+debug_color = Color(0.59664714, 0.5453651, 3.85046e-07, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=470322390]
+stream = ExtResource("7_kgu1w")
+volume_db = -18.0
+max_polyphony = 16
+bus = &"Sounds"

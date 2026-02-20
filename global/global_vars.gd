@@ -36,13 +36,16 @@ var player_exp: int = 0
 var player_gold: int = 0
 var player_at: int = 0 # calculate at runtime! do not save
 var player_df: int = 0 # calculate at runtime! do not save
-var player_speed: int = 0 # ut hidden stat
+var player_speed: int = 0 # calculate at runtime! do not save
+var player_invincibility: int = 0 # calculate at runtime! do not save
 var player_base_at: int = 0
 var player_base_df: int = 0
 var player_base_speed: int = 4 # ut hidden stat
+var player_base_invincibility: int = 30 # in frames
 var player_bonus_at: int = 0
 var player_bonus_df: int = 0
 var player_bonus_speed: int = 0
+var player_bonus_invincibility: int = 0
 var player_current_weapon: EquipmentResource = EMPTY_EQUIP
 var player_current_armor: EquipmentResource = EMPTY_EQUIP
 var player_time: int = 0 #in miliseconds
@@ -92,7 +95,7 @@ const exp_table: Array[int] = [
 
 #region flag stuff
 
-func set_flag(flag_name: String, flag_value: Variant):
+func set_flag(flag_name: String, flag_value: Variant) -> void:
 	flags[flag_name] = flag_value
 	print_debug("Flag: ", flag_name, " has been set to \"", flag_value, "\"")
 
@@ -208,12 +211,15 @@ func update_vars() -> void:
 	_update_base_at()
 	_update_base_df()
 	_update_base_speed()
+	_update_base_invincibility()
 	_update_bonus_at()
 	_update_bonus_df()
 	_update_bonus_speed()
+	_update_bonus_invincibility()
 	_update_at()
 	_update_df()
 	_update_speed()
+	_update_invincibility()
 	update_stats.emit()
 
 
@@ -251,8 +257,10 @@ func _update_base_df() -> void:
 
 
 func _update_base_speed() -> void:
-	player_base_speed = 4 # ultra placeholder.
+	player_base_speed = 4
 
+func _update_base_invincibility() -> void:
+	player_base_invincibility = 30
 
 func _update_bonus_at() -> void:
 	player_bonus_at = player_current_weapon.get_atk_bonus()
@@ -265,9 +273,11 @@ func _update_bonus_df() -> void:
 
 
 func _update_bonus_speed() -> void:
-	player_speed = player_current_weapon.get_spd_bonus()
-	player_speed += player_current_armor.get_spd_bonus()
+	player_bonus_speed = player_current_weapon.get_spd_bonus()
+	player_bonus_speed += player_current_armor.get_spd_bonus()
 
+func _update_bonus_invincibility() -> void:
+	player_bonus_invincibility = 0 # placeholder
 
 func _update_at() -> void:
 	player_at = player_base_at + player_bonus_at
@@ -280,6 +290,8 @@ func _update_df() -> void:
 func _update_speed() -> void:
 	player_speed = player_base_speed + player_bonus_speed
 
+func _update_invincibility() -> void:
+	player_invincibility = player_base_invincibility + player_bonus_invincibility
 
 func _update_love() -> void:
 	player_love = get_level_from_exp(player_exp)

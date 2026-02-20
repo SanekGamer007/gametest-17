@@ -18,6 +18,7 @@ func save_game() -> bool:
 		"player_base_at": GlobalVars.player_base_at,
 		"player_base_df": GlobalVars.player_base_df,
 		"player_base_speed": GlobalVars.player_base_speed,
+		"player_base_invincibility": GlobalVars.player_base_invincibility,
 		"player_current_weapon": GlobalVars.player_current_weapon.resource_path,
 		"player_current_armor": GlobalVars.player_current_armor.resource_path,
 		"player_inventory": GlobalVars.player_inventory.map(func(item): return item.resource_path),

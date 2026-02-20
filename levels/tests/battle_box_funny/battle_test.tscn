@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://dnpypjqtolth7"]
+
+[ext_resource type="Script" uid="uid://bngyxcdgjxrsc" path="res://levels/tests/battle_box_funny/battle_test.gd" id="1_ncnwn"]
+[ext_resource type="Script" uid="uid://dbocg8ko1rxsy" path="res://objects/dialogue/resources/dialogue_resources.gd" id="2_eouw3"]
+[ext_resource type="PackedScene" uid="uid://bomb0jkgo8mvn" path="res://objects/battle_scene/battle/battle_box/battle_box.tscn" id="2_ncnwn"]
+[ext_resource type="Script" uid="uid://xdgi2kp04lc8" path="res://objects/dialogue/resources/dialogue_text_resource.gd" id="3_fftd0"]
+[ext_resource type="AudioStream" uid="uid://di1213v2igmnk" path="res://audio/sfx/dialogue/txt_generic_1.wav" id="4_tcj3b"]
+[ext_resource type="Texture2D" uid="uid://c3ks3if8touye" path="res://levels/tests/battle_box_funny/ezgif-67ab3dc8fd2bf031.png" id="6_tcj3b"]
+[ext_resource type="Texture2D" uid="uid://b7gcxkk5b7huk" path="res://levels/tests/battle_box_funny/ezgif-60e1f969b593f82e.png" id="7_nhidb"]
+[ext_resource type="AudioStream" uid="uid://csl2l5do6btg" path="res://levels/tests/battle_box_funny/creppy_ass_laugh.wav" id="8_nhidb"]
+[ext_resource type="PackedScene" uid="uid://bvs1ldtaykv6p" path="res://entities/chara_soul/chara_soul.tscn" id="9_0q74v"]
+[ext_resource type="PackedScene" uid="uid://skhhw7q1ergy" path="res://levels/tests/battle_box_funny/test_projectile.tscn" id="10_jalt4"]
+
+[sub_resource type="Resource" id="Resource_nhidb"]
+script = ExtResource("3_fftd0")
+text = "Look at me!
+Im Fly-y-y-y
+>i-i-ing!!
+Welcome to another GAMETEST 17
+>devlog! A undertale fangame
+>heavily inspired by B3313!"
+text_speed = 18.0
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_eouw3"]
+script = ExtResource("3_fftd0")
+text = "I uhh... dont
+>really have
+>much interesting
+>to show
+>right now.
+>But! thats
+>gonna change
+>really soon!"
+can_be_skipped = false
+auto_skip = true
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_fftd0"]
+script = ExtResource("3_fftd0")
+text = "What i CAN show
+>is how flexible
+>the battle box
+>is gonna be."
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="Resource" id="Resource_tcj3b"]
+script = ExtResource("3_fftd0")
+text = "That's it for now.
+Have a nice day!"
+metadata/_custom_type_script = "uid://xdgi2kp04lc8"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkgif"]
+atlas = ExtResource("6_tcj3b")
+region = Rect2(0, 0, 192, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnnvd"]
+atlas = ExtResource("6_tcj3b")
+region = Rect2(192, 0, 192, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg3kl"]
+atlas = ExtResource("7_nhidb")
+region = Rect2(0, 0, 192, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsdbi"]
+atlas = ExtResource("7_nhidb")
+region = Rect2(192, 0, 192, 178)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylqa6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkgif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnnvd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg3kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsdbi")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_nhidb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vkgif"]
+resource_name = "friend"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"laugh"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnnvd"]
+_data = {
+&"RESET": SubResource("Animation_nhidb"),
+&"friend": SubResource("Animation_vkgif")
+}
+
+[node name="BattleTest" type="Node2D" unique_id=239492681]
+script = ExtResource("1_ncnwn")
+test_dialogue = Array[ExtResource("2_eouw3")]([SubResource("Resource_nhidb")])
+test_dialogue2 = Array[ExtResource("2_eouw3")]([SubResource("Resource_eouw3")])
+test_dialogue3 = Array[ExtResource("2_eouw3")]([SubResource("Resource_fftd0")])
+test_dialogue4 = Array[ExtResource("2_eouw3")]([SubResource("Resource_tcj3b")])
+
+[node name="BattleBox" parent="." unique_id=945041048 instance=ExtResource("2_ncnwn")]
+position = Vector2(320, 354)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=653926662]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(312, 178)
+sprite_frames = SubResource("SpriteFrames_ylqa6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1706524235]
+stream = ExtResource("8_nhidb")
+bus = &"Sounds"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=88302842]
+libraries/ = SubResource("AnimationLibrary_wnnvd")
+
+[node name="CharaSoul" parent="." unique_id=309264847 instance=ExtResource("9_0q74v")]
+position = Vector2(292, 351)
+
+[node name="test_projectile" parent="." unique_id=63685922 instance=ExtResource("10_jalt4")]
+position = Vector2(438, 348)
+
+[node name="test_projectile2" parent="." unique_id=1710782895 instance=ExtResource("10_jalt4")]
+position = Vector2(448, 389)
+
+[node name="test_projectile3" parent="." unique_id=151154585 instance=ExtResource("10_jalt4")]
+position = Vector2(505, 302)
+
+[node name="test_projectile4" parent="." unique_id=2079131009 instance=ExtResource("10_jalt4")]
+position = Vector2(609, 260)

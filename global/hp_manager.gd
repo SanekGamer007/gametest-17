@@ -8,6 +8,8 @@ enum DamageTypes {
 	ROT,
 	FATAL,
 }
+var invincibility_timer: float = 9999.0
+
 var normal_amount: int = 0
 var karma_amount: int = 0
 var karma_timer: float = 0
@@ -17,11 +19,14 @@ var poison_timer: float = 5
 var force_amount: int = 0 # ignores armor
 
 signal hp_updated
+signal hp_invincibility
 signal hp_hurtsound
 
 func _process(delta: float) -> void:
+	if invincibility_timer < GlobalVars.player_invincibility / 30.0:
+		invincibility_timer += delta
 	if normal_amount != 0:
-		_handle_damage_normal()
+			_handle_damage_normal(delta)
 	if karma_amount != 0:
 		_handle_damage_karma(delta)
 	if poison_amount != 0 and poison_turns != 0:
@@ -45,30 +50,33 @@ func reset_damage() -> void:
 	poison_timer = 0
 
 func set_damage(amount: int, turns: int, damage_type: DamageTypes) -> void:
-	hp_hurtsound.emit()
 	match damage_type:
 		DamageTypes.NORMAL:
-			normal_amount += amount
+			if invincibility_timer >= GlobalVars.player_invincibility / 30.0:
+				hp_hurtsound.emit()
+				normal_amount += amount
 		DamageTypes.KARMA:
 			if GlobalVars.player_hp == 1: # if we get more karma at 1 hp then we die
 				GlobalVars.player_hp = 0
+			hp_hurtsound.emit()
 			karma_amount += amount
 		DamageTypes.POISON:
+			hp_hurtsound.emit()
 			poison_amount += amount
 			poison_turns += turns
 			poison_timer = 5
 
-func _handle_damage_none() -> void:
-	return
-
-func _handle_damage_normal() -> void:
+func _handle_damage_normal(delta: float) -> void:
+	invincibility_timer = 0.0
 	var damage = max(1, normal_amount - GlobalVars.player_df)
 	if normal_amount <= 0:
 		damage = 0
 	GlobalVars.player_hp = max(0, GlobalVars.player_hp - damage)
 	GlobalVars.update_stats.emit()
 	hp_updated.emit()
+	hp_invincibility.emit()
 	normal_amount = 0
+	invincibility_timer = 0.0
 
 func _handle_damage_karma(delta: float) -> void:
 	if karma_amount > 40: # any excess turns to damage, karma doesnt care about armor.
