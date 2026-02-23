@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://m5nc7k62g61b" path="res://levels/tests/fakeout_test/winow/clear.png" id="8_svrmv"]
 
 [node name="Window" type="Window" unique_id=1230039916]
+process_mode = 3
 oversampling_override = 1.0
 title = "Error messages"
 position = Vector2i(0, 36)

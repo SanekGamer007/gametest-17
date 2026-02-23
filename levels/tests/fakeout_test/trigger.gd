@@ -8,5 +8,8 @@ func on_trigger_start() -> void:
 	anim_name.replace("walk", "idle")
 	get_parent().get_node("CharaAnimatedSprite2D").visible = true
 	chara.visible = false
+	get_parent().get_node("Camera2D").enabled = true
+	chara.get_node("Camera2D").enabled = false
 	get_parent().get_node("CharaAnimatedSprite2D").play(anim_name)
 	get_parent().get_node("CharaAnimatedSprite2D").global_position = chara.global_position
+	

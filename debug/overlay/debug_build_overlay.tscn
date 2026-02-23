@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://m3grlchcb57x"]
+
+[ext_resource type="FontFile" uid="uid://17xk154gtd2f" path="res://fonts/MarsNeedsCunnilingus.ttf" id="1_dfie7"]
+[ext_resource type="Script" uid="uid://dxfim4fmgug8l" path="res://debug/overlay/debug_build_overlay.gd" id="1_x8uyd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8uyd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtyax"]
+
+[node name="DebugBuildOverlay" type="CanvasLayer" unique_id=314177785]
+script = ExtResource("1_x8uyd")
+
+[node name="Label" type="Label" parent="." unique_id=2114204081]
+offset_left = 2.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_dfie7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x8uyd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dtyax")
+text = "DEBUG BUILD
+VER %d.%d | COMMIT %s
+!! WORK IN PROGRESS !!"
