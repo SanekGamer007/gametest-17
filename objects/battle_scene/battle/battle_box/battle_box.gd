@@ -13,10 +13,16 @@ signal finished_rotating
 
 signal battle_dialogue_end
 
+signal menu_item_selected(idx: int)
+
+const BATTLE_BUTTON = preload("res://objects/battle_scene/battle/battle_box/battle_button/battle_button.tscn")
+
 @onready var leftcollision: CollisionShape2D = $LeftAnimatableBody2D/CollisionShape2D
 @onready var rightcollision: CollisionShape2D = $RightAnimatableBody2D/CollisionShape2D
 @onready var downcollision: CollisionShape2D = $BottomAnimatableBody2D/CollisionShape2D
 @onready var upcollision: CollisionShape2D = $TopAnimatableBody2D/CollisionShape2D
+
+@onready var button_location: GridContainer = $Panel/MarginContainer/GridContainer
 
 func _ready() -> void:
 	$Panel/TextWritter.current_dialogue = current_dialogue
@@ -28,10 +34,36 @@ func _set_visible(value: bool) -> void:
 
 func set_dialogue(dialogue: Array[Dialogue]) -> void:
 	$Panel/TextWritter.set_dialogue(dialogue)
+	$Panel/TextWritter.visible = true
 
 func reset_dialogue() -> void:
 	var empty: Array[Dialogue] = [DialogueText.new()]
 	$Panel/TextWritter.set_dialogue(empty)
+	$Panel/TextWritter.visible = false
+
+func show_menu(items: Array[String], page: int = 0) -> void:
+	for child in button_location.get_children():
+		child.queue_free()
+	
+	$Panel/TextWritter.visible = false
+	if page != 0:
+		$Panel/MarginContainer/VBoxContainer/HBoxContainer/Page.visible = true
+		$Panel/MarginContainer/VBoxContainer/HBoxContainer/Page.text = "Page %d" % page
+	else:
+		$Panel/MarginContainer/VBoxContainer/HBoxContainer/Page.visible = false
+	
+	var button_pressed = (func(btn_idx: int):
+		menu_item_selected.emit(btn_idx)
+	)
+	for i in items.size():
+		if i == 4:
+			push_warning("It's not recommended to pass more than 4 strings in one page.")
+		var button: Button = BATTLE_BUTTON.instantiate()
+		button.text = items[i]
+		button.pressed.connect(button_pressed.bind(i))
+	if button_location.get_child_count() > 0:
+		button_location.get_child(0).grab_focus()
+
 
 func set_box_size(new_size: Vector2, duration: float = 0.5, trans: Tween.TransitionType = Tween.TRANS_LINEAR, easing: Tween.EaseType = Tween.EASE_IN_OUT) -> void:
 	var half_width: float = new_size.x / 2

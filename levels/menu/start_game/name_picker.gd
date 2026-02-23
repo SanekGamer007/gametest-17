@@ -34,6 +34,12 @@ func _ready() -> void:
 				char_button.focus_neighbor_left = prev_button.get_path()
 		prev_button = char_button
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("second_button"):
+		if visible:
+			_on_quit_pressed()
+			get_viewport().set_input_as_handled()
+
 func char_button_pressed(text: String) -> void:
 	if player_name.length() >= 8:
 		player_name[7] = text

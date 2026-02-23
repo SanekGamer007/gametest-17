@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dvbcv46xu2t2t" path="res://objects/battle_scene/battle/buttons/gt7/spell/spellbt1.png" id="23_bqk8b"]
 [ext_resource type="Texture2D" uid="uid://ba0g02dent1ea" path="res://objects/battle_scene/battle/buttons/gt7/spare/sparebt0.png" id="24_1s4rh"]
 [ext_resource type="Texture2D" uid="uid://ds1j18nvs8a0s" path="res://objects/battle_scene/battle/buttons/gt7/spare/sparebt1.png" id="25_keve3"]
-[ext_resource type="Texture2D" uid="uid://bm7wf27cp0vkl" path="res://objects/battle_scene/battle/buttons/generic/heart1.png" id="29_m0wq3"]
+[ext_resource type="PackedScene" uid="uid://bvs1ldtaykv6p" path="res://entities/chara_soul/chara_soul.tscn" id="37_t2he3"]
 
 [sub_resource type="Resource" id="Resource_dbo10"]
 script = ExtResource("6_6khfq")
@@ -194,6 +194,7 @@ texture_normal = ExtResource("7_m2k05")
 script = ExtResource("9_epih8")
 normal = ExtResource("7_m2k05")
 focus = ExtResource("8_sx57f")
+offset = 15
 
 [node name="HSeparator2" type="HSeparator" parent="Buttons/Demo" unique_id=396929202]
 custom_minimum_size = Vector2(34, 0)
@@ -213,6 +214,7 @@ texture_normal = ExtResource("10_7inie")
 script = ExtResource("9_epih8")
 normal = ExtResource("10_7inie")
 focus = ExtResource("11_23xya")
+offset = 15
 
 [node name="HSeparator3" type="HSeparator" parent="Buttons/Demo" unique_id=1181290291]
 custom_minimum_size = Vector2(42, 0)
@@ -232,6 +234,7 @@ texture_normal = ExtResource("12_ys3hn")
 script = ExtResource("9_epih8")
 normal = ExtResource("12_ys3hn")
 focus = ExtResource("13_mdy71")
+offset = 15
 
 [node name="HSeparator4" type="HSeparator" parent="Buttons/Demo" unique_id=1664839351]
 custom_minimum_size = Vector2(38, 0)
@@ -251,6 +254,7 @@ texture_normal = ExtResource("14_7tuef")
 script = ExtResource("9_epih8")
 normal = ExtResource("14_7tuef")
 focus = ExtResource("15_437jo")
+offset = 15
 
 [node name="GT7" type="HBoxContainer" parent="Buttons" unique_id=1713058534]
 visible = false
@@ -271,6 +275,7 @@ texture_normal = ExtResource("16_fccmn")
 script = ExtResource("9_epih8")
 normal = ExtResource("16_fccmn")
 focus = ExtResource("8_wct2l")
+offset = 15
 
 [node name="Act" type="TextureButton" parent="Buttons/GT7" unique_id=1616421088]
 layout_mode = 2
@@ -278,7 +283,7 @@ texture_normal = ExtResource("18_k0au7")
 script = ExtResource("9_epih8")
 normal = ExtResource("18_k0au7")
 focus = ExtResource("19_4hd8t")
-offset = 12
+offset = 19
 
 [node name="Item" type="TextureButton" parent="Buttons/GT7" unique_id=1199036077]
 layout_mode = 2
@@ -286,7 +291,7 @@ texture_normal = ExtResource("20_qbotw")
 script = ExtResource("9_epih8")
 normal = ExtResource("20_qbotw")
 focus = ExtResource("21_m0wq3")
-offset = 10
+offset = 17
 
 [node name="Spell" type="TextureButton" parent="Buttons/GT7" unique_id=313883455]
 layout_mode = 2
@@ -294,7 +299,7 @@ texture_normal = ExtResource("22_0w8fb")
 script = ExtResource("9_epih8")
 normal = ExtResource("22_0w8fb")
 focus = ExtResource("23_bqk8b")
-offset = 10
+offset = 17
 
 [node name="Mercy" type="TextureButton" parent="Buttons/GT7" unique_id=1522731652]
 layout_mode = 2
@@ -302,17 +307,7 @@ texture_normal = ExtResource("24_1s4rh")
 script = ExtResource("9_epih8")
 normal = ExtResource("24_1s4rh")
 focus = ExtResource("25_keve3")
-offset = 10
-
-[node name="TextureRect" type="TextureRect" parent="Buttons" unique_id=1675850824]
-layout_mode = 0
-offset_left = 40.0
-offset_top = -35.0
-offset_right = 56.0
-offset_bottom = -19.0
-texture = ExtResource("29_m0wq3")
-expand_mode = 3
-stretch_mode = 5
+offset = 17
 
 [node name="BattleDemo" type="Sprite2D" parent="." unique_id=537714448]
 visible = false
@@ -321,30 +316,57 @@ position = Vector2(320, 231)
 texture = ExtResource("5_8ugeh")
 metadata/_edit_lock_ = true
 
+[node name="CharaSoul" parent="." unique_id=309264847 instance=ExtResource("37_t2he3")]
+position = Vector2(48, 453)
+
+[node name="Monsters" type="Node2D" parent="." unique_id=726078371]
+
+[node name="Marker2DOverride" type="Marker2D" parent="Monsters" unique_id=127980728]
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(320, 192)
+
+[node name="Marker2D0" type="Marker2D" parent="Monsters" unique_id=656878718]
+position = Vector2(264, 192)
+
+[node name="Marker2D1" type="Marker2D" parent="Monsters" unique_id=636657012]
+position = Vector2(466, 192)
+
+[node name="Marker2D2" type="Marker2D" parent="Monsters" unique_id=569428561]
+position = Vector2(128, 192)
+
 [connection signal="focus_entered" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Fight" to="StateMachine/PlayerTurnState" method="_on_fight_pressed"]
 [connection signal="pressed" from="Buttons/Demo/Fight" to="Buttons/Demo/Fight" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Act" to="StateMachine/PlayerTurnState" method="_on_act_pressed"]
 [connection signal="pressed" from="Buttons/Demo/Act" to="Buttons/Demo/Act" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Item" to="StateMachine/PlayerTurnState" method="_on_item_pressed"]
 [connection signal="pressed" from="Buttons/Demo/Item" to="Buttons/Demo/Item" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/Demo/Mercy" to="StateMachine/PlayerTurnState" method="_on_mercy_pressed"]
 [connection signal="pressed" from="Buttons/Demo/Mercy" to="Buttons/Demo/Mercy" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Fight" to="StateMachine/PlayerTurnState" method="_on_fight_pressed"]
 [connection signal="pressed" from="Buttons/GT7/Fight" to="Buttons/GT7/Fight" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Act" to="StateMachine/PlayerTurnState" method="_on_act_pressed"]
 [connection signal="pressed" from="Buttons/GT7/Act" to="Buttons/GT7/Act" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Item" to="StateMachine/PlayerTurnState" method="_on_item_pressed"]
 [connection signal="pressed" from="Buttons/GT7/Item" to="Buttons/GT7/Item" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Spell" to="StateMachine/PlayerTurnState" method="_on_spell_pressed"]
 [connection signal="pressed" from="Buttons/GT7/Spell" to="Buttons/GT7/Spell" method="_on_pressed"]
 [connection signal="focus_entered" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_focus_exited"]
+[connection signal="pressed" from="Buttons/GT7/Mercy" to="StateMachine/PlayerTurnState" method="_on_mercy_pressed"]
 [connection signal="pressed" from="Buttons/GT7/Mercy" to="Buttons/GT7/Mercy" method="_on_pressed"]

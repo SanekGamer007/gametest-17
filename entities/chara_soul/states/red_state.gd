@@ -7,8 +7,10 @@ enum states {
 
 var state: states = states.IDLE
 var direction: Vector2
+var newvelocity: Vector2
 
 func enter() -> void:
+	chara_soul.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	GlobalVars.update_vars() # temporary
 	chara_soul.soul_sprite.modulate = Color(1.0, 0.0, 0.0, 1.0)
 
@@ -21,6 +23,7 @@ func update(_delta: float) -> void:
 			_handle_idle_state()
 		states.MOVING:
 			_handle_moving_state()
+	chara_soul.velocity = newvelocity
 
 func exit() -> void:
 	pass
@@ -36,7 +39,7 @@ func _handle_moving_state() -> void:
 	var speed: int = GlobalVars.player_speed * 30 # the original speed is in px/frame but we need in px/second
 	if Input.is_action_pressed("second_button"):
 		speed /= 2
-	chara_soul.velocity = speed * direction
+	newvelocity = speed * direction
 
 func set_state(new_state: states) -> void:
 	state = new_state

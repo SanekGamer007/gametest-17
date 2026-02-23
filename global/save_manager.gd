@@ -89,6 +89,8 @@ func load_game() -> Dictionary:
 		var loaded_phone: Array[CellCallResource]
 		
 		for i in save_vars:
+			if i is not String:
+				break
 			if i == "player_current_weapon":
 				if ResourceLoader.exists(save_vars.get(i)):
 					save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
@@ -191,6 +193,8 @@ func load_game() -> Dictionary:
 	var loaded_phone: Array[CellCallResource]
 	
 	for i in save_vars:
+		if i is not String:
+			break
 		if i == "player_current_weapon":
 			if ResourceLoader.exists(save_vars.get(i)):
 				save_vars["player_current_weapon"] = load(save_vars.get("player_current_weapon"))
@@ -260,7 +264,6 @@ func save_file_exists() -> bool:
 	if OS.is_debug_build():
 		for i in SAVE_SUFFIX:
 			var tmp = FileAccess.file_exists(SAVE_FILE_LOCATION + i + ".debug")
-			print(tmp)
 			if tmp == null or tmp == false:
 				continue
 			else:

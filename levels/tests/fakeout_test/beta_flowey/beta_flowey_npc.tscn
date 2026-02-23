@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://ca5tmtuk4vvbm"]
+
+[ext_resource type="PackedScene" uid="uid://b18nqehp6jbsc" path="res://entities/generic/generic_npc/generic_npc.tscn" id="1_abwby"]
+[ext_resource type="Texture2D" uid="uid://becfavmegs32x" path="res://levels/tests/fakeout_test/beta_flowey/sprsheet.png" id="2_1ijfm"]
+[ext_resource type="Material" uid="uid://bjmpn0t8n8fgg" path="res://levels/tests/fakeout_test/uv.tres" id="2_6if8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6if8o"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(24, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oyup"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xcu3"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(48, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31f6p"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(72, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1h0c"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(96, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhp2m"]
+atlas = ExtResource("2_1ijfm")
+region = Rect2(48, 0, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f70d7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6if8o")
+}],
+"loop": true,
+"name": &"creppy_smile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oyup")
+}],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xcu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31f6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1h0c")
+}],
+"loop": false,
+"name": &"lookin",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhp2m")
+}],
+"loop": false,
+"name": &"up_idle",
+"speed": 1.0
+}]
+
+[node name="BetaFloweyNPC" unique_id=1041120382 instance=ExtResource("1_abwby")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=729970026]
+material = ExtResource("2_6if8o")
+sprite_frames = SubResource("SpriteFrames_f70d7")
+animation = &"up_idle"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=606176880]
+position = Vector2(0, 7.5)

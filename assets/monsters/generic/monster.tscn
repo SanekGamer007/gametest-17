@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://oh8j1v1rew1i"]
+
+[ext_resource type="Texture2D" uid="uid://d2g5wb5y7cfgf" path="res://icon.svg" id="1_bkcld"]
+[ext_resource type="Script" uid="uid://3fepboa4ks8i" path="res://assets/monsters/generic/monster.gd" id="1_ddi6g"]
+[ext_resource type="Shader" uid="uid://bpnfqhfu81hr7" path="res://assets/monsters/generic/test.gdshader" id="2_nmjvh"]
+[ext_resource type="Shader" uid="uid://jihjg0oj8b6m" path="res://shaders/whiter.gdshader" id="2_setsc"]
+[ext_resource type="Material" uid="uid://bifyfamhfr5fn" path="res://assets/monsters/generic/vaporizer_preset.tres" id="4_3xydc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmjvh"]
+shader = ExtResource("2_nmjvh")
+shader_parameter/threshold = 0.5
+shader_parameter/replace_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ia06e"]
+shader = ExtResource("2_setsc")
+shader_parameter/threshold = 0.448
+shader_parameter/replace_color = Color(1, 1, 1, 1)
+
+[node name="Monster" type="Node2D" unique_id=1912679464]
+script = ExtResource("1_ddi6g")
+monster_name = "GodotTest"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823495244]
+material = SubResource("ShaderMaterial_nmjvh")
+texture = ExtResource("1_bkcld")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=231463423]
+visible = false
+material = SubResource("ShaderMaterial_ia06e")
+position = Vector2(-64, -64)
+emitting = false
+amount = 50000
+lifetime = 3.0
+explosiveness = 1.0
+process_material = ExtResource("4_3xydc")

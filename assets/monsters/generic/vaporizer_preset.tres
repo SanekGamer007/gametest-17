@@ -1,0 +1,57 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bifyfamhfr5fn"]
+
+[ext_resource type="Shader" uid="uid://bhlccpe28nuvo" path="res://shaders/vaporizer.gdshader" id="1_fw0j1"]
+[ext_resource type="Texture2D" uid="uid://d2g5wb5y7cfgf" path="res://icon.svg" id="2_1ljg3"]
+
+[sub_resource type="Curve" id="Curve_ia06e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n5jbe"]
+curve = SubResource("Curve_ia06e")
+
+[resource]
+shader = ExtResource("1_fw0j1")
+shader_parameter/direction = Vector3(0, -1, 0)
+shader_parameter/spread = 90.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 5.0
+shader_parameter/initial_linear_velocity_max = 10.0
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.2
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_box_extents = Vector3(0, 0, 0)
+shader_parameter/gravity = Vector3(0, -20, 0)
+shader_parameter/alpha_curve = SubResource("CurveTexture_n5jbe")
+shader_parameter/sprite = ExtResource("2_1ljg3")
+shader_parameter/progress = 0.0
+shader_parameter/particle_lifetime_fraction = 0.0
+shader_parameter/connect_lines = false

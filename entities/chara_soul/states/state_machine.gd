@@ -3,7 +3,6 @@ class_name CharaSoulStateMachine
 
 @onready var chara_soul: CharaSoul = get_parent()
 
-@export var starter_state: CharaSoulState
 var states: Dictionary[String, CharaSoulState] = {}
 var state: CharaSoulState
 
@@ -15,8 +14,8 @@ func _ready() -> void:
 	chara_soul.init_complete.connect(_on_init_complete)
 	
 func _on_init_complete() -> void:
-	if starter_state:
-		_set_state(starter_state)
+	if chara_soul.starter_state:
+		_set_state(chara_soul.starter_state)
 
 func _physics_process(delta: float) -> void:
 	if state:
@@ -27,7 +26,7 @@ func change_state(state_name: String) -> void:
 	if new_state:
 		_set_state(new_state)
 	else:
-		push_error("FATAL: Soul state not found.")
+		push_error("Soul state not found.")
 
 func _set_state(new_state: CharaSoulState) -> void:
 	if state:

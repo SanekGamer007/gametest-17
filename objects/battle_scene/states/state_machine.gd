@@ -8,9 +8,13 @@ var states: Dictionary[String, BattleState] = {}
 var state: BattleState
 
 func _ready() -> void:
+	battle_scene.init_complete.connect(_on_init_complete)
+
+func _on_init_complete() -> void:
 	for child in get_children():
 		if child is BattleState:
 			states.set(child.name, child)
+			child.battle_resource = battle_scene.battle_resource
 	
 	if starter_state:
 		_set_state(starter_state)

@@ -144,6 +144,10 @@ exitting={
 2d_physics/layer_12="BattleSoul"
 2d_physics/layer_15="moving_platforms"
 2d_physics/layer_16="soulprojectiles"
+2d_physics/layer_17="BottomBattleBox"
+2d_physics/layer_18="LeftBattleBox"
+2d_physics/layer_19="RightBattleBox"
+2d_physics/layer_20="TopBattleBox"
 
 [physics]
 

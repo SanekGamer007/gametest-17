@@ -1,4 +1,5 @@
 extends Area2D
+class_name RoomTransition
 
 @export_file("*.tscn") var room: String
 @export var doorid: String = "A"

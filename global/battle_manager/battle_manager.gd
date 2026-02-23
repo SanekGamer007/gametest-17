@@ -1,21 +1,27 @@
 extends Node
+
 signal battle_start
 signal battle_camera
 signal battle_end
 
+enum BattleAction { FIGHT, ACT, ITEM, SPARE, FLEE, SPELL }
+enum BattleAttackTypes { NORMAL, MISS }
+
 const BATTLE_TRANSITION = preload("res://objects/battle_transition/battle_transition.tscn")
 const BATTLE_SCENE = preload("res://objects/battle_scene/battle_scene.tscn")
 
-func start_battle(intro: bool = true, version: GlobalVars.Versions = GlobalVars.Versions.ANY) -> void:
+
+func start_battle(res: BattleResource) -> void:
 	var battle_node: BattleScene = BATTLE_SCENE.instantiate()
-	battle_node.battle_era = version
+	battle_node.battle_era = res.version
 	GlobalVars.player_start_busy.emit()
 	GlobalVars.close_all_ui.emit()
 	BgmManager.stop_song(false)
 	battle_start.emit()
 	get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	get_tree().current_scene.visible = false
-	if intro:
+	battle_node.battle_resource = res
+	if res.intro:
 		var transition_instance = BATTLE_TRANSITION.instantiate()
 		get_tree().root.add_child(transition_instance)
 		var transition_pos: Vector2

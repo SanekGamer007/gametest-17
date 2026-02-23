@@ -23,7 +23,7 @@ enum EquipmentTypes {
 
 const MAJOR_GAME_VERSION: int = 0
 const MINOR_GAME_VERSION: int = 1
-const EMPTY_EQUIP: EquipmentResource = preload("res://items/equipment/None/none.tres")
+const EMPTY_EQUIP: EquipmentResource = preload("res://assets/items/equipment/None/none.tres")
 
 # player vars
 var player_name: String = ""

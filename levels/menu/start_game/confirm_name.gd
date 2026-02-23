@@ -2,6 +2,12 @@ extends Control
 
 var player_name: String
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("second_button"):
+		if visible:
+			_on_no_pressed()
+			get_viewport().set_input_as_handled()
+
 func prep() -> void:
 	$HBoxContainer/No.text = "No"
 	$HBoxContainer/Yes.disabled = false
@@ -18,20 +24,22 @@ func prep() -> void:
 			if randnum == 0:
 				$VBoxContainer/HBoxContainer/Label.text = "Be more original."
 			elif randnum == 1:
-				$VBoxContainer/HBoxContainer/Label.text = "Cmon, you can pick something\nmore original."
+				$VBoxContainer/HBoxContainer/Label.text = "Cmon, you can pick something\nbetter."
 			else:
 				var sysinfo: Dictionary = SaveManager.load_system_information()
 				if sysinfo.get("has_beaten_demo", false) == true:
 					$VBoxContainer/HBoxContainer/Label.text = "You cannot use the\ndev's name."
 				else:
 					$VBoxContainer/HBoxContainer/Label.text = "This name is off limits."
+		"TOBY", "TOBYFOX":
+			$VBoxContainer/HBoxContainer/Label.text = "... is not a god in this\nuniverse."
 		"GAMETEST":
 			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = ""
 		"ALPHYS", "ALPHY":
 			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = "You hear nothing but wind roaring."
-		"METTATON", "METTATO", "METTAT", "METTA", "METT", "MTT":
+		"METTATON", "METTATO", "METTAT", "METTA", "MTT":
 			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = "Nothing but an idea inside of\nsomeone, gone long ago."
 		"ASGORE":
@@ -45,7 +53,7 @@ func prep() -> void:
 			$VBoxContainer/HBoxContainer/Label.text = "That's MY name\nyou CANNOT choose that."
 		"SANS":
 			_disable_confirmation()
-			$VBoxContainer/HBoxContainer/Label.text = "sorry nope"
+			$VBoxContainer/HBoxContainer/Label.text = "sorry kid"
 		"UNDYNE":
 			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = "A sad, sad fish in a big, big sea."
@@ -56,7 +64,7 @@ func prep() -> void:
 			$VBoxContainer/HBoxContainer/Label.text = "Interesting."
 		"CHARA":
 			$VBoxContainer/HBoxContainer/Label.text = "Not even surprised."
-		"AAAAAA", "AAAAAAAA":
+		"A", "AA", "AAAAAA", "AAAAAAAA":
 			$VBoxContainer/HBoxContainer/Label.text = "Not very creative today, huh?"
 		"JERRY":
 			$VBoxContainer/HBoxContainer/Label.text = "Freak."

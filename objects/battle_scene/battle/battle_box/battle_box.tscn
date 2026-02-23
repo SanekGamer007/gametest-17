@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qgw1xnstdgmm" path="res://objects/battle_scene/battle/battle_box/battle_box.gd" id="1_4q2d3"]
 [ext_resource type="PackedScene" uid="uid://8ltflt4lk0rn" path="res://objects/dialogue/textwriter/textwriter.tscn" id="1_jvwbw"]
 [ext_resource type="AudioStream" uid="uid://kl5sbajfv2cj" path="res://audio/sfx/battle/hurt.wav" id="3_6v68v"]
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="3_ks78v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q2d3"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,16 +18,22 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oid1e"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4q2d3"]
+distance = 3.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6v68v"]
 normal = Vector2(1, 0)
+distance = 3.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oid1e"]
 normal = Vector2(-1, 0)
+distance = 3.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ao3fx"]
 normal = Vector2(0, 1)
+distance = 3.0
 
 [node name="BattleBox" type="Node2D" unique_id=945041048]
 script = ExtResource("1_4q2d3")
@@ -57,10 +64,47 @@ offset_right = -143.95203
 offset_bottom = -70.03201
 grow_horizontal = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=517164395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 16
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer" unique_id=1121343864]
+layout_mode = 2
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1348497783]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1521686049]
+layout_mode = 2
+alignment = 2
+
+[node name="Page" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2021766033]
+visible = false
+custom_minimum_size = Vector2(204, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ks78v")
+theme_override_font_sizes/font_size = 26
+text = "PAGE  %d"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=960012054]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_oid1e")
+
 [node name="BottomAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1417573375]
 position = Vector2(0, 67)
-collision_layer = 2048
-collision_mask = 2048
+collision_layer = 67584
+collision_mask = 67584
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomAnimatableBody2D" unique_id=1246572893]
@@ -69,8 +113,8 @@ debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
 
 [node name="LeftAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1239127636]
 position = Vector2(-285, 0)
-collision_layer = 2048
-collision_mask = 2048
+collision_layer = 133120
+collision_mask = 133120
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAnimatableBody2D" unique_id=1898992656]
@@ -79,8 +123,8 @@ debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
 
 [node name="RightAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1367430560]
 position = Vector2(285, 0)
-collision_layer = 2048
-collision_mask = 2048
+collision_layer = 264192
+collision_mask = 264192
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAnimatableBody2D" unique_id=675646356]
@@ -89,8 +133,8 @@ debug_color = Color(0.85818595, 0.00072176877, 0.88156354, 0.41960785)
 
 [node name="TopAnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1057641507]
 position = Vector2(0, -67)
-collision_layer = 2048
-collision_mask = 2048
+collision_layer = 526336
+collision_mask = 526336
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopAnimatableBody2D" unique_id=2039844326]

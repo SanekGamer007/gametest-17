@@ -46,6 +46,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_k5q20")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_cw8hl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_oiual")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ywe4r")
+action_mode = 0
 button_mask = 0
 icon = ExtResource("2_k5q20")
 script = SubResource("GDScript_21xcl")

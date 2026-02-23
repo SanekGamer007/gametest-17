@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cnxgwvu4s8nlq"]
+
+[ext_resource type="FontFile" uid="uid://c0s6xonjc73ag" path="res://fonts/DTM-Sans.otf" id="1_lk2t2"]
+[ext_resource type="Texture2D" uid="uid://cwbe8lnym48tm" path="res://objects/battle_scene/battle/battle_box/battle_button/spr/heart3.png" id="2_lk2t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0h6f0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrwcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wt5qg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3on01"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwlfd"]
+
+[node name="BattleButton" type="Button" unique_id=393989838]
+custom_minimum_size = Vector2(258, 0)
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_constants/h_separation = 20
+theme_override_fonts/font = ExtResource("1_lk2t2")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0h6f0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rrwcl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wt5qg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3on01")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lwlfd")
+action_mode = 0
+button_mask = 0
+text = "*"
+icon = ExtResource("2_lk2t2")
+alignment = 0

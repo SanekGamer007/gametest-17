@@ -3,6 +3,7 @@ class_name BattleState
 
 @onready var state_machine: BattleStateMachine = get_parent()
 @onready var battle_scene: BattleScene = get_parent().get_parent()
+var battle_resource: BattleResource
 
 func enter() -> void:
 	pass

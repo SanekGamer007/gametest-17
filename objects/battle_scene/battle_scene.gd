@@ -5,7 +5,13 @@ signal init_complete
 
 @onready var battlestatemachine: BattleStateMachine = $StateMachine
 @onready var battle_box: BattleBox = $Control/BattleBox
+@onready var chara_soul: CharaSoul = $CharaSoul
+
+@onready var monster_spawn_location = $Monsters
+
+var battle_resource: BattleResource
 var battle_era: GlobalVars.Versions = GlobalVars.Versions.ANY
+var monsters: Array[Monster]
 
 func _ready() -> void:
 	if battle_era == GlobalVars.Versions.ANY:
@@ -14,4 +20,5 @@ func _ready() -> void:
 	init_complete.emit()
 
 func _physics_process(delta: float) -> void:
-	pass
+	if GlobalVars.player_hp <= 0:
+		SceneManager.change_scene("res://levels/misc/game_over/game_over.tscn", "A", "none", ".", "set_soul_pos", [$CharaSoul.global_position])

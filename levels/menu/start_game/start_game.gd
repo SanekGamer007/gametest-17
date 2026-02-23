@@ -3,11 +3,8 @@ extends Control
 var return_location: String = "res://levels/menu/real_title/real_title.tscn" # if we come from fake_title then we just override it.
 var default_name: String = "Chara" # if something goes wrong we default to chara =)
 
-
-
 func real_title_ready() -> void:
 	$NamePicker/GridContainer.get_child(0).grab_focus() # race condition but pffft who cares my game my rules.
-
 
 func fake_title_ready() -> void:
 	return_location = "res://levels/menu/fake_title/fake_title.tscn"

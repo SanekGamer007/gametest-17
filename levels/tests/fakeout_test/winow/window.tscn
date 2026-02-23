@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://c7pjp8tmdorv7"]
+
+[ext_resource type="Texture2D" uid="uid://df4e81igkeep3" path="res://levels/tests/fakeout_test/winow/button.png" id="1_c5yo5"]
+[ext_resource type="Texture2D" uid="uid://c8m6db3lbprrk" path="res://levels/tests/fakeout_test/winow/textthing.png" id="1_lg1sk"]
+[ext_resource type="Script" uid="uid://cktvmuo4j7eyq" path="res://levels/tests/fakeout_test/winow/window.gd" id="1_svrmv"]
+[ext_resource type="FontFile" uid="uid://djhkfngai0v4k" path="res://levels/tests/fakeout_test/winow/windows-xp-tahoma.otf" id="2_d6kgc"]
+[ext_resource type="Texture2D" uid="uid://dh23syv6413bm" path="res://levels/tests/fakeout_test/winow/button_pressed.png" id="2_g7dul"]
+[ext_resource type="Texture2D" uid="uid://6gmf5272o3nb" path="res://levels/tests/fakeout_test/winow/button_focus.png" id="3_lg1sk"]
+[ext_resource type="Texture2D" uid="uid://ds0812nvpeuws" path="res://levels/tests/fakeout_test/winow/abort.png" id="4_d6kgc"]
+[ext_resource type="Texture2D" uid="uid://bulpfc22ul5lc" path="res://levels/tests/fakeout_test/winow/copy.png" id="7_7ojh3"]
+[ext_resource type="Texture2D" uid="uid://c8q8d8jwjuwe2" path="res://levels/tests/fakeout_test/winow/reference.png" id="7_d6kgc"]
+[ext_resource type="Texture2D" uid="uid://m5nc7k62g61b" path="res://levels/tests/fakeout_test/winow/clear.png" id="8_svrmv"]
+
+[node name="Window" type="Window" unique_id=1230039916]
+oversampling_override = 1.0
+title = "Error messages"
+position = Vector2i(0, 36)
+size = Vector2i(499, 360)
+unresizable = true
+script = ExtResource("1_svrmv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1212100136]
+offset_left = -51.0
+offset_top = -23.0
+offset_right = 603.0
+offset_bottom = 398.0
+color = Color(0.83137256, 0.8156863, 0.78431374, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2047808259]
+offset_left = 6.0
+offset_top = -19.0
+offset_right = 528.0
+offset_bottom = 312.0
+texture = ExtResource("1_lg1sk")
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=249568331]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = -44.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/search_result_color = Color(0.3019608, 0.3019608, 0.3019608, 0)
+theme_override_colors/search_result_border_color = Color(0.3019608, 0.3019608, 0.3019608, 0)
+theme_override_colors/caret_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 0)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(0.039215688, 0.14117648, 0.41568628, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+theme_override_colors/background_color = Color(1, 1, 1, 1)
+theme_override_colors/current_line_color = Color(0.2509804, 0.2509804, 0, 0)
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("2_d6kgc")
+text = "___________________________________________
+FATAL ERROR in
+action number 1
+of Step Event
+for object obj_ISEEYOU_{username}:
+
+COMPILATION ERROR in code action
+Error in code at line 17:
+	IKNOWWHOYOUARE()
+	^
+at position 2: YOUWILLREGRETEVERYTHING:
+GETOUT"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="AbortButton" type="TextureButton" parent="." unique_id=1691187904]
+offset_left = 8.0
+offset_top = 327.0
+offset_right = 83.0
+offset_bottom = 367.0
+texture_normal = ExtResource("1_c5yo5")
+texture_pressed = ExtResource("2_g7dul")
+texture_focused = ExtResource("3_lg1sk")
+
+[node name="TextureRect" type="TextureRect" parent="AbortButton" unique_id=429182515]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 60.0
+offset_bottom = 46.0
+focus_mode = 2
+texture = ExtResource("4_d6kgc")
+stretch_mode = 4
+
+[node name="CopyButton" type="TextureButton" parent="." unique_id=1959134274]
+offset_left = 328.0
+offset_top = 326.0
+offset_right = 403.0
+offset_bottom = 366.0
+texture_normal = ExtResource("1_c5yo5")
+texture_pressed = ExtResource("2_g7dul")
+texture_focused = ExtResource("3_lg1sk")
+
+[node name="TextureRect" type="TextureRect" parent="CopyButton" unique_id=1171080847]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 60.0
+offset_bottom = 45.0
+texture = ExtResource("7_7ojh3")
+stretch_mode = 4
+
+[node name="ClearButton" type="TextureButton" parent="." unique_id=858356727]
+offset_left = 416.0
+offset_top = 326.0
+offset_right = 491.0
+offset_bottom = 366.0
+texture_normal = ExtResource("1_c5yo5")
+texture_pressed = ExtResource("2_g7dul")
+texture_focused = ExtResource("3_lg1sk")
+
+[node name="TextureRect" type="TextureRect" parent="ClearButton" unique_id=697100637]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 5.0
+offset_right = 62.0
+offset_bottom = 20.0
+texture = ExtResource("8_svrmv")
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1723454304]
+visible = false
+modulate = Color(1, 1, 1, 0.16078432)
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 519.0
+offset_bottom = 383.0
+texture = ExtResource("7_d6kgc")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="AbortButton" to="." method="_on_abort_button_pressed"]
+[connection signal="pressed" from="CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="ClearButton" to="." method="_on_clear_button_pressed"]

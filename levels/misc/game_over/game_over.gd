@@ -14,7 +14,6 @@ func _ready() -> void:
 
 
 func set_soul_pos(pos: Vector2) -> void:
-	print(pos)
 	$Heart.global_position = pos
 
 
@@ -29,7 +28,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	else:
 		var temp = GameOverDialogueKills.pick_random()
 		dialogue = temp.dialogue
-	print(dialogue)
 	$VBoxContainer/TextWriter.set_dialogue(dialogue)
 	$VBoxContainer.visible = true
 	$VBoxContainer/TextWriter.able_to_end = true
