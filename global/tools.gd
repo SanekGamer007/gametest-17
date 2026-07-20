@@ -14,7 +14,7 @@ enum Operator {
 }
 
 
-func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:
+static func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:
 	if typeof(val_a) != typeof(val_b):
 		return false
 	match op:
@@ -34,7 +34,7 @@ func compare(val_a: Variant, val_b: Variant, op: Operator) -> bool:
 			return false
 
 
-func get_zero_value(variable: Variant) -> Variant:
+static func get_zero_value(variable: Variant) -> Variant:
 	match typeof(variable):
 		TYPE_BOOL:
 			return false
@@ -56,27 +56,15 @@ func get_zero_value(variable: Variant) -> Variant:
 			return null
 
 
-func get_target_node(path: NodePath, call_context: Node) -> Node:
-	if path.is_empty():
-		return call_context
-
-	if path.is_absolute():
-		return get_node(path)
-	if call_context:
-		return call_context.get_node(path)
-
-	return get_node(path)
+static func change_window_title(window: Window, title: String) -> void:
+	window.title = title
 
 
-func change_window_title(title: String) -> void:
-	get_window().title = title
-
-
-func change_window_icon(icon: Image) -> void:
+static func change_window_icon(icon: Image) -> void:
 	DisplayServer.set_icon(icon)
 
 
-func time_to_string(time_in_sec: int):
+static func time_to_string(time_in_sec: int):
 	var seconds = time_in_sec % 60
 	var minutes = (time_in_sec / 60) % 60
 	var hours = (time_in_sec / 60) / 60
@@ -86,7 +74,7 @@ func time_to_string(time_in_sec: int):
 		return "%01d:%02d" % [minutes, seconds]
 
 
-func get_current_room() -> String:
+static func get_current_room() -> String:
 	if GlobalVars.player_room.begins_with("res://"):
 		return GlobalVars.player_room
 
@@ -97,6 +85,17 @@ func get_current_room() -> String:
 			push_error("Invalid player room.")
 		return ""
 
+
+func get_target_node(path: NodePath, call_context: Node) -> Node:
+	if path.is_empty():
+		return call_context
+
+	if path.is_absolute():
+		return get_node(path)
+	if call_context:
+		return call_context.get_node(path)
+
+	return get_node(path)
 
 func start_dialogue(dialogue: Array[Dialogue], player_node: Chara = null, context: Node = self, override_offset: Vector2 = Vector2.INF) -> bool:
 	# checks

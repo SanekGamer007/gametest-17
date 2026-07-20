@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmsikvkpstudg"
-path="res://.godot/imported/EzCFFBsWQAEcJGH.png-0e90be6ab9b8bde4ebba8a819d14250a.ctex"
+uid="uid://barl8nk5sx4g6"
+path="res://.godot/imported/gaster.png-47b74f2d6e61a957ff5b1922ee08e3f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EzCFFBsWQAEcJGH.png"
-dest_files=["res://.godot/imported/EzCFFBsWQAEcJGH.png-0e90be6ab9b8bde4ebba8a819d14250a.ctex"]
+source_file="res://levels/tests/fake_out_mockup_v2/gaster.png"
+dest_files=["res://.godot/imported/gaster.png-47b74f2d6e61a957ff5b1922ee08e3f4.ctex"]
 
 [params]
 

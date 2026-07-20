@@ -63,6 +63,7 @@ func change_scene(new_scene: String, target_spawn_id: String, fadespeed: String,
 func _on_fade_finished(_anim_name: StringName) -> void:
 	get_tree().change_scene_to_file(scene)
 	await get_tree().scene_changed
+
 	GlobalVars.player_room = scene
 	_setup_level()
 	var target_node = get_tree().current_scene.get_node_or_null(function_location)

@@ -58,7 +58,6 @@ func prep() -> void:
 			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = "A sad, sad fish in a big, big sea."
 		"FRISK":
-			_disable_confirmation()
 			$VBoxContainer/HBoxContainer/Label.text = ""
 		"MURDER", "MERCY":
 			$VBoxContainer/HBoxContainer/Label.text = "Interesting."

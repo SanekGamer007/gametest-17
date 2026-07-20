@@ -228,7 +228,7 @@ metadata/_custom_type_script = "uid://xdgi2kp04lc8"
 
 [sub_resource type="Resource" id="Resource_tyot4"]
 script = ExtResource("4_1xmro")
-dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x")])
+dialogue = Array[ExtResource("5_s52b6")]([SubResource("Resource_cns6x"), null])
 metadata/_custom_type_script = "uid://cj80lkdqnsfhu"
 
 [node name="TestNPC" type="StaticBody2D" unique_id=718743569]

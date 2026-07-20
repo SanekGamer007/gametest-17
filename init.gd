@@ -2,10 +2,10 @@ extends Node
 
 func _ready() -> void:
 	get_window().borderless = false
+	Tools.change_window_title(get_window(), " ")
+	SaveManager.load_sys_info_to_global(SaveManager.load_system_information())
 	if OS.has_feature("editor"):
 		_get_commit_hash()
-	Tools.change_window_title(" ")
-	SaveManager.load_sys_info_to_global(SaveManager.load_system_information())
 	if OS.is_debug_build():
 		var iii: PackedScene = load("res://debug/debug_menu/debug.tscn")
 		var iiii: PackedScene = load("res://debug/overlay/debug_build_overlay.tscn")

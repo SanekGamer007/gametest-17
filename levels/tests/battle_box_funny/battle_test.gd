@@ -17,7 +17,7 @@ func _ready() -> void:
 		await box.finished_moving
 		box.set_box_position(Vector2(320, 320), 1, Tween.TRANS_QUAD)
 		await box.finished_moving
-	return
+	#return
 	box.set_box_position(Vector2(320, 240), 0.5, Tween.TRANS_QUAD)
 	$CharaSoul.state_machine.change_state("BlueState")
 	await box.finished_moving
